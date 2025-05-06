@@ -42,7 +42,7 @@ export function PageContent({ title, description, path, children }: PageContentP
         {description && <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>}
       </div>
       
-      <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-p:leading-7 prose-p:mb-6 prose-li:leading-7">
+      <div className="content-container prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight">
         {children}
       </div>
     </div>
