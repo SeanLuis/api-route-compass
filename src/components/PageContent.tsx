@@ -13,7 +13,7 @@ interface PageContentProps {
 
 export function PageContent({ title, description, path, children }: PageContentProps) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -37,12 +37,12 @@ export function PageContent({ title, description, path, children }: PageContentP
         </BreadcrumbList>
       </Breadcrumb>
       
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">{title}</h1>
-        {description && <p className="text-lg text-muted-foreground">{description}</p>}
+      <div className="mb-10">
+        <h1 className="text-3xl font-bold tracking-tight mb-3">{title}</h1>
+        {description && <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>}
       </div>
       
-      <div className="prose max-w-none dark:prose-invert">
+      <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-p:leading-7 prose-p:mb-6 prose-li:leading-7">
         {children}
       </div>
     </div>

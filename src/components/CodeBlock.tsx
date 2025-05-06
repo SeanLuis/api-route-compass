@@ -21,7 +21,10 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
   };
 
   return (
-    <div className={cn("relative group rounded-md overflow-hidden border border-slate-800", className)}>
+    <div className={cn(
+      "relative group rounded-md overflow-hidden border border-slate-800 my-6",
+      className
+    )}>
       <div className="absolute right-4 top-3 z-10">
         <button
           onClick={handleCopy}
@@ -38,7 +41,13 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
         <SyntaxHighlighter
           language={language}
           style={vscDarkPlus}
-          customStyle={{ margin: 0, padding: '1rem', background: 'rgb(15, 23, 42)' }}
+          customStyle={{ 
+            margin: 0, 
+            padding: '1.25rem', 
+            background: 'rgb(15, 23, 42)',
+            fontSize: '0.9rem',
+            lineHeight: '1.5'
+          }}
           wrapLongLines={false}
         >
           {code}
