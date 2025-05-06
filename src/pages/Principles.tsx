@@ -7,87 +7,105 @@ const Principles = () => {
   return (
     <PageLayout>
       <PageContent 
-        title="Principios Fundamentales REST" 
-        description="Los principios básicos que definen una arquitectura REST."
+        title="Principios REST" 
+        description="Fundamentos y conceptos clave de la arquitectura REST."
         path={["Introducción", "Principios REST"]}
       >
         <p>
-          REST (Representational State Transfer) es un estilo de arquitectura para diseñar aplicaciones en red.
-          Fue definido por Roy Fielding en su tesis doctoral en el año 2000, y establece un conjunto de restricciones
-          y propiedades basadas en HTTP para crear servicios web que sean escalables, simples y desacoplados.
+          REST (Representational State Transfer) es un estilo arquitectónico para sistemas distribuidos, 
+          principalmente utilizado para diseñar APIs web. Fue introducido por Roy Fielding en su tesis doctoral 
+          en 2000 y establece principios fundamentales para crear servicios web escalables y mantenibles.
         </p>
-        
-        <h2>Principios Clave</h2>
-        
+
+        <h2>Principios Fundamentales</h2>
+
         <h3>1. Arquitectura Cliente-Servidor</h3>
         <p>
-          Separación clara de responsabilidades entre cliente (interfaz de usuario, experiencia de usuario) y servidor
-          (almacenamiento de datos, reglas de negocio). Esta separación permite que ambos componentes evolucionen
-          de manera independiente.
+          La separación de responsabilidades entre el cliente y el servidor permite que ambos componentes 
+          evolucionen independientemente. El cliente se enfoca en la interfaz de usuario y la experiencia 
+          del usuario, mientras que el servidor se encarga de almacenar y procesar datos.
         </p>
-        
+
         <h3>2. Sin Estado (Stateless)</h3>
         <p>
-          Cada solicitud del cliente al servidor debe contener toda la información necesaria para entender y completar
-          la solicitud. El servidor no debe almacenar contexto del cliente entre solicitudes, lo que mejora la escalabilidad
-          y simplifica la implementación del servidor.
+          Cada solicitud del cliente al servidor debe contener toda la información necesaria para entender 
+          y procesar la solicitud. El servidor no debe almacenar ningún estado del cliente entre solicitudes.
         </p>
-        
-        <CodeBlock 
-          code={`// Solicitud sin estado: Contiene todo lo necesario
-GET /products/123 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5...
-Accept: application/json`}
-          language="http" 
-          className="my-6"
+
+        <CodeBlock
+          code={`// Solicitud correcta (contiene toda la información necesaria)
+GET /api/v1/products/123 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+// Solicitud incorrecta (depende de un estado previo)
+GET /api/v1/products/current HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`}
+          language="http"
         />
-        
+
         <h3>3. Cacheable</h3>
         <p>
-          Las respuestas deben definir implícita o explícitamente si son cacheables o no, y por cuánto tiempo.
-          Un buen control de caché reduce parcial o completamente la necesidad de algunas interacciones cliente-servidor,
-          mejorando la escalabilidad y rendimiento.
+          Las respuestas deben definirse como almacenables en caché o no. Cuando una respuesta es cacheable, 
+          los clientes pueden reutilizarla para solicitudes equivalentes posteriores, mejorando el rendimiento.
         </p>
-        
-        <h3>4. Sistema en Capas</h3>
+
+        <CodeBlock
+          code={`HTTP/1.1 200 OK
+Date: Wed, 21 Oct 2023 07:28:00 GMT
+Cache-Control: max-age=3600
+Content-Type: application/json
+
+{
+  "id": "123",
+  "name": "Producto Premium",
+  "price": 29.99
+}`}
+          language="http"
+        />
+
+        <h3>4. Interfaz Uniforme</h3>
         <p>
-          Un cliente no puede distinguir si está conectado directamente al servidor final o a un intermediario.
-          Esta restricción permite la introducción de proxies, balanceadores de carga y otros intermediarios para
-          mejorar la escalabilidad y seguridad.
+          REST define una interfaz uniforme que simplifica la arquitectura y mejora la visibilidad de las interacciones. 
+          Los componentes clave de esta interfaz son:
         </p>
-        
-        <h3>5. Interfaz Uniforme</h3>
-        <p>
-          La interfaz entre componentes debe ser uniforme para simplificar la arquitectura y mejorar la visibilidad
-          de las interacciones. REST logra esto a través de cuatro restricciones:
-        </p>
-        
         <ul>
-          <li><strong>Identificación de recursos:</strong> Cada recurso es identificado por un URI único</li>
-          <li><strong>Manipulación de recursos a través de representaciones:</strong> Los recursos son conceptualmente separados de sus representaciones</li>
-          <li><strong>Mensajes auto-descriptivos:</strong> Cada mensaje incluye suficiente información para describir cómo procesarlo</li>
-          <li><strong>HATEOAS (Hypermedia As The Engine Of Application State):</strong> Los clientes interactúan con la aplicación mediante hipermedia proporcionada dinámicamente por el servidor</li>
+          <li><strong>Recursos identificados:</strong> Cada recurso tiene un identificador único (URI)</li>
+          <li><strong>Manipulación a través de representaciones:</strong> Los clientes interactúan con los recursos mediante representaciones</li>
+          <li><strong>Mensajes autodescriptivos:</strong> Cada mensaje contiene suficiente información para ser procesado</li>
+          <li><strong>HATEOAS:</strong> Hypermedia como motor del estado de la aplicación</li>
         </ul>
-        
-        <h3>6. Código Bajo Demanda (Opcional)</h3>
+
+        <h3>5. Sistema en Capas</h3>
         <p>
-          Los servidores pueden extender temporalmente la funcionalidad del cliente transfiriendo código ejecutable.
-          Este principio es opcional en REST y no se utiliza comúnmente en la mayoría de las APIs REST.
+          Un cliente no puede distinguir si está conectado directamente al servidor final o a un intermediario. 
+          Esto permite la escalabilidad mediante el uso de balanceadores de carga, cachés y otros intermediarios.
         </p>
-        
-        <h2>Beneficios de Seguir los Principios REST</h2>
+
+        <h3>6. Código bajo demanda (opcional)</h3>
+        <p>
+          Los servidores pueden enviar código ejecutable al cliente para extender su funcionalidad temporalmente.
+        </p>
+
+        <h2>Beneficios de REST</h2>
         <ul>
-          <li>Escalabilidad mejorada</li>
-          <li>Independencia entre cliente y servidor</li>
-          <li>Compatibilidad con múltiples lenguajes y plataformas</li>
-          <li>Facilita el desarrollo y mantenimiento</li>
-          <li>Arquitectura familiar para desarrolladores</li>
+          <li><strong>Escalabilidad:</strong> Diseño sin estado que facilita el crecimiento</li>
+          <li><strong>Flexibilidad:</strong> Independencia entre cliente y servidor</li>
+          <li><strong>Independencia:</strong> Evolución separada de clientes y servidores</li>
+          <li><strong>Rendimiento:</strong> Aprovecha mecanismos de caché para mejorar la velocidad</li>
+          <li><strong>Visibilidad:</strong> Comunicación estandarizada y comprensible</li>
         </ul>
-        
+
+        <h2>REST vs RESTful</h2>
+        <p>
+          Es importante distinguir entre "REST" como estilo arquitectónico teórico y "RESTful" como 
+          implementación práctica. Una API verdaderamente RESTful cumple con todos los principios de REST, 
+          especialmente HATEOAS. Sin embargo, muchas APIs se describen como RESTful aunque solo implementen 
+          parcialmente los principios.
+        </p>
+
         <blockquote>
-          "Los principios REST no son reglas estrictas sino guías para crear APIs eficientes,
-          escalables y fáciles de mantener. La implementación de estos principios puede variar
-          según las necesidades específicas de cada aplicación."
+          "REST no es un estándar sino un conjunto de restricciones arquitectónicas. Una API que sigue los 
+          principios REST es una API RESTful, pero el grado de cumplimiento puede variar." - Roy Fielding
         </blockquote>
       </PageContent>
     </PageLayout>
