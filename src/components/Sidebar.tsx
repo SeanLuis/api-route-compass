@@ -118,15 +118,16 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
     <>
       <div
         className={cn(
-          "fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-200",
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          "fixed inset-0 bg-background/80 z-40 lg:hidden",
+          isOpen ? "block" : "hidden"
         )}
         onClick={() => setIsOpen(false)}
       />
       <aside
         className={cn(
-          "fixed top-0 left-0 z-50 h-full w-full max-w-[280px] bg-slate-50 shadow-lg transition-transform duration-300 lg:translate-x-0 lg:shadow-none border-r border-slate-200",
-          isOpen ? "translate-x-0" : "-translate-x-full"
+          "fixed top-0 left-0 z-50 h-full w-full max-w-[280px] border-r bg-sidebar shadow-lg lg:shadow-none",
+          isOpen ? "translate-x-0" : "-translate-x-full",
+          "lg:translate-x-0"
         )}
       >
         <div className="flex flex-col h-full">
@@ -141,7 +142,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="lg:hidden text-slate-500 hover:text-slate-900"
+              className="lg:hidden text-slate-500"
             >
               <X className="h-5 w-5" />
             </Button>
@@ -163,7 +164,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                           key={link.href}
                           to={link.href}
                           className={cn(
-                            "flex items-center text-sm px-3 py-2 rounded-md transition-colors",
+                            "flex items-center text-sm px-3 py-2 rounded-md",
                             isActive
                               ? "bg-slate-100 text-indigo-600 font-medium"
                               : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"

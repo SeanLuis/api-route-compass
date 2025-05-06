@@ -8,12 +8,6 @@ interface PageLayoutProps {
 
 export function PageLayout({ children }: PageLayoutProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  // Efecto para manejar la transición inicial
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Efecto para manejar el escape para cerrar el sidebar en móvil
   useEffect(() => {
@@ -42,11 +36,11 @@ export function PageLayout({ children }: PageLayoutProps) {
   }, [isSidebarOpen]);
 
   return (
-    <div className={`flex min-h-screen flex-col bg-white ${mounted ? 'transition-opacity duration-500 opacity-100' : 'opacity-0'}`}>
+    <div className="flex min-h-screen flex-col bg-white">
       <Header setIsSidebarOpen={setIsSidebarOpen} />
       <div className="flex flex-1">
         <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-        <main className="flex-1 transition-all duration-300 ease-in-out lg:pl-[280px]">
+        <main className="flex-1 lg:pl-[280px]">
           <div className="mx-auto max-w-4xl px-4 py-8 md:px-8 lg:py-12">
             {children}
           </div>
