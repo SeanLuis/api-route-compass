@@ -1,4 +1,3 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { PageContent } from "@/components/PageContent";
 import { CodeBlock } from "@/components/CodeBlock";
@@ -22,9 +21,9 @@ const Post = () => {
         
         <ul>
           <li><strong>No idempotente:</strong> Múltiples solicitudes idénticas pueden producir resultados diferentes</li>
-          <li><strong>Estado de creación:</strong> Devuelve 201 Created cuando se crea un nuevo recurso</li>
-          <li><strong>Ubicación del recurso:</strong> Proporciona la URI del recurso creado en el encabezado Location</li>
-          <li><strong>Cuerpo en la respuesta:</strong> Típicamente devuelve la representación del recurso creado</li>
+          <li><strong>No seguro:</strong> Modifica el estado en el servidor</li>
+          <li><strong>Cuerpo de la solicitud:</strong> Contiene los datos para crear el nuevo recurso</li>
+          <li><strong>Estado 201:</strong> Generalmente devuelve el código de estado HTTP 201 (Created) en caso de éxito</li>
         </ul>
         
         <h2>Casos de Uso</h2>
@@ -34,69 +33,49 @@ const Post = () => {
         <EndpointExample
           method="POST"
           path="/api/v1/products"
-          description="Crea un nuevo producto en la base de datos."
+          description="Crea un nuevo producto en el catálogo."
           requestExample={`{
   "name": "Smartwatch Ultra",
-  "description": "Reloj inteligente con monitoreo avanzado de salud",
+  "description": "Reloj inteligente con monitor cardíaco y GPS integrado",
   "price": 299.99,
-  "category": "wearables",
-  "stock": 100,
-  "specifications": {
-    "display": "AMOLED 1.5 inch",
-    "battery": "48 hours",
-    "water_resistant": true,
-    "connectivity": ["Bluetooth 5.0", "Wi-Fi"]
-  }
+  "category": "electronics",
+  "tags": ["wearable", "fitness", "tech"]
 }`}
           responseExample={`{
   "id": "prod_789",
   "name": "Smartwatch Ultra",
-  "description": "Reloj inteligente con monitoreo avanzado de salud",
+  "description": "Reloj inteligente con monitor cardíaco y GPS integrado",
   "price": 299.99,
-  "category": "wearables",
-  "stock": 100,
-  "specifications": {
-    "display": "AMOLED 1.5 inch",
-    "battery": "48 hours",
-    "water_resistant": true,
-    "connectivity": ["Bluetooth 5.0", "Wi-Fi"]
-  },
-  "created_at": "2023-06-10T14:30:00Z",
-  "updated_at": "2023-06-10T14:30:00Z"
+  "category": "electronics",
+  "tags": ["wearable", "fitness", "tech"],
+  "created_at": "2023-06-10T15:30:45Z"
 }`}
         />
         
-        <h3>2. Procesar Datos sin Crear un Recurso</h3>
+        <h3>2. Procesamiento de Formularios o Acciones</h3>
         
         <EndpointExample
           method="POST"
-          path="/api/v1/payments/process"
-          description="Procesa un pago sin crear necesariamente un recurso."
+          path="/api/v1/payments"
+          description="Procesa un pago para un pedido."
           requestExample={`{
-  "amount": 99.99,
-  "currency": "USD",
-  "payment_method": "credit_card",
-  "credit_card": {
-    "number": "4111111111111111",
-    "expiry_month": 12,
-    "expiry_year": 2025,
-    "cvv": "123"
-  },
-  "billing_address": {
-    "name": "Juan Pérez",
-    "address_line1": "Calle Principal 123",
-    "city": "Madrid",
-    "postal_code": "28001",
-    "country": "Spain"
+  "order_id": "order_123",
+  "amount": 299.99,
+  "currency": "EUR",
+  "payment_method": {
+    "type": "credit_card",
+    "card_number": "XXXX-XXXX-XXXX-1111",
+    "expiry": "05/25",
+    "cvv": "XXX"
   }
 }`}
           responseExample={`{
-  "transaction_id": "tx_456789",
-  "status": "success",
-  "amount": 99.99,
-  "currency": "USD",
-  "processed_at": "2023-06-10T15:05:23Z",
-  "payment_method": "credit_card",
+  "payment_id": "pay_456",
+  "order_id": "order_123",
+  "amount": 299.99,
+  "currency": "EUR",
+  "status": "completed",
+  "transaction_id": "tx_789",
   "card_last4": "1111"
 }`}
         />
@@ -127,18 +106,17 @@ const Post = () => {
         
         <h3>Códigos de Estado HTTP Apropiados</h3>
         <p>
-          Utiliza los códigos de estado correctos para las respuestas POST:
+          Utiliza el código de estado adecuado para comunicar el resultado de la operación POST:
         </p>
         
         <ul>
-          <li><strong>201 Created:</strong> Cuando se ha creado un nuevo recurso</li>
-          <li><strong>202 Accepted:</strong> Cuando la solicitud se ha aceptado para procesamiento, pero no se ha completado</li>
-          <li><strong>204 No Content:</strong> Cuando la operación se realizó correctamente pero no hay contenido para devolver</li>
-          <li><strong>400 Bad Request:</strong> Cuando la solicitud tiene datos inválidos</li>
-          <li><strong>401 Unauthorized:</strong> Cuando se requiere autenticación</li>
-          <li><strong>403 Forbidden:</strong> Cuando el cliente está autenticado pero sin permisos</li>
-          <li><strong>409 Conflict:</strong> Cuando hay un conflicto con el estado actual del recurso</li>
-          <li><strong>422 Unprocessable Entity:</strong> Cuando los datos son sintácticamente correctos pero semánticamente inválidos</li>
+          <li><strong>201 Created:</strong> El recurso se creó correctamente</li>
+          <li><strong>202 Accepted:</strong> La solicitud se aceptó pero aún no se ha completado (útil para procesos asincrónicos)</li>
+          <li><strong>400 Bad Request:</strong> La solicitud tiene errores de formato o validación</li>
+          <li><strong>401 Unauthorized:</strong> Se requiere autenticación</li>
+          <li><strong>403 Forbidden:</strong> El usuario no tiene permisos para crear el recurso</li>
+          <li><strong>409 Conflict:</strong> La solicitud no pudo completarse debido a un conflicto con el estado actual del recurso</li>
+          <li><strong>422 Unprocessable Entity:</strong> La solicitud está bien formada pero tiene errores semánticos</li>
         </ul>
         
         <h3>Encabezado Location</h3>
@@ -174,62 +152,143 @@ Content-Type: application/json
     "name": ["El nombre del producto es obligatorio"],
     "category": ["La categoría especificada no existe"]
   },
-  "message": "Datos de entrada inválidos"
+  "message": "No se pudo crear el producto debido a errores de validación"
 }`}
           language="http"
         />
         
-        <h3>POST vs PUT para Creación</h3>
+        <h3>Idempotencia Condicional</h3>
         <p>
-          Usa POST cuando:
-        </p>
-        <ul>
-          <li>El servidor determina el ID/URI del recurso</li>
-          <li>Múltiples solicitudes idénticas pueden crear múltiples recursos</li>
-          <li>No conoces la URI final del recurso antes de crearlo</li>
-        </ul>
-        
-        <p>
-          Usa PUT cuando:
-        </p>
-        <ul>
-          <li>El cliente determina el ID/URI del recurso</li>
-          <li>Quieres que la operación sea idempotente (múltiples solicitudes idénticas tienen el mismo efecto)</li>
-          <li>Conoces la URI exacta donde debe existir el recurso</li>
-        </ul>
-        
-        <h2>Procesamiento Asíncrono</h2>
-        <p>
-          Para operaciones que pueden tardar tiempo en completarse, considera un enfoque asíncrono:
+          Aunque POST no es idempotente por definición, puedes implementar un comportamiento idempotente usando identificadores 
+          de solicitud:
         </p>
         
         <CodeBlock
-          code={`# Solicitud para iniciar un proceso
-POST /api/v1/reports/generate
-{
-  "type": "annual_sales",
-  "year": 2023,
-  "format": "pdf"
-}
-
-# Respuesta que indica aceptación
-HTTP/1.1 202 Accepted
+          code={`POST /api/v1/orders HTTP/1.1
 Content-Type: application/json
-Location: /api/v1/tasks/task_456
+Idempotency-Key: 123e4567-e89b-12d3-a456-426655440000
 
 {
-  "task_id": "task_456",
-  "status": "processing",
-  "estimated_completion_time": "60 seconds",
-  "status_url": "/api/v1/tasks/task_456"
+  "customer_id": "cust_123",
+  "items": [
+    { "product_id": "prod_456", "quantity": 1 }
+  ]
 }`}
           language="http"
         />
         
+        <h2>POST vs PUT</h2>
+        <p>
+          Es importante entender la diferencia entre POST y PUT para elegir el método adecuado:
+        </p>
+        
+        <table className="w-full border-collapse my-6">
+          <thead>
+            <tr className="bg-slate-100 dark:bg-slate-800">
+              <th className="border p-2 text-left">Característica</th>
+              <th className="border p-2 text-left">POST</th>
+              <th className="border p-2 text-left">PUT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border p-2">Idempotencia</td>
+              <td className="border p-2">No idempotente</td>
+              <td className="border p-2">Idempotente</td>
+            </tr>
+            <tr>
+              <td className="border p-2">URI del recurso</td>
+              <td className="border p-2">El servidor decide la URI final</td>
+              <td className="border p-2">El cliente especifica la URI exacta</td>
+            </tr>
+            <tr>
+              <td className="border p-2">Uso principal</td>
+              <td className="border p-2">Crear nuevos recursos</td>
+              <td className="border p-2">Actualizar recursos existentes</td>
+            </tr>
+            <tr>
+              <td className="border p-2">Colecciones</td>
+              <td className="border p-2">POST a la colección</td>
+              <td className="border p-2">PUT al recurso específico</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h2>Casos de Uso Avanzados</h2>
+        
+        <h3>1. POST para Operaciones que No Son CRUD</h3>
+        <p>
+          Aunque REST se centra en operaciones CRUD sobre recursos, POST también puede utilizarse para operaciones más complejas:
+        </p>
+        
+        <EndpointExample
+          method="POST"
+          path="/api/v1/orders/order_123/actions/cancel"
+          description="Cancela un pedido existente."
+          requestExample={`{
+  "reason": "El cliente ha solicitado la cancelación",
+  "refund": true
+}`}
+          responseExample={`{
+  "order_id": "order_123",
+  "status": "cancelled",
+  "cancelled_at": "2023-06-10T16:45:30Z",
+  "refund_status": "processing"
+}`}
+        />
+        
+        <h3>2. Procesamiento en Lote (Batch)</h3>
+        <p>
+          POST es adecuado para operaciones en lote que crean o modifican múltiples recursos:
+        </p>
+        
+        <EndpointExample
+          method="POST"
+          path="/api/v1/products/batch"
+          description="Crea múltiples productos en una sola operación."
+          requestExample={`{
+  "items": [
+    {
+      "name": "Teclado Mecánico",
+      "price": 89.99,
+      "category": "peripherals"
+    },
+    {
+      "name": "Ratón Inalámbrico",
+      "price": 45.99,
+      "category": "peripherals"
+    }
+  ]
+}`}
+          responseExample={`{
+  "created": 2,
+  "items": [
+    {
+      "id": "prod_567",
+      "name": "Teclado Mecánico",
+      "price": 89.99
+    },
+    {
+      "id": "prod_568",
+      "name": "Ratón Inalámbrico",
+      "price": 45.99
+    }
+  ]
+}`}
+        />
+        
+        <h2>Consideraciones de Seguridad</h2>
+        <ul>
+          <li><strong>Inyección de datos:</strong> Valida y desinfecta todas las entradas para prevenir inyecciones</li>
+          <li><strong>CSRF:</strong> Implementa tokens anti-CSRF para operaciones POST</li>
+          <li><strong>Límites de tamaño:</strong> Establece límites para el tamaño del cuerpo de la solicitud</li>
+          <li><strong>Rate limiting:</strong> Protege tus endpoints POST contra abusos con limitación de tasa</li>
+        </ul>
+        
         <blockquote>
-          "El método POST es la herramienta principal para crear contenido en una API REST. Aunque es simple 
-          en concepto, implementarlo correctamente requiere atención a los códigos de estado, encabezados y
-          patrones de respuesta adecuados."
+          "El método POST es la base para la creación de recursos en una API REST. Diseñar endpoints POST claros,
+          con validación robusta y mensajes de error descriptivos, mejora significativamente la usabilidad
+          de tu API y reduce los errores de integración."
         </blockquote>
       </PageContent>
     </PageLayout>

@@ -1,4 +1,3 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { PageContent } from "@/components/PageContent";
 import { CodeBlock } from "@/components/CodeBlock";
@@ -197,7 +196,7 @@ socket.onopen = function(event) {
   
   // Suscribirse a actualizaciones de precio
   socket.send(JSON.stringify({
-    type: 'subscribe',
+    action: 'subscribe',
     channel: 'price_updates',
     symbols: ['AAPL', 'GOOGL', 'MSFT']
   }));
@@ -205,76 +204,112 @@ socket.onopen = function(event) {
 
 socket.onmessage = function(event) {
   const data = JSON.parse(event.data);
-  console.log('Datos recibidos:', data);
+  console.log('Actualización recibida:', data);
+  updateUI(data);
+};
+
+// Servidor (Node.js con ws)
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', function(ws) {
+  console.log('Cliente conectado');
   
-  if (data.type === 'price_update') {
-    updatePriceDisplay(data.symbol, data.price);
-  } else if (data.type === 'error') {
-    showError(data.message);
-  }
-};
-
-socket.onclose = function(event) {
-  console.log('Conexión cerrada:', event.code, event.reason);
-};
-
-// Enviar una orden
-function sendOrder(symbol, quantity, price) {
-  socket.send(JSON.stringify({
-    type: 'new_order',
-    symbol: symbol,
-    quantity: quantity,
-    price: price,
-    order_type: 'limit'
-  }));
-}`}
+  ws.on('message', function(message) {
+    const request = JSON.parse(message);
+    
+    if (request.action === 'subscribe') {
+      // Añadir cliente a canal específico
+      subscribeToChannel(ws, request.channel, request.symbols);
+    }
+  });
+  
+  // Enviar actualizaciones periódicas
+  const interval = setInterval(() => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({
+        type: 'price_update',
+        symbol: 'AAPL',
+        price: 150.75,
+        change: +1.25
+      }));
+    }
+  }, 1000);
+  
+  ws.on('close', function() {
+    clearInterval(interval);
+  });
+});`}
           language="javascript"
         />
 
         <h3>Cuándo Usar WebSockets</h3>
         <ul>
-          <li>Aplicaciones que requieren actualizaciones en tiempo real (dashboards, chat, juegos)</li>
-          <li>Plataformas de trading o monitoreo donde la latencia es crítica</li>
-          <li>Aplicaciones colaborativas donde múltiples usuarios interactúan simultáneamente</li>
-          <li>Cualquier escenario donde el servidor necesita enviar datos al cliente sin una solicitud previa</li>
+          <li>Aplicaciones con actualización de datos en tiempo real</li>
+          <li>Chats y sistemas de mensajería</li>
+          <li>Juegos multijugador</li>
+          <li>Dashboards y visualizaciones en vivo</li>
+          <li>Notificaciones instantáneas</li>
         </ul>
 
         <h2>Server-Sent Events (SSE)</h2>
         <p>
-          SSE permite a un servidor enviar actualizaciones a un cliente a través de una conexión HTTP.
+          SSE permite que un servidor envíe actualizaciones a un cliente a través de HTTP.
           A diferencia de WebSockets, SSE es unidireccional (del servidor al cliente).
         </p>
 
         <h3>Características Principales</h3>
         <ul>
           <li><strong>Comunicación unidireccional:</strong> Del servidor al cliente</li>
-          <li><strong>Basado en HTTP:</strong> Más simple que WebSockets, trabaja mejor con proxies y firewalls</li>
-          <li><strong>Reconexión automática:</strong> Los clientes se reconectan automáticamente si la conexión se pierde</li>
-          <li><strong>Formato de texto:</strong> Los mensajes son texto plano, típicamente en formato evento/datos</li>
+          <li><strong>Basado en HTTP:</strong> Mejor compatibilidad con infraestructuras existentes</li>
+          <li><strong>Reconexión automática:</strong> Los clientes se reconectan automáticamente si se pierde la conexión</li>
+          <li><strong>Formato de evento estandarizado:</strong> Estructura definida para mensajes</li>
         </ul>
 
         <h3>Ejemplo de SSE</h3>
         <CodeBlock
           code={`// Cliente JavaScript
-const eventSource = new EventSource('/api/v1/notifications/stream');
+const eventSource = new EventSource('/api/events');
 
 eventSource.onmessage = function(event) {
   const data = JSON.parse(event.data);
-  console.log('Notificación recibida:', data);
-  showNotification(data.message);
+  console.log('Evento recibido:', data);
 };
 
-eventSource.addEventListener('price_alert', function(event) {
-  const data = JSON.parse(event.data);
-  console.log('Alerta de precio:', data);
-  showPriceAlert(data.symbol, data.price, data.change);
+eventSource.addEventListener('notification', function(e) {
+  const notification = JSON.parse(e.data);
+  showNotification(notification);
 });
 
-eventSource.onerror = function(error) {
-  console.error('Error en SSE:', error);
-};
+eventSource.addEventListener('price_alert', function(e) {
+  const alert = JSON.parse(e.data);
+  updatePriceChart(alert);
+});
 
-// Respuesta del servidor (formato de eventos)
+// Servidor (Node.js con Express)
+const app = require('express')();
+
+app.get('/api/events', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  
+  // Enviar un evento cada 5 segundos
+  const interval = setInterval(() => {
+    res.write('event: notification\n');
+    res.write(\`data: {"id": "notif_123", "message": "Nuevo comentario en tu publicación", "type": "comment"}\n\n\`);
+    
+    // Ocasionalmente enviar una alerta de precio
+    if (Math.random() > 0.7) {
+      res.write('event: price_alert\n');
+      res.write(\`data: {"symbol": "AAPL", "price": 150.75, "change": 2.5}\n\n\`);
+    }
+  }, 5000);
+  
+  req.on('close', () => {
+    clearInterval(interval);
+  });
+});
 // data: {"id": "notif_123", "message": "Nuevo comentario en tu publicación", "type": "comment"}
 //
 // event: price_alert
@@ -337,32 +372,29 @@ eventSource.onerror = function(error) {
 
         <CodeBlock
           code={`<!-- Solicitud SOAP -->
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
-                 xmlns:ser="http://service.example.com/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <ser:getCustomerDetails>
-         <customerId>123456</customerId>
-      </ser:getCustomerDetails>
-   </soapenv:Body>
-</soapenv:Envelope>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+               xmlns:m="http://www.example.org/stock">
+  <soap:Header>
+    <m:Authentication>
+      <m:token>abc123token</m:token>
+    </m:Authentication>
+  </soap:Header>
+  <soap:Body>
+    <m:GetStock>
+      <m:StockName>IBM</m:StockName>
+    </m:GetStock>
+  </soap:Body>
+</soap:Envelope>
 
 <!-- Respuesta SOAP -->
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <getCustomerDetailsResponse>
-         <customer>
-            <id>123456</id>
-            <name>Juan Pérez</name>
-            <email>juan@example.com</email>
-            <status>active</status>
-            <accountType>premium</accountType>
-            <registrationDate>2022-01-15</registrationDate>
-         </customer>
-      </getCustomerDetailsResponse>
-   </soapenv:Body>
-</soapenv:Envelope>`}
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+               xmlns:m="http://www.example.org/stock">
+  <soap:Body>
+    <m:GetStockResponse>
+      <m:Price>95.25</m:Price>
+    </m:GetStockResponse>
+  </soap:Body>
+</soap:Envelope>`}
           language="xml"
         />
 

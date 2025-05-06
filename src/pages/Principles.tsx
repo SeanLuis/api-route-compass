@@ -1,4 +1,3 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { PageContent } from "@/components/PageContent";
 import { CodeBlock } from "@/components/CodeBlock";
@@ -107,6 +106,35 @@ Content-Type: application/json
           "REST no es un estándar sino un conjunto de restricciones arquitectónicas. Una API que sigue los 
           principios REST es una API RESTful, pero el grado de cumplimiento puede variar." - Roy Fielding
         </blockquote>
+
+        <h2>Niveles de Madurez REST</h2>
+        <p>
+          El Modelo de Madurez de Richardson describe la adopción gradual de los principios REST:
+        </p>
+
+        <ul>
+          <li><strong>Nivel 0:</strong> Un único punto de entrada y método HTTP</li>
+          <li><strong>Nivel 1:</strong> Múltiples recursos con URIs</li>
+          <li><strong>Nivel 2:</strong> Uso de métodos HTTP y códigos de estado</li>
+          <li><strong>Nivel 3:</strong> Implementación completa de HATEOAS</li>
+        </ul>
+
+        <p>
+          La mayoría de las APIs consideradas "RESTful" hoy en día se encuentran en el nivel 2, mientras que 
+          el nivel 3 representa una implementación completa de REST según la definición de Roy Fielding.
+        </p>
+
+        <h2>Aplicación Práctica</h2>
+        <p>
+          Al diseñar una API REST, es recomendable seguir estos principios lo más estrictamente posible, pero 
+          también es importante entender los compromisos prácticos. En algunos casos, una implementación parcial 
+          de REST puede ser más adecuada para las necesidades del proyecto.
+        </p>
+
+        <p>
+          En las siguientes secciones, exploraremos cómo aplicar estos principios en aspectos específicos del 
+          diseño de APIs, desde la nomenclatura hasta la gestión de errores.
+        </p>
       </PageContent>
     </PageLayout>
   );
