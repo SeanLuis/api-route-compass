@@ -12,9 +12,13 @@ import {
   User,
   Users,
   X,
-  ChevronRight
+  ChevronRight,
+  BarChart,
+  ExternalLink,
+  RefreshCw
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SearchButton } from "@/components/SearchDialog";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -58,7 +62,7 @@ const sections: SidebarSection[] = [
   },
   {
     title: "Funcionalidades",
-    icon: LinkIcon,
+    icon: BarChart,
     links: [
       { title: "Versionado", href: "/versioning" },
       { title: "Paginación", href: "/pagination" },
@@ -94,7 +98,7 @@ const sections: SidebarSection[] = [
   },
   {
     title: "Documentación",
-    icon: Search,
+    icon: ExternalLink,
     links: [
       { title: "OpenAPI/Swagger", href: "/openapi" },
       { title: "Ejemplos Prácticos", href: "/examples" },
@@ -102,7 +106,7 @@ const sections: SidebarSection[] = [
   },
   {
     title: "API Avanzada",
-    icon: User,
+    icon: RefreshCw,
     links: [
       { title: "Limitaciones REST", href: "/rest-limitations" },
       { title: "Alternativas", href: "/alternatives" },
@@ -148,7 +152,12 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
             </Button>
           </div>
 
-          <div className="overflow-y-auto flex-1 py-4 px-3">
+          {/* Search Bar */}
+          <div className="px-3 pt-4 pb-2">
+            <SearchButton className="w-full justify-between" />
+          </div>
+
+          <div className="overflow-y-auto flex-1 py-2 px-3">
             <nav className="space-y-6">
               {sections.map((section) => (
                 <div key={section.title} className="space-y-1">
