@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import { SearchButton } from "./SearchDialog";
 
 interface HeaderProps {
   setIsSidebarOpen: (isOpen: boolean) => void;
 }
 
 export function Header({ setIsSidebarOpen }: HeaderProps) {
-  const [searchValue, setSearchValue] = useState("");
   const location = useLocation();
 
   return (
@@ -31,17 +31,8 @@ export function Header({ setIsSidebarOpen }: HeaderProps) {
           </div>
         </div>
         
-        <div className="relative max-w-md w-full md:w-96 mx-4 hidden md:block">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <Search className="h-4 w-4 text-gray-400" />
-          </div>
-          <input
-            type="search"
-            placeholder="Buscar en la documentación..."
-            className="h-9 w-full rounded-md border border-gray-200 bg-gray-50 pl-10 pr-4 text-sm"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+        <div className="flex-1 max-w-lg mx-4 hidden md:block">
+          <SearchButton />
         </div>
         
         <nav className="flex items-center gap-2 md:gap-3">

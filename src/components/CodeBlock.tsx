@@ -19,64 +19,89 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Estilo personalizado para hacer que coincida con la imagen
+  // Optimized style for a consistent dark theme
   const customStyle = {
-    backgroundColor: '#111827', // Fondo muy oscuro
-    background: '#111827',
+    backgroundColor: '#0f172a', // Darker background
+    background: '#0f172a',
     margin: 0,
-    padding: '1.25rem',
-    fontSize: '0.9rem',
+    padding: '1.5rem 1.25rem',
+    fontSize: '0.875rem',
     lineHeight: '1.5',
-    border: 'none',
-    borderRadius: '0',
-    boxShadow: 'none'
+    borderRadius: '0.375rem',
+    boxShadow: 'none',
+    overflowX: 'auto'
   };
 
-  // Modificación del tema vscDarkPlus para que coincida con la imagen
+  // Enhanced theme with better syntax highlighting colors
   const modifiedStyle = {
     ...vscDarkPlus,
     'code[class*="language-"]': {
       ...vscDarkPlus['code[class*="language-"]'],
-      background: '#111827',
-      color: '#e2e8f0'
+      background: '#0f172a',
+      color: '#f1f5f9',
+      textShadow: 'none',
+      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
     },
     'pre[class*="language-"]': {
       ...vscDarkPlus['pre[class*="language-"]'],
-      background: '#111827',
-      color: '#e2e8f0'
+      background: '#0f172a',
+      color: '#f1f5f9',
+      textShadow: 'none'
     },
     'property': {
       ...vscDarkPlus['property'],
-      color: '#93c5fd' // Color azul claro para las propiedades (como "id", "name", etc.)
+      color: '#93c5fd' // Light blue for properties
     },
     'string': {
       ...vscDarkPlus['string'],
-      color: '#fca5a5' // Color rojo claro para strings
+      color: '#fca5a5' // Light red for strings
     },
     'number': {
       ...vscDarkPlus['number'],
-      color: '#a5b4fc' // Color púrpura claro para números
+      color: '#a5b4fc' // Light purple for numbers
+    },
+    'comment': {
+      ...vscDarkPlus['comment'],
+      color: '#64748b' // Slate for comments
+    },
+    'keyword': {
+      ...vscDarkPlus['keyword'],
+      color: '#f472b6' // Pink for keywords
+    },
+    'function': {
+      ...vscDarkPlus['function'],
+      color: '#38bdf8' // Blue for functions
     }
   };
 
   return (
     <div className={cn(
-      "relative group rounded-md overflow-hidden border-none bg-[#111827] my-4",
+      "relative group rounded-md overflow-hidden border border-slate-800 bg-[#0f172a] my-4",
       className
     )}>
-      <div className="absolute right-4 top-3 z-10">
+      <div className="absolute top-0 left-0 right-0 h-10 flex items-center justify-between px-4 bg-[#1e293b] border-b border-slate-700">
+        <div className="text-xs font-medium text-slate-400">
+          {language.toUpperCase()}
+        </div>
         <button
           onClick={handleCopy}
-          className="bg-slate-800 hover:bg-slate-700 rounded p-1.5 text-xs text-slate-300 transition-colors"
-          aria-label="Copy code"
+          className="flex items-center gap-1.5 bg-slate-700/50 hover:bg-slate-700 rounded-md p-1.5 text-xs text-slate-300 transition-colors"
+          aria-label={copied ? "Copied" : "Copy code"}
         >
-          {copied ? <Check size={14} /> : <Copy size={14} />}
+          {copied ? (
+            <>
+              <Check size={14} />
+              <span>Copied!</span>
+            </>
+          ) : (
+            <>
+              <Copy size={14} />
+              <span>Copy</span>
+            </>
+          )}
         </button>
       </div>
-      <div className="absolute top-0 left-0 right-0 h-8 flex items-center px-4 text-xs font-medium bg-[#0f172a] text-slate-400 border-b border-slate-800">
-        {language.toUpperCase()}
-      </div>
-      <div className="pt-8 overflow-x-auto bg-[#111827]">
+      <div className="pt-10 overflow-x-auto bg-[#0f172a]">
         <SyntaxHighlighter
           language={language}
           style={modifiedStyle}
@@ -84,7 +109,7 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
           wrapLongLines={false}
           codeTagProps={{
             style: {
-              backgroundColor: '#111827',
+              backgroundColor: 'transparent',
               display: 'block'
             }
           }}
