@@ -76,7 +76,7 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
 
   return (
     <div className={cn(
-      "relative group rounded-md overflow-hidden border border-slate-800 bg-[#0f172a] my-4",
+      "relative group rounded-md overflow-hidden border border-slate-800 bg-[#0f172a]",
       className
     )}>
       <div className="absolute top-0 left-0 right-0 h-10 flex items-center justify-between px-4 bg-[#1e293b] border-b border-slate-700">

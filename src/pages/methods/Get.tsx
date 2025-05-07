@@ -1,267 +1,255 @@
 import { PageLayout } from "@/components/PageLayout";
-import { PageContent } from "@/components/PageContent";
-import { CodeBlock } from "@/components/CodeBlock";
 import { EndpointExample } from "@/components/EndpointExample";
+import { CodeBlock } from "@/components/CodeBlock";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info, Check, X, AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Get = () => {
+const GetMethodPage = () => {
   return (
     <PageLayout>
-      <PageContent 
-        title="Método GET" 
-        description="Uso correcto del método GET para recuperar recursos."
-        path={["Métodos HTTP", "GET"]}
-      >
-        <p>
-          El método GET es uno de los pilares de REST, utilizado para recuperar datos de un recurso o colección
-          de recursos. Es el método HTTP más comúnmente utilizado y forma la base de la navegación web.
-        </p>
+      <div className="space-y-10 max-w-3xl">
+        {/* Page header */}
+        <div className="border-b pb-8">
+          <div className="flex items-center gap-2">
+            <div className="px-3 py-1 bg-green-100 text-green-800 rounded-md text-sm font-semibold">GET</div>
+            <Link to="/methods" className="text-sm text-slate-500 hover:text-slate-700">Métodos HTTP</Link>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Método GET</h1>
+          <p className="text-lg text-slate-700">
+            El método GET solicita una representación del recurso especificado. Es el método HTTP más común y se utiliza para la lectura de datos.
+          </p>
+        </div>
+
+        {/* Main content */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Características principales</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Es seguro
+              </h3>
+              <p className="text-sm text-slate-700">
+                Las peticiones GET no modifican el estado del servidor y son idempotentes.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Es cacheable
+              </h3>
+              <p className="text-sm text-slate-700">
+                Las respuestas a peticiones GET pueden ser almacenadas en caché para mejorar el rendimiento.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Se puede compartir
+              </h3>
+              <p className="text-sm text-slate-700">
+                Las URLs de peticiones GET pueden ser compartidas y marcadas como favoritas.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <X className="h-4 w-4 text-red-600 mr-2" />
+                No para datos sensibles
+              </h3>
+              <p className="text-sm text-slate-700">
+                Los parámetros se exponen en la URL, no debe usarse para datos confidenciales.
+              </p>
+            </div>
+          </div>
+        </section>
         
-        <h2>Principios del Método GET</h2>
-        
-        <ul>
-          <li><strong>Seguro:</strong> No debe modificar el estado del servidor ni de los recursos</li>
-          <li><strong>Idempotente:</strong> Múltiples solicitudes GET idénticas deben producir el mismo resultado</li>
-          <li><strong>Cacheable:</strong> Las respuestas pueden almacenarse en caché para mejorar el rendimiento</li>
-          <li><strong>Sin efectos secundarios:</strong> No debe alterar datos en el servidor</li>
-        </ul>
-        
-        <h2>Casos de Uso</h2>
-        
-        <h3>1. Recuperar un Recurso Específico</h3>
-        
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products/123"
-          description="Obtiene los detalles de un producto específico."
-          responseExample={`{
-  "id": "123",
-  "name": "Auriculares Premium",
-  "description": "Auriculares inalámbricos con cancelación de ruido",
-  "price": 129.99,
-  "category": "electronics",
-  "stock": 45,
-  "ratings": {
-    "average": 4.7,
-    "count": 142
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Casos de uso comunes</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Obtener una colección de recursos</h3>
+              <EndpointExample 
+                method="GET"
+                path="/api/v1/products"
+                description="Lista todos los productos con paginación por defecto"
+                responseExample={`{
+  "data": [
+    {
+      "id": "prod_123",
+      "name": "Producto A",
+      "price": 29.99
+    },
+    {
+      "id": "prod_124",
+      "name": "Producto B",
+      "price": 19.99
+    }
+  ],
+  "pagination": {
+    "total": 42,
+    "page": 1,
+    "per_page": 10
   }
 }`}
-        />
-        
-        <h3>2. Listar una Colección de Recursos</h3>
-        
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products"
-          description="Obtiene una lista paginada de productos."
-          responseExample={`{
-  "items": [
-    {
-      "id": "123",
-      "name": "Auriculares Premium",
-      "price": 129.99
-    },
-    {
-      "id": "124",
-      "name": "Teclado Mecánico",
-      "price": 89.99
-    },
-    {
-      "id": "125",
-      "name": "Ratón Inalámbrico",
-      "price": 45.99
-    }
-  ],
-  "page": 1,
-  "per_page": 3,
-  "total": 187
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Obtener un recurso específico</h3>
+              <EndpointExample 
+                method="GET"
+                path="/api/v1/products/{id}"
+                description="Obtiene un producto específico por su ID"
+                responseExample={`{
+  "id": "prod_123",
+  "name": "Producto Premium",
+  "description": "Un producto de alta calidad",
+  "price": 29.99,
+  "category": "premium",
+  "in_stock": true,
+  "created_at": "2023-06-10T08:45:00Z"
 }`}
-        />
-        
-        <h3>3. Filtrar Recursos</h3>
-        
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products?category=electronics&min_price=50&max_price=200&sort=price_asc"
-          description="Recupera productos filtrados por categoría y precio, ordenados por precio ascendente."
-          responseExample={`{
-  "items": [
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Filtrado de recursos</h3>
+              <EndpointExample 
+                method="GET"
+                path="/api/v1/products?category=premium&in_stock=true"
+                description="Filtra productos por categoría y disponibilidad"
+                responseExample={`{
+  "data": [
     {
-      "id": "125",
-      "name": "Ratón Inalámbrico",
-      "price": 45.99,
-      "category": "electronics"
+      "id": "prod_123",
+      "name": "Producto Premium",
+      "price": 29.99,
+      "category": "premium",
+      "in_stock": true
     },
     {
-      "id": "124",
-      "name": "Teclado Mecánico",
-      "price": 89.99,
-      "category": "electronics"
-    },
-    {
-      "id": "123",
-      "name": "Auriculares Premium",
-      "price": 129.99,
-      "category": "electronics"
+      "id": "prod_125",
+      "name": "Producto Premium Plus",
+      "price": 49.99,
+      "category": "premium",
+      "in_stock": true
     }
   ],
-  "page": 1,
-  "per_page": 3,
-  "total": 24,
-  "filters_applied": {
-    "category": "electronics",
-    "price_range": [50, 200],
-    "sort": "price_asc"
+  "pagination": {
+    "total": 8,
+    "page": 1,
+    "per_page": 10
   }
 }`}
-        />
+              />
+            </div>
+          </div>
+        </section>
         
-        <h3>4. Buscar Recursos</h3>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Mejores prácticas</h2>
+          
+          <Alert variant="default" className="bg-blue-50 border-blue-100">
+            <Info className="h-4 w-4 text-blue-600" />
+            <AlertTitle className="text-blue-800">Idempotencia</AlertTitle>
+            <AlertDescription className="text-blue-700">
+              Las solicitudes GET deben ser idempotentes, lo que significa que realizar la misma solicitud 
+              múltiples veces debe tener el mismo efecto que hacerlo una sola vez.
+            </AlertDescription>
+          </Alert>
+          
+          <div className="mt-4 space-y-4">
+            <div>
+              <h3 className="text-base font-medium mb-2">Utiliza parámetros de consulta para filtrar</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="font-medium text-sm mb-2 text-green-500">Correcto ✓</h4>
+                  <CodeBlock
+                    code={`GET /api/v1/products?category=premium
+GET /api/v1/products?min_price=10&max_price=50
+GET /api/v1/products?sort=price:desc`}
+                    language="http"
+                    className="h-[120px]"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-medium text-sm mb-2 text-red-500">Incorrecto ❌</h4>
+                  <CodeBlock
+                    code={`GET /api/v1/products/findByCategory/premium
+GET /api/v1/products/filter (con cuerpo de solicitud)
+GET /api/v1/getProductsByPrice/10/50`}
+                    language="http"
+                    className="h-[120px]"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <Alert variant="default" className="bg-amber-50 border-amber-100">
+              <AlertTriangle className="h-4 w-4 text-amber-600" />
+              <AlertTitle className="text-amber-800">Cuidado con la longitud de la URL</AlertTitle>
+              <AlertDescription className="text-amber-700">
+                Las URLs tienen limitaciones de longitud dependiendo del navegador y servidor.
+                Si necesitas enviar muchos parámetros, considera usar paginación o endpoints más específicos.
+              </AlertDescription>
+            </Alert>
+          </div>
+        </section>
         
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products/search?q=auriculares+bluetooth"
-          description="Busca productos que coincidan con los términos de búsqueda."
-          responseExample={`{
-  "query": "auriculares bluetooth",
-  "items": [
-    {
-      "id": "123",
-      "name": "Auriculares Premium",
-      "description": "Auriculares inalámbricos con bluetooth y cancelación de ruido",
-      "relevance": 0.92
-    },
-    {
-      "id": "456",
-      "name": "Auriculares Bluetooth Sport",
-      "description": "Auriculares deportivos resistentes al agua",
-      "relevance": 0.87
-    }
-  ],
-  "total": 7
-}`}
-        />
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Códigos de estado comunes</h2>
+          
+          <div className="space-y-2">
+            <div className="grid grid-cols-[100px_1fr] border-b pb-2">
+              <div className="font-medium">200 OK</div>
+              <div className="text-sm">La solicitud se completó exitosamente y se devolvió el recurso solicitado.</div>
+            </div>
+            <div className="grid grid-cols-[100px_1fr] border-b pb-2">
+              <div className="font-medium">304 Not Modified</div>
+              <div className="text-sm">El recurso no ha cambiado desde la última solicitud (usado con caché).</div>
+            </div>
+            <div className="grid grid-cols-[100px_1fr] border-b pb-2">
+              <div className="font-medium">400 Bad Request</div>
+              <div className="text-sm">La solicitud contiene parámetros de consulta inválidos o malformados.</div>
+            </div>
+            <div className="grid grid-cols-[100px_1fr] border-b pb-2">
+              <div className="font-medium">404 Not Found</div>
+              <div className="text-sm">El recurso solicitado no existe.</div>
+            </div>
+            <div className="grid grid-cols-[100px_1fr]">
+              <div className="font-medium">403 Forbidden</div>
+              <div className="text-sm">El cliente no tiene permisos para acceder al recurso.</div>
+            </div>
+          </div>
+        </section>
         
-        <h2>Buenas Prácticas</h2>
-        
-        <h3>Cabeceras de Caché</h3>
-        <p>
-          Utiliza las cabeceras de caché adecuadas para mejorar el rendimiento y reducir la carga del servidor:
-        </p>
-        
-        <CodeBlock
-          code={`GET /api/v1/products/123 HTTP/1.1
-Accept: application/json
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-Cache-Control: max-age=3600, public
-ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"
-Last-Modified: Wed, 15 May 2023 12:30:45 GMT
-
-{
-  "id": "123",
-  "name": "Auriculares Premium",
-  ...
-}`}
-          language="http"
-        />
-        
-        <h3>Condicional GET</h3>
-        <p>
-          Implementa solicitudes condicionales para evitar transferencias innecesarias:
-        </p>
-        
-        <CodeBlock
-          code={`# Solicitud con If-None-Match
-GET /api/v1/products/123 HTTP/1.1
-If-None-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"
-
-HTTP/1.1 304 Not Modified
-
-# Solicitud con If-Modified-Since
-GET /api/v1/products/123 HTTP/1.1
-If-Modified-Since: Wed, 15 May 2023 12:30:45 GMT
-
-HTTP/1.1 304 Not Modified`}
-          language="http"
-        />
-        
-        <h3>Paginación, Filtros y Ordenamiento</h3>
-        <p>
-          Implementa parámetros consistentes para paginación, filtrado y ordenamiento:
-        </p>
-        
-        <CodeBlock
-          code={`# Paginación básica
-GET /api/v1/products?page=2&per_page=20
-
-# Paginación por cursor
-GET /api/v1/products?cursor=dXNlcjpYYVg3
-
-# Filtros
-GET /api/v1/products?category=electronics&in_stock=true
-
-# Ordenamiento
-GET /api/v1/products?sort=price_desc,popularity_desc
-
-# Combinados
-GET /api/v1/products?category=electronics&min_price=100&page=1&per_page=20&sort=newest`}
-          language="http"
-        />
-        
-        <h3>Control de Representación</h3>
-        <p>
-          Permite al cliente especificar el formato y nivel de detalle de la respuesta:
-        </p>
-        
-        <CodeBlock
-          code={`# Negociación de contenido
-GET /api/v1/products/123
-Accept: application/json
-
-# Campos específicos
-GET /api/v1/products/123?fields=id,name,price
-
-# Expansión de relaciones
-GET /api/v1/orders/789?expand=customer,items.product
-
-# Versión del API
-GET /api/v1/products/123
-Accept-Version: 1.2`}
-          language="http"
-        />
-        
-        <h2>Consideraciones de Seguridad</h2>
-        
-        <ul>
-          <li><strong>Datos sensibles:</strong> No enviar información sensible en las URLs</li>
-          <li><strong>Control de acceso:</strong> Validar permisos antes de devolver recursos</li>
-          <li><strong>Inyección:</strong> Sanitizar y validar todos los parámetros de consulta</li>
-          <li><strong>Limitación de tasa:</strong> Implementar límites para evitar abusos</li>
-        </ul>
-        
-        <h2>Códigos de Estado</h2>
-        
-        <p>Los códigos de estado comunes para el método GET incluyen:</p>
-        
-        <ul>
-          <li><strong>200 OK:</strong> La solicitud se completó correctamente</li>
-          <li><strong>304 Not Modified:</strong> El recurso no ha cambiado desde la última solicitud</li>
-          <li><strong>400 Bad Request:</strong> La solicitud tiene parámetros inválidos</li>
-          <li><strong>401 Unauthorized:</strong> Se requiere autenticación</li>
-          <li><strong>403 Forbidden:</strong> El cliente no tiene permisos para acceder al recurso</li>
-          <li><strong>404 Not Found:</strong> El recurso solicitado no existe</li>
-          <li><strong>429 Too Many Requests:</strong> El cliente ha enviado demasiadas solicitudes</li>
-        </ul>
-        
-        <blockquote>
-          "El método GET es la base de la navegabilidad de tu API. Diseñar endpoints GET bien estructurados, 
-          con paginación, filtrado y ordenamiento consistentes, mejora significativamente la experiencia del 
-          desarrollador y la eficiencia de tu API."
-        </blockquote>
-      </PageContent>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Relacionados</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/methods/post" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Método POST</h3>
+              <p className="text-sm text-slate-600">Crear nuevos recursos en el servidor</p>
+            </Link>
+            <Link to="/filtering" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Filtrado</h3>
+              <p className="text-sm text-slate-600">Técnicas avanzadas de filtrado con GET</p>
+            </Link>
+            <Link to="/pagination" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Paginación</h3>
+              <p className="text-sm text-slate-600">Estrategias para paginar colecciones grandes</p>
+            </Link>
+          </div>
+        </section>
+      </div>
     </PageLayout>
   );
 };
 
-export default Get;
+export default GetMethodPage;

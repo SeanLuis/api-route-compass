@@ -1,41 +1,86 @@
-
 import { PageLayout } from "@/components/PageLayout";
-import { PageContent } from "@/components/PageContent";
-import { CodeBlock } from "@/components/CodeBlock";
 import { EndpointExample } from "@/components/EndpointExample";
+import { CodeBlock } from "@/components/CodeBlock";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info, Check, X, AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Put = () => {
+const PutMethodPage = () => {
   return (
     <PageLayout>
-      <PageContent 
-        title="Método PUT" 
-        description="Uso correcto del método PUT para actualizar recursos."
-        path={["Métodos HTTP", "PUT"]}
-      >
-        <p>
-          El método PUT se utiliza para actualizar un recurso existente o crear uno nuevo cuando conocemos 
-          su identificador. A diferencia de PATCH, PUT actualiza el recurso completo, sustituyendo la 
-          versión anterior por la nueva representación proporcionada.
-        </p>
+      <div className="space-y-10 max-w-3xl">
+        {/* Page header */}
+        <div className="border-b pb-8">
+          <div className="flex items-center gap-2">
+            <div className="px-3 py-1 bg-orange-100 text-orange-800 rounded-md text-sm font-semibold">PUT</div>
+            <Link to="/methods" className="text-sm text-slate-500 hover:text-slate-700">Métodos HTTP</Link>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Método PUT</h1>
+          <p className="text-lg text-slate-700">
+            El método PUT se utiliza para actualizar un recurso existente o crear uno nuevo cuando conocemos 
+            su identificador. A diferencia de PATCH, PUT actualiza el recurso completo, sustituyendo la 
+            versión anterior por la nueva representación proporcionada.
+          </p>
+        </div>
+
+        {/* Main content */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Características principales</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Es idempotente
+              </h3>
+              <p className="text-sm text-slate-700">
+                Múltiples solicitudes idénticas tienen el mismo efecto que una sola.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Actualización completa
+              </h3>
+              <p className="text-sm text-slate-700">
+                Reemplaza todo el recurso con la nueva representación proporcionada.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Creación condicional
+              </h3>
+              <p className="text-sm text-slate-700">
+                Puede crear un recurso si no existe (si el servidor lo permite).
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <X className="h-4 w-4 text-red-600 mr-2" />
+                No es seguro
+              </h3>
+              <p className="text-sm text-slate-700">
+                Modifica el estado en el servidor al actualizar recursos.
+              </p>
+            </div>
+          </div>
+        </section>
         
-        <h2>Principios del Método PUT</h2>
-        
-        <ul>
-          <li><strong>Idempotente:</strong> Múltiples solicitudes idénticas tienen el mismo efecto que una sola</li>
-          <li><strong>Actualización completa:</strong> Reemplaza todo el recurso con la nueva representación</li>
-          <li><strong>Creación condicional:</strong> Puede crear un recurso si no existe (si el servidor lo permite)</li>
-          <li><strong>URI específica:</strong> Siempre opera sobre un recurso específico identificado por su URI</li>
-        </ul>
-        
-        <h2>Casos de Uso</h2>
-        
-        <h3>1. Actualizar un Recurso Existente</h3>
-        
-        <EndpointExample
-          method="PUT"
-          path="/api/v1/products/prod_123"
-          description="Actualiza completamente un producto existente."
-          requestExample={`{
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Casos de uso comunes</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Actualizar un recurso existente</h3>
+              <EndpointExample 
+                method="PUT"
+                path="/api/v1/products/prod_123"
+                description="Actualiza completamente un producto existente"
+                requestExample={`{
   "name": "Smartphone Pro Max",
   "description": "Versión actualizada con mejor cámara y batería",
   "price": 899.99,
@@ -50,7 +95,7 @@ const Put = () => {
   },
   "status": "active"
 }`}
-          responseExample={`{
+                responseExample={`{
   "id": "prod_123",
   "name": "Smartphone Pro Max",
   "description": "Versión actualizada con mejor cámara y batería",
@@ -68,15 +113,16 @@ const Put = () => {
   "created_at": "2023-01-15T10:30:00Z",
   "updated_at": "2023-06-10T15:45:00Z"
 }`}
-        />
-        
-        <h3>2. Crear un Recurso con ID Conocido</h3>
-        
-        <EndpointExample
-          method="PUT"
-          path="/api/v1/configurations/email-settings"
-          description="Crea o actualiza una configuración específica."
-          requestExample={`{
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Crear un recurso con ID conocido</h3>
+              <EndpointExample 
+                method="PUT"
+                path="/api/v1/configurations/email-settings"
+                description="Crea o actualiza una configuración específica"
+                requestExample={`{
   "smtp_server": "smtp.example.com",
   "port": 587,
   "use_ssl": true,
@@ -86,7 +132,7 @@ const Put = () => {
   "from_name": "Soporte Técnico",
   "retry_attempts": 3
 }`}
-          responseExample={`{
+                responseExample={`{
   "id": "email-settings",
   "smtp_server": "smtp.example.com",
   "port": 587,
@@ -98,24 +144,26 @@ const Put = () => {
   "retry_attempts": 3,
   "updated_at": "2023-06-10T16:00:00Z"
 }`}
-        />
+              />
+            </div>
+          </div>
+        </section>
         
-        <h2>PUT vs PATCH</h2>
-        <p>
-          La principal diferencia entre PUT y PATCH está en cómo manejan las actualizaciones parciales:
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-6">
-          <div className="border rounded-md p-4">
-            <h4 className="font-semibold mb-2">PUT</h4>
-            <ul className="space-y-2 text-sm">
-              <li>Reemplaza el recurso completo</li>
-              <li>Los campos no incluidos se establecen a sus valores predeterminados o nulos</li>
-              <li>Es idempotente</li>
-              <li>Requiere enviar todos los atributos del recurso</li>
-            </ul>
-            <CodeBlock
-              code={`PUT /api/v1/products/prod_123
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">PUT vs PATCH</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="text-base font-medium mb-2">PUT</h3>
+              <ul className="space-y-2 text-sm">
+                <li>• Reemplaza el recurso completo</li>
+                <li>• Los campos no incluidos se establecen a sus valores predeterminados o nulos</li>
+                <li>• Es idempotente</li>
+                <li>• Requiere enviar todos los atributos del recurso</li>
+              </ul>
+              <div className="mt-4">
+                <CodeBlock
+                  code={`PUT /api/v1/products/prod_123
 {
   "name": "Nuevo Nombre",
   "price": 199.99,
@@ -125,43 +173,50 @@ const Put = () => {
   "status": "active"
   // Todos los campos requeridos
 }`}
-              language="http"
-              className="mt-4"
-            />
-          </div>
-          <div className="border rounded-md p-4">
-            <h4 className="font-semibold mb-2">PATCH</h4>
-            <ul className="space-y-2 text-sm">
-              <li>Actualiza solo los campos especificados</li>
-              <li>Los campos no incluidos mantienen sus valores actuales</li>
-              <li>Puede ser idempotente dependiendo de la implementación</li>
-              <li>Permite enviar solo los atributos que cambian</li>
-            </ul>
-            <CodeBlock
-              code={`PATCH /api/v1/products/prod_123
+                  language="http"
+                />
+              </div>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="text-base font-medium mb-2">PATCH</h3>
+              <ul className="space-y-2 text-sm">
+                <li>• Actualiza solo los campos especificados</li>
+                <li>• Los campos no incluidos mantienen sus valores actuales</li>
+                <li>• Puede ser idempotente dependiendo de la implementación</li>
+                <li>• Permite enviar solo los atributos que cambian</li>
+              </ul>
+              <div className="mt-4">
+                <CodeBlock
+                  code={`PATCH /api/v1/products/prod_123
 {
   "price": 199.99,
   "stock": 50
   // Solo los campos que cambian
 }`}
-              language="http"
-              className="mt-4"
-            />
+                  language="http"
+                />
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
         
-        <h2>Buenas Prácticas</h2>
-        
-        <h3>Manejo de Recursos Inexistentes</h3>
-        <p>
-          Decide una política clara para cuando se hace PUT a un recurso que no existe:
-        </p>
-        
-        <div className="grid grid-cols-1 gap-4 my-6">
-          <div>
-            <h4 className="font-medium text-sm mb-2">Opción 1: Crear el recurso (201 Created)</h4>
-            <CodeBlock
-              code={`PUT /api/v1/products/custom-id-123
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Buenas prácticas</h2>
+          
+          <Alert variant="default" className="bg-blue-50 border-blue-100">
+            <Info className="h-4 w-4 text-blue-600" />
+            <AlertTitle className="text-blue-800">Manejo de recursos inexistentes</AlertTitle>
+            <AlertDescription className="text-blue-700">
+              Decide una política clara para cuando se hace PUT a un recurso que no existe: crear el recurso o rechazar la operación.
+            </AlertDescription>
+          </Alert>
+          
+          <div className="space-y-4 mt-4">
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Opción 1: Crear el recurso (201 Created)</h3>
+              <CodeBlock
+                code={`PUT /api/v1/products/custom-id-123
 {
   "name": "Producto Personalizado",
   "price": 99.99,
@@ -170,13 +225,14 @@ const Put = () => {
 
 HTTP/1.1 201 Created
 Location: /api/v1/products/custom-id-123`}
-              language="http"
-            />
-          </div>
-          <div>
-            <h4 className="font-medium text-sm mb-2">Opción 2: Rechazar la creación (404 Not Found)</h4>
-            <CodeBlock
-              code={`PUT /api/v1/products/nonexistent-id
+                language="http"
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Opción 2: Rechazar la creación (404 Not Found)</h3>
+              <CodeBlock
+                code={`PUT /api/v1/products/nonexistent-id
 {
   "name": "Producto Nuevo",
   "price": 99.99
@@ -189,18 +245,23 @@ Content-Type: application/json
   "error": "El recurso solicitado no existe",
   "message": "No se puede actualizar un producto inexistente"
 }`}
-              language="http"
-            />
+                language="http"
+              />
+            </div>
           </div>
-        </div>
-        
-        <h3>Validación Completa</h3>
-        <p>
-          Como PUT reemplaza el recurso completo, es crucial validar que todos los campos requeridos estén presentes:
-        </p>
-        
-        <CodeBlock
-          code={`HTTP/1.1 422 Unprocessable Entity
+          
+          <Alert variant="default" className="bg-amber-50 border-amber-100 mt-4">
+            <AlertTriangle className="h-4 w-4 text-amber-600" />
+            <AlertTitle className="text-amber-800">Validación completa</AlertTitle>
+            <AlertDescription className="text-amber-700">
+              Como PUT reemplaza el recurso completo, es crucial validar que todos los campos requeridos estén presentes.
+            </AlertDescription>
+          </Alert>
+          
+          <div className="p-4 border rounded-lg mt-4">
+            <h3 className="text-base font-medium mb-2">Ejemplo de respuesta de error de validación</h3>
+            <CodeBlock
+              code={`HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json
 
 {
@@ -211,32 +272,49 @@ Content-Type: application/json
   },
   "message": "Faltan campos obligatorios o contienen valores inválidos"
 }`}
-          language="http"
-        />
+              language="http"
+            />
+          </div>
+        </section>
         
-        <h3>Respuestas a PUT</h3>
-        <p>
-          Los códigos de estado comunes para respuestas PUT incluyen:
-        </p>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Códigos de estado comunes</h2>
+          
+          <div className="space-y-2">
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">200 OK</div>
+              <div className="text-sm">El recurso se actualizó correctamente y se devuelve en la respuesta.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">201 Created</div>
+              <div className="text-sm">Se creó un nuevo recurso cuando no existía previamente.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">204 No Content</div>
+              <div className="text-sm">La actualización fue exitosa, pero no se devuelve contenido.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">400 Bad Request</div>
+              <div className="text-sm">La solicitud tiene un formato incorrecto.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">404 Not Found</div>
+              <div className="text-sm">El recurso no existe (si el servidor no permite la creación).</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr]">
+              <div className="font-medium">422 Unprocessable</div>
+              <div className="text-sm">Los datos son sintácticamente correctos pero semánticamente inválidos.</div>
+            </div>
+          </div>
+        </section>
         
-        <ul>
-          <li><strong>200 OK:</strong> El recurso se actualizó correctamente y se devuelve en la respuesta</li>
-          <li><strong>201 Created:</strong> Se creó un nuevo recurso (cuando no existía previamente)</li>
-          <li><strong>204 No Content:</strong> La actualización fue exitosa, pero no se devuelve contenido</li>
-          <li><strong>400 Bad Request:</strong> La solicitud tiene un formato incorrecto</li>
-          <li><strong>404 Not Found:</strong> El recurso no existe (si el servidor no permite la creación)</li>
-          <li><strong>409 Conflict:</strong> La actualización entra en conflicto con el estado actual</li>
-          <li><strong>412 Precondition Failed:</strong> No se cumplieron las precondiciones (como If-Match)</li>
-          <li><strong>422 Unprocessable Entity:</strong> Los datos son sintácticamente correctos pero semánticamente inválidos</li>
-        </ul>
-        
-        <h3>Actualizaciones Condicionales</h3>
-        <p>
-          Utiliza encabezados HTTP condicionales para evitar condiciones de carrera:
-        </p>
-        
-        <CodeBlock
-          code={`# Solicitud con precondición
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Actualizaciones condicionales</h2>
+          
+          <div className="p-4 border rounded-lg">
+            <h3 className="text-base font-medium mb-2">Uso de encabezados condicionales</h3>
+            <CodeBlock
+              code={`# Solicitud con precondición
 PUT /api/v1/products/prod_123
 If-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"
 Content-Type: application/json
@@ -255,28 +333,62 @@ Content-Type: application/json
   "error": "Conflicto de versión",
   "message": "El recurso ha sido modificado desde la última recuperación"
 }`}
-          language="http"
-        />
+              language="http"
+            />
+          </div>
+        </section>
         
-        <h2>Consideraciones de Seguridad</h2>
-        <p>
-          Como PUT puede modificar recursos completos:
-        </p>
-        <ul>
-          <li>Implementa controles de autorización estrictos</li>
-          <li>Considera ocultar campos sensibles en las respuestas (como contraseñas)</li>
-          <li>Registra todas las modificaciones para auditoría</li>
-          <li>Implementa validación exhaustiva en el servidor, no confíes solo en la validación del cliente</li>
-        </ul>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Consideraciones de seguridad</h2>
+          
+          <div className="space-y-3">
+            <div className="p-3 border rounded-lg">
+              <h3 className="font-medium mb-1">Control de acceso estricto</h3>
+              <p className="text-sm text-slate-700">
+                Implementa controles de autorización estrictos para operaciones PUT, ya que pueden
+                reemplazar completamente un recurso y potencialmente eliminar datos existentes.
+              </p>
+            </div>
+            
+            <div className="p-3 border rounded-lg">
+              <h3 className="font-medium mb-1">Campos sensibles</h3>
+              <p className="text-sm text-slate-700">
+                Considera ocultar campos sensibles en las respuestas (como contraseñas o tokens),
+                incluso si fueron proporcionados en la solicitud.
+              </p>
+            </div>
+            
+            <div className="p-3 border rounded-lg">
+              <h3 className="font-medium mb-1">Auditoría y registro</h3>
+              <p className="text-sm text-slate-700">
+                Registra todos los cambios realizados con PUT para fines de auditoría y para facilitar
+                la reversión de cambios no deseados si es necesario.
+              </p>
+            </div>
+          </div>
+        </section>
         
-        <blockquote>
-          "PUT representa el contrato más estricto en REST: un reemplazo completo y preciso. La idempotencia 
-          de PUT es una garantía poderosa para los clientes, pero requiere una implementación cuidadosa por 
-          parte del servidor."
-        </blockquote>
-      </PageContent>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Relacionados</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/methods/patch" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Método PATCH</h3>
+              <p className="text-sm text-slate-600">Actualizar parcialmente recursos</p>
+            </Link>
+            <Link to="/methods/post" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Método POST</h3>
+              <p className="text-sm text-slate-600">Crear nuevos recursos</p>
+            </Link>
+            <Link to="/status-codes" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Códigos de estado</h3>
+              <p className="text-sm text-slate-600">Significado de los códigos HTTP</p>
+            </Link>
+          </div>
+        </section>
+      </div>
     </PageLayout>
   );
 };
 
-export default Put;
+export default PutMethodPage;

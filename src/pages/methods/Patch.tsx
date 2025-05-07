@@ -1,48 +1,93 @@
-
 import { PageLayout } from "@/components/PageLayout";
-import { PageContent } from "@/components/PageContent";
-import { CodeBlock } from "@/components/CodeBlock";
 import { EndpointExample } from "@/components/EndpointExample";
+import { CodeBlock } from "@/components/CodeBlock";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info, Check, X, AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Patch = () => {
+const PatchMethodPage = () => {
   return (
     <PageLayout>
-      <PageContent 
-        title="Método PATCH" 
-        description="Uso correcto del método PATCH para actualizar parcialmente recursos."
-        path={["Métodos HTTP", "PATCH"]}
-      >
-        <p>
-          El método PATCH se utiliza para aplicar modificaciones parciales a un recurso. A diferencia de PUT, 
-          que reemplaza el recurso completo, PATCH permite actualizar solo los campos específicos que necesitan 
-          cambios, lo que lo hace más eficiente para actualizaciones pequeñas o frecuentes.
-        </p>
+      <div className="space-y-10 max-w-3xl">
+        {/* Page header */}
+        <div className="border-b pb-8">
+          <div className="flex items-center gap-2">
+            <div className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-md text-sm font-semibold">PATCH</div>
+            <Link to="/methods" className="text-sm text-slate-500 hover:text-slate-700">Métodos HTTP</Link>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Método PATCH</h1>
+          <p className="text-lg text-slate-700">
+            El método PATCH se utiliza para aplicar modificaciones parciales a un recurso. A diferencia de PUT, 
+            que reemplaza el recurso completo, PATCH permite actualizar solo los campos específicos que necesitan 
+            cambios, lo que lo hace más eficiente para actualizaciones pequeñas o frecuentes.
+          </p>
+        </div>
+
+        {/* Main content */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Características principales</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Actualización parcial
+              </h3>
+              <p className="text-sm text-slate-700">
+                Modifica solo los campos especificados en la solicitud.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <X className="h-4 w-4 text-red-600 mr-2" />
+                No idempotente por defecto
+              </h3>
+              <p className="text-sm text-slate-700">
+                Múltiples solicitudes idénticas pueden producir resultados diferentes.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Puede ser idempotente
+              </h3>
+              <p className="text-sm text-slate-700">
+                Si se implementa con formatos como JSON Patch o JSON Merge Patch.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Preserva valores
+              </h3>
+              <p className="text-sm text-slate-700">
+                Los campos no incluidos en la solicitud mantienen sus valores existentes.
+              </p>
+            </div>
+          </div>
+        </section>
         
-        <h2>Principios del Método PATCH</h2>
-        
-        <ul>
-          <li><strong>Actualización parcial:</strong> Modifica solo los campos especificados en la solicitud</li>
-          <li><strong>No idempotente por defecto:</strong> Múltiples solicitudes idénticas pueden producir resultados diferentes</li>
-          <li><strong>Puede ser idempotente:</strong> Si se implementa con formatos como JSON Patch o JSON Merge Patch</li>
-          <li><strong>Preserva valores:</strong> Los campos no incluidos en la solicitud mantienen sus valores existentes</li>
-        </ul>
-        
-        <h2>Casos de Uso</h2>
-        
-        <h3>1. Actualización Parcial con Formato Simple</h3>
-        
-        <EndpointExample
-          method="PATCH"
-          path="/api/v1/products/prod_123"
-          description="Actualiza solo algunos campos de un producto."
-          requestExample={`{
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Casos de uso comunes</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Actualización parcial con formato simple</h3>
+              <EndpointExample 
+                method="PATCH"
+                path="/api/v1/products/prod_123"
+                description="Actualiza solo algunos campos de un producto"
+                requestExample={`{
   "price": 549.99,
   "stock": 75,
   "specifications": {
     "camera": "48MP ultra-wide"
   }
 }`}
-          responseExample={`{
+                responseExample={`{
   "id": "prod_123",
   "name": "Smartphone Pro",
   "description": "Teléfono inteligente de alta gama",
@@ -59,24 +104,25 @@ const Patch = () => {
   "created_at": "2023-01-15T10:30:00Z",
   "updated_at": "2023-06-11T09:15:00Z"
 }`}
-        />
-        
-        <h3>2. Actualización con JSON Patch</h3>
-        <p>
-          JSON Patch (RFC 6902) proporciona un formato estandarizado para describir cambios en un documento JSON.
-        </p>
-        
-        <EndpointExample
-          method="PATCH"
-          path="/api/v1/products/prod_123"
-          description="Actualiza un producto usando JSON Patch."
-          requestExample={`[
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Actualización con JSON Patch</h3>
+              <p className="text-sm text-slate-700 mb-3">
+                JSON Patch (RFC 6902) proporciona un formato estandarizado para describir cambios en un documento JSON.
+              </p>
+              <EndpointExample 
+                method="PATCH"
+                path="/api/v1/products/prod_123"
+                description="Actualiza un producto usando JSON Patch"
+                requestExample={`[
   { "op": "replace", "path": "/price", "value": 549.99 },
   { "op": "replace", "path": "/stock", "value": 75 },
   { "op": "add", "path": "/specifications/camera", "value": "48MP ultra-wide" },
   { "op": "remove", "path": "/tags/2" }
 ]`}
-          responseExample={`{
+                responseExample={`{
   "id": "prod_123",
   "name": "Smartphone Pro",
   "price": 549.99,
@@ -89,25 +135,26 @@ const Patch = () => {
   "tags": ["smartphone", "5g"],
   "updated_at": "2023-06-11T09:20:00Z"
 }`}
-        />
-        
-        <h3>3. Actualización con JSON Merge Patch</h3>
-        <p>
-          JSON Merge Patch (RFC 7396) es otra forma estandarizada, más simple que JSON Patch.
-        </p>
-        
-        <EndpointExample
-          method="PATCH"
-          path="/api/v1/users/user_123"
-          description="Actualiza información de usuario con JSON Merge Patch."
-          requestExample={`{
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Actualización con JSON Merge Patch</h3>
+              <p className="text-sm text-slate-700 mb-3">
+                JSON Merge Patch (RFC 7396) es otra forma estandarizada, más simple que JSON Patch.
+              </p>
+              <EndpointExample 
+                method="PATCH"
+                path="/api/v1/users/user_123"
+                description="Actualiza información de usuario con JSON Merge Patch"
+                requestExample={`{
   "name": "Juan García",
   "contact": {
     "email": "juan.garcia@example.com",
     "phone": null
   }
 }`}
-          responseExample={`{
+                responseExample={`{
   "id": "user_123",
   "name": "Juan García",
   "username": "juanito",
@@ -120,33 +167,39 @@ const Patch = () => {
   },
   "updated_at": "2023-06-11T09:25:00Z"
 }`}
-        />
+              />
+            </div>
+          </div>
+        </section>
         
-        <h2>Formatos para PATCH</h2>
-        
-        <h3>1. Formato Simple (Ad Hoc)</h3>
-        <p>
-          El formato más común pero menos estandarizado, donde simplemente se envían los campos a actualizar.
-        </p>
-        
-        <CodeBlock
-          code={`PATCH /api/v1/profiles/profile_123
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Formatos para PATCH</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">1. Formato simple (Ad Hoc)</h3>
+              <p className="text-sm text-slate-700 mb-3">
+                El formato más común pero menos estandarizado, donde simplemente se envían los campos a actualizar.
+              </p>
+              <CodeBlock
+                code={`PATCH /api/v1/profiles/profile_123
 Content-Type: application/json
 
 {
   "bio": "Desarrollador full-stack con pasión por la UX",
   "website": "https://mipaginaweb.com"
 }`}
-          language="http"
-        />
-        
-        <h3>2. JSON Patch (RFC 6902)</h3>
-        <p>
-          Un formato basado en operaciones que permite actualizaciones complejas, secuenciales y atómicas.
-        </p>
-        
-        <CodeBlock
-          code={`PATCH /api/v1/documents/doc_123
+                language="http"
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">2. JSON Patch (RFC 6902)</h3>
+              <p className="text-sm text-slate-700 mb-3">
+                Un formato basado en operaciones que permite actualizaciones complejas, secuenciales y atómicas.
+              </p>
+              <CodeBlock
+                code={`PATCH /api/v1/documents/doc_123
 Content-Type: application/json-patch+json
 
 [
@@ -157,28 +210,29 @@ Content-Type: application/json-patch+json
   { "op": "copy", "from": "/metadata/author", "path": "/contributors/0" },
   { "op": "remove", "path": "/temporary_data" }
 ]`}
-          language="http"
-        />
-        
-        <p>
-          Operaciones disponibles en JSON Patch:
-        </p>
-        <ul>
-          <li><strong>add:</strong> Añade un valor a un objeto o array</li>
-          <li><strong>remove:</strong> Elimina un valor</li>
-          <li><strong>replace:</strong> Reemplaza un valor</li>
-          <li><strong>move:</strong> Mueve un valor de una ubicación a otra</li>
-          <li><strong>copy:</strong> Copia un valor de una ubicación a otra</li>
-          <li><strong>test:</strong> Verifica que un valor en la ruta especificada sea igual al proporcionado</li>
-        </ul>
-        
-        <h3>3. JSON Merge Patch (RFC 7396)</h3>
-        <p>
-          Un formato más simple que JSON Patch, pero que permite manejar correctamente valores nulos.
-        </p>
-        
-        <CodeBlock
-          code={`PATCH /api/v1/settings/app_123
+                language="http"
+              />
+              
+              <div className="mt-4">
+                <h4 className="text-sm font-medium mb-1">Operaciones disponibles en JSON Patch:</h4>
+                <ul className="list-disc ml-5 text-sm space-y-1 text-slate-700">
+                  <li><strong>add:</strong> Añade un valor a un objeto o array</li>
+                  <li><strong>remove:</strong> Elimina un valor</li>
+                  <li><strong>replace:</strong> Reemplaza un valor</li>
+                  <li><strong>move:</strong> Mueve un valor de una ubicación a otra</li>
+                  <li><strong>copy:</strong> Copia un valor de una ubicación a otra</li>
+                  <li><strong>test:</strong> Verifica que un valor en la ruta especificada sea igual al proporcionado</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">3. JSON Merge Patch (RFC 7396)</h3>
+              <p className="text-sm text-slate-700 mb-3">
+                Un formato más simple que JSON Patch, pero que permite manejar correctamente valores nulos.
+              </p>
+              <CodeBlock
+                code={`PATCH /api/v1/settings/app_123
 Content-Type: application/merge-patch+json
 
 {
@@ -192,28 +246,30 @@ Content-Type: application/merge-patch+json
     "push": true
   }
 }`}
-          language="http"
-        />
+                language="http"
+              />
+            </div>
+          </div>
+        </section>
         
-        <h2>Buenas Prácticas</h2>
-        
-        <h3>Idempotencia en PATCH</h3>
-        <p>
-          Aunque PATCH no es inherentemente idempotente, puedes hacerlo idempotente:
-        </p>
-        <ul>
-          <li>Usando identificadores de solicitud únicos</li>
-          <li>Implementando operaciones condicionales</li>
-          <li>Utilizando JSON Patch con operaciones test</li>
-        </ul>
-        
-        <h3>Validación de Campos</h3>
-        <p>
-          Valida tanto los campos individuales como el estado final del recurso después de aplicar el parche:
-        </p>
-        
-        <CodeBlock
-          code={`HTTP/1.1 422 Unprocessable Entity
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Buenas prácticas</h2>
+          
+          <Alert variant="default" className="bg-blue-50 border-blue-100">
+            <Info className="h-4 w-4 text-blue-600" />
+            <AlertTitle className="text-blue-800">Idempotencia en PATCH</AlertTitle>
+            <AlertDescription className="text-blue-700">
+              Aunque PATCH no es inherentemente idempotente, puedes hacerlo idempotente usando identificadores de solicitud únicos, operaciones condicionales o JSON Patch con operaciones test.
+            </AlertDescription>
+          </Alert>
+          
+          <div className="p-4 border rounded-lg mt-4">
+            <h3 className="text-base font-medium mb-2">Validación de campos</h3>
+            <p className="text-sm text-slate-700 mb-3">
+              Valida tanto los campos individuales como el estado final del recurso después de aplicar el parche:
+            </p>
+            <CodeBlock
+              code={`HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json
 
 {
@@ -223,50 +279,52 @@ Content-Type: application/json
   },
   "message": "La actualización produciría un estado inválido del recurso"
 }`}
-          language="http"
-        />
+              language="http"
+            />
+          </div>
+        </section>
         
-        <h3>Códigos de Estado para PATCH</h3>
-        <p>
-          Códigos de estado comunes para respuestas PATCH:
-        </p>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Códigos de estado comunes</h2>
+          
+          <div className="space-y-2">
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">200 OK</div>
+              <div className="text-sm">Actualización exitosa con el recurso actualizado en la respuesta.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">204 No Content</div>
+              <div className="text-sm">Actualización exitosa sin contenido en la respuesta.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">400 Bad Request</div>
+              <div className="text-sm">Formato de parche inválido.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">409 Conflict</div>
+              <div className="text-sm">Conflicto con el estado actual del recurso.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">415 Unsupported</div>
+              <div className="text-sm">Formato de parche no soportado.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr]">
+              <div className="font-medium">422 Unprocessable</div>
+              <div className="text-sm">El parche es válido pero no se puede aplicar.</div>
+            </div>
+          </div>
+        </section>
         
-        <ul>
-          <li><strong>200 OK:</strong> Actualización exitosa con el recurso actualizado en la respuesta</li>
-          <li><strong>204 No Content:</strong> Actualización exitosa sin contenido en la respuesta</li>
-          <li><strong>400 Bad Request:</strong> Formato de parche inválido</li>
-          <li><strong>404 Not Found:</strong> El recurso a actualizar no existe</li>
-          <li><strong>409 Conflict:</strong> Conflicto con el estado actual del recurso</li>
-          <li><strong>415 Unsupported Media Type:</strong> Formato de parche no soportado</li>
-          <li><strong>422 Unprocessable Entity:</strong> El parche es válido pero no se puede aplicar</li>
-        </ul>
-        
-        <h3>Especificar el Formato</h3>
-        <p>
-          Usa los tipos de contenido correctos para indicar el formato de PATCH:
-        </p>
-        
-        <ul>
-          <li><strong>application/json:</strong> Para el formato simple</li>
-          <li><strong>application/json-patch+json:</strong> Para JSON Patch (RFC 6902)</li>
-          <li><strong>application/merge-patch+json:</strong> Para JSON Merge Patch (RFC 7396)</li>
-        </ul>
-        
-        <h2>Consideraciones de Implementación</h2>
-        
-        <h3>Actualizaciones Atómicas</h3>
-        <p>
-          En JSON Patch, asegúrate de que todas las operaciones se apliquen como una unidad atómica:
-          si una operación falla, ninguna debe aplicarse.
-        </p>
-        
-        <h3>Errores en JSON Patch</h3>
-        <p>
-          Para JSON Patch, proporciona información detallada sobre qué operación falló:
-        </p>
-        
-        <CodeBlock
-          code={`HTTP/1.1 422 Unprocessable Entity
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Errores en JSON Patch</h2>
+          
+          <div className="p-4 border rounded-lg">
+            <h3 className="text-base font-medium mb-2">Información detallada de errores</h3>
+            <p className="text-sm text-slate-700 mb-3">
+              Para JSON Patch, proporciona información detallada sobre qué operación falló:
+            </p>
+            <CodeBlock
+              code={`HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json
 
 {
@@ -275,17 +333,32 @@ Content-Type: application/json
   "operation": { "op": "replace", "path": "/stock", "value": -10 },
   "reason": "El stock no puede ser un valor negativo"
 }`}
-          language="http"
-        />
+              language="http"
+            />
+          </div>
+        </section>
         
-        <blockquote>
-          "PATCH representa un avance significativo en el diseño de APIs REST, ofreciendo un equilibrio 
-          entre eficiencia y expresividad para actualizaciones parciales. Su flexibilidad lo hace ideal 
-          para interfaces móviles y otros escenarios donde el ancho de banda es una preocupación."
-        </blockquote>
-      </PageContent>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Relacionados</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/methods/put" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Método PUT</h3>
+              <p className="text-sm text-slate-600">Reemplazar recursos completamente</p>
+            </Link>
+            <Link to="/methods/post" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Método POST</h3>
+              <p className="text-sm text-slate-600">Crear nuevos recursos</p>
+            </Link>
+            <Link to="/json-formats" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Formatos JSON</h3>
+              <p className="text-sm text-slate-600">Tipos de formato para APIs REST</p>
+            </Link>
+          </div>
+        </section>
+      </div>
     </PageLayout>
   );
 };
 
-export default Patch;
+export default PatchMethodPage;

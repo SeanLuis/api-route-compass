@@ -1,71 +1,157 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EndpointExample } from "@/components/EndpointExample";
 import { Link } from "react-router-dom";
 import { CodeBlock } from "@/components/CodeBlock";
+import { 
+  BookOpen, 
+  Code, 
+  FileText, 
+  Info, 
+  BarChart, 
+  Users, 
+  Shield, 
+  ExternalLink, 
+  RefreshCw,
+  ArrowRight
+} from "lucide-react";
 
 const Index = () => {
   return (
     <PageLayout>
       <div className="space-y-12">
-        <section className="space-y-6">
-          <div>
-            <h1 className="text-4xl font-bold tracking-tight mb-2">API Route Compass</h1>
-            <p className="text-xl text-muted-foreground">
+        {/* Hero Section */}
+        <section className="py-8 border-b border-slate-200">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl font-bold tracking-tight mb-4">API Route Compass</h1>
+            <p className="text-xl text-muted-foreground mb-6">
               Guía definitiva para el diseño de APIs REST escalables y mantenibles.
             </p>
-          </div>
-          
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <Card>
-              <CardHeader>
-                <CardTitle>Nomenclatura</CardTitle>
-                <CardDescription>Convenciones para nombrar recursos y rutas</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link 
-                  to="/naming"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Ver guía de nomenclatura →
-                </Link>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader>
-                <CardTitle>Métodos HTTP</CardTitle>
-                <CardDescription>Uso correcto de verbos y acciones</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link 
-                  to="/methods"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Ver guía de métodos →
-                </Link>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader>
-                <CardTitle>Estructura de Rutas</CardTitle>
-                <CardDescription>Jerarquía y organización de recursos</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link 
-                  to="/route-structure"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Ver guía de estructura →
-                </Link>
-              </CardContent>
-            </Card>
+            <div className="flex flex-wrap gap-3">
+              <Link 
+                to="/principles" 
+                className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+              >
+                Comenzar <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <Link 
+                to="/examples" 
+                className="inline-flex items-center px-4 py-2 border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
+              >
+                Ver ejemplos
+              </Link>
+            </div>
           </div>
         </section>
         
+        {/* Main Documentation Sections */}
+        <section>
+          <h2 className="text-2xl font-semibold tracking-tight mb-6">Documentación principal</h2>
+          
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <SectionCard 
+              title="Introducción" 
+              description="Fundamentos y estructura de la guía"
+              icon={Info}
+              links={[
+                { title: "Principios REST", href: "/principles" },
+                { title: "Estructura de la Guía", href: "/structure" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="Rutas y Recursos" 
+              description="Nomenclatura y estructura de endpoints"
+              icon={FileText}
+              links={[
+                { title: "Nomenclatura", href: "/naming" },
+                { title: "Estructura de Rutas", href: "/route-structure" },
+                { title: "Jerarquía de Recursos", href: "/resource-hierarchy" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="Métodos HTTP" 
+              description="Uso correcto de verbos y acciones"
+              icon={Code}
+              links={[
+                { title: "GET", href: "/methods/get" },
+                { title: "POST", href: "/methods/post" },
+                { title: "PUT", href: "/methods/put" },
+                { title: "PATCH", href: "/methods/patch" },
+                { title: "DELETE", href: "/methods/delete" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="Funcionalidades" 
+              description="Capacidades avanzadas para APIs"
+              icon={BarChart}
+              links={[
+                { title: "Versionado", href: "/versioning" },
+                { title: "Paginación", href: "/pagination" },
+                { title: "Filtrado", href: "/filtering" },
+                { title: "Ordenamiento", href: "/sorting" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="Relaciones" 
+              description="Manejo de entidades relacionadas"
+              icon={Users}
+              links={[
+                { title: "Recursos Anidados", href: "/nested-resources" },
+                { title: "Expansión de Campos", href: "/field-expansion" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="Respuestas" 
+              description="Estructura y formatos de respuesta"
+              icon={BookOpen}
+              links={[
+                { title: "Códigos de Estado", href: "/status-codes" },
+                { title: "Formatos de Respuesta", href: "/response-formats" },
+                { title: "Manejo de Errores", href: "/error-handling" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="Seguridad" 
+              description="Protección y control de acceso"
+              icon={Shield}
+              links={[
+                { title: "Autenticación", href: "/authentication" },
+                { title: "Autorización", href: "/authorization" },
+                { title: "Mejores Prácticas", href: "/security-practices" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="Documentación" 
+              description="Herramientas para documentar APIs"
+              icon={ExternalLink}
+              links={[
+                { title: "OpenAPI/Swagger", href: "/openapi" },
+                { title: "Ejemplos Prácticos", href: "/examples" },
+              ]}
+            />
+            
+            <SectionCard 
+              title="API Avanzada" 
+              description="Conceptos avanzados y alternativas"
+              icon={RefreshCw}
+              links={[
+                { title: "Limitaciones REST", href: "/rest-limitations" },
+                { title: "Alternativas", href: "/alternatives" },
+                { title: "Patrones Escalables", href: "/scalable-patterns" },
+              ]}
+            />
+          </div>
+        </section>
+        
+        {/* Examples Section */}
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight">Ejemplos Rápidos</h2>
           
@@ -278,50 +364,53 @@ const Index = () => {
             </TabsContent>
           </Tabs>
         </section>
-        
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight">Convenciones de Nomenclatura</h2>
-          <div className="prose max-w-none">
-            <p>
-              Usar convenciones claras para nombrar los recursos es esencial para una API REST intuitiva y consistente:
-            </p>
-            
-            <ul>
-              <li><strong>Usar sustantivos en plural</strong> para colecciones</li>
-              <li><strong>Evitar verbos</strong> en las rutas principales</li>
-              <li><strong>Usar kebab-case</strong> para múltiples palabras</li>
-            </ul>
-            
-            <div className="not-prose my-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-medium text-sm mb-2 text-red-500">Incorrecto ❌</h4>
-                  <CodeBlock
-                    code={`/getUsersByRole\n/createNewProduct\n/APIEndpoints\n/products.json`}
-                    language="http"
-                    className="h-[120px]"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-medium text-sm mb-2 text-green-500">Correcto ✓</h4>
-                  <CodeBlock
-                    code={`/users?role=admin\n/products\n/api/endpoints\n/products`}
-                    language="http"
-                    className="h-[120px]"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-4">
-            <Link to="/naming" className="text-sm font-medium text-primary hover:underline">
-              Ver guía completa de nomenclatura →
-            </Link>
-          </div>
-        </section>
       </div>
     </PageLayout>
+  );
+};
+
+// Section Card Component
+const SectionCard = ({ 
+  title, 
+  description, 
+  icon: Icon, 
+  links 
+}: { 
+  title: string; 
+  description: string; 
+  icon: React.ElementType;
+  links: { title: string; href: string }[];
+}) => {
+  return (
+    <Card className="overflow-hidden">
+      <CardHeader className="pb-3 bg-slate-50">
+        <div className="flex items-center gap-2">
+          <Icon className="h-5 w-5 text-indigo-600" />
+          <CardTitle className="text-lg">{title}</CardTitle>
+        </div>
+        <CardDescription>{description}</CardDescription>
+      </CardHeader>
+      <CardContent className="pt-4">
+        <ul className="space-y-1">
+          {links.map((link, index) => (
+            <li key={index}>
+              <Link 
+                to={link.href}
+                className="flex items-center text-sm text-slate-800 hover:text-indigo-600 hover:underline py-1"
+              >
+                <span className="mr-2">•</span> {link.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          to={links[0].href}
+          className="mt-3 text-xs font-medium text-indigo-600 hover:text-indigo-700 flex items-center pt-2"
+        >
+          Ver documentación <ArrowRight className="ml-1 h-3 w-3" />
+        </Link>
+      </CardContent>
+    </Card>
   );
 };
 

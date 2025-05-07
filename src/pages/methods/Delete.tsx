@@ -1,143 +1,212 @@
-
 import { PageLayout } from "@/components/PageLayout";
-import { PageContent } from "@/components/PageContent";
-import { CodeBlock } from "@/components/CodeBlock";
 import { EndpointExample } from "@/components/EndpointExample";
+import { CodeBlock } from "@/components/CodeBlock";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info, Check, X, AlertTriangle, Trash } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Delete = () => {
+const DeleteMethodPage = () => {
   return (
     <PageLayout>
-      <PageContent 
-        title="Método DELETE" 
-        description="Uso correcto del método DELETE para eliminar recursos."
-        path={["Métodos HTTP", "DELETE"]}
-      >
-        <p>
-          El método DELETE se utiliza para eliminar un recurso identificado por una URI específica. Es uno de los
-          métodos fundamentales en REST y permite a los clientes solicitar la eliminación de recursos del servidor.
-        </p>
+      <div className="space-y-10 max-w-3xl">
+        {/* Page header */}
+        <div className="border-b pb-8">
+          <div className="flex items-center gap-2">
+            <div className="px-3 py-1 bg-red-100 text-red-800 rounded-md text-sm font-semibold">DELETE</div>
+            <Link to="/methods" className="text-sm text-slate-500 hover:text-slate-700">Métodos HTTP</Link>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Método DELETE</h1>
+          <p className="text-lg text-slate-700">
+            El método DELETE se utiliza para eliminar un recurso identificado por una URI específica. Es uno de los
+            métodos fundamentales en REST y permite a los clientes solicitar la eliminación de recursos del servidor.
+          </p>
+        </div>
+
+        {/* Main content */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Características principales</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Es idempotente
+              </h3>
+              <p className="text-sm text-slate-700">
+                Múltiples solicitudes DELETE idénticas tienen el mismo efecto que una sola.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <X className="h-4 w-4 text-red-600 mr-2" />
+                No es seguro
+              </h3>
+              <p className="text-sm text-slate-700">
+                Modifica el estado en el servidor al eliminar recursos.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                URI específica
+              </h3>
+              <p className="text-sm text-slate-700">
+                Siempre opera sobre un recurso específico identificado por su URI.
+              </p>
+            </div>
+            
+            <div className="p-4 border rounded-lg bg-slate-50">
+              <h3 className="flex items-center text-base font-medium mb-1">
+                <Check className="h-4 w-4 text-green-600 mr-2" />
+                Sin cuerpo en la solicitud
+              </h3>
+              <p className="text-sm text-slate-700">
+                Típicamente no requiere payload, aunque puede aceptarlo en casos especiales.
+              </p>
+            </div>
+          </div>
+        </section>
         
-        <h2>Principios del Método DELETE</h2>
-        
-        <ul>
-          <li><strong>Idempotente:</strong> Múltiples solicitudes DELETE idénticas tienen el mismo efecto que una sola</li>
-          <li><strong>No seguro:</strong> Modifica el estado en el servidor</li>
-          <li><strong>Recurso identificado:</strong> Siempre opera sobre un recurso específico identificado por su URI</li>
-          <li><strong>Sin cuerpo en la solicitud:</strong> Típicamente no requiere payload (aunque puede aceptarlo)</li>
-        </ul>
-        
-        <h2>Casos de Uso</h2>
-        
-        <h3>1. Eliminación Simple de un Recurso</h3>
-        
-        <EndpointExample
-          method="DELETE"
-          path="/api/v1/products/prod_123"
-          description="Elimina un producto específico."
-          responseExample={`{
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold tracking-tight">Casos de uso comunes</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Eliminación simple de un recurso</h3>
+              <EndpointExample 
+                method="DELETE"
+                path="/api/v1/products/prod_123"
+                description="Elimina un producto específico"
+                responseExample={`{
   "id": "prod_123",
   "deleted": true,
   "message": "El producto ha sido eliminado correctamente"
 }`}
-        />
-        
-        <h3>2. Eliminación con Respuesta Vacía</h3>
-        
-        <EndpointExample
-          method="DELETE"
-          path="/api/v1/sessions/session_789"
-          description="Cierra una sesión del usuario (logout)."
-          responseExample={``}
-        />
-        
-        <h3>3. Eliminación con Parámetros</h3>
-        
-        <EndpointExample
-          method="DELETE"
-          path="/api/v1/users/user_456/devices/dev_789?notify=true"
-          description="Elimina un dispositivo asociado a un usuario y envía notificación."
-          responseExample={`{
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Eliminación con respuesta vacía</h3>
+              <EndpointExample 
+                method="DELETE"
+                path="/api/v1/sessions/session_789"
+                description="Cierra una sesión del usuario (logout)"
+                responseExample=""
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Eliminación con parámetros</h3>
+              <EndpointExample 
+                method="DELETE"
+                path="/api/v1/users/user_456/devices/dev_789?notify=true"
+                description="Elimina un dispositivo y envía notificación"
+                responseExample={`{
   "device_id": "dev_789",
   "deleted_at": "2023-06-11T10:30:00Z",
   "notification_sent": true,
   "user_id": "user_456"
 }`}
-        />
+              />
+            </div>
+          </div>
+        </section>
         
-        <h2>Buenas Prácticas</h2>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Códigos de estado apropiados</h2>
+          
+          <div className="space-y-2">
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">200 OK</div>
+              <div className="text-sm">Eliminación exitosa con información sobre el recurso eliminado en la respuesta.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">202 Accepted</div>
+              <div className="text-sm">La solicitud ha sido aceptada pero la eliminación se realizará más tarde.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">204 No Content</div>
+              <div className="text-sm">Eliminación exitosa sin contenido en la respuesta.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">404 Not Found</div>
+              <div className="text-sm">El recurso a eliminar no existe.</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr] border-b pb-2">
+              <div className="font-medium">409 Conflict</div>
+              <div className="text-sm">No se puede eliminar debido a un conflicto (ej. tiene dependencias).</div>
+            </div>
+            <div className="grid grid-cols-[140px_1fr]">
+              <div className="font-medium">423 Locked</div>
+              <div className="text-sm">El recurso está bloqueado y no puede eliminarse temporalmente.</div>
+            </div>
+          </div>
+        </section>
         
-        <h3>Códigos de Estado Apropiados</h3>
-        <p>
-          Utiliza los códigos de estado correctos para las respuestas DELETE:
-        </p>
-        
-        <ul>
-          <li><strong>200 OK:</strong> Eliminación exitosa con información sobre el recurso eliminado en la respuesta</li>
-          <li><strong>202 Accepted:</strong> La solicitud ha sido aceptada pero la eliminación se realizará más tarde</li>
-          <li><strong>204 No Content:</strong> Eliminación exitosa sin contenido en la respuesta</li>
-          <li><strong>404 Not Found:</strong> El recurso a eliminar no existe</li>
-          <li><strong>409 Conflict:</strong> No se puede eliminar debido a un conflicto (ej. tiene dependencias)</li>
-          <li><strong>412 Precondition Failed:</strong> No se cumplieron las precondiciones para la eliminación</li>
-          <li><strong>423 Locked:</strong> El recurso está bloqueado y no puede eliminarse temporalmente</li>
-        </ul>
-        
-        <h3>Eliminación Condicional</h3>
-        <p>
-          Usa encabezados condicionales para evitar eliminar versiones más recientes de un recurso:
-        </p>
-        
-        <CodeBlock
-          code={`DELETE /api/v1/documents/doc_456
-If-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"`}
-          language="http"
-        />
-        
-        <h3>Eliminación Segura vs. Eliminación Suave</h3>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-6">
-          <div className="border rounded-md p-4">
-            <h4 className="font-semibold mb-2">Eliminación Permanente</h4>
-            <p className="text-sm">Elimina completamente el recurso del sistema.</p>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Mejores prácticas</h2>
+          
+          <Alert variant="default" className="bg-blue-50 border-blue-100">
+            <Info className="h-4 w-4 text-blue-600" />
+            <AlertTitle className="text-blue-800">Eliminación condicional</AlertTitle>
+            <AlertDescription className="text-blue-700">
+              Usa encabezados condicionales para evitar eliminar versiones más recientes de un recurso.
+            </AlertDescription>
+          </Alert>
+          
+          <div className="p-4 border rounded-lg mt-4">
+            <h3 className="text-base font-medium mb-2">Uso de encabezados condicionales</h3>
             <CodeBlock
-              code={`DELETE /api/v1/temp-files/file_123
-
-HTTP/1.1 204 No Content`}
+              code={`DELETE /api/v1/documents/doc_456
+If-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"`}
               language="http"
-              className="mt-4"
             />
           </div>
-          <div className="border rounded-md p-4">
-            <h4 className="font-semibold mb-2">Eliminación Suave</h4>
-            <p className="text-sm">Marca el recurso como eliminado, pero lo mantiene en el sistema.</p>
-            <CodeBlock
-              code={`DELETE /api/v1/users/user_456
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Eliminación permanente</h3>
+              <p className="text-sm text-slate-700 mb-3">Elimina completamente el recurso del sistema.</p>
+              <CodeBlock
+                code={`DELETE /api/v1/temp-files/file_123
+
+HTTP/1.1 204 No Content`}
+                language="http"
+              />
+            </div>
+            
+            <div className="p-4 border rounded-lg">
+              <h3 className="text-base font-medium mb-2">Eliminación suave</h3>
+              <p className="text-sm text-slate-700 mb-3">Marca el recurso como eliminado, pero lo mantiene en el sistema.</p>
+              <CodeBlock
+                code={`DELETE /api/v1/users/user_456
 
 HTTP/1.1 200 OK
 {
   "id": "user_456",
   "status": "deleted",
-  "deleted_at": "2023-06-11T10:45:00Z",
-  "purge_scheduled": "2023-07-11T10:45:00Z"
+  "deleted_at": "2023-06-11T10:45:00Z"
 }`}
-              language="http"
-              className="mt-4"
-            />
+                language="http"
+              />
+            </div>
           </div>
-        </div>
-        
-        <h3>Manejo de Recursos con Dependencias</h3>
-        <p>
-          Cuando un recurso tiene dependencias, considera estas opciones:
-        </p>
-        
-        <ul>
-          <li><strong>Rechazar la eliminación:</strong> Devuelve un error si hay dependencias activas</li>
-          <li><strong>Eliminación en cascada:</strong> Elimina el recurso y todas sus dependencias</li>
-          <li><strong>Parámetros de control:</strong> Usa parámetros para controlar el comportamiento</li>
-        </ul>
-        
-        <CodeBlock
-          code={`# Rechazar eliminación
+          
+          <Alert variant="default" className="bg-amber-50 border-amber-100 mt-4">
+            <AlertTriangle className="h-4 w-4 text-amber-600" />
+            <AlertTitle className="text-amber-800">Manejo de recursos con dependencias</AlertTitle>
+            <AlertDescription className="text-amber-700">
+              Ten cuidado al eliminar recursos que puedan tener dependencias. Considera
+              rechazar la eliminación o implementar eliminación en cascada con opciones de control.
+            </AlertDescription>
+          </Alert>
+          
+          <div className="p-4 border rounded-lg mt-4">
+            <h3 className="text-base font-medium mb-2">Manejo de errores para dependencias</h3>
+            <CodeBlock
+              code={`# Rechazar eliminación con dependencias
 DELETE /api/v1/categories/cat_123
 HTTP/1.1 409 Conflict
 {
@@ -158,82 +227,64 @@ HTTP/1.1 200 OK
     "products": 15
   }
 }`}
-          language="http"
-        />
+              language="http"
+            />
+          </div>
+        </section>
         
-        <h3>Cuerpo en Solicitudes DELETE</h3>
-        <p>
-          Aunque no es común, a veces es útil incluir un cuerpo en las solicitudes DELETE:
-        </p>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Consideraciones de seguridad</h2>
+          
+          <div className="space-y-3">
+            <div className="p-3 border rounded-lg">
+              <h3 className="font-medium mb-1">Auditoría y registro</h3>
+              <p className="text-sm text-slate-700">
+                Registra siempre las operaciones DELETE para fines de auditoría y recuperación:
+                quién realizó la eliminación, cuándo se realizó, qué se eliminó exactamente y
+                desde qué IP/dispositivo.
+              </p>
+            </div>
+            
+            <div className="p-3 border rounded-lg">
+              <h3 className="font-medium mb-1">Autorización estricta</h3>
+              <p className="text-sm text-slate-700">
+                Implementa controles de autorización especialmente estrictos para operaciones DELETE,
+                verifica permisos específicos y considera solicitar confirmaciones adicionales para
+                eliminaciones sensibles.
+              </p>
+            </div>
+            
+            <div className="p-3 border rounded-lg">
+              <h3 className="font-medium mb-1">Sistema de papelera</h3>
+              <p className="text-sm text-slate-700">
+                Para recursos importantes, considera implementar un sistema de papelera que permita
+                recuperar elementos eliminados durante un período de tiempo determinado.
+              </p>
+            </div>
+          </div>
+        </section>
         
-        <CodeBlock
-          code={`DELETE /api/v1/emails
-Content-Type: application/json
-
-{
-  "filter": {
-    "folder": "spam",
-    "older_than": "30d",
-    "read": true
-  },
-  "permanently": true
-}`}
-          language="http"
-        />
-        
-        <p>
-          Sin embargo, ten en cuenta que algunos proxies y clientes antiguos pueden no manejar correctamente cuerpos en solicitudes DELETE.
-        </p>
-        
-        <h2>Consideraciones de Seguridad</h2>
-        
-        <h3>Auditoría y Registro</h3>
-        <p>
-          Siempre registra las operaciones DELETE para fines de auditoría y recuperación:
-        </p>
-        <ul>
-          <li>Quién realizó la eliminación</li>
-          <li>Cuándo se realizó</li>
-          <li>Qué se eliminó exactamente</li>
-          <li>Desde qué IP/dispositivo</li>
-        </ul>
-        
-        <h3>Autorización Estricta</h3>
-        <p>
-          Implementa controles de autorización especialmente estrictos para operaciones DELETE:
-        </p>
-        <ul>
-          <li>Verifica permisos de eliminación específicos</li>
-          <li>Considera requerir autenticación de dos factores para eliminaciones sensibles</li>
-          <li>Implementa confirmaciones adicionales para eliminaciones masivas</li>
-        </ul>
-        
-        <h3>Recuperación y Papelera</h3>
-        <p>
-          Para recursos importantes, considera implementar un sistema de papelera:
-        </p>
-        
-        <EndpointExample
-          method="POST"
-          path="/api/v1/trash/user_456/restore"
-          description="Restaura un usuario eliminado previamente."
-          responseExample={`{
-  "id": "user_456",
-  "status": "active",
-  "restored_at": "2023-06-11T11:30:00Z",
-  "restored_items": ["profile", "settings", "connections"]
-}`}
-        />
-        
-        <blockquote>
-          "El método DELETE, aunque conceptualmente simple, requiere una implementación cuidadosa para 
-          equilibrar la usabilidad con la protección contra eliminaciones accidentales. Una API bien diseñada 
-          ofrece opciones flexibles para la eliminación de recursos, considerando siempre las implicaciones 
-          de seguridad y recuperación."
-        </blockquote>
-      </PageContent>
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold tracking-tight">Relacionados</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/methods/patch" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Método PATCH</h3>
+              <p className="text-sm text-slate-600">Actualizar parcialmente recursos</p>
+            </Link>
+            <Link to="/methods/put" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Método PUT</h3>
+              <p className="text-sm text-slate-600">Reemplazar recursos completamente</p>
+            </Link>
+            <Link to="/status-codes" className="block p-4 border rounded-lg hover:bg-slate-50">
+              <h3 className="font-medium mb-1">Códigos de estado</h3>
+              <p className="text-sm text-slate-600">Significado de los códigos HTTP</p>
+            </Link>
+          </div>
+        </section>
+      </div>
     </PageLayout>
   );
 };
 
-export default Delete;
+export default DeleteMethodPage;

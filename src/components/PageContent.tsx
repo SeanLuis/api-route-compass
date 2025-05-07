@@ -1,59 +1,65 @@
-import { ReactNode } from "react";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 interface PageContentProps {
   title: string;
   description?: string;
   path: string[];
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-export function PageContent({ title, description, path, children }: PageContentProps) {
+export const PageContent: React.FC<PageContentProps> = ({
+  title,
+  description,
+  path,
+  children,
+}) => {
+  // Convert paths to links (assuming the last one is the current page)
+  const pathLinks = path.map((item, index) => {
+    const isLast = index === path.length - 1;
+    const href = index === 0 ? "/" : `/${path.slice(0, index).join("/").toLowerCase()}`;
+    
+    return {
+      name: item,
+      href: isLast ? undefined : href,
+      isLast,
+    };
+  });
+
   return (
-    <div>
-      <div className="mb-6">
-        <Breadcrumb>
-          <BreadcrumbList className="flex items-center text-sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link to="/" className="text-gray-600 hover:text-gray-900">Inicio</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <ChevronRight className="h-3 w-3 text-gray-400" />
-            </BreadcrumbSeparator>
-            {path.map((item, index) => (
-              index === path.length - 1 ? (
-                <BreadcrumbItem key={index}>
-                  <BreadcrumbPage className="text-gray-800 font-medium">{item}</BreadcrumbPage>
+    <div className="space-y-10 max-w-3xl">
+      {/* Page header */}
+      <div className="border-b pb-8">
+        <Breadcrumb className="mb-4">
+          <BreadcrumbList>
+            {pathLinks.map((link, i) => (
+              <React.Fragment key={i}>
+                {i > 0 && <BreadcrumbSeparator />}
+                <BreadcrumbItem>
+                  {link.isLast ? (
+                    <BreadcrumbLink>{link.name}</BreadcrumbLink>
+                  ) : (
+                    <BreadcrumbLink asChild>
+                      <Link to={link.href || "/"}>{link.name}</Link>
+                    </BreadcrumbLink>
+                  )}
                 </BreadcrumbItem>
-              ) : (
-                <BreadcrumbItem key={index}>
-                  <BreadcrumbLink className="text-gray-600 hover:text-gray-900" href="#">{item}</BreadcrumbLink>
-                  <BreadcrumbSeparator>
-                    <ChevronRight className="h-3 w-3 text-gray-400" />
-                  </BreadcrumbSeparator>
-                </BreadcrumbItem>
-              )
+              </React.Fragment>
             ))}
           </BreadcrumbList>
         </Breadcrumb>
-      </div>
-      
-      <div className="mb-8 border-b border-gray-200 pb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
+        
+        <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">{title}</h1>
         {description && (
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-slate-700">
             {description}
           </p>
         )}
       </div>
-      
-      <div className="content-container">
-        {children}
-      </div>
+
+      {/* Main content */}
+      <div className="space-y-8">{children}</div>
     </div>
   );
-}
+};
