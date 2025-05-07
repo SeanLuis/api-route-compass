@@ -1,66 +1,92 @@
 import { PageLayout } from "@/components/PageLayout";
-import { PageContent } from "@/components/PageContent";
 import { CodeBlock } from "@/components/CodeBlock";
 import { EndpointExample } from "@/components/EndpointExample";
+import { Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Filter, CheckCircle, Database, Code, Server, Search, Map, SlidersHorizontal } from "lucide-react";
 
 const Filtering = () => {
   return (
     <PageLayout>
-      <PageContent
-        title="Filtrado"
-        description="Patrones para implementar filtrado flexible en APIs REST."
-        path={["Funcionalidades", "Filtrado"]}
-      >
-        <p>
-          El filtrado permite a los clientes de una API REST solicitar exactamente
-          los datos que necesitan, reduciendo el volumen de información transferida
-          y mejorando la eficiencia. Una implementación adecuada de filtrado puede
-          transformar una API básica en una herramienta potente y flexible.
-        </p>
+      <div className="space-y-10 max-w-3xl">
+        {/* Page header */}
+        <div className="border-b pb-8">
+          <div className="flex items-center gap-2">
+            <Link to="/sorting" className="text-sm text-slate-500 hover:text-slate-700">Funcionalidades</Link>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Filtrado</h1>
+          <p className="text-lg text-slate-700">
+            Patrones para implementar filtrado flexible en APIs REST.
+          </p>
+        </div>
 
-        <h2>Por Qué Implementar Filtrado</h2>
+        {/* Main content */}
+        <div className="space-y-8">
+          <p>
+            El filtrado permite a los clientes de una API REST solicitar exactamente
+            los datos que necesitan, reduciendo el volumen de información transferida
+            y mejorando la eficiencia. Una implementación adecuada de filtrado puede
+            transformar una API básica en una herramienta potente y flexible.
+          </p>
 
-        <p>
-          Un buen sistema de filtrado proporciona numerosos beneficios:
-        </p>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Filter className="h-5 w-5 text-indigo-500" />
+            Por Qué Implementar Filtrado
+          </h2>
 
-        <ul>
-          <li>
-            <strong>Eficiencia:</strong> Los clientes reciben solo los datos
-            relevantes
-          </li>
-          <li>
-            <strong>Rendimiento:</strong> Reduce la carga en el servidor y el
-            tiempo de procesamiento
-          </li>
-          <li>
-            <strong>Flexibilidad:</strong> Permite casos de uso diferentes sin
-            crear endpoints específicos
-          </li>
-          <li>
-            <strong>Experiencia del desarrollador:</strong> Facilita la
-            integración y adopción de tu API
-          </li>
-          <li>
-            <strong>Escalabilidad:</strong> Minimiza el ancho de banda y recursos
-            requeridos
-          </li>
-        </ul>
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
+            <p className="text-slate-800">
+              Un buen sistema de filtrado proporciona numerosos beneficios:
+            </p>
+            <ul className="mt-3 space-y-1 ml-6 list-disc text-slate-700">
+              <li>
+                <strong>Eficiencia:</strong> Los clientes reciben solo los datos
+                relevantes
+              </li>
+              <li>
+                <strong>Rendimiento:</strong> Reduce la carga en el servidor y el
+                tiempo de procesamiento
+              </li>
+              <li>
+                <strong>Flexibilidad:</strong> Permite casos de uso diferentes sin
+                crear endpoints específicos
+              </li>
+              <li>
+                <strong>Experiencia del desarrollador:</strong> Facilita la
+                integración y adopción de tu API
+              </li>
+              <li>
+                <strong>Escalabilidad:</strong> Minimiza el ancho de banda y recursos
+                requeridos
+              </li>
+            </ul>
+          </div>
 
-        <h2>Enfoques de Filtrado</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5 text-indigo-500" />
+            Enfoques de Filtrado
+          </h2>
 
-        <h3>1. Filtrado Simple por Campos</h3>
-
-        <p>
-          El enfoque más básico y común es permitir filtrar por campos específicos
-          usando parámetros de consulta:
-        </p>
-
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products?category=electronics&in_stock=true"
-          description="Recupera productos electrónicos que están en stock."
-          responseExample={`{
+          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+            <CardContent className="p-0">
+              <div className="border-b p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Filter className="h-5 w-5 text-blue-600" />
+                  <h3 className="text-lg font-semibold">1. Filtrado Simple por Campos</h3>
+                </div>
+                <p className="text-slate-700">
+                  El enfoque más básico y común es permitir filtrar por campos específicos
+                  usando parámetros de consulta.
+                </p>
+              </div>
+              
+              <div className="p-6">
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                  <EndpointExample
+                    method="GET"
+                    path="/api/v1/products?category=electronics&in_stock=true"
+                    description="Recupera productos electrónicos que están en stock."
+                    responseExample={`{
   "items": [
     { 
       "id": "prod_123",
@@ -84,14 +110,13 @@ const Filtering = () => {
     "per_page": 20
   }
 }`}
-        />
-
-        <p>
-          Para campos con múltiples valores, puedes usar varios enfoques:
-        </p>
-
-        <CodeBlock
-          code={`# Múltiples parámetros con el mismo nombre
+                  />
+                </div>
+                
+                <p className="mt-4 mb-2">Para campos con múltiples valores, puedes usar varios enfoques:</p>
+                <div className="bg-slate-900 rounded-md overflow-hidden">
+                  <CodeBlock
+                    code={`# Múltiples parámetros con el mismo nombre
 GET /api/v1/products?category=electronics&category=accessories
 
 # Valores separados por comas
@@ -99,21 +124,33 @@ GET /api/v1/products?categories=electronics,accessories
 
 # Formato de array
 GET /api/v1/products?categories[]=electronics&categories[]=accessories`}
-          language="http"
-        />
+                    language="http"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <h3>2. Filtrado con Operadores de Comparación</h3>
-
-        <p>
-          Para valores numéricos, fechas y otros tipos ordenables, es útil
-          proporcionar operadores de comparación:
-        </p>
-
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products?price_min=50&price_max=200&created_after=2023-01-01"
-          description="Recupera productos con precio entre 50 y 200, creados después del 1 de enero de 2023."
-          responseExample={`{
+          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+            <CardContent className="p-0">
+              <div className="border-b p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Code className="h-5 w-5 text-blue-600" />
+                  <h3 className="text-lg font-semibold">2. Filtrado con Operadores de Comparación</h3>
+                </div>
+                <p className="text-slate-700">
+                  Para valores numéricos, fechas y otros tipos ordenables, es útil
+                  proporcionar operadores de comparación.
+                </p>
+              </div>
+              
+              <div className="p-6">
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                  <EndpointExample
+                    method="GET"
+                    path="/api/v1/products?price_min=50&price_max=200&created_after=2023-01-01"
+                    description="Recupera productos con precio entre 50 y 200, creados después del 1 de enero de 2023."
+                    responseExample={`{
   "items": [
     { 
       "id": "prod_125",
@@ -134,14 +171,13 @@ GET /api/v1/products?categories[]=electronics&categories[]=accessories`}
     "created_after": "2023-01-01T00:00:00Z"
   }
 }`}
-        />
-
-        <p>
-          Diferentes convenciones para operadores de comparación:
-        </p>
-
-        <CodeBlock
-          code={`# Prefijos/sufijos descriptivos
+                  />
+                </div>
+                
+                <p className="mt-4 mb-2">Diferentes convenciones para operadores de comparación:</p>
+                <div className="bg-slate-900 rounded-md overflow-hidden">
+                  <CodeBlock
+                    code={`# Prefijos/sufijos descriptivos
 GET /api/v1/products?price_min=50&price_max=200
 GET /api/v1/users?created_after=2023-01-01&created_before=2023-06-30
 
@@ -152,20 +188,32 @@ GET /api/v1/users?created_at[gt]=2023-01-01&created_at[lt]=2023-06-30
 # Operadores inline
 GET /api/v1/products?price=gte:50,lte:200
 GET /api/v1/users?created_at=gt:2023-01-01,lt:2023-06-30`}
-          language="http"
-        />
+                    language="http"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <h3>3. Filtrado por Texto y Búsqueda</h3>
-
-        <p>
-          Para filtrado por texto libre o búsqueda:
-        </p>
-
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products?search=auriculares bluetooth&brand=sony"
-          description="Busca productos Sony relacionados con 'auriculares bluetooth'."
-          responseExample={`{
+          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+            <CardContent className="p-0">
+              <div className="border-b p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Search className="h-5 w-5 text-blue-600" />
+                  <h3 className="text-lg font-semibold">3. Filtrado por Texto y Búsqueda</h3>
+                </div>
+                <p className="text-slate-700">
+                  Para filtrado por texto libre o búsqueda en campos textuales.
+                </p>
+              </div>
+              
+              <div className="p-6">
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                  <EndpointExample
+                    method="GET"
+                    path="/api/v1/products?search=auriculares bluetooth&brand=sony"
+                    description="Busca productos Sony relacionados con 'auriculares bluetooth'."
+                    responseExample={`{
   "items": [
     { 
       "id": "prod_127",
@@ -193,16 +241,28 @@ GET /api/v1/users?created_at=gt:2023-01-01,lt:2023-06-30`}
     }
   }
 }`}
-        />
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <h3>4. Filtrado con Metadatos y Relaciones</h3>
-
-        <p>
-          Para filtrar por campos anidados o relaciones:
-        </p>
-
-        <CodeBlock
-          code={`# Filtrado por metadatos anidados
+          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+            <CardContent className="p-0">
+              <div className="border-b p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Database className="h-5 w-5 text-blue-600" />
+                  <h3 className="text-lg font-semibold">4. Filtrado con Metadatos y Relaciones</h3>
+                </div>
+                <p className="text-slate-700">
+                  Para filtrar por campos anidados o relaciones.
+                </p>
+              </div>
+              
+              <div className="p-6">
+                <div className="bg-slate-900 rounded-md overflow-hidden">
+                  <CodeBlock
+                    code={`# Filtrado por metadatos anidados
 GET /api/v1/products?metadata.color=red&metadata.size=large
 
 # Filtrado por relaciones
@@ -211,54 +271,40 @@ GET /api/v1/orders?customer.country=spain&items.product.category=electronics
 # Alternativa con notación de puntos
 GET /api/v1/products?color=red&size=large
 GET /api/v1/orders?customer_country=spain&product_category=electronics`}
-          language="http"
-        />
+                    language="http"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <h3>5. Filtrado con Lenguaje de Consulta</h3>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-indigo-500" />
+            Implementación y Mejores Prácticas
+          </h2>
 
-        <p>
-          Para casos más complejos, considera implementar un mini lenguaje de
-          consulta:
-        </p>
-
-        <CodeBlock
-          code={`# Operadores lógicos
-GET /api/v1/products?filter=(category:electronics AND price<200) OR (category:books AND author:"Isaac Asimov")
-
-# Similar a OData
-GET /api/v1/products?$filter=category eq 'electronics' and price lt 200
-
-# Inspirado en MongoDB
-GET /api/v1/products?query={"category":"electronics","price":{"$lt":200}}`}
-          language="http"
-        />
-
-        <h2>Implementación y Mejores Prácticas</h2>
-
-        <h3>Validación de Parámetros</h3>
-
-        <p>
-          Es crucial validar todos los parámetros de filtrado para evitar
-          problemas de seguridad:
-        </p>
-
-        <ul>
-          <li>Valida tipos de datos (números, fechas, enumeraciones)</li>
-          <li>Define rangos aceptables para valores numéricos</li>
-          <li>Limita la longitud de los campos de texto</li>
-          <li>Previene inyección SQL en campos de búsqueda</li>
-        </ul>
-
-        <CodeBlock
-          code={`// Ejemplo de validación en Express.js
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="font-semibold mb-2">Validación de Parámetros</h3>
+                <p className="mb-3 text-sm text-slate-600">
+                  Es crucial validar todos los parámetros de filtrado para evitar
+                  problemas de seguridad:
+                </p>
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                  <li>Valida tipos de datos (números, fechas, enumeraciones)</li>
+                  <li>Define rangos aceptables para valores numéricos</li>
+                  <li>Limita la longitud de los campos de texto</li>
+                  <li>Previene inyección SQL en campos de búsqueda</li>
+                </ul>
+                
+                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                  <CodeBlock
+                    code={`// Ejemplo en Express.js
 app.get('/api/v1/products', (req, res) => {
   // Validar precio mínimo
   let minPrice = parseFloat(req.query.price_min);
   if (isNaN(minPrice) || minPrice < 0) minPrice = 0;
-  
-  // Validar precio máximo
-  let maxPrice = parseFloat(req.query.price_max);
-  if (isNaN(maxPrice) || maxPrice < 0) maxPrice = Number.MAX_SAFE_INTEGER;
   
   // Validar categoría (enumerable)
   const validCategories = ['electronics', 'clothing', 'books', 'home'];
@@ -269,115 +315,75 @@ app.get('/api/v1/products', (req, res) => {
   
   // Continuar con la consulta...
 });`}
-          language="javascript"
-        />
+                    language="javascript"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-        <h3>Documentar el Sistema de Filtrado</h3>
-
-        <p>
-          Una documentación clara del sistema de filtrado es esencial para los
-          desarrolladores:
-        </p>
-
-        <ul>
-          <li>Listar todos los campos filtrables</li>
-          <li>Documentar operadores compatibles</li>
-          <li>Proporcionar ejemplos para cada tipo de filtro</li>
-          <li>Especificar valores por defecto si no se aplican filtros</li>
-          <li>Describir el comportamiento con filtros inválidos</li>
-        </ul>
-
-        <h3>Rendimiento y Optimización</h3>
-
-        <p>
-          Optimiza el rendimiento del filtrado:
-        </p>
-
-        <ul>
-          <li>
-            Crea índices en la base de datos para los campos de filtrado comunes
-          </li>
-          <li>Limita la complejidad de las consultas permitidas</li>
-          <li>Implementa caché para consultas frecuentes</li>
-          <li>
-            Considera paginación obligatoria para conjuntos de resultados grandes
-          </li>
-        </ul>
-
-        <CodeBlock
-          code={`-- Índices para campos comunes de filtrado
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="font-semibold mb-2">Rendimiento y Optimización</h3>
+                <p className="mb-3 text-sm text-slate-600">
+                  Optimiza el rendimiento del filtrado:
+                </p>
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                  <li>Crea índices para los campos de filtrado comunes</li>
+                  <li>Limita la complejidad de las consultas permitidas</li>
+                  <li>Implementa caché para consultas frecuentes</li>
+                  <li>Considera paginación obligatoria para resultados grandes</li>
+                </ul>
+                
+                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                  <CodeBlock
+                    code={`-- Índices para campos comunes
 CREATE INDEX idx_products_category ON products(category);
 CREATE INDEX idx_products_price ON products(price);
 CREATE INDEX idx_products_created_at ON products(created_at);
-CREATE INDEX idx_products_brand ON products(brand);
 
 -- Índice compuesto para consultas comunes
 CREATE INDEX idx_products_category_price ON products(category, price);`}
-          language="sql"
-        />
+                    language="sql"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-        <h3>Indicar Filtros Aplicados</h3>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Map className="h-5 w-5 text-indigo-500" />
+            Patrones Avanzados
+          </h2>
 
-        <p>
-          Es útil incluir en la respuesta los filtros que se aplicaron:
-        </p>
-
-        <CodeBlock
-          code={`{
-  "items": [...],
-  "filters_applied": {
-    "category": "electronics",
-    "price_range": [50, 200],
-    "in_stock": true,
-    "brand": ["apple", "samsung"]
-  },
-  "pagination": {
-    "page": 1,
-    "per_page": 20,
-    "total": 45
-  }
-}`}
-          language="json"
-        />
-
-        <h3>Consistencia con Otros Parámetros</h3>
-
-        <p>
-          Asegúrate de que los filtros funcionen bien con otros parámetros como
-          ordenamiento y paginación:
-        </p>
-
-        <CodeBlock
-          code={`# Combinación de filtrado, ordenamiento y paginación
-GET /api/v1/products?category=electronics&price_min=100&sort=price_asc&page=2&per_page=20`}
-          language="http"
-        />
-
-        <h2>Patrones Avanzados</h2>
-
-        <h3>Filtrado Geoespacial</h3>
-
-        <p>
-          Para datos con componentes geográficos:
-        </p>
-
-        <CodeBlock
-          code={`# Búsqueda por proximidad
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="font-semibold mb-2">Filtrado Geoespacial</h3>
+                <p className="mb-3 text-sm text-slate-600">
+                  Para datos con componentes geográficos:
+                </p>
+                <div className="bg-slate-900 rounded-md overflow-hidden">
+                  <CodeBlock
+                    code={`# Búsqueda por proximidad
 GET /api/v1/restaurants?lat=40.7128&lon=-74.0060&radius=5km
 
 # Búsqueda por área
 GET /api/v1/properties?bounds=40.7,-74.0,40.8,-73.9`}
-          language="http"
-        />
+                    language="http"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-        <h3>Filtrado Temporal</h3>
-
-        <p>
-          Patrones específicos para datos temporales:
-        </p>
-
-        <CodeBlock
-          code={`# Rangos de fechas
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="font-semibold mb-2">Filtrado Temporal</h3>
+                <p className="mb-3 text-sm text-slate-600">
+                  Patrones específicos para datos temporales:
+                </p>
+                <div className="bg-slate-900 rounded-md overflow-hidden">
+                  <CodeBlock
+                    code={`# Rangos de fechas
 GET /api/v1/events?start_date=2023-06-01&end_date=2023-06-30
 
 # Períodos relativos
@@ -386,31 +392,37 @@ GET /api/v1/reports?timeframe=this_month
 
 # Fechas con horarios
 GET /api/v1/logs?from=2023-06-01T00:00:00Z&to=2023-06-02T23:59:59Z`}
-          language="http"
-        />
+                    language="http"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-        <h3>Filtrado con Expresiones Regulares</h3>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Server className="h-5 w-5 text-indigo-500" />
+            Casos de Uso Específicos
+          </h2>
 
-        <p>
-          Para búsquedas por patrones (usar con precaución):
-        </p>
-
-        <CodeBlock
-          code={`# Filtrado con patrones
-GET /api/v1/products?sku_pattern=ABC-[0-9]{3}-XYZ
-GET /api/v1/users?email_pattern=.*@example\.com`}
-          language="http"
-        />
-
-        <h2>Casos de Uso Específicos</h2>
-
-        <h3>Catálogos de Productos</h3>
-
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products?category=clothing&gender=women&size=m&color=black&price_max=50&sort=price_asc"
-          description="Filtrado complejo para un catálogo de tienda online."
-          responseExample={`{
+          <Card className="border border-slate-200 shadow-sm overflow-hidden mt-4">
+            <CardContent className="p-0">
+              <div className="border-b p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Database className="h-5 w-5 text-blue-600" />
+                  <h3 className="text-lg font-semibold">Catálogos de Productos</h3>
+                </div>
+                <p className="text-slate-700">
+                  Filtrado complejo para un catálogo de tienda online.
+                </p>
+              </div>
+              
+              <div className="p-6">
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                  <EndpointExample
+                    method="GET"
+                    path="/api/v1/products?category=clothing&gender=women&size=m&color=black&price_max=50&sort=price_asc"
+                    description="Filtrado complejo para un catálogo de tienda online."
+                    responseExample={`{
   "items": [
     {
       "id": "prod_501",
@@ -439,61 +451,73 @@ GET /api/v1/users?email_pattern=.*@example\.com`}
     "color": ["black", "white", "red", "blue", "green"]
   }
 }`}
-        />
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <h3>Registros de Actividad o Logs</h3>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-indigo-500" />
+            Ejemplos de APIs Populares
+          </h2>
 
-        <CodeBlock
-          code={`# Filtrado para logs o registros de actividad
-GET /api/v1/logs?level=error&component=payment&date_from=2023-06-01&user_id=12345`}
-          language="http"
-        />
-
-        <h3>Informes Analíticos</h3>
-
-        <CodeBlock
-          code={`# Filtrado para informes
-GET /api/v1/analytics/sales?period=last_quarter&group_by=product_category&region=europe`}
-          language="http"
-        />
-
-        <h2>Ejemplos de APIs Populares</h2>
-
-        <h3>GitHub API</h3>
-
-        <p>
-          GitHub proporciona filtros específicos para sus recursos:
-        </p>
-
-        <CodeBlock
-          code={`# Filtrar issues por estado, asignado y etiqueta
+          <div className="grid grid-cols-1 gap-6 mt-4">
+            <Card className="overflow-hidden">
+              <CardContent className="p-0">
+                <div className="border-b bg-slate-50 p-4">
+                  <h3 className="font-medium">GitHub API</h3>
+                </div>
+                <div className="p-6">
+                  <p className="mb-3">
+                    GitHub proporciona filtros específicos para sus recursos:
+                  </p>
+                  <div className="bg-slate-900 rounded-md overflow-hidden">
+                    <CodeBlock
+                      code={`# Filtrar issues por estado, asignado y etiqueta
 GET /repos/octocat/hello-world/issues?state=open&assignee=octocat&labels=bug,enhancement
 
 # Filtrar pull requests
 GET /repos/octocat/hello-world/pulls?state=open&base=main&sort=created&direction=desc`}
-          language="http"
-        />
+                      language="http"
+                    />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-        <h3>Stripe API</h3>
-
-        <p>
-          Stripe utiliza un sistema de filtrado uniforme:
-        </p>
-
-        <CodeBlock
-          code={`# Filtrar pagos por cliente y fecha
+            <Card className="overflow-hidden">
+              <CardContent className="p-0">
+                <div className="border-b bg-slate-50 p-4">
+                  <h3 className="font-medium">Stripe API</h3>
+                </div>
+                <div className="p-6">
+                  <p className="mb-3">
+                    Stripe utiliza un sistema de filtrado uniforme:
+                  </p>
+                  <div className="bg-slate-900 rounded-md overflow-hidden">
+                    <CodeBlock
+                      code={`# Filtrar pagos por cliente y fecha
 GET /v1/charges?customer=cus_123&created[gte]=1625097600&created[lte]=1627689600`}
-          language="http"
-        />
+                      language="http"
+                    />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-        <blockquote>
-          "Un sistema de filtrado bien diseñado encuentra el equilibrio entre
-          flexibilidad y simplicidad. Debe ser lo suficientemente potente para
-          satisfacer las necesidades de los clientes más exigentes, pero lo
-          suficientemente intuitivo para que cualquier desarrollador pueda empezar
-          rápidamente."
-        </blockquote>
-      </PageContent>
+          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
+            <p className="italic text-indigo-900 font-medium">
+              "Un sistema de filtrado bien diseñado encuentra el equilibrio entre
+              flexibilidad y simplicidad. Debe ser lo suficientemente potente para
+              satisfacer las necesidades de los clientes más exigentes, pero lo
+              suficientemente intuitivo para que cualquier desarrollador pueda empezar
+              rápidamente."
+            </p>
+          </blockquote>
+        </div>
+      </div>
     </PageLayout>
   );
 };
