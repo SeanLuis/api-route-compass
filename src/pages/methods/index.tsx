@@ -9,7 +9,7 @@ import { Info, ArrowRight } from "lucide-react";
 const MethodsOverviewPage = () => {
   return (
     <PageLayout>
-      <div className="space-y-10 max-w-3xl">
+      <div className="space-y-10">
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">

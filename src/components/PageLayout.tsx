@@ -41,27 +41,16 @@ export function PageLayout({ children }: PageLayoutProps) {
       <div className="flex flex-1">
         <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
         <main className="flex-1 lg:pl-[280px]">
-          <div className="mx-auto max-w-4xl px-4 py-8 md:px-8 lg:py-12">
+          <div className="mx-auto max-w-6xl py-8 lg:py-12">
             {children}
           </div>
           
-          <footer className="mt-24 border-t border-slate-200 py-10 px-4 lg:pl-[280px]">
+          <footer className="mt-24 border-t border-slate-200 py-10 lg:pl-[280px]">
             <div className="mx-auto max-w-4xl flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate-500">
               <div>
                 <p className="text-center md:text-left">
                   © 2023 API Route Compass. Todos los derechos reservados.
                 </p>
-              </div>
-              <div className="flex gap-6">
-                <a href="#" className="hover:text-slate-900 transition-colors">
-                  Términos
-                </a>
-                <a href="#" className="hover:text-slate-900 transition-colors">
-                  Privacidad
-                </a>
-                <a href="#" className="hover:text-slate-900 transition-colors">
-                  Contacto
-                </a>
               </div>
             </div>
           </footer>

@@ -28,7 +28,7 @@ export const PageContent: React.FC<PageContentProps> = ({
   });
 
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10">
       {/* Page header */}
       <div className="border-b pb-8">
         <Breadcrumb className="mb-4">

@@ -796,11 +796,11 @@ describe('Products API', () => {
         <h2>Recursos adicionales</h2>
 
         <ul className="list-disc pl-6 mb-8 space-y-2">
-          <li><a href="https://swagger.io/specification/" target="_blank" className="text-blue-600 hover:underline">Especificación OpenAPI oficial</a></li>
-          <li><a href="https://swagger.io/tools/swagger-ui/" target="_blank" className="text-blue-600 hover:underline">Swagger UI</a></li>
-          <li><a href="https://github.com/swagger-api/swagger-editor" target="_blank" className="text-blue-600 hover:underline">Swagger Editor</a></li>
-          <li><a href="https://redocly.com/redoc/" target="_blank" className="text-blue-600 hover:underline">ReDoc - Documentación alternativa</a></li>
-          <li><a href="https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml" target="_blank" className="text-blue-600 hover:underline">Ejemplo PetStore API (OpenAPI 3.0)</a></li>
+          <li><a rel="noopener noreferrer" href="https://swagger.io/specification/" target="_blank" className="text-blue-600 hover:underline">Especificación OpenAPI oficial</a></li>
+          <li><a rel="noopener noreferrer" href="https://swagger.io/tools/swagger-ui/" target="_blank" className="text-blue-600 hover:underline">Swagger UI</a></li>
+          <li><a rel="noopener noreferrer" href="https://github.com/swagger-api/swagger-editor" target="_blank" className="text-blue-600 hover:underline">Swagger Editor</a></li>
+          <li><a rel="noopener noreferrer" href="https://redocly.com/redoc/" target="_blank" className="text-blue-600 hover:underline">ReDoc - Documentación alternativa</a></li>
+          <li><a rel="noopener noreferrer" href="https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml" target="_blank" className="text-blue-600 hover:underline">Ejemplo PetStore API (OpenAPI 3.0)</a></li>
         </ul>
 
         <div className="bg-gray-50 border border-gray-200 rounded-md p-6 mb-8">
