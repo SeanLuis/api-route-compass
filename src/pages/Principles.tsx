@@ -107,8 +107,8 @@ const PrinciplesPage = () => {
                 <strong>Representaciones</strong>: Los estados actual o deseados de un recurso, típicamente un documento 
                 que captura el estado actual o previsto de un recurso.
               </li>
-            </ul>
-            
+        </ul>
+
             <Alert className="my-6 bg-blue-50 border-blue-100">
               <Info className="h-4 w-4 text-blue-600" />
               <AlertTitle className="text-blue-800">Identificación de recursos</AlertTitle>
@@ -120,13 +120,13 @@ const PrinciplesPage = () => {
             
             <p>
               La separación entre recursos y sus representaciones permite:
-            </p>
-            
-            <ul>
+        </p>
+
+        <ul>
               <li>Servir el mismo recurso en diferentes formatos (JSON, XML, HTML)</li>
               <li>Evolucionar las representaciones sin cambiar el identificador del recurso</li>
               <li>Conservar enlaces estables a lo largo del tiempo</li>
-            </ul>
+        </ul>
           </div>
           
           <div className="mt-6">

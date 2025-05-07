@@ -152,12 +152,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
             </Button>
           </div>
 
-          {/* Search Bar */}
-          <div className="px-3 pt-4 pb-2">
-            <SearchButton className="w-full justify-between" />
-          </div>
-
-          <div className="overflow-y-auto flex-1 py-2 px-3">
+          <div className="overflow-y-auto flex-1 p-3">
             <nav className="space-y-6">
               {sections.map((section) => (
                 <div key={section.title} className="space-y-1">
