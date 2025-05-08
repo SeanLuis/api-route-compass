@@ -398,14 +398,16 @@ export function SearchButton({ className }: { className?: string }) {
       <button
         onClick={() => setOpen(true)}
         className={cn(
-          "flex items-center text-sm px-3 py-1.5 rounded-md border border-slate-200 bg-white text-slate-500 hover:text-slate-700 gap-2 transition-colors",
+          "flex items-center gap-1 text-sm px-3 py-1.5 rounded-md border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors",
           className
         )}
       >
         <Search className="h-4 w-4" />
-        <span>Buscar documentación...</span>
-        <kbd className="hidden md:flex items-center text-xs rounded border bg-slate-50 px-1.5 h-5 ml-auto">
-          ⌘K
+        <span className="hidden sm:inline">Buscar documentación...</span>
+        <span className="inline sm:hidden">Buscar...</span>
+        <kbd className="hidden md:inline-flex h-5 select-none items-center gap-1 rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-xs font-medium text-slate-600 opacity-100">
+          <span className="text-xs">⌘</span>
+          <span>K</span>
         </kbd>
       </button>
       <SearchDialog open={open} onOpenChange={setOpen} />
