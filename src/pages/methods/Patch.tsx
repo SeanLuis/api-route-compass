@@ -187,11 +187,11 @@ const PatchMethodPage = () => {
             <div className="border rounded-lg overflow-hidden shadow-sm">
               <div className="p-5 border-b bg-slate-50">
                 <h3 className="text-lg font-medium">1. Formato simple (Ad Hoc)</h3>
-              </div>
-              <div className="p-5">
-                <p className="text-sm text-slate-700 mb-4">
+                <p className="text-sm text-slate-600 mt-1">
                   El formato más común pero menos estandarizado, donde simplemente se envían los campos a actualizar.
                 </p>
+              </div>
+              <div className="p-5">
                 <CodeBlock
                   code={`PATCH /api/v1/profiles/profile_123
 Content-Type: application/json
@@ -342,21 +342,21 @@ Content-Type: application/merge-patch+json
               <AlertTitle className="text-amber-800 text-base">Operaciones condicionales</AlertTitle>
               <AlertDescription className="text-amber-700">
                 Utiliza encabezados condicionales como If-Match o If-Unmodified-Since para evitar problemas de concurrencia.
-              </CodeBlock>
-              <div className="mt-4">
-                <CodeBlock
-                  code={`PATCH /api/v1/products/prod_123
+                <div className="mt-4">
+                  <CodeBlock
+                    code={`PATCH /api/v1/products/prod_123
 If-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"
 Content-Type: application/json
 
 {
   "price": 399.99
 }`}
-                  language="http"
-                />
-              </div>
-            </AlertDescription>
-          </Alert>
+                    language="http"
+                  />
+                </div>
+              </AlertDescription>
+            </Alert>
+          </div>
         </section>
         
         {/* Diferencias entre PATCH y PUT */}
