@@ -16,6 +16,7 @@ import MethodsPost from "./pages/methods/Post";
 import MethodsPut from "./pages/methods/Put";
 import MethodsPatch from "./pages/methods/Patch";
 import MethodsDelete from "./pages/methods/Delete";
+import MethodsIndex from "./pages/methods/index";
 import Versioning from "./pages/Versioning";
 import Pagination from "./pages/Pagination";
 import Filtering from "./pages/Filtering";
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/resource-hierarchy" element={<ResourceHierarchy />} />
           
           {/* Métodos HTTP */}
+          <Route path="/methods" element={<MethodsIndex />} />
           <Route path="/methods/get" element={<MethodsGet />} />
           <Route path="/methods/post" element={<MethodsPost />} />
           <Route path="/methods/put" element={<MethodsPut />} />
