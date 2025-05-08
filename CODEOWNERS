@@ -1,0 +1,16 @@
+# Este archivo define los propietarios del código del proyecto
+# Para más información, consulta: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Propietario por defecto de todo el repositorio
+*       @SeanLuis
+
+# Propietarios de archivos específicos
+/src/   @SeanLuis
+/public/  @SeanLuis
+/docs/  @SeanLuis
+
+# Propietarios de configuraciones
+*.json  @SeanLuis
+*.js    @SeanLuis
+*.ts    @SeanLuis
+*.tsx   @SeanLuis 

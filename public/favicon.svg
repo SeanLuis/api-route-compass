@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code">
+  <style>
+    svg {
+      color: white;
+    }
+    rect {
+      fill: url(#gradient);
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        color: white;
+      }
+    }
+  </style>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  <rect width="24" height="24" rx="4" />
+  <polyline points="16 18 22 12 16 6" stroke="currentColor"></polyline>
+  <polyline points="8 6 2 12 8 18" stroke="currentColor"></polyline>
+</svg> 

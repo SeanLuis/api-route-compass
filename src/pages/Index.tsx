@@ -432,6 +432,7 @@ const Index = () => {
             Comenzar el aprendizaje
           </Link>
           <a 
+            rel="noopener noreferrer"
             href="https://github.com/username/api-route-compass" 
             target="_blank"
             className="px-6 py-3 bg-indigo-700 text-white font-medium rounded-lg hover:bg-indigo-800 transition-colors"

@@ -1,0 +1,64 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo con gradiente suave -->
+  <rect width="1200" height="630" fill="#F8FAFC" />
+  <rect width="1200" height="630" fill="url(#gradientBg)" />
+  
+  <!-- Definiciones -->
+  <defs>
+    <linearGradient id="gradientBg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EEF2FF" />
+    </linearGradient>
+    <linearGradient id="gradientAccent" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <filter id="shadowLogo" x="0" y="0" width="120" height="120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+      <feOffset dy="4" />
+      <feGaussianBlur stdDeviation="8" />
+      <feComposite in2="hardAlpha" operator="out" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.388235 0 0 0 0 0.4 0 0 0 0 0.945098 0 0 0 0.15 0" />
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2" />
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape" />
+    </filter>
+  </defs>
+  
+  <!-- Elementos decorativos sutiles -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#gradientAccent)" />
+  
+  <!-- Contenedor principal -->
+  <g transform="translate(240, 200)">
+    <!-- Logo -->
+    <g filter="url(#shadowLogo)">
+      <rect width="96" height="96" rx="24" fill="url(#gradientAccent)" />
+      <g transform="translate(24, 24)" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="36 48 48 24 36 0" />
+        <polyline points="12 0 0 24 12 48" />
+      </g>
+    </g>
+    
+    <!-- Textos -->
+    <g transform="translate(136, 48)">
+      <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="700" fill="#1E293B" letter-spacing="-0.02em">
+        API Route Compass
+      </text>
+      <text x="2" y="64" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="400" fill="#475569" letter-spacing="-0.01em">
+        Guía definitiva para el diseño de APIs REST
+      </text>
+    </g>
+  </g>
+  
+  <!-- Detalles adicionales -->
+  <g opacity="0.7">
+    <circle cx="1100" cy="130" r="40" fill="url(#gradientAccent)" opacity="0.1" />
+    <circle cx="100" cy="500" r="60" fill="url(#gradientAccent)" opacity="0.1" />
+  </g>
+  
+  <!-- Patrón sutil de fondo -->
+  <g opacity="0.03">
+    <path d="M1050 120 L1150 220 L1050 320 L950 220 Z" fill="#6366F1" />
+    <path d="M100 400 L200 500 L100 600 L0 500 Z" fill="#6366F1" />
+  </g>
+</svg> 
