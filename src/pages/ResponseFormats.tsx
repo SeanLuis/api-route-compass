@@ -30,7 +30,7 @@ const ResponseFormats = () => {
           </p>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <Info className="h-5 w-5 text-slate-700" />
+            <Info className="h-5 w-5 text-indigo-500" />
             Principios Básicos
           </h2>
 
@@ -39,33 +39,33 @@ const ResponseFormats = () => {
             fundamentales que deben guiar el diseño de las respuestas:
           </p>
 
-          <div className="border border-slate-200 p-6 rounded-md mt-4">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Consistencia:</strong> Mantener una estructura uniforme en todas las respuestas</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Predicción:</strong> Los clientes deben poder anticipar la estructura de la respuesta</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Expresividad:</strong> Las respuestas deben ser autoexplicativas</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Minimalismo:</strong> Evitar información innecesaria que aumente el tamaño de la respuesta</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Flexibilidad:</strong> Permitir extensiones futuras sin romper la compatibilidad</span>
               </li>
             </ul>
           </div>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <FileJson className="h-5 w-5 text-slate-700" />
+            <FileJson className="h-5 w-5 text-indigo-500" />
             Formato JSON
           </h2>
 
@@ -162,7 +162,7 @@ const ResponseFormats = () => {
           </Card>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <Database className="h-5 w-5 text-slate-700" />
+            <Database className="h-5 w-5 text-indigo-500" />
             Estructuras de Respuesta Estándares
           </h2>
 
@@ -394,7 +394,7 @@ Content-Type: application/json
           </Card>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <Code className="h-5 w-5 text-slate-700" />
+            <Code className="h-5 w-5 text-indigo-500" />
             Formatos Estándar y Especificaciones
           </h2>
 
@@ -564,7 +564,7 @@ Content-Type: application/json
           </Card>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-slate-700" />
+            <CheckCircle className="h-5 w-5 text-indigo-500" />
             Mejores Prácticas
           </h2>
 
@@ -702,7 +702,7 @@ Content-Type: application/json
           </Card>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <Terminal className="h-5 w-5 text-slate-700" />
+            <Terminal className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h2>
 
@@ -757,13 +757,13 @@ Content-Type: application/json
             </Card>
           </div>
 
-          <div className="border border-slate-200 rounded-md p-6 mt-8 bg-slate-50">
-            <p className="text-slate-700">
+          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
+            <p className="italic text-indigo-900 font-medium">
               "Un buen formato de respuesta es como un contrato bien redactado: claro, predecible y sin ambigüedades.
               La consistencia y la expresividad son más importantes que seguir una especificación particular.
               Independientemente del formato que elijas, mantén la coherencia y documenta bien tus decisiones."
             </p>
-          </div>
+          </blockquote>
         </div>
       </div>
     </PageLayout>

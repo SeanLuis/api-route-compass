@@ -1,49 +1,69 @@
 import { PageLayout } from "@/components/PageLayout";
-import { PageContent } from "@/components/PageContent";
 import { CodeBlock } from "@/components/CodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
 import { EndpointExample } from "@/components/EndpointExample";
 import { RouteExample } from "@/components/RouteExample";
+import { Link } from "react-router-dom";
+import { ShoppingCart, BookOpen, ListChecks, Calendar, Codepen, Code, CheckCircle, ArrowRight, Terminal, Database, Info } from "lucide-react";
 
 const Examples = () => {
   return (
     <PageLayout>
-      <PageContent
-        title="Ejemplos Prácticos"
-        description="Casos de estudio y ejemplos de implementaciones de APIs REST."
-        path={["Documentación", "Ejemplos Prácticos"]}
-      >
-        <p>
-          Esta sección presenta ejemplos prácticos de implementaciones de APIs REST para diferentes
-          escenarios y casos de uso. Cada ejemplo incluye explicaciones detalladas, código de muestra
-          y consideraciones de diseño.
-        </p>
-
-        <h2>API de comercio electrónico</h2>
-
-        <p>
-          Este ejemplo muestra una API REST para una plataforma de comercio electrónico, con endpoints
-          para gestionar productos, pedidos, usuarios y carritos de compra.
-        </p>
-
-        <h3>Estructura de recursos</h3>
-
-        <div className="space-y-3 mb-6">
-          <RouteExample method="GET" path="/products" description="Catálogo de productos" />
-          <RouteExample method="GET" path="/categories" description="Categorías de productos" />
-          <RouteExample method="GET" path="/users" description="Usuarios registrados" />
-          <RouteExample method="GET" path="/orders" description="Pedidos realizados" />
-          <RouteExample method="GET" path="/carts" description="Carritos de compra" />
-          <RouteExample method="GET" path="/reviews" description="Reseñas de productos" />
+      <div className="space-y-10">
+        {/* Page header */}
+        <div className="border-b pb-8">
+          <div className="flex items-center gap-2">
+            <Link to="/openapi" className="text-sm text-slate-500 hover:text-slate-700">Documentación</Link>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Ejemplos Prácticos</h1>
+          <p className="text-lg text-slate-700">
+            Casos de estudio y ejemplos de implementaciones de APIs REST.
+          </p>
         </div>
 
-        <h3>Endpoints para productos</h3>
+        {/* Main content */}
+        <div className="space-y-8">
+          <p className="text-slate-700">
+            Esta sección presenta ejemplos prácticos de implementaciones de APIs REST para diferentes
+            escenarios y casos de uso. Cada ejemplo incluye explicaciones detalladas, código de muestra
+            y consideraciones de diseño.
+          </p>
 
-        <EndpointExample
-          method="GET"
-          path="/api/v1/products"
-          description="Listar productos con soporte para filtrado, ordenamiento y paginación"
-          responseExample={`{
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <ShoppingCart className="h-5 w-5 text-indigo-500" />
+            API de comercio electrónico
+          </h2>
+
+          <p className="text-slate-700">
+            Este ejemplo muestra una API REST para una plataforma de comercio electrónico, con endpoints
+            para gestionar productos, pedidos, usuarios y carritos de compra.
+          </p>
+
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Estructura de recursos
+          </h3>
+
+          <div className="space-y-3 mb-6">
+            <RouteExample method="GET" path="/products" description="Catálogo de productos" />
+            <RouteExample method="GET" path="/categories" description="Categorías de productos" />
+            <RouteExample method="GET" path="/users" description="Usuarios registrados" />
+            <RouteExample method="GET" path="/orders" description="Pedidos realizados" />
+            <RouteExample method="GET" path="/carts" description="Carritos de compra" />
+            <RouteExample method="GET" path="/reviews" description="Reseñas de productos" />
+          </div>
+
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Code className="h-5 w-5 text-blue-500" />
+            Endpoints para productos
+          </h3>
+
+          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+            <EndpointExample
+              method="GET"
+              path="/api/v1/products"
+              description="Listar productos con soporte para filtrado, ordenamiento y paginación"
+              responseExample={`{
   "data": [
     {
       "id": "prod_123",
@@ -77,13 +97,15 @@ const Examples = () => {
     }
   }
 }`}
-        />
+            />
+          </div>
 
-        <EndpointExample
-          method="POST"
-          path="/api/v1/products"
-          description="Crear un nuevo producto"
-          responseExample={`{
+          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+            <EndpointExample
+              method="POST"
+              path="/api/v1/products"
+              description="Crear un nuevo producto"
+              responseExample={`{
   "id": "prod_125",
   "name": "Tableta Ultra HD",
   "price": 499.99,
@@ -93,12 +115,16 @@ const Examples = () => {
   "image_url": "https://example.com/images/tablet-hd.jpg",
   "created_at": "2023-06-20T08:12:45Z"
 }`}
-        />
+            />
+          </div>
 
-        <h3>Gestión de pedidos</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Terminal className="h-5 w-5 text-blue-500" />
+            Gestión de pedidos
+          </h3>
 
-        <CodeBlock
-          code={`// Solicitud para crear un nuevo pedido
+          <CodeBlock
+            code={`// Solicitud para crear un nuevo pedido
 POST /api/v1/orders HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
@@ -169,13 +195,16 @@ Content-Type: application/json
     "cancel": { "href": "/api/v1/orders/order_789/cancel" }
   }
 }`}
-          language="http"
-        />
+            language="http"
+          />
 
-        <h3>Implementación de carrito de compras</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Implementación de carrito de compras
+          </h3>
 
-        <CodeBlock
-          code={`// Solicitud para agregar un producto al carrito
+          <CodeBlock
+            code={`// Solicitud para agregar un producto al carrito
 POST /api/v1/carts/current/items HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
@@ -219,90 +248,105 @@ Content-Type: application/json
     "products": { "href": "/api/v1/products" }
   }
 }`}
-          language="http"
-        />
+            language="http"
+          />
 
-        <h3>Características avanzadas</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <CheckCircle className="h-5 w-5 text-blue-500" />
+            Características avanzadas
+          </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Expansión de relaciones</h4>
-              <p className="mb-2">Permitir incluir recursos relacionados en la respuesta:</p>
-              <code className="block bg-gray-100 p-2 rounded">
-                GET /api/v1/products/prod_123?expand=category,reviews
-              </code>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Expansión de relaciones</h4>
+                <p className="mb-2 text-slate-700">Permitir incluir recursos relacionados en la respuesta:</p>
+                <code className="block bg-slate-100 p-2 rounded">
+                  GET /api/v1/products/prod_123?expand=category,reviews
+                </code>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Filtrado avanzado</h4>
-              <p className="mb-2">Filtrar productos por múltiples criterios:</p>
-              <code className="block bg-gray-100 p-2 rounded">
-                GET /api/v1/products?category=cat_5&min_price=100&max_price=500&in_stock=true
-              </code>
-            </CardContent>
-          </Card>
-        </div>
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Filtrado avanzado</h4>
+                <p className="mb-2 text-slate-700">Filtrar productos por múltiples criterios:</p>
+                <code className="block bg-slate-100 p-2 rounded">
+                  GET /api/v1/products?category=cat_5&min_price=100&max_price=500&in_stock=true
+                </code>
+              </CardContent>
+            </Card>
+          </div>
 
-        <h2>API de sistema de blog</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-indigo-500" />
+            API de sistema de blog
+          </h2>
 
-        <p>
-          Este ejemplo muestra una API REST para un sistema de blog con artículos, 
-          comentarios y usuarios.
-        </p>
+          <p className="text-slate-700">
+            Este ejemplo muestra una API REST para un sistema de blog con artículos, 
+            comentarios y usuarios.
+          </p>
 
-        <h3>Estructura de recursos</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Estructura de recursos
+          </h3>
 
-        <div className="space-y-1 mb-6">
-          <p><code>/posts</code> - Artículos del blog</p>
-          <p><code>/comments</code> - Comentarios en artículos</p>
-          <p><code>/users</code> - Autores y usuarios</p>
-          <p><code>/categories</code> - Categorías de artículos</p>
-          <p><code>/tags</code> - Etiquetas para artículos</p>
-        </div>
+          <div className="space-y-1 mb-6 ml-6 text-slate-700">
+            <p><code>/posts</code> - Artículos del blog</p>
+            <p><code>/comments</code> - Comentarios en artículos</p>
+            <p><code>/users</code> - Autores y usuarios</p>
+            <p><code>/categories</code> - Categorías de artículos</p>
+            <p><code>/tags</code> - Etiquetas para artículos</p>
+          </div>
 
-        <h3>API para el Blog: Endpoints principales</h3>
-        
-        <div className="space-y-6 mb-6">
-          <div>
-            <h4 className="font-semibold mb-3">Artículos (Posts)</h4>
-            <div className="space-y-2">
-              <RouteExample method="GET" path="/api/posts" description="Listar artículos con filtros y paginación" />
-              <RouteExample method="GET" path="/api/posts/:id" description="Obtener un artículo específico" />
-              <RouteExample method="POST" path="/api/posts" description="Crear un nuevo artículo (autenticado)" />
-              <RouteExample method="PUT" path="/api/posts/:id" description="Actualizar un artículo completo" />
-              <RouteExample method="PATCH" path="/api/posts/:id" description="Actualizar partes de un artículo" />
-              <RouteExample method="DELETE" path="/api/posts/:id" description="Eliminar un artículo" />
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <ArrowRight className="h-5 w-5 text-blue-500" />
+            API para el Blog: Endpoints principales
+          </h3>
+          
+          <div className="space-y-6 mb-6">
+            <div>
+              <h4 className="font-semibold mb-3">Artículos (Posts)</h4>
+              <div className="space-y-2">
+                <RouteExample method="GET" path="/api/posts" description="Listar artículos con filtros y paginación" />
+                <RouteExample method="GET" path="/api/posts/:id" description="Obtener un artículo específico" />
+                <RouteExample method="POST" path="/api/posts" description="Crear un nuevo artículo (autenticado)" />
+                <RouteExample method="PUT" path="/api/posts/:id" description="Actualizar un artículo completo" />
+                <RouteExample method="PATCH" path="/api/posts/:id" description="Actualizar partes de un artículo" />
+                <RouteExample method="DELETE" path="/api/posts/:id" description="Eliminar un artículo" />
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-3">Comentarios (Comments)</h4>
+              <div className="space-y-2">
+                <RouteExample method="GET" path="/api/posts/:postId/comments" description="Listar comentarios de un artículo" />
+                <RouteExample method="POST" path="/api/posts/:postId/comments" description="Añadir comentario a un artículo" />
+                <RouteExample method="PUT" path="/api/comments/:id" description="Actualizar un comentario" />
+                <RouteExample method="DELETE" path="/api/comments/:id" description="Eliminar un comentario" />
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-3">Categorías y etiquetas</h4>
+              <div className="space-y-2">
+                <RouteExample method="GET" path="/api/categories" description="Listar todas las categorías" />
+                <RouteExample method="GET" path="/api/tags" description="Listar todas las etiquetas" />
+                <RouteExample method="GET" path="/api/categories/:id/posts" description="Artículos por categoría" />
+                <RouteExample method="GET" path="/api/tags/:name/posts" description="Artículos por etiqueta" />
+              </div>
             </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-3">Comentarios (Comments)</h4>
-            <div className="space-y-2">
-              <RouteExample method="GET" path="/api/posts/:postId/comments" description="Listar comentarios de un artículo" />
-              <RouteExample method="POST" path="/api/posts/:postId/comments" description="Añadir comentario a un artículo" />
-              <RouteExample method="PUT" path="/api/comments/:id" description="Actualizar un comentario" />
-              <RouteExample method="DELETE" path="/api/comments/:id" description="Eliminar un comentario" />
-            </div>
-          </div>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Ejemplos de solicitudes y respuestas
+          </h3>
 
-          <div>
-            <h4 className="font-semibold mb-3">Categorías y etiquetas</h4>
-            <div className="space-y-2">
-              <RouteExample method="GET" path="/api/categories" description="Listar todas las categorías" />
-              <RouteExample method="GET" path="/api/tags" description="Listar todas las etiquetas" />
-              <RouteExample method="GET" path="/api/categories/:id/posts" description="Artículos por categoría" />
-              <RouteExample method="GET" path="/api/tags/:name/posts" description="Artículos por etiqueta" />
-            </div>
-          </div>
-        </div>
-
-        <h3>Ejemplos de solicitudes y respuestas</h3>
-
-        <CodeBlock
-          code={`// Listar posts con filtrado y paginación
+          <CodeBlock
+            code={`// Listar posts con filtrado y paginación
 GET /api/posts?category=technology&tag=javascript&page=2&limit=10 HTTP/1.1
 Host: api.example.com
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -341,11 +385,11 @@ Content-Type: application/json
     "total_pages": 3
   }
 }`}
-          language="http"
-        />
+            language="http"
+          />
 
-        <CodeBlock
-          code={`// Crear un nuevo comentario en un artículo
+          <CodeBlock
+            code={`// Crear un nuevo comentario en un artículo
 POST /api/posts/post_123/comments HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
@@ -375,54 +419,67 @@ Content-Type: application/json
     "author": { "href": "/api/users/user_789" }
   }
 }`}
-          language="http"
-        />
+            language="http"
+          />
 
-        <h3>Uso de la API</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Uso de la API
+          </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Obtener artículos por categoría</h4>
-              <code className="block bg-gray-100 p-2 rounded">
-                GET /api/posts?category=technology&page=2&limit=15
-              </code>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <Card>
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Obtener artículos por categoría</h4>
+                <code className="block bg-gray-100 p-2 rounded">
+                  GET /api/posts?category=technology&page=2&limit=15
+                </code>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Buscar artículos por etiqueta</h4>
-              <code className="block bg-gray-100 p-2 rounded">
-                GET /api/posts?tag=javascript&tag=tutorial
-              </code>
-            </CardContent>
-          </Card>
-        </div>
+            <Card>
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Buscar artículos por etiqueta</h4>
+                <code className="block bg-gray-100 p-2 rounded">
+                  GET /api/posts?tag=javascript&tag=tutorial
+                </code>
+              </CardContent>
+            </Card>
+          </div>
 
-        <h2>API de gestión de tareas</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <ListChecks className="h-5 w-5 text-indigo-500" />
+            API de gestión de tareas
+          </h2>
 
-        <p>
-          Un ejemplo de API REST para una aplicación de gestión de tareas tipo Todo list,
-          con soporte para usuarios, proyectos y tareas.
-        </p>
+          <p className="text-slate-700">
+            Un ejemplo de API REST para una aplicación de gestión de tareas tipo Todo list,
+            con soporte para usuarios, proyectos y tareas.
+          </p>
 
-        <h3>Estructura de recursos</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Estructura de recursos
+          </h3>
 
-        <div className="space-y-1 mb-6">
-          <p><code>/users</code> - Usuarios del sistema</p>
-          <p><code>/projects</code> - Proyectos o listas de tareas</p>
-          <p><code>/tasks</code> - Tareas individuales</p>
-          <p><code>/labels</code> - Etiquetas para categorizar tareas</p>
-        </div>
+          <div className="space-y-1 mb-6 ml-6 text-slate-700">
+            <p><code>/users</code> - Usuarios del sistema</p>
+            <p><code>/projects</code> - Proyectos o listas de tareas</p>
+            <p><code>/tasks</code> - Tareas individuales</p>
+            <p><code>/labels</code> - Etiquetas para categorizar tareas</p>
+          </div>
 
-        <h3>Operaciones con tareas</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Code className="h-5 w-5 text-blue-500" />
+            Operaciones con tareas
+          </h3>
 
-        <EndpointExample
-          method="GET"
-          path="/api/v1/tasks"
-          description="Listar tareas con filtrado por proyecto, etiqueta y estado"
-          responseExample={`{
+          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+            <EndpointExample
+              method="GET"
+              path="/api/v1/tasks"
+              description="Listar tareas con filtrado por proyecto, etiqueta y estado"
+              responseExample={`{
   "data": [
     {
       "id": "task_123",
@@ -458,13 +515,15 @@ Content-Type: application/json
     "total_pages": 2
   }
 }`}
-        />
+            />
+          </div>
 
-        <EndpointExample
-          method="PATCH"
-          path="/api/v1/tasks/task_123"
-          description="Actualizar estado y asignación de una tarea"
-          responseExample={`{
+          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+            <EndpointExample
+              method="PATCH"
+              path="/api/v1/tasks/task_123"
+              description="Actualizar estado y asignación de una tarea"
+              responseExample={`{
   "id": "task_123",
   "title": "Implementar autenticación de usuario",
   "description": "Agregar login con JWT",
@@ -477,43 +536,48 @@ Content-Type: application/json
   "created_at": "2023-06-01T10:00:00Z",
   "updated_at": "2023-06-20T16:45:00Z"
 }`}
-        />
+            />
+          </div>
 
-        <h3>Implementación en ASP.NET Core</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Terminal className="h-5 w-5 text-blue-500" />
+            API de Tareas: Diseño de Recursos y Operaciones
+          </h3>
 
-        <h3>API de Tareas: Diseño de Recursos y Operaciones</h3>
+          <div className="space-y-6 mb-6">
+            <div>
+              <h4 className="font-semibold mb-3">Recursos y Endpoints</h4>
+              <div className="space-y-2">
+                <RouteExample method="GET" path="/api/tasks" description="Listar tareas con múltiples filtros" />
+                <RouteExample method="GET" path="/api/tasks/:id" description="Obtener detalles de una tarea" />
+                <RouteExample method="POST" path="/api/tasks" description="Crear una nueva tarea" />
+                <RouteExample method="PATCH" path="/api/tasks/:id" description="Actualizar estado u otros campos" />
+                <RouteExample method="DELETE" path="/api/tasks/:id" description="Eliminar una tarea" />
+                <RouteExample method="GET" path="/api/projects/:id/tasks" description="Listar tareas de un proyecto" />
+                <RouteExample method="GET" path="/api/labels/:name/tasks" description="Tareas con una etiqueta" />
+              </div>
+            </div>
 
-        <div className="space-y-6 mb-6">
-          <div>
-            <h4 className="font-semibold mb-3">Recursos y Endpoints</h4>
-            <div className="space-y-2">
-              <RouteExample method="GET" path="/api/tasks" description="Listar tareas con múltiples filtros" />
-              <RouteExample method="GET" path="/api/tasks/:id" description="Obtener detalles de una tarea" />
-              <RouteExample method="POST" path="/api/tasks" description="Crear una nueva tarea" />
-              <RouteExample method="PATCH" path="/api/tasks/:id" description="Actualizar estado u otros campos" />
-              <RouteExample method="DELETE" path="/api/tasks/:id" description="Eliminar una tarea" />
-              <RouteExample method="GET" path="/api/projects/:id/tasks" description="Listar tareas de un proyecto" />
-              <RouteExample method="GET" path="/api/labels/:name/tasks" description="Tareas con una etiqueta" />
+            <div>
+              <h4 className="font-semibold mb-3">Diseño de filtros</h4>
+              <div className="space-y-2">
+                <RouteExample method="GET" path="/api/tasks?status=in_progress" description="Filtros por estado" />
+                <RouteExample method="GET" path="/api/tasks?priority=high" description="Filtros por prioridad" />
+                <RouteExample method="GET" path="/api/tasks?labels=backend&labels=security" description="Filtros por etiqueta" />
+                <RouteExample method="GET" path="/api/tasks?project_id=project_456" description="Filtros por proyecto" />
+                <RouteExample method="GET" path="/api/tasks?assignee_id=user_789" description="Filtros por asignación" />
+                <RouteExample method="GET" path="/api/tasks?due_before=2023-06-30" description="Filtros por fecha" />
+              </div>
             </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-3">Diseño de filtros</h4>
-            <div className="space-y-2">
-              <RouteExample method="GET" path="/api/tasks?status=in_progress" description="Filtros por estado" />
-              <RouteExample method="GET" path="/api/tasks?priority=high" description="Filtros por prioridad" />
-              <RouteExample method="GET" path="/api/tasks?labels=backend&labels=security" description="Filtros por etiqueta" />
-              <RouteExample method="GET" path="/api/tasks?project_id=project_456" description="Filtros por proyecto" />
-              <RouteExample method="GET" path="/api/tasks?assignee_id=user_789" description="Filtros por asignación" />
-              <RouteExample method="GET" path="/api/tasks?due_before=2023-06-30" description="Filtros por fecha" />
-            </div>
-          </div>
-        </div>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Ejemplos de Operaciones con Tareas
+          </h3>
 
-        <h3>Ejemplos de Operaciones con Tareas</h3>
-
-        <CodeBlock
-          code={`// Crear una nueva tarea
+          <CodeBlock
+            code={`// Crear una nueva tarea
 POST /api/tasks HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
@@ -547,11 +611,11 @@ Content-Type: application/json
   "created_at": "2023-06-01T10:00:00Z",
   "updated_at": "2023-06-01T10:00:00Z"
 }`}
-          language="http"
-        />
+            language="http"
+          />
 
-        <CodeBlock
-          code={`// Actualizar el estado y reasignar una tarea
+          <CodeBlock
+            code={`// Actualizar el estado y reasignar una tarea
 PATCH /api/tasks/task_123 HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
@@ -579,32 +643,41 @@ Content-Type: application/json
   "created_at": "2023-06-01T10:00:00Z",
   "updated_at": "2023-06-15T14:30:00Z"
 }`}
-          language="http"
-        />
+            language="http"
+          />
 
-        <h2>API de sistema de reservas</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Calendar className="h-5 w-5 text-indigo-500" />
+            API de sistema de reservas
+          </h2>
 
-        <p>
-          Una API REST para un sistema de reservas que permite a los usuarios reservar 
-          recursos como salas de reuniones, equipos o servicios.
-        </p>
+          <p className="text-slate-700">
+            Una API REST para un sistema de reservas que permite a los usuarios reservar 
+            recursos como salas de reuniones, equipos o servicios.
+          </p>
 
-        <h3>Estructura de recursos</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Estructura de recursos
+          </h3>
 
-        <div className="space-y-3 mb-6">
-          <RouteExample method="GET" path="/resources" description="Recursos disponibles para reservar" />
-          <RouteExample method="GET" path="/bookings" description="Reservas realizadas" />
-          <RouteExample method="GET" path="/users" description="Usuarios del sistema" />
-          <RouteExample method="GET" path="/availability" description="Disponibilidad de recursos" />
-        </div>
+          <div className="space-y-3 mb-6">
+            <RouteExample method="GET" path="/resources" description="Recursos disponibles para reservar" />
+            <RouteExample method="GET" path="/bookings" description="Reservas realizadas" />
+            <RouteExample method="GET" path="/users" description="Usuarios del sistema" />
+            <RouteExample method="GET" path="/availability" description="Disponibilidad de recursos" />
+          </div>
 
-        <h3>Verificar disponibilidad</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Verificar disponibilidad
+          </h3>
 
-        <EndpointExample
-          method="GET"
-          path="/api/v1/resources/room_101/availability?date=2023-06-25"
-          description="Comprobar la disponibilidad de un recurso para una fecha específica"
-          responseExample={`{
+          <EndpointExample
+            method="GET"
+            path="/api/v1/resources/room_101/availability?date=2023-06-25"
+            description="Comprobar la disponibilidad de un recurso para una fecha específica"
+            responseExample={`{
   "resource_id": "room_101",
   "name": "Sala de reuniones principal",
   "date": "2023-06-25",
@@ -639,12 +712,15 @@ Content-Type: application/json
     }
   ]
 }`}
-        />
+          />
 
-        <h3>Crear una reserva</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Database className="h-5 w-5 text-blue-500" />
+            Crear una reserva
+          </h3>
 
-        <CodeBlock
-          code={`// Solicitud para crear una reserva
+          <CodeBlock
+            code={`// Solicitud para crear una reserva
 POST /api/v1/bookings HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
@@ -706,100 +782,107 @@ Content-Type: application/json
     "cancel": { "href": "/api/v1/bookings/book_789/cancel" }
   }
 }`}
-          language="http"
-        />
+            language="http"
+          />
 
-        <h2>Consideraciones de diseño comunes</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-indigo-500" />
+            Consideraciones de diseño comunes
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Consistencia</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Usar convenciones de nomenclatura consistentes</li>
-                <li>Estructurar respuestas de manera uniforme</li>
-                <li>Aplicar los mismos patrones de paginación y filtrado</li>
-                <li>Mantener coherencia en los códigos de error</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Consistencia</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Usar convenciones de nomenclatura consistentes</li>
+                  <li>Estructurar respuestas de manera uniforme</li>
+                  <li>Aplicar los mismos patrones de paginación y filtrado</li>
+                  <li>Mantener coherencia en los códigos de error</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Rendimiento</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Implementar caché para recursos frecuentes</li>
-                <li>Optimizar consultas de base de datos</li>
-                <li>Permitir selección de campos (fields=id,name)</li>
-                <li>Paginar colecciones grandes</li>
-                <li>Comprimir respuestas (gzip)</li>
-              </ul>
-            </CardContent>
-          </Card>
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Rendimiento</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Implementar caché para recursos frecuentes</li>
+                  <li>Optimizar consultas de base de datos</li>
+                  <li>Permitir selección de campos (fields=id,name)</li>
+                  <li>Paginar colecciones grandes</li>
+                  <li>Comprimir respuestas (gzip)</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Escalabilidad</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Diseñar APIs sin estado (stateless)</li>
-                <li>Implementar rate limiting</li>
-                <li>Versionar APIs para cambios importantes</li>
-                <li>Usar CDNs para contenido estático</li>
-                <li>Considerar arquitecturas microservicios</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        <h2>Herramientas y recursos</h2>
-
-        <div className="space-y-4 mb-8">
-          <div>
-            <h4 className="font-semibold">Herramientas para desarrollo de APIs</h4>
-            <ul className="list-disc pl-6 space-y-1">
-              <li>Postman - Pruebas y documentación de API</li>
-              <li>Insomnia - Cliente REST alternativo</li>
-              <li>Swagger/OpenAPI - Especificación y documentación</li>
-              <li>JSON Server - Mock de API REST para desarrollo</li>
-              <li>HTTPie - Cliente HTTP para línea de comandos</li>
-              <li>Pactum - Framework de pruebas de contrato</li>
-            </ul>
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Escalabilidad</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Diseñar APIs sin estado (stateless)</li>
+                  <li>Implementar rate limiting</li>
+                  <li>Versionar APIs para cambios importantes</li>
+                  <li>Usar CDNs para contenido estático</li>
+                  <li>Considerar arquitecturas microservicios</li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
 
-          <div>
-            <h4 className="font-semibold">Frameworks para implementación de APIs REST</h4>
-            <ul className="list-disc pl-6 space-y-1">
-              <li>Express.js (Node.js)</li>
-              <li>FastAPI (Python)</li>
-              <li>Spring Boot (Java)</li>
-              <li>ASP.NET Core (C#)</li>
-              <li>Laravel (PHP)</li>
-              <li>Ruby on Rails (Ruby)</li>
-              <li>Django REST Framework (Python)</li>
-            </ul>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Codepen className="h-5 w-5 text-indigo-500" />
+            Herramientas y recursos
+          </h2>
+
+          <div className="space-y-4 mb-8">
+            <div>
+              <h4 className="font-semibold">Herramientas para desarrollo de APIs</h4>
+              <ul className="list-disc pl-6 space-y-1 text-slate-700">
+                <li>Postman - Pruebas y documentación de API</li>
+                <li>Insomnia - Cliente REST alternativo</li>
+                <li>Swagger/OpenAPI - Especificación y documentación</li>
+                <li>JSON Server - Mock de API REST para desarrollo</li>
+                <li>HTTPie - Cliente HTTP para línea de comandos</li>
+                <li>Pactum - Framework de pruebas de contrato</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold">Frameworks para implementación de APIs REST</h4>
+              <ul className="list-disc pl-6 space-y-1 text-slate-700">
+                <li>Express.js (Node.js)</li>
+                <li>FastAPI (Python)</li>
+                <li>Spring Boot (Java)</li>
+                <li>ASP.NET Core (C#)</li>
+                <li>Laravel (PHP)</li>
+                <li>Ruby on Rails (Ruby)</li>
+                <li>Django REST Framework (Python)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-200 rounded-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold mb-2">Conclusión</h3>
+            <p className="text-slate-700">
+              Los ejemplos anteriores muestran diferentes formas de implementar APIs REST para escenarios comunes.
+              Al diseñar su propia API, considere las necesidades específicas de su aplicación, pero mantenga
+              presentes los principios fundamentales REST y las mejores prácticas para asegurar que su API sea
+              intuitiva, consistente, escalable y fácil de mantener.
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8">
+            <h4 className="text-indigo-900 font-medium">💡 Consejo</h4>
+            <p className="text-indigo-800">
+              Invierta tiempo en el diseño inicial de su API. Un buen diseño desde el principio ahorrará
+              tiempo y recursos en el futuro, evitando cambios incompatibles que podrían romper integraciones
+              existentes. Considere crear un prototipo o mock de su API y probarlo con casos de uso reales antes
+              de la implementación completa.
+            </p>
           </div>
         </div>
-
-        <div className="bg-gray-50 border border-gray-200 rounded-md p-6 mb-8">
-          <h3 className="text-lg font-semibold mb-2">Conclusión</h3>
-          <p>
-            Los ejemplos anteriores muestran diferentes formas de implementar APIs REST para escenarios comunes.
-            Al diseñar su propia API, considere las necesidades específicas de su aplicación, pero mantenga
-            presentes los principios fundamentales REST y las mejores prácticas para asegurar que su API sea
-            intuitiva, consistente, escalable y fácil de mantener.
-          </p>
-        </div>
-
-        <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-8">
-          <h4 className="text-blue-900 font-medium">💡 Consejo</h4>
-          <p className="text-blue-800">
-            Invierta tiempo en el diseño inicial de su API. Un buen diseño desde el principio ahorrará
-            tiempo y recursos en el futuro, evitando cambios incompatibles que podrían romper integraciones
-            existentes. Considere crear un prototipo o mock de su API y probarlo con casos de uso reales antes
-            de la implementación completa.
-          </p>
-        </div>
-      </PageContent>
+      </div>
     </PageLayout>
   );
 };

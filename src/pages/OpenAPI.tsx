@@ -1,73 +1,90 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageContent } from "@/components/PageContent";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { Code, Terminal, FileJson, CheckCircle, Book, Server, Shield, LayoutList, Database, Info, FileCode } from "lucide-react";
 
 const OpenAPI = () => {
   return (
     <PageLayout>
-      <PageContent
-        title="OpenAPI/Swagger"
-        description="Uso de OpenAPI para documentar APIs REST de forma efectiva."
-        path={["Documentación", "OpenAPI/Swagger"]}
-      >
-        <p>
-          OpenAPI (anteriormente conocido como Swagger) es un formato de especificación para describir,
-          producir, consumir y visualizar servicios web RESTful. Proporciona un estándar para documentar
-          APIs que puede ser entendido tanto por humanos como por máquinas.
-        </p>
-
-        <h2>¿Qué es OpenAPI?</h2>
-
-        <p>
-          OpenAPI Specification (OAS) define un formato estándar para describir una API REST de forma
-          que permite a los desarrolladores:
-        </p>
-
-        <ul className="list-disc pl-6 mb-6 space-y-2">
-          <li>Documentar la API de manera completa y precisa</li>
-          <li>Generar código cliente y servidor automáticamente</li>
-          <li>Crear interfaces de usuario interactivas para explorar la API</li>
-          <li>Validar implementaciones contra la especificación</li>
-          <li>Mantener la documentación sincronizada con el código</li>
-        </ul>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Ventajas de OpenAPI</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Estándar abierto e independiente del lenguaje</li>
-                <li>Ecosistema rico de herramientas y librerías</li>
-                <li>Soporte para todo el ciclo de vida de la API</li>
-                <li>Facilita la colaboración entre equipos</li>
-                <li>Mejora la experiencia del desarrollador</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">OpenAPI vs. Swagger</h4>
-              <p>
-                <strong>Swagger</strong> era el nombre original de la especificación.
-                En 2015, Swagger fue donado a la Fundación Linux y renombrado a <strong>OpenAPI</strong>.
-                Hoy, OpenAPI es el nombre de la especificación, mientras que Swagger se refiere a las
-                herramientas que la rodean (Swagger UI, Swagger Editor, etc.)
-              </p>
-            </CardContent>
-          </Card>
+      <div className="space-y-10">
+        {/* Page header */}
+        <div className="border-b pb-8">
+          <div className="flex items-center gap-2">
+            <Link to="/examples" className="text-sm text-slate-500 hover:text-slate-700">Documentación</Link>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">OpenAPI/Swagger</h1>
+          <p className="text-lg text-slate-700">
+            Uso de OpenAPI para documentar APIs REST de forma efectiva.
+          </p>
         </div>
 
-        <h2>Estructura de un documento OpenAPI</h2>
+        {/* Main content */}
+        <div className="space-y-8">
+          <p>
+            OpenAPI (anteriormente conocido como Swagger) es un formato de especificación para describir,
+            producir, consumir y visualizar servicios web RESTful. Proporciona un estándar para documentar
+            APIs que puede ser entendido tanto por humanos como por máquinas.
+          </p>
 
-        <p>
-          Un documento OpenAPI puede ser escrito en formato YAML o JSON. A continuación, se muestra
-          la estructura básica de un documento OpenAPI 3.0:
-        </p>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Book className="h-5 w-5 text-indigo-500" />
+            ¿Qué es OpenAPI?
+          </h2>
 
-        <CodeBlock
-          code={`openapi: 3.0.3
+          <p>
+            OpenAPI Specification (OAS) define un formato estándar para describir una API REST de forma
+            que permite a los desarrolladores:
+          </p>
+
+          <ul className="ml-6 space-y-1 list-disc text-slate-700">
+            <li>Documentar la API de manera completa y precisa</li>
+            <li>Generar código cliente y servidor automáticamente</li>
+            <li>Crear interfaces de usuario interactivas para explorar la API</li>
+            <li>Validar implementaciones contra la especificación</li>
+            <li>Mantener la documentación sincronizada con el código</li>
+          </ul>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Ventajas de OpenAPI</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Estándar abierto e independiente del lenguaje</li>
+                  <li>Ecosistema rico de herramientas y librerías</li>
+                  <li>Soporte para todo el ciclo de vida de la API</li>
+                  <li>Facilita la colaboración entre equipos</li>
+                  <li>Mejora la experiencia del desarrollador</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">OpenAPI vs. Swagger</h4>
+                <p className="text-slate-700">
+                  <strong>Swagger</strong> era el nombre original de la especificación.
+                  En 2015, Swagger fue donado a la Fundación Linux y renombrado a <strong>OpenAPI</strong>.
+                  Hoy, OpenAPI es el nombre de la especificación, mientras que Swagger se refiere a las
+                  herramientas que la rodean (Swagger UI, Swagger Editor, etc.)
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <FileJson className="h-5 w-5 text-indigo-500" />
+            Estructura de un documento OpenAPI
+          </h2>
+
+          <p>
+            Un documento OpenAPI puede ser escrito en formato YAML o JSON. A continuación, se muestra
+            la estructura básica de un documento OpenAPI 3.0:
+          </p>
+
+          <CodeBlock
+            code={`openapi: 3.0.3
 info:
   title: API de Gestión de Productos
   description: API para gestionar productos, categorías y reviews
@@ -179,71 +196,77 @@ components:
           type: integer
         total_pages:
           type: integer`}
-          language="yaml"
-        />
+            language="yaml"
+          />
 
-        <h3>Elementos principales</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <LayoutList className="h-5 w-5 text-blue-500" />
+            Elementos principales
+          </h3>
 
-        <div className="space-y-4 mb-8">
-          <div>
-            <h4 className="font-semibold">Metadatos (info)</h4>
-            <p>
-              Información general sobre la API, como título, descripción, versión, términos de servicio y
-              datos de contacto.
-            </p>
+          <div className="space-y-4 mb-8">
+            <div>
+              <h4 className="font-semibold">Metadatos (info)</h4>
+              <p className="text-slate-700">
+                Información general sobre la API, como título, descripción, versión, términos de servicio y
+                datos de contacto.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold">Servidores (servers)</h4>
+              <p className="text-slate-700">
+                Lista de servidores y URLs donde la API está disponible. Puede incluir servidores de
+                producción, staging, desarrollo, etc.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold">Rutas (paths)</h4>
+              <p className="text-slate-700">
+                Define los endpoints disponibles en la API y las operaciones HTTP que soportan (GET,
+                POST, PUT, DELETE, etc.). Cada operación describe parámetros, cuerpo de la solicitud,
+                respuestas posibles y ejemplos.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold">Componentes (components)</h4>
+              <p className="text-slate-700">
+                Definiciones reutilizables, como esquemas de datos (schemas), parámetros, cuerpos de
+                solicitud, respuestas, encabezados, y ejemplos.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold">Seguridad (security)</h4>
+              <p className="text-slate-700">
+                Define los esquemas de seguridad utilizados por la API, como API keys, autenticación
+                básica, OAuth2, etc.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold">Tags (tags)</h4>
+              <p className="text-slate-700">
+                Permiten agrupar operaciones por categorías lógicas, facilitando la organización y
+                navegación de la documentación.
+              </p>
+            </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold">Servidores (servers)</h4>
-            <p>
-              Lista de servidores y URLs donde la API está disponible. Puede incluir servidores de
-              producción, staging, desarrollo, etc.
-            </p>
-          </div>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <FileCode className="h-5 w-5 text-indigo-500" />
+            Documentación detallada de endpoints
+          </h2>
+          
+          <p className="text-slate-700">
+            Documentar endpoints de manera efectiva requiere proporcionar información clara sobre parámetros, 
+            cuerpos de solicitud, respuestas, y ejemplos.
+          </p>
 
-          <div>
-            <h4 className="font-semibold">Rutas (paths)</h4>
-            <p>
-              Define los endpoints disponibles en la API y las operaciones HTTP que soportan (GET,
-              POST, PUT, DELETE, etc.). Cada operación describe parámetros, cuerpo de la solicitud,
-              respuestas posibles y ejemplos.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold">Componentes (components)</h4>
-            <p>
-              Definiciones reutilizables, como esquemas de datos (schemas), parámetros, cuerpos de
-              solicitud, respuestas, encabezados, y ejemplos.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold">Seguridad (security)</h4>
-            <p>
-              Define los esquemas de seguridad utilizados por la API, como API keys, autenticación
-              básica, OAuth2, etc.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold">Tags (tags)</h4>
-            <p>
-              Permiten agrupar operaciones por categorías lógicas, facilitando la organización y
-              navegación de la documentación.
-            </p>
-          </div>
-        </div>
-
-        <h2>Documentación detallada de endpoints</h2>
-        
-        <p>
-          Documentar endpoints de manera efectiva requiere proporcionar información clara sobre parámetros, 
-          cuerpos de solicitud, respuestas, y ejemplos.
-        </p>
-
-        <CodeBlock
-          code={`# Ejemplo detallado de un endpoint
+          <CodeBlock
+            code={`# Ejemplo detallado de un endpoint
 /orders/{orderId}:
   get:
     tags:
@@ -311,84 +334,90 @@ components:
         $ref: '#/components/responses/Unauthorized'
     security:
       - bearerAuth: []`}
-          language="yaml"
-        />
+            language="yaml"
+          />
 
-        <h2>Mejores prácticas para OpenAPI</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Organización del documento</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Usar tags para agrupar endpoints relacionados</li>
-                <li>Organizar paths de manera lógica y consistente</li>
-                <li>Separar definiciones comunes en components/schemas</li>
-                <li>Usar referencias ($ref) para evitar duplicación</li>
-                <li>Dividir documentos grandes en múltiples archivos</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-indigo-500" />
+            Mejores prácticas para OpenAPI
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Organización del documento</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Usar tags para agrupar endpoints relacionados</li>
+                  <li>Organizar paths de manera lógica y consistente</li>
+                  <li>Separar definiciones comunes en components/schemas</li>
+                  <li>Usar referencias ($ref) para evitar duplicación</li>
+                  <li>Dividir documentos grandes en múltiples archivos</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Documentación clara</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Usar descripciones claras y completas</li>
-                <li>Incluir ejemplos para solicitudes y respuestas</li>
-                <li>Documentar todos los posibles códigos de respuesta</li>
-                <li>Especificar formatos para strings (date, email, uuid)</li>
-                <li>Incluir restricciones (min/max, pattern, enum)</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Documentación clara</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Usar descripciones claras y completas</li>
+                  <li>Incluir ejemplos para solicitudes y respuestas</li>
+                  <li>Documentar todos los posibles códigos de respuesta</li>
+                  <li>Especificar formatos para strings (date, email, uuid)</li>
+                  <li>Incluir restricciones (min/max, pattern, enum)</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Seguridad</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Definir todos los esquemas de seguridad utilizados</li>
-                <li>Especificar qué endpoints requieren autenticación</li>
-                <li>Documentar diferentes niveles de acceso (scopes)</li>
-                <li>Incluir ejemplos de autenticación</li>
-                <li>Documentar procesos de obtención de tokens</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Seguridad</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Definir todos los esquemas de seguridad utilizados</li>
+                  <li>Especificar qué endpoints requieren autenticación</li>
+                  <li>Documentar diferentes niveles de acceso (scopes)</li>
+                  <li>Incluir ejemplos de autenticación</li>
+                  <li>Documentar procesos de obtención de tokens</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Versionado y compatibilidad</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Mantener la versión de OpenAPI actualizada</li>
-                <li>Documentar la versión de la API</li>
-                <li>Usar marcas de deprecación para features obsoletos</li>
-                <li>Mantener retrocompatibilidad en especificaciones</li>
-                <li>Versionar la especificación junto con la API</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Versionado y compatibilidad</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Mantener la versión de OpenAPI actualizada</li>
+                  <li>Documentar la versión de la API</li>
+                  <li>Usar marcas de deprecación para features obsoletos</li>
+                  <li>Mantener retrocompatibilidad en especificaciones</li>
+                  <li>Versionar la especificación junto con la API</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-8">
-          <h4 className="text-blue-900 font-medium">💡 Consejo</h4>
-          <p className="text-blue-800">
-            Mantén tu especificación OpenAPI sincronizada con tu código. Considera usar herramientas de
-            generación automática a partir de comentarios o anotaciones en el código fuente. Esto
-            ayuda a evitar discrepancias entre la documentación y la implementación real.
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8">
+            <h4 className="text-indigo-900 font-medium">💡 Consejo</h4>
+            <p className="text-indigo-800">
+              Mantén tu especificación OpenAPI sincronizada con tu código. Considera usar herramientas de
+              generación automática a partir de comentarios o anotaciones en el código fuente. Esto
+              ayuda a evitar discrepancias entre la documentación y la implementación real.
+            </p>
+          </div>
+
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Shield className="h-5 w-5 text-indigo-500" />
+            Documentación de seguridad
+          </h2>
+
+          <p className="text-slate-700">
+            OpenAPI permite documentar los diferentes mecanismos de seguridad que utiliza tu API:
           </p>
-        </div>
 
-        <h2>Documentación de seguridad</h2>
-
-        <p>
-          OpenAPI permite documentar los diferentes mecanismos de seguridad que utiliza tu API:
-        </p>
-
-        <CodeBlock
-          code={`components:
+          <CodeBlock
+            code={`components:
   securitySchemes:
     bearerAuth:
       type: http
@@ -430,80 +459,86 @@ paths:
       security:
         - bearerAuth: []
           OAuth2: [admin]  # Requiere scope 'admin'`}
-          language="yaml"
-        />
-
-        <h2>Herramientas del ecosistema OpenAPI</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Herramientas de documentación</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Swagger UI</li>
-                <li>ReDoc</li>
-                <li>Stoplight Studio</li>
-                <li>Swagger Editor</li>
-                <li>OpenAPI Explorer</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Generadores de código</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Swagger Codegen</li>
-                <li>OpenAPI Generator</li>
-                <li>NSwag</li>
-                <li>AutoRest</li>
-                <li>openapi-typescript</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Integración con frameworks</h4>
-              <ul className="list-disc pl-4 space-y-1">
-                <li>Springdoc-OpenAPI (Spring)</li>
-                <li>Swagger-PHP</li>
-                <li>Express OpenAPI</li>
-                <li>FastAPI (Python)</li>
-                <li>NestJS Swagger</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        <h3>Swagger UI</h3>
-
-        <p>
-          Swagger UI es una de las herramientas más populares para visualizar y probar APIs documentadas
-          con OpenAPI. Proporciona una interfaz interactiva que permite explorar los endpoints, enviar
-          solicitudes de prueba y ver las respuestas.
-        </p>
-
-        <div className="border border-gray-200 rounded-lg mb-8">
-          <img 
-            src="https://static1.smartbear.co/swagger/media/images/tools/opensource/swagger_ui.png"
-            alt="Ejemplo de Swagger UI"
-            className="w-full rounded-lg"
+            language="yaml"
           />
-        </div>
 
-        <h2>Generación de documentación a partir del código</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Terminal className="h-5 w-5 text-indigo-500" />
+            Herramientas del ecosistema OpenAPI
+          </h2>
 
-        <p>
-          Una práctica recomendada es generar la documentación OpenAPI directamente desde el código
-          fuente, utilizando anotaciones o comentarios especiales. Esto garantiza que la documentación
-          siempre está sincronizada con la implementación actual.
-        </p>
-        
-        <h3>Ejemplo en Node.js/Express con express-jsdoc-swagger</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Herramientas de documentación</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Swagger UI</li>
+                  <li>ReDoc</li>
+                  <li>Stoplight Studio</li>
+                  <li>Swagger Editor</li>
+                  <li>OpenAPI Explorer</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-        <CodeBlock
-          code={`// server.js
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Generadores de código</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Swagger Codegen</li>
+                  <li>OpenAPI Generator</li>
+                  <li>NSwag</li>
+                  <li>AutoRest</li>
+                  <li>openapi-typescript</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border border-slate-200 shadow-sm">
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Integración con frameworks</h4>
+                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                  <li>Springdoc-OpenAPI (Spring)</li>
+                  <li>Swagger-PHP</li>
+                  <li>Express OpenAPI</li>
+                  <li>FastAPI (Python)</li>
+                  <li>NestJS Swagger</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+            <Info className="h-5 w-5 text-blue-500" />
+            Swagger UI
+          </h3>
+
+          <p>
+            Swagger UI es una de las herramientas más populares para visualizar y probar APIs documentadas
+            con OpenAPI. Proporciona una interfaz interactiva que permite explorar los endpoints, enviar
+            solicitudes de prueba y ver las respuestas.
+          </p>
+
+          <div className="border border-gray-200 rounded-lg mb-8">
+            <img 
+              src="https://static1.smartbear.co/swagger/media/images/tools/opensource/swagger_ui.png"
+              alt="Ejemplo de Swagger UI"
+              className="w-full rounded-lg"
+            />
+          </div>
+
+          <h2>Generación de documentación a partir del código</h2>
+
+          <p>
+            Una práctica recomendada es generar la documentación OpenAPI directamente desde el código
+            fuente, utilizando anotaciones o comentarios especiales. Esto garantiza que la documentación
+            siempre está sincronizada con la implementación actual.
+          </p>
+          
+          <h3>Ejemplo en Node.js/Express con express-jsdoc-swagger</h3>
+
+          <CodeBlock
+            code={`// server.js
 const express = require('express');
 const expressJSDocSwagger = require('express-jsdoc-swagger');
 
@@ -575,13 +610,13 @@ app.post('/api/products', (req, res) => {
  */
 
 app.listen(3000, () => console.log('Server running on port 3000'));`}
-          language="javascript"
-        />
+            language="javascript"
+          />
 
-        <h3>Ejemplo en Spring Boot (Java)</h3>
+          <h3>Ejemplo en Spring Boot (Java)</h3>
 
-        <CodeBlock
-          code={`// ProductController.java
+          <CodeBlock
+            code={`// ProductController.java
 package com.example.api.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -650,13 +685,13 @@ public class Product {
     
     // Getters, setters, etc.
 }`}
-          language="java"
-        />
+            language="java"
+          />
 
-        <h3>Ejemplo en FastAPI (Python)</h3>
+          <h3>Ejemplo en FastAPI (Python)</h3>
 
-        <CodeBlock
-          code={`# main.py
+          <CodeBlock
+            code={`# main.py
 from fastapi import FastAPI, Query, Path, Body, HTTPException
 from pydantic import BaseModel, Field
 from typing import List, Optional
@@ -734,86 +769,52 @@ async def get_product(
     # Implementación
     # Si no se encuentra:
     raise HTTPException(status_code=404, detail="Producto no encontrado")`}
-          language="python"
-        />
+            language="python"
+          />
 
-        <h2>OpenAPI y pruebas automatizadas</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Server className="h-5 w-5 text-indigo-500" />
+            OpenAPI y pruebas automatizadas
+          </h2>
 
-        <p>
-          Las especificaciones OpenAPI no solo sirven para documentación, sino también como base para
-          pruebas automatizadas de API:
-        </p>
-
-        <ul className="list-disc pl-6 mb-6 space-y-2">
-          <li>Generar casos de prueba basados en la especificación</li>
-          <li>Validar respuestas contra los esquemas definidos</li>
-          <li>Simular solicitudes con ejemplos incluidos en la documentación</li>
-          <li>Configurar pruebas de integración continua</li>
-          <li>Detectar regresiones cuando la API cambia</li>
-        </ul>
-
-        <CodeBlock
-          code={`// Ejemplo de prueba con swagger-typescript-api y Jest
-import { Api } from './generated-api-client';
-
-describe('Products API', () => {
-  const api = new Api({
-    baseUrl: 'https://api.example.com/v1',
-    headers: {
-      Authorization: \`Bearer \${process.env.API_TOKEN}\`
-    }
-  });
-
-  test('should fetch products list', async () => {
-    const response = await api.products.getProducts({
-      page: 1,
-      size: 10
-    });
-
-    expect(response.status).toBe(200);
-    expect(response.data.data).toBeInstanceOf(Array);
-    expect(response.data.pagination).toHaveProperty('total');
-  });
-
-  test('should create new product', async () => {
-    const newProduct = {
-      name: 'Test Product',
-      price: 99.99,
-      category_id: 'cat_123456'
-    };
-
-    const response = await api.products.createProduct(newProduct);
-
-    expect(response.status).toBe(201);
-    expect(response.data).toHaveProperty('id');
-    expect(response.data.name).toBe(newProduct.name);
-    expect(response.data.price).toBe(newProduct.price);
-  });
-});`}
-          language="javascript"
-        />
-
-        <h2>Recursos adicionales</h2>
-
-        <ul className="list-disc pl-6 mb-8 space-y-2">
-          <li><a rel="noopener noreferrer" href="https://swagger.io/specification/" target="_blank" className="text-blue-600 hover:underline">Especificación OpenAPI oficial</a></li>
-          <li><a rel="noopener noreferrer" href="https://swagger.io/tools/swagger-ui/" target="_blank" className="text-blue-600 hover:underline">Swagger UI</a></li>
-          <li><a rel="noopener noreferrer" href="https://github.com/swagger-api/swagger-editor" target="_blank" className="text-blue-600 hover:underline">Swagger Editor</a></li>
-          <li><a rel="noopener noreferrer" href="https://redocly.com/redoc/" target="_blank" className="text-blue-600 hover:underline">ReDoc - Documentación alternativa</a></li>
-          <li><a rel="noopener noreferrer" href="https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml" target="_blank" className="text-blue-600 hover:underline">Ejemplo PetStore API (OpenAPI 3.0)</a></li>
-        </ul>
-
-        <div className="bg-gray-50 border border-gray-200 rounded-md p-6 mb-8">
-          <h3 className="text-lg font-semibold mb-2">Conclusión</h3>
-          <p>
-            OpenAPI se ha convertido en el estándar de facto para documentar APIs REST. Proporciona un formato
-            estructurado que no solo mejora la comunicación entre equipos, sino que también habilita la generación
-            automática de código, pruebas y herramientas de exploración interactiva. Adoptar OpenAPI como parte
-            de tu flujo de trabajo de desarrollo de API puede mejorar significativamente la calidad, consistencia
-            y usabilidad de tus servicios.
+          <p className="text-slate-700">
+            Las especificaciones OpenAPI no solo sirven para documentación, sino también como base para
+            pruebas automatizadas de API:
           </p>
+
+          <ul className="ml-6 space-y-1 list-disc text-slate-700">
+            <li>Generar casos de prueba basados en la especificación</li>
+            <li>Validar respuestas contra los esquemas definidos</li>
+            <li>Simular solicitudes con ejemplos incluidos en la documentación</li>
+            <li>Configurar pruebas de integración continua</li>
+            <li>Detectar regresiones cuando la API cambia</li>
+          </ul>
+
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Database className="h-5 w-5 text-indigo-500" />
+            Recursos adicionales
+          </h2>
+
+          <ul className="ml-6 space-y-1 list-disc mb-8 text-slate-700">
+            <li><a rel="noopener noreferrer" href="https://swagger.io/specification/" target="_blank" className="text-indigo-600 hover:underline">Especificación OpenAPI oficial</a></li>
+            <li><a rel="noopener noreferrer" href="https://swagger.io/tools/swagger-ui/" target="_blank" className="text-indigo-600 hover:underline">Swagger UI</a></li>
+            <li><a rel="noopener noreferrer" href="https://github.com/swagger-api/swagger-editor" target="_blank" className="text-indigo-600 hover:underline">Swagger Editor</a></li>
+            <li><a rel="noopener noreferrer" href="https://redocly.com/redoc/" target="_blank" className="text-indigo-600 hover:underline">ReDoc - Documentación alternativa</a></li>
+            <li><a rel="noopener noreferrer" href="https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml" target="_blank" className="text-indigo-600 hover:underline">Ejemplo PetStore API (OpenAPI 3.0)</a></li>
+          </ul>
+
+          <div className="bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-200 rounded-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold mb-2">Conclusión</h3>
+            <p className="text-slate-700">
+              OpenAPI se ha convertido en el estándar de facto para documentar APIs REST. Proporciona un formato
+              estructurado que no solo mejora la comunicación entre equipos, sino que también habilita la generación
+              automática de código, pruebas y herramientas de exploración interactiva. Adoptar OpenAPI como parte
+              de tu flujo de trabajo de desarrollo de API puede mejorar significativamente la calidad, consistencia
+              y usabilidad de tus servicios.
+            </p>
+          </div>
         </div>
-      </PageContent>
+      </div>
     </PageLayout>
   );
 };

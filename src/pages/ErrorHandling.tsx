@@ -29,7 +29,7 @@ const ErrorHandling = () => {
           </p>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <Code className="h-5 w-5 text-slate-700" />
+            <Code className="h-5 w-5 text-indigo-500" />
             Estructura de errores
           </h2>
 
@@ -71,7 +71,7 @@ const ErrorHandling = () => {
           </Card>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
-            <Info className="h-5 w-5 text-slate-700" />
+            <Info className="h-5 w-5 text-indigo-500" />
             Códigos de estado HTTP comunes
           </h2>
 
@@ -189,7 +189,7 @@ const ErrorHandling = () => {
           </div>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
-            <Terminal className="h-5 w-5 text-slate-700" />
+            <Terminal className="h-5 w-5 text-indigo-500" />
             Patrones comunes de error
           </h2>
 
@@ -328,42 +328,42 @@ const ErrorHandling = () => {
           </Card>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
-            <CheckCircle className="h-5 w-5 text-slate-700" />
+            <CheckCircle className="h-5 w-5 text-indigo-500" />
             Mejores Prácticas
           </h2>
 
           <div className="space-y-4 mt-6">
-            <div className="border border-slate-200 rounded-md p-4">
+            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
               <h3 className="font-medium">Mensajes de Error Claros y Accionables</h3>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                   <span><strong>Específicos:</strong> Indicar exactamente qué falló</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                   <span><strong>Accionables:</strong> Sugerir qué hacer para resolver el problema</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                   <span><strong>Concisos:</strong> Breves pero informativos</span>
                 </li>
               </ul>
             </div>
 
-            <div className="border border-slate-200 rounded-md p-4">
+            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
               <h3 className="font-medium">Códigos de Error Coherentes</h3>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                   <span>Usar formatos predecibles (ej. snake_case para todos los códigos)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                   <span>Agrupar códigos por categoría (ej. auth_*, validation_*)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                   <span>Incluir identificadores únicos para errores del servidor</span>
                 </li>
               </ul>
@@ -371,7 +371,7 @@ const ErrorHandling = () => {
           </div>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
-            <Terminal className="h-5 w-5 text-slate-700" />
+            <Terminal className="h-5 w-5 text-indigo-500" />
             Implementación Técnica
           </h2>
 
@@ -441,7 +441,7 @@ app.use((err, req, res, next) => {
           </Card>
 
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
-            <Info className="h-5 w-5 text-slate-700" />
+            <Info className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h2>
 
@@ -492,14 +492,14 @@ app.use((err, req, res, next) => {
             </Card>
           </div>
 
-          <div className="border border-slate-200 rounded-md p-6 mt-8 bg-slate-50">
-            <p className="text-slate-700">
+          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
+            <p className="italic text-indigo-900 font-medium">
               "Un buen sistema de manejo de errores es como un buen sistema de navegación: 
               no solo te dice que estás perdido, sino que te ayuda a encontrar el camino correcto.
               Las APIs con errores claros y accionables crean una experiencia de desarrollador
               superior y reducen significativamente el tiempo de depuración e integración."
             </p>
-          </div>
+          </blockquote>
         </div>
       </div>
     </PageLayout>

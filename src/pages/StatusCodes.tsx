@@ -28,7 +28,7 @@ const StatusCodes = () => {
           </p>
           
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <Info className="h-5 w-5 text-slate-700" />
+            <Info className="h-5 w-5 text-indigo-500" />
             Categorías de Códigos de Estado
           </h2>
           
@@ -36,7 +36,7 @@ const StatusCodes = () => {
             <Card className="border border-slate-200 shadow-sm">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-slate-700" />
+                  <CheckCircle className="h-5 w-5 text-indigo-500" />
                   2xx: Éxito
                 </CardTitle>
                 <CardDescription>La solicitud se procesó correctamente</CardDescription>
@@ -46,7 +46,7 @@ const StatusCodes = () => {
             <Card className="border border-slate-200 shadow-sm">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2">
-                  <ArrowRight className="h-5 w-5 text-slate-700" />
+                  <ArrowRight className="h-5 w-5 text-indigo-500" />
                   3xx: Redirección
                 </CardTitle>
                 <CardDescription>Se requiere acción adicional</CardDescription>
@@ -56,7 +56,7 @@ const StatusCodes = () => {
             <Card className="border border-slate-200 shadow-sm">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="h-5 w-5 text-slate-700" />
+                  <AlertTriangle className="h-5 w-5 text-indigo-500" />
                   4xx: Error del Cliente
                 </CardTitle>
                 <CardDescription>Problema con la solicitud</CardDescription>
@@ -66,7 +66,7 @@ const StatusCodes = () => {
             <Card className="border border-slate-200 shadow-sm">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2">
-                  <XCircle className="h-5 w-5 text-slate-700" />
+                  <XCircle className="h-5 w-5 text-indigo-500" />
                   5xx: Error del Servidor
                 </CardTitle>
                 <CardDescription>Problema en el servidor</CardDescription>
@@ -75,7 +75,7 @@ const StatusCodes = () => {
           </div>
           
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-slate-700" />
+            <CheckCircle className="h-5 w-5 text-indigo-500" />
             Códigos de Éxito (2xx)
           </h2>
           
@@ -138,7 +138,7 @@ Location: /api/products/456
           </div>
           
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <AlertTriangle className="h-5 w-5 text-slate-700" />
+            <AlertTriangle className="h-5 w-5 text-indigo-500" />
             Códigos de Error del Cliente (4xx)
           </h2>
           
@@ -272,7 +272,7 @@ Content-Type: application/json
           </div>
           
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <XCircle className="h-5 w-5 text-slate-700" />
+            <XCircle className="h-5 w-5 text-indigo-500" />
             Códigos de Error del Servidor (5xx)
           </h2>
           
@@ -325,42 +325,42 @@ Retry-After: 3600
           </div>
           
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-            <Info className="h-5 w-5 text-slate-700" />
+            <Info className="h-5 w-5 text-indigo-500" />
             Mejores Prácticas
           </h2>
           
-          <div className="border border-slate-200 p-6 rounded-md mt-4">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Usa los códigos adecuados:</strong> Elige el código más específico que describa la situación</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Mantén la consistencia:</strong> Usa los mismos formatos para todos los errores</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Proporciona detalles útiles:</strong> Los mensajes de error deben guiar hacia la solución</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Incluye identificadores únicos:</strong> Facilita la correlación entre logs y errores reportados</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-slate-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <span><strong>Evita filtrar información sensible:</strong> No incluyas datos internos o sensibles en los mensajes de error</span>
               </li>
             </ul>
           </div>
           
-          <div className="border border-slate-200 rounded-md p-6 mt-8 bg-slate-50">
-            <p className="text-slate-700">
+          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
+            <p className="italic text-indigo-900 font-medium">
               "El uso correcto de los códigos de estado HTTP es una parte fundamental de una API REST bien diseñada.
               Estos códigos proporcionan información inmediata sobre el resultado de una operación y son esenciales
               para una buena experiencia de integración."
             </p>
-          </div>
+          </blockquote>
         </div>
       </div>
     </PageLayout>

@@ -3,6 +3,7 @@ import { CodeBlock } from "@/components/CodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
 import { RouteExample } from "@/components/RouteExample";
 import { Link } from "react-router-dom";
+import { AlertTriangle, Database, Network, ArrowDownUp, Clock, Timer, Activity, BarChart2, List, MessageSquare, FileWarning } from "lucide-react";
 
 const RestLimitations = () => {
   return (
@@ -34,7 +35,10 @@ const RestLimitations = () => {
           donde otros enfoques pueden ser más adecuados.
         </p>
 
-          <h2 className="text-xl font-semibold tracking-tight">Fetching de datos ineficiente</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Database className="h-5 w-5 text-indigo-500" />
+            Fetching de datos ineficiente
+          </h2>
 
         <p>
           Una de las limitaciones más significativas de REST es la ineficiencia en la obtención de
@@ -82,7 +86,10 @@ const RestLimitations = () => {
           </Card>
         </div>
 
-          <h3 className="text-lg font-semibold tracking-tight">Soluciones parciales en REST</h3>
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2">
+            <List className="h-5 w-5 text-blue-500" />
+            Soluciones parciales en REST
+          </h3>
 
         <div className="space-y-4 mb-8">
           <div>
@@ -120,7 +127,7 @@ const RestLimitations = () => {
           </div>
         </div>
 
-        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mb-8">
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-500 p-4 mb-8">
           <h4 className="text-amber-800 font-medium">Compromiso inevitable</h4>
           <p className="text-amber-700">
             A pesar de estas soluciones, las APIs REST siempre implican un compromiso:
@@ -130,7 +137,10 @@ const RestLimitations = () => {
           </p>
         </div>
 
-          <h2 className="text-xl font-semibold tracking-tight">Operaciones por lotes</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <ArrowDownUp className="h-5 w-5 text-indigo-500" />
+            Operaciones por lotes
+          </h2>
 
         <p className="mb-4">
           REST está diseñado idealmente para operaciones sobre recursos individuales. Cuando se
@@ -198,7 +208,10 @@ PATCH /api/tasks/50 { "status": "completed" }
           </div>
         </div>
 
-          <h2 className="text-xl font-semibold tracking-tight">Operaciones que no se ajustan al paradigma CRUD</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Activity className="h-5 w-5 text-indigo-500" />
+            Operaciones que no se ajustan al paradigma CRUD
+          </h2>
 
         <p className="mb-4">
           REST se adapta perfectamente a las operaciones CRUD (Crear, Leer, Actualizar, Eliminar),
@@ -295,7 +308,10 @@ PATCH /api/tasks/50 { "status": "completed" }
             </div>
         </div>
 
-          <h2 className="text-xl font-semibold tracking-tight">Manejo del estado</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <Clock className="h-5 w-5 text-indigo-500" />
+            Manejo del estado
+          </h2>
 
         <p className="mb-6">
           REST es fundamentalmente sin estado (stateless), lo que significa que cada solicitud
@@ -343,7 +359,10 @@ PATCH /api/tasks/50 { "status": "completed" }
           </div>
         </div>
 
-          <h2 className="text-xl font-semibold tracking-tight">Notificaciones en tiempo real</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <MessageSquare className="h-5 w-5 text-indigo-500" />
+            Notificaciones en tiempo real
+          </h2>
 
         <p className="mb-6">
           REST es fundamentalmente un modelo de comunicación basado en solicitud-respuesta,
@@ -402,7 +421,10 @@ PATCH /api/tasks/50 { "status": "completed" }
           </p>
         </div>
 
-          <h2 className="text-xl font-semibold tracking-tight">Documentación y contratos débiles</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <FileWarning className="h-5 w-5 text-indigo-500" />
+            Documentación y contratos débiles
+          </h2>
 
         <p className="mb-4">
           REST no tiene un mecanismo intrínseco para definir contratos estrictos entre
@@ -439,7 +461,10 @@ PATCH /api/tasks/50 { "status": "completed" }
           </div>
         </div>
 
-          <h2 className="text-xl font-semibold tracking-tight">Rendimiento y latencia de red</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <BarChart2 className="h-5 w-5 text-indigo-500" />
+            Rendimiento y latencia de red
+          </h2>
 
         <p className="mb-4">
           Las APIs REST generalmente sufren de problemas de rendimiento debido a varios factores
@@ -489,58 +514,10 @@ PATCH /api/tasks/50 { "status": "completed" }
           </div>
         </div>
 
-          <h2 className="text-xl font-semibold tracking-tight">Resumen de limitaciones</h2>
-
-        <div className="overflow-x-auto mb-8">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr className="bg-slate-100">
-                <th className="border px-4 py-2 text-left">Limitación</th>
-                <th className="border px-4 py-2 text-left">Impacto</th>
-                <th className="border px-4 py-2 text-left">Alternativas potenciales</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border px-4 py-2">Fetching ineficiente (over/under)</td>
-                <td className="border px-4 py-2">Rendimiento, experiencia de usuario, eficiencia</td>
-                <td className="border px-4 py-2">GraphQL, BFF (Backend for Frontend)</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Operaciones por lotes</td>
-                <td className="border px-4 py-2">Rendimiento, atomicidad, experiencia de desarrollo</td>
-                <td className="border px-4 py-2">API RPC, gRPC</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Operaciones no-CRUD</td>
-                <td className="border px-4 py-2">Claridad, expresividad, mantenibilidad</td>
-                <td className="border px-4 py-2">RPC, CQRS, Event Sourcing</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Manejo del estado</td>
-                <td className="border px-4 py-2">Complejidad del cliente, UX para procesos complejos</td>
-                <td className="border px-4 py-2">WebSockets, API stateful, máquinas de estado</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Notificaciones en tiempo real</td>
-                <td className="border px-4 py-2">Latencia, experiencia interactiva</td>
-                <td className="border px-4 py-2">WebSockets, SSE, MQTT</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Contratos débiles</td>
-                <td className="border px-4 py-2">Robustez, experiencia de desarrollo</td>
-                <td className="border px-4 py-2">gRPC, tRPC, GraphQL con schema</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2">Rendimiento y latencia</td>
-                <td className="border px-4 py-2">Velocidad, costo de ancho de banda, escalabilidad</td>
-                <td className="border px-4 py-2">gRPC, HTTP/2, formatos binarios</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-          <h2 className="text-xl font-semibold tracking-tight">¿Cuándo considerar alternativas a REST?</h2>
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+            <AlertTriangle className="h-5 w-5 text-indigo-500" />
+            ¿Cuándo considerar alternativas a REST?
+          </h2>
 
         <div className="space-y-4 mb-8">
           <p>
@@ -572,7 +549,7 @@ PATCH /api/tasks/50 { "status": "completed" }
           </ul>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-8">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-md p-4 mb-8">
           <h3 className="text-blue-900 font-medium">Conclusión</h3>
           <p className="text-blue-800">
             REST ha sido y seguirá siendo un pilar fundamental en el diseño de APIs, pero
