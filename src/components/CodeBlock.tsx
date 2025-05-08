@@ -19,6 +19,9 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Process newlines in code string to ensure they render properly
+  const processedCode = code.replace(/\\n/g, '\n');
+
   // Optimized style for a consistent dark theme
   const customStyle = {
     backgroundColor: '#0f172a', // Darker background
@@ -29,7 +32,8 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
     lineHeight: '1.5',
     borderRadius: '0.375rem',
     boxShadow: 'none',
-    overflowX: 'auto'
+    overflowX: 'auto',
+    whiteSpace: 'pre-wrap'
   };
 
   // Enhanced theme with better syntax highlighting colors
@@ -40,13 +44,15 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
       background: '#0f172a',
       color: '#f1f5f9',
       textShadow: 'none',
-      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+      whiteSpace: 'pre-wrap'
     },
     'pre[class*="language-"]': {
       ...vscDarkPlus['pre[class*="language-"]'],
       background: '#0f172a',
       color: '#f1f5f9',
-      textShadow: 'none'
+      textShadow: 'none',
+      whiteSpace: 'pre-wrap'
     },
     'property': {
       ...vscDarkPlus['property'],
@@ -113,8 +119,9 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
               display: 'block'
             }
           }}
+          showLineNumbers={false}
         >
-          {code}
+          {processedCode}
         </SyntaxHighlighter>
       </div>
     </div>
