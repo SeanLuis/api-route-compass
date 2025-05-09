@@ -203,7 +203,7 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
         {/* Sidebar principal con transición mejorada */}
         <aside
           className={cn(
-            "fixed top-0 left-0 z-50 h-full border-r border-slate-200 bg-white shadow-lg lg:shadow-none sidebar-content",
+            "fixed top-0 left-0 z-50 h-full border-r border-sidebar-border bg-sidebar shadow-lg lg:shadow-none sidebar-content",
             "transition-all duration-300 ease-in-out",
             isOpen ? "translate-x-0" : "-translate-x-full",
             "lg:translate-x-0",
@@ -216,7 +216,7 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
           <div className="flex flex-col h-full">
             {/* Cabecera del Sidebar */}
             <div className={cn(
-              "border-b border-slate-200",
+              "border-b border-sidebar-border",
               isCollapsed ? "py-4" : "p-4",
               "transition-all duration-300 ease-in-out"
             )}>
@@ -239,7 +239,7 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                   </div>
                   <div 
                     className={cn(
-                      "font-semibold text-slate-800 truncate h-5",
+                      "font-semibold text-sidebar-foreground truncate h-5",
                       isCollapsed ? "opacity-0 w-0 overflow-hidden" : "opacity-100 w-auto",
                       "transition-all duration-300 ease-in-out"
                     )}
@@ -253,7 +253,7 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsOpen(false)}
-                    className="lg:hidden text-slate-500"
+                    className="lg:hidden text-sidebar-foreground"
                     aria-label="Cerrar menú"
                   >
                     <X className="h-5 w-5" />
@@ -262,7 +262,7 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                     variant="ghost"
                     size="icon"
                     onClick={toggleCollapse}
-                    className="text-slate-500 hidden lg:flex"
+                    className="text-sidebar-foreground hidden lg:flex"
                     aria-label={isCollapsed ? "Expandir" : "Contraer"}
                   >
                     {isCollapsed ? <ChevronsRight className="h-5 w-5" /> : <ChevronsLeft className="h-5 w-5" />}
@@ -270,7 +270,7 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                 </div>
               </div>
             </div>
-
+            
             <div className="overflow-y-auto flex-1 p-3 sidebar-content">
               {/* 
                 Usamos lógica diferente para desktop y móvil:
@@ -295,13 +295,13 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                               className={cn(
                                 "flex justify-center items-center p-3 rounded-md cursor-pointer",
                                 "transition-colors duration-200",
-                                (sectionIsActive || isActive) ? "bg-slate-100 text-indigo-600" : "text-slate-500 hover:bg-slate-50"
+                                (sectionIsActive || isActive) ? "bg-sidebar-accent text-sidebar-primary" : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                               )}
                               onClick={() => toggleActiveSection(section.title)}
                             >
                               <SectionIcon className={cn(
                                 "h-5 w-5",
-                                (sectionIsActive || isActive) ? "text-indigo-500" : ""
+                                (sectionIsActive || isActive) ? "text-sidebar-primary" : ""
                               )} />
                             </div>
                           </TooltipTrigger>
@@ -313,14 +313,14 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                         {/* Menú flotante para el modo colapsado - muestra solo al hacer clic */}
                         {isActive && (
                           <div 
-                            className="fixed left-[80px] top-0 mt-3 ml-0 w-56 bg-white py-2 rounded-md shadow-xl border border-slate-200 z-[100]"
+                            className="fixed left-[80px] top-0 mt-3 ml-0 w-56 bg-sidebar py-2 rounded-md shadow-xl border border-sidebar-border z-[100]"
                             style={{ 
                               top: `${(sections.indexOf(section) * 44) + 70}px`,
                               maxHeight: 'calc(100vh - 100px)',
                               overflowY: 'auto'
                             }}
                           >
-                            <div className="px-3 py-2 text-xs font-semibold text-slate-500 uppercase border-b border-slate-100 mb-1">
+                            <div className="px-3 py-2 text-xs font-semibold text-sidebar-foreground uppercase border-b border-sidebar-border mb-1">
                               {section.title}
                             </div>
                             {section.links.map((link) => {
@@ -328,17 +328,17 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                               return (
                                 <a
                                   key={link.href}
-                                  href={link.href} 
+                                  href={link.href}
                                   className={cn(
-                                    "flex items-center text-sm py-2 px-3 hover:bg-slate-100 transition-colors submenu-link",
+                                    "flex items-center text-sm py-2 px-3 hover:bg-sidebar-accent transition-colors submenu-link",
                                     isLinkActive
-                                      ? "text-indigo-600 font-medium"
-                                      : "text-slate-700"
+                                      ? "text-sidebar-primary font-medium"
+                                      : "text-sidebar-foreground"
                                   )}
                                   onClick={(e) => handleNavigation(link.href, e)}
                                 >
                                   {isLinkActive && (
-                                    <ChevronRight className="h-3.5 w-3.5 mr-1.5 text-indigo-500" />
+                                    <ChevronRight className="h-3.5 w-3.5 mr-1.5 text-sidebar-primary" />
                                   )}
                                   <span>{link.title}</span>
                                 </a>
@@ -355,7 +355,7 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                 <nav className="space-y-6">
                   {sections.map((section) => (
                     <div key={section.title} className="space-y-1">
-                      <div className="px-3 mb-2 flex items-center gap-2 text-xs font-medium text-slate-500 uppercase tracking-wider">
+                      <div className="px-3 mb-2 flex items-center gap-2 text-xs font-medium text-sidebar-foreground uppercase tracking-wider">
                         <section.icon className="h-3.5 w-3.5" />
                         <span>{section.title}</span>
                       </div>
@@ -368,14 +368,14 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
                               href={link.href}
                               className={cn(
                                 "flex items-center text-sm px-3 py-2 rounded-md",
-                                isActive
-                                  ? "bg-slate-100 text-indigo-600 font-medium"
-                                  : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                                isActive 
+                                  ? "bg-sidebar-primary text-sidebar-primary-foreground font-medium"
+                                  : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                               )}
                               onClick={(e) => handleNavigation(link.href, e)}
                             >
                               {isActive && (
-                                <ChevronRight className="h-3.5 w-3.5 mr-1.5 text-indigo-500" />
+                                <ChevronRight className="h-3.5 w-3.5 mr-1.5 text-sidebar-primary-foreground" />
                               )}
                               <span className={cn(isActive ? "ml-0" : "ml-5")}>{link.title}</span>
                             </a>
@@ -389,12 +389,12 @@ export function Sidebar({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }: Side
             </div>
             
             <div className={cn(
-              "border-t border-slate-200 mt-auto",
+              "border-t border-sidebar-border mt-auto",
               isCollapsed && !isOpen ? "text-center py-3" : "p-4",
               "transition-all duration-300 ease-in-out"
             )}>
               <div className={cn(
-                "flex items-center justify-between text-sm text-slate-500",
+                "flex items-center justify-between text-sm text-sidebar-foreground",
                 isCollapsed && !isOpen && "flex-col gap-1",
                 "transition-all duration-300 ease-in-out"
               )}>

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
+import { useTheme } from 'next-themes';
 
 interface MermaidDiagramProps {
   chart: string;
@@ -8,14 +9,24 @@ interface MermaidDiagramProps {
 
 const MermaidDiagram: React.FC<MermaidDiagramProps> = ({ chart, className }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Wait for component to be mounted to avoid hydration issues
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    if (containerRef.current) {
+    if (containerRef.current && mounted) {
+      const theme = resolvedTheme === 'dark' ? 'dark' : 'neutral';
+      
       mermaid.initialize({ 
         startOnLoad: true,
-        theme: 'neutral',
+        theme: theme,
         securityLevel: 'loose',
         fontFamily: 'inherit',
+        darkMode: resolvedTheme === 'dark',
       });
       
       try {
@@ -24,7 +35,7 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({ chart, className }) => 
         console.error("Error rendering mermaid diagram:", error);
       }
     }
-  }, [chart]);
+  }, [chart, resolvedTheme, mounted]);
 
   return (
     <div className={className} ref={containerRef}>

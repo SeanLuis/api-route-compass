@@ -1,4 +1,3 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { PageContent } from "@/components/PageContent";
 import { EndpointExample } from "@/components/EndpointExample";
@@ -21,42 +20,42 @@ const PatchMethodPage = () => {
           <h2 className="text-2xl font-semibold tracking-tight">Características principales</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 Actualización parcial
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Modifica solo los campos especificados en la solicitud.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <X className="h-4 w-4 text-red-600 mr-2" />
+                <X className="h-4 w-4 text-red-600 dark:text-red-500 mr-2" />
                 No idempotente por defecto
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Múltiples solicitudes idénticas pueden producir resultados diferentes.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 Puede ser idempotente
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Si se implementa con formatos como JSON Patch o JSON Merge Patch.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 Preserva valores
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Los campos no incluidos en la solicitud mantienen sus valores existentes.
               </p>
             </div>
@@ -69,9 +68,9 @@ const PatchMethodPage = () => {
           
           <div className="space-y-6">
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium mb-2">Actualización parcial con formato simple</h3>
-                <p className="text-sm text-slate-600">Actualiza solo algunos campos de un producto</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Actualiza solo algunos campos de un producto</p>
               </div>
               <div className="p-5">
                 <EndpointExample 
@@ -107,9 +106,9 @@ const PatchMethodPage = () => {
             </div>
             
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium mb-2">Actualización con JSON Patch</h3>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                   JSON Patch (RFC 6902) proporciona un formato estandarizado para describir cambios.
                 </p>
               </div>
@@ -142,9 +141,9 @@ const PatchMethodPage = () => {
             </div>
             
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium mb-2">Actualización con JSON Merge Patch</h3>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                   JSON Merge Patch (RFC 7396) es otra forma estandarizada, más simple que JSON Patch.
                 </p>
               </div>
@@ -185,9 +184,9 @@ const PatchMethodPage = () => {
           
           <div className="space-y-6">
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium">1. Formato simple (Ad Hoc)</h3>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                   El formato más común pero menos estandarizado, donde simplemente se envían los campos a actualizar.
                 </p>
               </div>
@@ -206,11 +205,11 @@ Content-Type: application/json
             </div>
             
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium">2. JSON Patch (RFC 6902)</h3>
               </div>
               <div className="p-5">
-                <p className="text-sm text-slate-700 mb-4">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
                   Un formato estandarizado que describe una secuencia de operaciones para aplicar a un documento JSON.
                 </p>
                 <CodeBlock
@@ -231,11 +230,11 @@ Content-Type: application/json-patch+json
             </div>
             
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium">3. JSON Merge Patch (RFC 7396)</h3>
               </div>
               <div className="p-5">
-                <p className="text-sm text-slate-700 mb-4">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
                   Un formato más simple que JSON Patch, donde el documento enviado se fusiona con el recurso original.
                 </p>
                 <CodeBlock
@@ -258,10 +257,10 @@ Content-Type: application/merge-patch+json
             </div>
           </div>
           
-          <Alert variant="default" className="bg-blue-50 border-blue-100 mt-6">
-            <Info className="h-5 w-5 text-blue-600" />
-            <AlertTitle className="text-blue-800 text-base">Especificar el formato</AlertTitle>
-            <AlertDescription className="text-blue-700">
+          <Alert variant="default" className="bg-blue-50 border-blue-100 dark:bg-blue-950/50 dark:border-blue-900/50 mt-6">
+            <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <AlertTitle className="text-blue-800 dark:text-blue-300 text-base">Especificar el formato</AlertTitle>
+            <AlertDescription className="text-blue-700 dark:text-blue-400">
               Es importante especificar el formato utilizado mediante el encabezado Content-Type:
               <ul className="list-disc ml-6 mt-2">
                 <li>application/json - Para formato simple (Ad Hoc)</li>
@@ -280,27 +279,27 @@ Content-Type: application/merge-patch+json
             <table className="w-full border-collapse">
               <tbody>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 w-[140px] font-medium">200 OK</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 w-[140px] font-medium">200 OK</td>
                   <td className="p-4 text-sm">La actualización fue exitosa y se devuelve el recurso actualizado.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">204 No Content</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">204 No Content</td>
                   <td className="p-4 text-sm">La actualización fue exitosa pero no se devuelve contenido.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">400 Bad Request</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">400 Bad Request</td>
                   <td className="p-4 text-sm">Formato de solicitud inválido o violación de reglas de negocio.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">404 Not Found</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">404 Not Found</td>
                   <td className="p-4 text-sm">El recurso que se intenta actualizar no existe.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">409 Conflict</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">409 Conflict</td>
                   <td className="p-4 text-sm">La actualización entra en conflicto con el estado actual del recurso.</td>
                 </tr>
                 <tr>
-                  <td className="p-4 bg-slate-50 font-medium">422 Unprocessable Entity</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">422 Unprocessable Entity</td>
                   <td className="p-4 text-sm">La solicitud es sintácticamente correcta pero semánticamente errónea.</td>
                 </tr>
               </tbody>
@@ -315,32 +314,32 @@ Content-Type: application/merge-patch+json
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="border rounded-lg overflow-hidden shadow-sm">
-                <div className="p-5 border-b bg-slate-50">
+                <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                   <h3 className="text-lg font-medium">Uso de formatos estandarizados</h3>
                 </div>
                 <div className="p-5">
-                  <p className="text-sm text-slate-700 mb-4">
+                  <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
                     Preferiblemente usa JSON Patch o JSON Merge Patch para ser consistente con los estándares web.
                   </p>
                 </div>
               </div>
               
               <div className="border rounded-lg overflow-hidden shadow-sm">
-                <div className="p-5 border-b bg-slate-50">
+                <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                   <h3 className="text-lg font-medium">Validación estricta</h3>
                 </div>
                 <div className="p-5">
-                  <p className="text-sm text-slate-700 mb-4">
+                  <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
                     Valida tanto la estructura de la operación como los valores proporcionados antes de aplicar cambios.
                   </p>
                 </div>
               </div>
             </div>
             
-            <Alert variant="default" className="bg-amber-50 border-amber-100">
-              <AlertTriangle className="h-5 w-5 text-amber-600" />
-              <AlertTitle className="text-amber-800 text-base">Operaciones condicionales</AlertTitle>
-              <AlertDescription className="text-amber-700">
+            <Alert variant="default" className="bg-amber-50 border-amber-100 dark:bg-amber-950/50 dark:border-amber-900/50">
+              <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+              <AlertTitle className="text-amber-800 dark:text-amber-300 text-base">Operaciones condicionales</AlertTitle>
+              <AlertDescription className="text-amber-700 dark:text-amber-400">
                 Utiliza encabezados condicionales como If-Match o If-Unmodified-Since para evitar problemas de concurrencia.
                 <div className="mt-4">
                   <CodeBlock
@@ -365,33 +364,33 @@ Content-Type: application/json
           
           <div className="overflow-hidden border rounded-lg shadow-sm">
             <table className="w-full border-collapse">
-              <thead className="bg-slate-50">
+              <thead className="bg-slate-50 dark:bg-slate-900">
                 <tr>
-                  <th className="text-left p-4 font-medium text-slate-700">Característica</th>
-                  <th className="text-left p-4 font-medium text-slate-700">PATCH</th>
-                  <th className="text-left p-4 font-medium text-slate-700">PUT</th>
+                  <th className="text-left p-4 font-medium text-slate-700 dark:text-slate-300">Característica</th>
+                  <th className="text-left p-4 font-medium text-slate-700 dark:text-slate-300">PATCH</th>
+                  <th className="text-left p-4 font-medium text-slate-700 dark:text-slate-300">PUT</th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 <tr>
-                  <td className="p-4 font-medium text-slate-700">Propósito</td>
-                  <td className="p-4 text-sm text-slate-600">Actualización parcial de un recurso</td>
-                  <td className="p-4 text-sm text-slate-600">Reemplazo completo de un recurso</td>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">Propósito</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Actualización parcial de un recurso</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Reemplazo completo de un recurso</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-slate-700">Campos requeridos</td>
-                  <td className="p-4 text-sm text-slate-600">Solo los campos a modificar</td>
-                  <td className="p-4 text-sm text-slate-600">Todos los campos del recurso</td>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">Campos requeridos</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Solo los campos a modificar</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Todos los campos del recurso</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-slate-700">Comportamiento con campos ausentes</td>
-                  <td className="p-4 text-sm text-slate-600">Se mantienen los valores actuales</td>
-                  <td className="p-4 text-sm text-slate-600">Se eliminan o establecen a valores por defecto</td>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">Comportamiento con campos ausentes</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Se mantienen los valores actuales</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Se eliminan o establecen a valores por defecto</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-slate-700">Idempotencia</td>
-                  <td className="p-4 text-sm text-slate-600">No siempre (depende del formato)</td>
-                  <td className="p-4 text-sm text-slate-600">Siempre idempotente</td>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">Idempotencia</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">No siempre (depende del formato)</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Siempre idempotente</td>
                 </tr>
               </tbody>
             </table>
@@ -403,17 +402,17 @@ Content-Type: application/json
           <h2 className="text-2xl font-semibold tracking-tight">Relacionados</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link to="/methods/put" className="block p-5 border rounded-lg hover:bg-slate-50 transition-colors">
+            <Link to="/methods/put" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="font-medium mb-2">Método PUT</h3>
-              <p className="text-sm text-slate-600">Reemplazar recursos completamente</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Reemplazar recursos completamente</p>
             </Link>
-            <Link to="/methods/post" className="block p-5 border rounded-lg hover:bg-slate-50 transition-colors">
+            <Link to="/methods/post" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="font-medium mb-2">Método POST</h3>
-              <p className="text-sm text-slate-600">Crear nuevos recursos</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Crear nuevos recursos</p>
             </Link>
-            <Link to="/status-codes" className="block p-5 border rounded-lg hover:bg-slate-50 transition-colors">
+            <Link to="/status-codes" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="font-medium mb-2">Códigos de estado</h3>
-              <p className="text-sm text-slate-600">Significado de los códigos HTTP</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Significado de los códigos HTTP</p>
             </Link>
           </div>
         </section>

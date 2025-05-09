@@ -32,18 +32,18 @@ export function EndpointExample({
   const methodColor = methodColors[method.toLowerCase() as keyof typeof methodColors];
 
   return (
-    <div className={cn("border rounded-lg overflow-hidden shadow-sm", className)}>
-      <div className="border-b bg-slate-50 p-5">
+    <div className={cn("border border-border rounded-lg overflow-hidden shadow-sm", className)}>
+      <div className="border-b border-border bg-muted/50 p-5">
         <div className="flex items-center gap-3">
           <span className={`px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wide ${methodColor}`}>{method}</span>
-          <code className="font-mono text-sm text-slate-800">{path}</code>
+          <code className="font-mono text-sm text-foreground">{path}</code>
         </div>
-        <p className="mt-2.5 text-sm text-slate-600">{description}</p>
+        <p className="mt-2.5 text-sm text-muted-foreground">{description}</p>
       </div>
-      <div className="divide-y">
+      <div className="divide-y divide-border">
         {requestExample && (
           <div className="p-5 space-y-2">
-            <h4 className="text-sm font-medium text-slate-900 flex items-center">
+            <h4 className="text-sm font-medium text-foreground flex items-center">
               <span className="mr-2 h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
               Ejemplo de petición
             </h4>
@@ -51,7 +51,7 @@ export function EndpointExample({
           </div>
         )}
         <div className="p-5 space-y-2">
-          <h4 className="text-sm font-medium text-slate-900 flex items-center">
+          <h4 className="text-sm font-medium text-foreground flex items-center">
             <span className="mr-2 h-1.5 w-1.5 rounded-full bg-green-500"></span>
             Ejemplo de respuesta
           </h4>

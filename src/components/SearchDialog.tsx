@@ -193,19 +193,19 @@ const SearchResult = React.forwardRef<
     <Command.Item
       ref={ref}
       {...props}
-      className="px-4 py-3 rounded-md text-sm flex items-start gap-2 aria-selected:bg-slate-100 cursor-pointer"
+      className="px-4 py-3 rounded-md text-sm flex items-start gap-2 aria-selected:bg-muted cursor-pointer"
       value={result.id}
     >
       <div className="mt-0.5">{getIcon(result.category)}</div>
       <div className="flex-1 overflow-hidden">
-        <div className="font-medium text-slate-900">{result.title}</div>
-        <div className="text-slate-500 text-xs line-clamp-2">{result.summary}</div>
+        <div className="font-medium text-foreground">{result.title}</div>
+        <div className="text-muted-foreground text-xs line-clamp-2">{result.summary}</div>
         <div className="flex items-center gap-2 mt-1 flex-wrap">
-          <span className="px-2 py-0.5 rounded bg-slate-100 text-xs text-slate-600">
+          <span className="px-2 py-0.5 rounded bg-muted text-xs text-muted-foreground">
             {result.category}
           </span>
           {result.tags && result.tags.slice(0, 3).map(tag => (
-            <span key={tag} className="px-2 py-0.5 rounded bg-slate-50 text-xs text-slate-500">
+            <span key={tag} className="px-2 py-0.5 rounded bg-muted/50 text-xs text-muted-foreground">
               {tag}
             </span>
           ))}
@@ -311,11 +311,11 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="p-0 gap-0 overflow-hidden">
         <Command className="w-full" shouldFilter={false}>
-          <div className="flex items-center border-b px-4 h-14">
-            <Search className="h-4 w-4 text-slate-400 mr-2 shrink-0" />
+          <div className="flex items-center border-b border-border px-4 h-14">
+            <Search className="h-4 w-4 text-muted-foreground mr-2 shrink-0" />
             <Command.Input 
               ref={inputRef}
-              className="w-full bg-transparent py-3 outline-none placeholder:text-slate-400 text-slate-900"
+              className="w-full bg-transparent py-3 outline-none placeholder:text-muted-foreground text-foreground"
               placeholder="Buscar en la documentación..."
               value={searchQuery}
               onValueChange={setSearchQuery}
@@ -324,19 +324,19 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
           
           <Command.List className="max-h-[60vh] overflow-y-auto p-2">
             {isLoading && searchQuery.trim() === "" ? (
-              <div className="py-6 text-center text-sm text-slate-500">
+              <div className="py-6 text-center text-sm text-muted-foreground">
                 Cargando contenido...
               </div>
             ) : searchQuery.trim() === "" ? (
               <div className="px-4 py-3">
-                <div className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">
+                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
                   Búsquedas populares
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {searchSuggestions.map(suggestion => (
                     <button
                       key={suggestion}
-                      className="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-md transition-colors"
+                      className="px-3 py-1.5 text-xs bg-muted hover:bg-muted/70 text-foreground rounded-md transition-colors"
                       onClick={() => setSearchQuery(suggestion)}
                     >
                       {suggestion}
@@ -345,12 +345,12 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
                 </div>
               </div>
             ) : filteredResults.length === 0 ? (
-              <div className="py-6 text-center text-sm text-slate-500">
+              <div className="py-6 text-center text-sm text-muted-foreground">
                 No se encontraron resultados para "{searchQuery}"
               </div>
             ) : (
               <>
-                <div className="px-4 py-2 text-xs font-medium text-slate-500 uppercase tracking-wider">
+                <div className="px-4 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   {filteredResults.length} {filteredResults.length === 1 ? "resultado" : "resultados"}
                 </div>
                 <Command.Group>
@@ -367,20 +367,20 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
           </Command.List>
         </Command>
         
-        <div className="p-2 border-t">
-          <div className="flex justify-between items-center text-xs text-slate-500 px-2 py-1.5">
+        <div className="p-2 border-t border-border">
+          <div className="flex justify-between items-center text-xs text-muted-foreground px-2 py-1.5">
             <div className="flex items-center">
               <span className="mr-2">Atajos:</span>
-              <kbd className="px-1.5 py-0.5 rounded border bg-slate-50 mx-1">↑</kbd>
-              <kbd className="px-1.5 py-0.5 rounded border bg-slate-50 mx-1">↓</kbd>
+              <kbd className="px-1.5 py-0.5 rounded border border-border bg-muted mx-1">↑</kbd>
+              <kbd className="px-1.5 py-0.5 rounded border border-border bg-muted mx-1">↓</kbd>
               <span className="mx-1">para navegar</span>
-              <kbd className="px-1.5 py-0.5 rounded border bg-slate-50 mx-1">↵</kbd>
+              <kbd className="px-1.5 py-0.5 rounded border border-border bg-muted mx-1">↵</kbd>
               <span className="mx-1">para seleccionar</span>
-              <kbd className="px-1.5 py-0.5 rounded border bg-slate-50 mx-1">Esc</kbd>
+              <kbd className="px-1.5 py-0.5 rounded border border-border bg-muted mx-1">Esc</kbd>
               <span className="mx-1">para cerrar</span>
             </div>
             <div>
-              <kbd className="px-1.5 py-0.5 rounded border bg-slate-50">⌘ K</kbd>
+              <kbd className="px-1.5 py-0.5 rounded border border-border bg-muted">⌘ K</kbd>
             </div>
           </div>
         </div>
@@ -398,14 +398,14 @@ export function SearchButton({ className }: { className?: string }) {
       <button
         onClick={() => setOpen(true)}
         className={cn(
-          "flex items-center gap-1 text-sm px-3 py-1.5 rounded-md border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors",
+          "flex items-center gap-1 text-sm px-3 py-1.5 rounded-md border border-border text-muted-foreground hover:bg-muted transition-colors",
           className
         )}
       >
         <Search className="h-4 w-4" />
         <span className="hidden sm:inline">Buscar documentación...</span>
         <span className="inline sm:hidden">Buscar...</span>
-        <kbd className="hidden md:inline-flex h-5 select-none items-center gap-1 rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-xs font-medium text-slate-600 opacity-100">
+        <kbd className="hidden md:inline-flex h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground opacity-100">
           <span className="text-xs">⌘</span>
           <span>K</span>
         </kbd>

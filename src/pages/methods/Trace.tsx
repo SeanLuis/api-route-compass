@@ -12,7 +12,7 @@ const TraceMethodPage = () => {
     <PageLayout>
       <PageContent 
         title="Método TRACE" 
-        description="El método TRACE realiza una prueba de bucle de retorno (loopback) de mensaje a lo largo de la ruta al recurso de destino. Se utiliza principalmente para diagnóstico y depuración."
+        description="El método TRACE realiza una prueba de bucle de retorno (loopback) de mensaje a lo largo del camino al recurso de destino. Se utiliza principalmente con fines de diagnóstico para ver qué reciben los servidores intermedios y cómo modifican la solicitud."
         path={["Inicio", "Métodos HTTP", "TRACE"]}
       >
         {/* Características principales */}
@@ -20,173 +20,240 @@ const TraceMethodPage = () => {
           <h2 className="text-2xl font-semibold tracking-tight">Características principales</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
-                Es diagnóstico
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
+                Diagnóstico
               </h3>
-              <p className="text-sm text-slate-700">
-                Permite ver qué recibe el servidor al final de la cadena de solicitud.
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                Permite depurar y ver cómo llega la solicitud al servidor.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
-                Retorno de espejo
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
+                Es idempotente
               </h3>
-              <p className="text-sm text-slate-700">
-                Devuelve exactamente lo que se envió, para verificar cambios durante el tránsito.
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                Múltiples solicitudes idénticas tienen el mismo efecto.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 Es seguro
               </h3>
-              <p className="text-sm text-slate-700">
-                No modifica recursos en el servidor, solo proporciona información.
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                No altera ningún recurso en el servidor (solo lectura).
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <X className="h-4 w-4 text-red-600 mr-2" />
-                Restringido por seguridad
+                <X className="h-4 w-4 text-red-600 dark:text-red-500 mr-2" />
+                Habitualmente deshabilitado
               </h3>
-              <p className="text-sm text-slate-700">
-                Muchos servidores lo deshabilitan por motivos de seguridad.
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                Por motivos de seguridad, muchos servidores lo tienen desactivado.
               </p>
             </div>
           </div>
         </section>
         
-        {/* Casos de uso comunes */}
+        {/* Uso y propósito */}
         <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">Casos de uso comunes</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Uso y propósito</h2>
           
-          <div className="space-y-6">
-            <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
-                <h3 className="text-lg font-medium mb-2">Diagnóstico de red</h3>
-                <p className="text-sm text-slate-600">Verifica cómo llega una solicitud al servidor tras pasar por múltiples proxies</p>
-              </div>
-              <div className="p-5">
-                <EndpointExample 
-                  method="TRACE"
-                  path="/api/v1/diagnostic"
-                  description="Solicitud TRACE para diagnóstico de red"
-                  requestExample={`TRACE /api/v1/diagnostic HTTP/1.1
-Host: api.ejemplo.com
-Custom-Header: valor-personalizado`}
-                  responseExample={`HTTP/1.1 200 OK
-Content-Type: message/http
-Content-Length: 106
-
-TRACE /api/v1/diagnostic HTTP/1.1
-Host: api.ejemplo.com
-Custom-Header: valor-personalizado
-Via: 1.1 proxy.ejemplo.com`}
-                />
-              </div>
+          <p className="text-slate-700 dark:text-slate-300">
+            El método TRACE es principalmente una herramienta de diagnóstico. Cuando se envía una solicitud TRACE, 
+            el destinatario debe reflejar en el cuerpo de la respuesta el contenido exacto de la solicitud. 
+            Esto permite al cliente ver qué se recibió en el otro extremo y determinar si y cómo los 
+            servidores intermedios modificaron la solicitud.
+          </p>
+          
+          <div className="border rounded-lg overflow-hidden shadow-sm">
+            <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+              <h3 className="text-lg font-medium">Principales casos de uso</h3>
             </div>
-            
-            <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
-                <h3 className="text-lg font-medium mb-2">Depuración de proxy</h3>
-                <p className="text-sm text-slate-600">Identifica cambios realizados por proxies intermedios</p>
-              </div>
-              <div className="p-5">
-                <EndpointExample 
-                  method="TRACE"
-                  path="/api/v1/debug"
-                  description="Solicitud TRACE para verificar modificaciones de proxy"
-                  responseExample={`HTTP/1.1 200 OK
-Content-Type: message/http
-Content-Length: 157
-
-TRACE /api/v1/debug HTTP/1.1
+            <div className="p-5">
+              <ul className="space-y-4">
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">1</span>
+                  <span className="font-medium">Depuración de proxies</span>: Identificar si los proxies intermedios están modificando las cabeceras HTTP.
+                </li>
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">2</span>
+                  <span className="font-medium">Verificar modificaciones</span>: Comprobar cómo los balanceadores de carga o CDNs están modificando las solicitudes.
+                </li>
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">3</span>
+                  <span className="font-medium">Testing de redes</span>: Verificar la conectividad y el comportamiento de la red entre cliente y servidor.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        
+        {/* Ejemplo de solicitud */}
+        <section className="space-y-6 pt-6">
+          <h2 className="text-2xl font-semibold tracking-tight">Ejemplo de solicitud y respuesta</h2>
+          
+          <div className="border rounded-lg overflow-hidden shadow-sm">
+            <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+              <h3 className="text-lg font-medium mb-2">Solicitud TRACE básica</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Ejemplo de una solicitud TRACE para diagnóstico</p>
+            </div>
+            <div className="p-5">
+              <EndpointExample 
+                method="TRACE"
+                path="/api/v1/diagnostics"
+                description="Realiza un diagnóstico de la ruta de red al servidor"
+                requestExample={`TRACE /api/v1/diagnostics HTTP/1.1
 Host: api.ejemplo.com
+X-Custom-Header: valor-personalizado`}
+                responseExample={`HTTP/1.1 200 OK
+Content-Type: message/http
+Content-Length: 123
+
+TRACE /api/v1/diagnostics HTTP/1.1
+Host: api.ejemplo.com
+X-Custom-Header: valor-personalizado
 X-Forwarded-For: 192.168.1.1
-Via: 1.1 proxy1.ejemplo.com, 1.1 proxy2.ejemplo.com
-X-Modified-By: proxy-gateway-001`}
-                />
-              </div>
+Via: 1.1 proxy.ejemplo.com (Proxy Server 1.0)`}
+              />
             </div>
           </div>
           
-          <Alert variant="default" className="bg-red-50 border-red-100">
-            <AlertTriangle className="h-5 w-5 text-red-600" />
-            <AlertTitle className="text-red-800 text-base">Limitaciones de seguridad</AlertTitle>
-            <AlertDescription className="text-red-700">
-              Debido a vulnerabilidades potenciales (como ataques XST - Cross-Site Tracing), 
-              muchos servidores modernos deshabilitan el método TRACE por defecto. Su uso está 
-              generalmente limitado a herramientas de diagnóstico y entornos controlados.
+          <Alert variant="default" className="bg-blue-50 border-blue-100 dark:bg-blue-950/50 dark:border-blue-900/50">
+            <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <AlertTitle className="text-blue-800 dark:text-blue-300 text-base">Formato de la respuesta</AlertTitle>
+            <AlertDescription className="text-blue-700 dark:text-blue-400">
+              La respuesta a una solicitud TRACE debe tener el tipo de contenido <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900/50 rounded">message/http</code> y 
+              contener en el cuerpo un mensaje que incluya todos los encabezados recibidos, incluidos los que fueron 
+              agregados por proxies intermedios.
             </AlertDescription>
           </Alert>
         </section>
         
-        {/* Mejores prácticas */}
+        {/* Consideraciones de seguridad */}
         <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">Mejores prácticas</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Consideraciones de seguridad</h2>
           
-          <Alert variant="default" className="bg-blue-50 border-blue-100">
-            <Info className="h-5 w-5 text-blue-600" />
-            <AlertTitle className="text-blue-800 text-base">Uso restringido</AlertTitle>
-            <AlertDescription className="text-blue-700">
-              TRACE debe usarse exclusivamente para depuración y diagnóstico en entornos controlados, nunca en producción o en APIs públicas.
+          <Alert variant="default" className="bg-amber-50 border-amber-100 dark:bg-amber-950/50 dark:border-amber-900/50">
+            <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+            <AlertTitle className="text-amber-800 dark:text-amber-300 text-base">Ataques XST (Cross-Site Tracing)</AlertTitle>
+            <AlertDescription className="text-amber-700 dark:text-amber-400">
+              El método TRACE puede ser utilizado en ataques de Cross-Site Tracing (XST). Estos ataques combinan el uso 
+              de TRACE con Cross-Site Scripting (XSS) para robar cookies y otra información sensible, incluso si están 
+              protegidas con el flag HttpOnly.
             </AlertDescription>
           </Alert>
           
-          <div className="mt-6 space-y-6">
-            <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
-                <h3 className="text-lg font-medium">Configuración de seguridad</h3>
+          <div className="border rounded-lg overflow-hidden shadow-sm mt-6">
+            <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+              <h3 className="text-lg font-medium">Por qué se deshabilita TRACE</h3>
+            </div>
+            <div className="p-5">
+              <p className="text-slate-700 dark:text-slate-300 mb-4">
+                Debido a los riesgos de seguridad, muchos servidores web deshabilitan el método TRACE por defecto:
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start text-slate-700 dark:text-slate-300">
+                  <span className="mr-2 text-red-500">•</span>
+                  En Apache, se puede deshabilitar usando la directiva <code className="px-1 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">TraceEnable Off</code>
+                </li>
+                <li className="flex items-start text-slate-700 dark:text-slate-300">
+                  <span className="mr-2 text-red-500">•</span>
+                  En Nginx, TRACE no está habilitado por defecto
+                </li>
+                <li className="flex items-start text-slate-700 dark:text-slate-300">
+                  <span className="mr-2 text-red-500">•</span>
+                  En Microsoft IIS, se puede deshabilitar a través de la configuración de WebDAV
+                </li>
+              </ul>
+              
+              <div className="mt-5 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg border">
+                <h4 className="font-medium mb-2">Ejemplo de deshabilitación en Apache:</h4>
+                <CodeBlock
+                  code={`# Archivo: apache2.conf o httpd.conf
+TraceEnable Off`}
+                  language="apache"
+                />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 p-5">
-                <div>
-                  <h4 className="font-medium text-sm mb-3 text-green-600">Recomendado ✓</h4>
-                  <div className="bg-slate-50 rounded-lg p-4 border">
-                    <CodeBlock
-                      code={`# Apache: Deshabilitar TRACE en producción
-TraceEnable off
-
-# Nginx: Limitar métodos permitidos (excluir TRACE)
-if ($request_method !~ ^(GET|POST|PUT|DELETE|OPTIONS)$) {
-    return 405;
-}`}
-                      language="nginx"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-medium text-sm mb-3 text-red-600 mt-4 md:mt-0">Evitar ❌</h4>
-                  <div className="bg-slate-50 rounded-lg p-4 border">
-                    <CodeBlock
-                      code={`# Permitir TRACE en un servidor de producción
-TraceEnable on
-
-# No restringir TRACE en entornos públicos
-server {
-    listen 80;
-    # Sin restricciones de método...
-}`}
-                      language="nginx"
-                    />
-                  </div>
-                </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Alternativas a TRACE */}
+        <section className="space-y-6 pt-6">
+          <h2 className="text-2xl font-semibold tracking-tight">Alternativas seguras</h2>
+          
+          <p className="text-slate-700 dark:text-slate-300 mb-4">
+            Dado que TRACE suele estar deshabilitado por razones de seguridad, existen alternativas más seguras para 
+            lograr diagnósticos similares:
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="border rounded-lg shadow-sm overflow-hidden">
+              <div className="p-4 bg-slate-50 dark:bg-slate-900 border-b">
+                <h3 className="font-medium">Endpoint de eco personalizado</h3>
+              </div>
+              <div className="p-4">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+                  Implementa un endpoint específico que refleje información de la solicitud de forma controlada.
+                </p>
+                <CodeBlock
+                  code={`// Ejemplo en Express.js
+app.get('/api/diagnostic/echo', (req, res) => {
+  const requestInfo = {
+    headers: req.headers,
+    ip: req.ip,
+    protocol: req.protocol,
+    method: req.method,
+    path: req.path,
+    query: req.query
+  };
+  
+  res.json({
+    message: 'Información de diagnóstico',
+    request: requestInfo
+  });
+});`}
+                  language="javascript"
+                />
               </div>
             </div>
             
-            <Alert variant="default" className="bg-amber-50 border-amber-100">
-              <AlertTriangle className="h-5 w-5 text-amber-600" />
-              <AlertTitle className="text-amber-800 text-base">Alternativas modernas</AlertTitle>
-              <AlertDescription className="text-amber-700">
-                Para diagnóstico y depuración, considera alternativas más seguras como rutas de API dedicadas que 
-                muestran información de encabezados o herramientas de monitoreo de red específicas.
-              </AlertDescription>
-            </Alert>
+            <div className="border rounded-lg shadow-sm overflow-hidden">
+              <div className="p-4 bg-slate-50 dark:bg-slate-900 border-b">
+                <h3 className="font-medium">Herramientas de monitoreo de red</h3>
+              </div>
+              <div className="p-4">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
+                  Utiliza herramientas de monitoreo de red que proporcionen datos más completos y seguros.
+                </p>
+                <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✓</span>
+                    <span><strong>Developer Tools:</strong> Las herramientas para desarrolladores del navegador (Network tab)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✓</span>
+                    <span><strong>Wireshark:</strong> Para análisis detallado del tráfico de red</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✓</span>
+                    <span><strong>Proxies de depuración:</strong> Como Charles Proxy, Fiddler o mitmproxy</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✓</span>
+                    <span><strong>Herramientas de línea de comandos:</strong> Como curl con la opción -v (verbose)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
         
@@ -198,150 +265,96 @@ server {
             <table className="w-full border-collapse">
               <tbody>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 w-[140px] font-medium">200 OK</td>
-                  <td className="p-4 text-sm">La solicitud TRACE se completó con éxito, devolviendo el eco de la solicitud.</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 w-[140px] font-medium">200 OK</td>
+                  <td className="p-4 text-sm">La solicitud TRACE se completó correctamente.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">405 Method Not Allowed</td>
-                  <td className="p-4 text-sm">El método TRACE está deshabilitado o no es soportado por el servidor.</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">405 Method Not Allowed</td>
+                  <td className="p-4 text-sm">El método TRACE está deshabilitado en el servidor.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">403 Forbidden</td>
-                  <td className="p-4 text-sm">El servidor rechaza la solicitud TRACE por motivos de seguridad.</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">403 Forbidden</td>
+                  <td className="p-4 text-sm">El servidor entendió la solicitud pero se niega a autorizarla.</td>
                 </tr>
-                <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">501 Not Implemented</td>
-                  <td className="p-4 text-sm">El servidor no implementa el método TRACE.</td>
+                <tr>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">501 Not Implemented</td>
+                  <td className="p-4 text-sm">El servidor no soporta la funcionalidad requerida para el método TRACE.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
         
-        {/* Vulnerabilidades */}
+        {/* Soporte en APIs modernas */}
         <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">Vulnerabilidades de seguridad</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Soporte en APIs modernas</h2>
+          
+          <Alert className="bg-slate-50 border-slate-100 dark:bg-slate-900/50 dark:border-slate-800">
+            <Info className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <AlertTitle className="text-slate-800 dark:text-slate-200 text-base">Uso limitado</AlertTitle>
+            <AlertDescription className="text-slate-700 dark:text-slate-300">
+              En las APIs REST modernas, el método TRACE raramente se utiliza como parte de la interfaz pública.
+              Se prefieren otros métodos de diagnóstico más específicos y seguros.
+            </AlertDescription>
+          </Alert>
           
           <div className="border rounded-lg overflow-hidden shadow-sm">
-            <div className="p-5 border-b bg-slate-50">
-              <h3 className="text-lg font-medium">Cross-Site Tracing (XST)</h3>
+            <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+              <h3 className="text-lg font-medium">Mejores opciones para diagnóstico de APIs</h3>
             </div>
-            <div className="p-5 space-y-4">
-              <p className="text-slate-700">
-                El ataque Cross-Site Tracing (XST) es una de las razones principales por las que muchos servidores 
-                deshabilitan el método TRACE. Esta vulnerabilidad permite a los atacantes robar información como 
-                cookies HTTP y tokens de autenticación a través de ataques de scripting entre sitios.
-              </p>
-              
-              <div className="bg-slate-50 rounded-lg p-4 border">
-                <h4 className="font-medium text-sm mb-2">Cómo funciona un ataque XST:</h4>
-                <ol className="list-decimal list-inside text-sm space-y-2 text-slate-700">
-                  <li>El atacante engaña a un usuario para que ejecute un script malicioso.</li>
-                  <li>El script realiza una solicitud TRACE al servidor objetivo.</li>
-                  <li>El servidor refleja la solicitud, incluyendo todas las cookies del usuario.</li>
-                  <li>El script captura esta respuesta y la envía al atacante.</li>
-                </ol>
-              </div>
-              
-              <Alert variant="default" className="bg-red-50 border-red-100">
-                <AlertTriangle className="h-5 w-5 text-red-600" />
-                <AlertTitle className="text-red-800 text-base">Mitigación</AlertTitle>
-                <AlertDescription className="text-red-700">
-                  <ul className="list-disc list-inside space-y-1 mt-1">
-                    <li>Deshabilitar el método TRACE en servidores de producción.</li>
-                    <li>Implementar cabeceras HTTP de seguridad como X-XSS-Protection.</li>
-                    <li>Utilizar flags HttpOnly para cookies sensibles.</li>
-                  </ul>
-                </AlertDescription>
-              </Alert>
+            <div className="p-5">
+              <ul className="space-y-3 text-slate-700 dark:text-slate-300">
+                <li className="flex items-start">
+                  <span className="mr-2 text-green-500">•</span>
+                  <div>
+                    <span className="font-medium">Endpoints de health check</span>
+                    <p className="mt-1 text-sm">Implementa endpoints específicos para verificar el estado y la conectividad.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-green-500">•</span>
+                  <div>
+                    <span className="font-medium">Logs detallados</span>
+                    <p className="mt-1 text-sm">Registra información de solicitudes y respuestas para análisis posterior.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-green-500">•</span>
+                  <div>
+                    <span className="font-medium">Tracing distribuido</span>
+                    <p className="mt-1 text-sm">Utiliza herramientas como Jaeger, Zipkin o AWS X-Ray para seguimiento de solicitudes.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-green-500">•</span>
+                  <div>
+                    <span className="font-medium">Métricas y monitorización</span>
+                    <p className="mt-1 text-sm">Implementa sistemas de métricas como Prometheus con Grafana para visualizar el comportamiento.</p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
         
-        {/* Ejemplo de implementación */}
+        {/* Relacionados */}
         <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">Configuración del servidor</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Relacionados</h2>
           
-          <div className="border rounded-lg overflow-hidden shadow-sm">
-            <div className="p-5 border-b bg-slate-50">
-              <h3 className="text-lg font-medium">Deshabilitar TRACE en distintos servidores</h3>
-            </div>
-            <div className="p-5">
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-medium mb-2">Apache</h4>
-                  <CodeBlock
-                    code={`# En archivo httpd.conf o .htaccess
-TraceEnable off
-
-# O limitar métodos permitidos
-<LimitExcept GET POST PUT DELETE OPTIONS>
-    Deny from all
-</LimitExcept>`}
-                    language="apache"
-                  />
-                </div>
-                
-                <div>
-                  <h4 className="font-medium mb-2">Nginx</h4>
-                  <CodeBlock
-                    code={`# En la configuración del servidor
-server {
-    # ...
-    
-    # Rechazar solicitudes TRACE
-    if ($request_method = TRACE) {
-        return 405;
-    }
-    
-    # Alternativa: limitar a métodos específicos
-    if ($request_method !~ ^(GET|POST|PUT|DELETE|OPTIONS)$) {
-        return 405;
-    }
-    
-    # ...
-}`}
-                    language="nginx"
-                  />
-                </div>
-                
-                <div>
-                  <h4 className="font-medium mb-2">Express (Node.js)</h4>
-                  <CodeBlock
-                    code={`// Middleware para rechazar solicitudes TRACE
-app.use((req, res, next) => {
-  if (req.method === 'TRACE') {
-    return res.status(405).send('Method Not Allowed');
-  }
-  next();
-});
-
-// O usando un paquete como method-override
-const methodOverride = require('method-override');
-const allowedMethods = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'];
-
-app.use(methodOverride());
-app.use((req, res, next) => {
-  if (!allowedMethods.includes(req.method)) {
-    return res.status(405).send('Method Not Allowed');
-  }
-  next();
-});`}
-                    language="javascript"
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/methods/options" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+              <h3 className="font-medium mb-2">Método OPTIONS</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Determinar funcionalidades de comunicación</p>
+            </Link>
+            <Link to="/methods/head" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+              <h3 className="font-medium mb-2">Método HEAD</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Obtener encabezados sin cuerpo de respuesta</p>
+            </Link>
+            <Link to="/security/cors" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+              <h3 className="font-medium mb-2">Seguridad CORS</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Prevenir ataques cross-site</p>
+            </Link>
           </div>
-          
-          <Alert className="bg-slate-50 border-slate-100">
-            <Info className="h-5 w-5 text-slate-600" />
-            <AlertTitle className="text-slate-800 text-base">Entornos de desarrollo</AlertTitle>
-            <AlertDescription className="text-slate-700">
-              En entornos de desarrollo controlados, puede ser útil habilitar TRACE para fines de depuración y diagnóstico.
-              Sin embargo, asegúrate de deshabilitarlo antes de mover el código a un entorno de producción.
-            </AlertDescription>
-          </Alert>
         </section>
       </PageContent>
     </PageLayout>

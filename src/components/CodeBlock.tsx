@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 import { Check, Copy } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useTheme } from "next-themes";
 
 interface CodeBlockProps {
   code: string;
@@ -12,7 +13,14 @@ interface CodeBlockProps {
 
 export function CodeBlock({ code, language = "json", className }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   
+  // Wait for component to be mounted to avoid hydration issues
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
     setCopied(true);
@@ -22,10 +30,15 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
   // Process newlines in code string to ensure they render properly
   const processedCode = code.replace(/\\n/g, '\n');
 
+  // Determine the background color based on dark/light mode
+  const bgColor = mounted && resolvedTheme === 'dark' ? '#0a0e17' : '#0f172a';
+  const borderColor = mounted && resolvedTheme === 'dark' ? '#1f2937' : '#0f172a';
+  const headerBgColor = mounted && resolvedTheme === 'dark' ? '#111827' : '#1e293b';
+
   // Optimized style for a consistent dark theme
   const customStyle = {
-    backgroundColor: '#0f172a', // Darker background
-    background: '#0f172a',
+    backgroundColor: bgColor,
+    background: bgColor,
     margin: 0,
     padding: '1.5rem 1.25rem',
     fontSize: '0.875rem',
@@ -41,7 +54,7 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
     ...vscDarkPlus,
     'code[class*="language-"]': {
       ...vscDarkPlus['code[class*="language-"]'],
-      background: '#0f172a',
+      background: bgColor,
       color: '#f1f5f9',
       textShadow: 'none',
       fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
@@ -49,7 +62,7 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
     },
     'pre[class*="language-"]': {
       ...vscDarkPlus['pre[class*="language-"]'],
-      background: '#0f172a',
+      background: bgColor,
       color: '#f1f5f9',
       textShadow: 'none',
       whiteSpace: 'pre-wrap'
@@ -82,11 +95,11 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
 
   return (
     <div className={cn(
-      "relative group rounded-md overflow-hidden border border-slate-800 bg-[#0f172a]",
+      "relative group rounded-md overflow-hidden border border-slate-800 dark:border-slate-700",
       className
     )}>
-      <div className="absolute top-0 left-0 right-0 h-10 flex items-center justify-between px-4 bg-[#1e293b] border-b border-slate-700">
-        <div className="text-xs font-medium text-slate-400">
+      <div className="absolute top-0 left-0 right-0 h-10 flex items-center justify-between px-4" style={{ backgroundColor: headerBgColor, borderBottom: `1px solid ${borderColor}` }}>
+        <div className="text-xs font-medium text-slate-400 dark:text-slate-300">
           {language.toUpperCase()}
         </div>
         <button
@@ -107,7 +120,7 @@ export function CodeBlock({ code, language = "json", className }: CodeBlockProps
           )}
         </button>
       </div>
-      <div className="pt-10 overflow-x-auto bg-[#0f172a]">
+      <div className="pt-10 overflow-x-auto" style={{ backgroundColor: bgColor }}>
         <SyntaxHighlighter
           language={language}
           style={modifiedStyle}

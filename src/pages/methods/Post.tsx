@@ -1,4 +1,3 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { PageContent } from "@/components/PageContent";
 import { EndpointExample } from "@/components/EndpointExample";
@@ -13,7 +12,7 @@ const PostMethodPage = () => {
     <PageLayout>
       <PageContent 
         title="Método POST" 
-        description="El método POST se utiliza principalmente para crear nuevos recursos en el servidor. A diferencia de otros métodos, no es idempotente por naturaleza, lo que significa que múltiples solicitudes idénticas pueden tener efectos diferentes."
+        description="El método POST se utiliza para enviar datos al servidor para crear un nuevo recurso. Es uno de los métodos más comunes en el desarrollo de APIs REST y aplicaciones web."
         path={["Inicio", "Métodos HTTP", "POST"]}
       >
         {/* Características principales */}
@@ -21,43 +20,43 @@ const PostMethodPage = () => {
           <h2 className="text-2xl font-semibold tracking-tight">Características principales</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <X className="h-4 w-4 text-red-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
+                Creación de recursos
+              </h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                El uso principal de POST es crear nuevos recursos en el servidor.
+              </p>
+            </div>
+            
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
+              <h3 className="flex items-center text-base font-medium mb-2">
+                <X className="h-4 w-4 text-red-600 dark:text-red-500 mr-2" />
                 No idempotente
               </h3>
-              <p className="text-sm text-slate-700">
-                Múltiples solicitudes idénticas pueden producir resultados diferentes.
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                Múltiples solicitudes POST idénticas pueden crear múltiples recursos.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <X className="h-4 w-4 text-red-600 mr-2" />
-                No es seguro
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
+                Contiene cuerpo
               </h3>
-              <p className="text-sm text-slate-700">
-                Modifica el estado en el servidor al crear recursos.
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                Generalmente incluye datos en el cuerpo de la solicitud.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
-                Cuerpo de la solicitud
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
+                Modifica estado
               </h3>
-              <p className="text-sm text-slate-700">
-                Contiene los datos para crear el nuevo recurso.
-              </p>
-            </div>
-            
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
-              <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
-                Estado 201
-              </h3>
-              <p className="text-sm text-slate-700">
-                Generalmente devuelve el código 201 (Created) en caso de éxito.
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                Cambia el estado del servidor al crear o actualizar recursos.
               </p>
             </div>
           </div>
@@ -69,385 +68,374 @@ const PostMethodPage = () => {
           
           <div className="space-y-6">
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium mb-2">Crear un nuevo recurso</h3>
-                <p className="text-sm text-slate-600">Crea un nuevo producto en el catálogo</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Este es el uso más común y estándar del método POST</p>
               </div>
               <div className="p-5">
-                <RouteExample 
+                <EndpointExample 
                   method="POST"
                   path="/api/v1/products"
-                  description="Crea un nuevo producto en el catálogo"
-                />
-                
-                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-slate-900 flex items-center">
-                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
-                      Ejemplo de petición
-                    </h4>
-                    <CodeBlock 
-                      code={`{
-  "name": "Smartwatch Ultra",
-  "description": "Reloj inteligente con monitor cardíaco y GPS integrado",
-  "price": 299.99,
+                  description="Crea un nuevo producto"
+                  requestExample={`{
+  "name": "Smartphone Pro",
+  "description": "Teléfono inteligente de alta gama",
+  "price": 599.99,
   "category": "electronics",
-  "tags": ["wearable", "fitness", "tech"]
+  "stock": 50,
+  "specifications": {
+    "screen": "6.5 inches",
+    "processor": "Octa-core 2.5GHz",
+    "ram": "8GB",
+    "storage": "128GB"
+  }
 }`}
+                  responseExample={`{
+  "id": "prod_123456",
+  "name": "Smartphone Pro",
+  "description": "Teléfono inteligente de alta gama",
+  "price": 599.99,
+  "category": "electronics",
+  "stock": 50,
+  "specifications": {
+    "screen": "6.5 inches",
+    "processor": "Octa-core 2.5GHz",
+    "ram": "8GB",
+    "storage": "128GB"
+  },
+  "created_at": "2023-06-10T15:30:00Z",
+  "updated_at": "2023-06-10T15:30:00Z"
+}`}
+                />
+              </div>
+            </div>
+            
+            <div className="border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+                <h3 className="text-lg font-medium mb-2">Enviar datos a un proceso</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">POST también se usa para enviar datos que serán procesados sin crear un recurso persistente</p>
+              </div>
+              <div className="p-5">
+                <EndpointExample 
+                  method="POST"
+                  path="/api/v1/payments/calculate-fees"
+                  description="Calcula las tarifas para un posible pago"
+                  requestExample={`{
+  "amount": 1500.00,
+  "currency": "USD",
+  "payment_method": "credit_card",
+  "country": "US"
+}`}
+                  responseExample={`{
+  "base_amount": 1500.00,
+  "processing_fee": 45.00,
+  "tax": 12.38,
+  "total_amount": 1557.38,
+  "currency": "USD"
+}`}
+                />
+              </div>
+            </div>
+            
+            <div className="border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+                <h3 className="text-lg font-medium mb-2">Añadir elementos a una colección</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Agregar un nuevo elemento a una colección existente</p>
+              </div>
+              <div className="p-5">
+                <EndpointExample 
+                  method="POST"
+                  path="/api/v1/orders/ord_789/items"
+                  description="Añade un producto a un pedido existente"
+                  requestExample={`{
+  "product_id": "prod_123456",
+  "quantity": 2,
+  "price_override": 549.99
+}`}
+                  responseExample={`{
+  "order_id": "ord_789",
+  "item_id": "item_456",
+  "product_id": "prod_123456",
+  "product_name": "Smartphone Pro",
+  "quantity": 2,
+  "unit_price": 549.99,
+  "total_price": 1099.98,
+  "added_at": "2023-06-10T16:15:00Z"
+}`}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Casos especiales de POST */}
+        <section className="space-y-6 pt-6">
+          <h2 className="text-2xl font-semibold tracking-tight">Casos especiales de POST</h2>
+          
+          <div className="space-y-6">
+            <div className="border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+                <h3 className="text-lg font-medium">Búsquedas complejas</h3>
+              </div>
+              <div className="p-5">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
+                  Aunque GET es preferible para búsquedas, POST puede usarse cuando los criterios son demasiado complejos para una URL.
+                </p>
+                <EndpointExample 
+                  method="POST"
+                  path="/api/v1/products/search"
+                  description="Realiza una búsqueda avanzada de productos"
+                  requestExample={`{
+  "filters": {
+    "price_range": { "min": 100, "max": 500 },
+    "categories": ["electronics", "accessories"],
+    "rating": { "min": 4 }
+  },
+  "sort": { "field": "popularity", "order": "desc" },
+  "pagination": { "page": 1, "limit": 20 }
+}`}
+                  responseExample={`{
+  "total": 156,
+  "page": 1,
+  "limit": 20,
+  "results": [
+    { "id": "prod_456", "name": "Wireless Earbuds", "price": 149.99, "..." },
+    { "id": "prod_789", "name": "Smart Watch", "price": 299.99, "..." },
+    { "..." }
+  ]
+}`}
+                />
+              </div>
+            </div>
+            
+            <div className="border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+                <h3 className="text-lg font-medium">Iniciar sesión / Autenticación</h3>
+              </div>
+              <div className="p-5">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
+                  Es común usar POST para enviar credenciales y obtener tokens de autenticación.
+                </p>
+                <EndpointExample 
+                  method="POST"
+                  path="/api/v1/auth/login"
+                  description="Iniciar sesión y obtener un token de acceso"
+                  requestExample={`{
+  "email": "usuario@ejemplo.com",
+  "password": "contraseña123"
+}`}
+                  responseExample={`{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expires_in": 3600,
+  "token_type": "Bearer",
+  "user": {
+    "id": "user_123",
+    "name": "Usuario Ejemplo",
+    "email": "usuario@ejemplo.com"
+  }
+}`}
+                />
+              </div>
+            </div>
+            
+            <div className="border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+                <h3 className="text-lg font-medium">Subida de archivos</h3>
+              </div>
+              <div className="p-5">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
+                  POST es el método estándar para cargar archivos al servidor.
+                </p>
+                <EndpointExample 
+                  method="POST"
+                  path="/api/v1/files/upload"
+                  description="Carga un archivo al servidor"
+                  requestExample={`
+// Usando FormData (multipart/form-data)
+const formData = new FormData();
+formData.append('file', fileBlob);
+formData.append('type', 'image');
+formData.append('description', 'Imagen de perfil');
+
+fetch('/api/v1/files/upload', {
+  method: 'POST',
+  body: formData
+});`}
+                  responseExample={`{
+  "file_id": "file_789",
+  "filename": "profile_image.jpg",
+  "content_type": "image/jpeg",
+  "size": 123456,
+  "url": "https://api.ejemplo.com/files/file_789",
+  "uploaded_at": "2023-06-10T16:30:00Z"
+}`}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Mejores prácticas */}
+        <section className="space-y-6 pt-6">
+          <h2 className="text-2xl font-semibold tracking-tight">Mejores prácticas</h2>
+          
+          <Alert variant="default" className="bg-blue-50 border-blue-100 dark:bg-blue-950/50 dark:border-blue-900/50">
+            <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <AlertTitle className="text-blue-800 dark:text-blue-300 text-base">Respuesta apropiada</AlertTitle>
+            <AlertDescription className="text-blue-700 dark:text-blue-400">
+              Después de un POST exitoso que crea un recurso, la respuesta debe incluir:
+              <ul className="list-disc ml-6 mt-2">
+                <li>Código de estado 201 Created</li>
+                <li>Encabezado Location con la URL del nuevo recurso</li>
+                <li>Representación del recurso creado en el cuerpo</li>
+              </ul>
+            </AlertDescription>
+          </Alert>
+          
+          <div className="mt-6 space-y-6">
+            <div className="border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
+                <h3 className="text-lg font-medium">Ejemplos de respuestas correctas</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 p-5">
+                <div>
+                  <h4 className="font-medium text-sm mb-3 text-green-600">Correcto ✓</h4>
+                  <div className="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border">
+                    <CodeBlock
+                      code={`HTTP/1.1 201 Created
+Location: /api/v1/products/prod_123
+Content-Type: application/json
+
+{
+  "id": "prod_123",
+  "name": "Nuevo Producto",
+  "created_at": "2023-06-10T12:00:00Z",
+  ...
+}`}
+                      language="http"
                     />
                   </div>
-                  
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-slate-900 flex items-center">
-                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-green-500"></span>
-                      Ejemplo de respuesta
-                    </h4>
-                    <CodeBlock 
-                      code={`{
-  "id": "prod_789",
-  "name": "Smartwatch Ultra",
-  "description": "Reloj inteligente con monitor cardíaco y GPS integrado",
-  "price": 299.99,
-  "category": "electronics",
-  "tags": ["wearable", "fitness", "tech"],
-  "created_at": "2023-06-10T15:30:45Z"
+                </div>
+                <div>
+                  <h4 className="font-medium text-sm mb-3 text-red-600 mt-4 md:mt-0">Incorrecto ❌</h4>
+                  <div className="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border">
+                    <CodeBlock
+                      code={`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "success": true,
+  "message": "El producto fue creado"
 }`}
+                      language="http"
                     />
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
-                <h3 className="text-lg font-medium mb-2">Procesamiento de formularios o acciones</h3>
-                <p className="text-sm text-slate-600">Procesa un pago para un pedido</p>
-              </div>
-              <div className="p-5">
-                <EndpointExample 
-                  method="POST"
-                  path="/api/v1/payments"
-                  description="Procesa un pago para un pedido"
-                  requestExample={`{
-  "order_id": "order_123",
-  "amount": 299.99,
-  "currency": "EUR",
-  "payment_method": {
-    "type": "credit_card",
-    "card_number": "XXXX-XXXX-XXXX-1111",
-    "expiry": "05/25",
-    "cvv": "XXX"
-  }
-}`}
-                  responseExample={`{
-  "payment_id": "pay_456",
-  "order_id": "order_123",
-  "amount": 299.99,
-  "currency": "EUR",
-  "status": "completed",
-  "transaction_id": "tx_789",
-  "card_last4": "1111"
-}`}
-                />
-              </div>
-            </div>
-            
-            <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
-                <h3 className="text-lg font-medium mb-2">Añadir elementos a una colección existente</h3>
-                <p className="text-sm text-slate-600">Añade un producto a la lista de favoritos del usuario</p>
-              </div>
-              <div className="p-5">
-                <EndpointExample 
-                  method="POST"
-                  path="/api/v1/users/user_123/favorites"
-                  description="Añade un producto a la lista de favoritos del usuario"
-                  requestExample={`{
-  "product_id": "prod_456"
-}`}
-                  responseExample={`{
-  "id": "fav_987",
-  "user_id": "user_123",
-  "product_id": "prod_456",
-  "product": {
-    "name": "Auriculares Premium",
-    "price": 129.99,
-    "image_url": "https://example.com/images/headphones.jpg"
-  },
-  "added_at": "2023-06-10T15:30:45Z"
-}`}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Buenas prácticas */}
-        <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">Buenas prácticas</h2>
-          
-          <Alert variant="default" className="bg-blue-50 border-blue-100">
-            <Info className="h-5 w-5 text-blue-600" />
-            <AlertTitle className="text-blue-800 text-base">Encabezado Location</AlertTitle>
-            <AlertDescription className="text-blue-700">
-              Incluye un encabezado Location en la respuesta con la URI del recurso recién creado.
-            </AlertDescription>
-          </Alert>
-          
-          <div className="border rounded-lg overflow-hidden shadow-sm">
-            <div className="p-5 border-b bg-slate-50">
-              <h3 className="text-lg font-medium">Ejemplo de respuesta con Location</h3>
-            </div>
-            <div className="p-5">
-              <CodeBlock
-                code={`HTTP/1.1 201 Created
-Location: /api/v1/products/prod_789
-Content-Type: application/json
-
-{
-  "id": "prod_789",
-  "name": "Smartwatch Ultra",
-  "price": 299.99,
-  "created_at": "2023-06-10T15:30:45Z"
-}`}
-                language="http"
-              />
-            </div>
-          </div>
-          
-          <div className="border rounded-lg overflow-hidden shadow-sm mt-6">
-            <div className="p-5 border-b bg-slate-50">
-              <h3 className="text-lg font-medium">Validación de datos</h3>
-              <p className="text-sm text-slate-600 mt-2">
-                Implementa una validación exhaustiva de los datos entrantes y proporciona mensajes de error claros:
-              </p>
-            </div>
-            <div className="p-5">
-              <CodeBlock
-                code={`HTTP/1.1 422 Unprocessable Entity
-Content-Type: application/json
-
-{
-  "errors": {
-    "price": ["El precio debe ser un número positivo"],
-    "name": ["El nombre del producto es obligatorio"],
-    "category": ["La categoría especificada no existe"]
-  },
-  "message": "No se pudo crear el producto debido a errores de validación"
-}`}
-                language="http"
-              />
-            </div>
-          </div>
-          
-          <Alert variant="default" className="bg-amber-50 border-amber-100 mt-6">
-            <AlertTriangle className="h-5 w-5 text-amber-600" />
-            <AlertTitle className="text-amber-800 text-base">Idempotencia condicional</AlertTitle>
-            <AlertDescription className="text-amber-700">
-              Aunque POST no es idempotente por definición, puedes implementar un comportamiento idempotente usando identificadores de solicitud.
-            </AlertDescription>
-          </Alert>
-          
-          <div className="border rounded-lg overflow-hidden shadow-sm mt-4">
-            <div className="p-5 border-b bg-slate-50">
-              <h3 className="text-lg font-medium">Uso de claves de idempotencia</h3>
-            </div>
-            <div className="p-5">
-              <CodeBlock
-                code={`POST /api/v1/orders HTTP/1.1
-Content-Type: application/json
-Idempotency-Key: 123e4567-e89b-12d3-a456-426655440000
-
-{
-  "customer_id": "cust_123",
-  "items": [
-    { "product_id": "prod_456", "quantity": 1 }
-  ]
-}`}
-                language="http"
-              />
-            </div>
-          </div>
-        </section>
-        
-        {/* POST vs PUT */}
-        <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">POST vs PUT</h2>
-          
-          <div className="overflow-hidden rounded-lg border shadow-sm">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-slate-100 text-left">
-                  <th className="border-b p-4 text-sm font-semibold text-slate-600">Característica</th>
-                  <th className="border-b p-4 text-sm font-semibold text-slate-600">POST</th>
-                  <th className="border-b p-4 text-sm font-semibold text-slate-600">PUT</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border-b p-4 bg-slate-50">Idempotencia</td>
-                  <td className="border-b p-4">No idempotente</td>
-                  <td className="border-b p-4">Idempotente</td>
-                </tr>
-                <tr>
-                  <td className="border-b p-4 bg-slate-50">URI del recurso</td>
-                  <td className="border-b p-4">El servidor decide la URI final</td>
-                  <td className="border-b p-4">El cliente especifica la URI exacta</td>
-                </tr>
-                <tr>
-                  <td className="border-b p-4 bg-slate-50">Uso principal</td>
-                  <td className="border-b p-4">Crear nuevos recursos</td>
-                  <td className="border-b p-4">Actualizar recursos existentes</td>
-                </tr>
-                <tr>
-                  <td className="p-4 bg-slate-50">Colecciones</td>
-                  <td className="p-4">POST a la colección</td>
-                  <td className="p-4">PUT al recurso específico</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-        
-        {/* Casos de uso avanzados */}
-        <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">Casos de uso avanzados</h2>
-          
-          <div className="space-y-6">
-            <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
-                <h3 className="text-lg font-medium">Operaciones que no son CRUD</h3>
-                <p className="text-sm text-slate-600 mt-2">
-                  Aunque REST se centra en operaciones CRUD sobre recursos, POST también puede utilizarse para operaciones más complejas:
-                </p>
-              </div>
-              <div className="p-5">
-                <EndpointExample 
-                  method="POST"
-                  path="/api/v1/orders/order_123/actions/cancel"
-                  description="Cancela un pedido existente"
-                  requestExample={`{
-  "reason": "El cliente ha solicitado la cancelación",
-  "refund": true
-}`}
-                  responseExample={`{
-  "order_id": "order_123",
-  "status": "cancelled",
-  "cancelled_at": "2023-06-10T16:45:30Z",
-  "refund_status": "processing"
-}`}
-                />
-              </div>
-            </div>
-            
-            <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
-                <h3 className="text-lg font-medium">Procesamiento en lote (Batch)</h3>
-                <p className="text-sm text-slate-600 mt-2">
-                  POST es adecuado para operaciones en lote que crean o modifican múltiples recursos:
-                </p>
-              </div>
-              <div className="p-5">
-                <EndpointExample 
-                  method="POST"
-                  path="/api/v1/products/batch"
-                  description="Crea múltiples productos en una sola operación"
-                  requestExample={`{
-  "items": [
-    {
-      "name": "Teclado Mecánico",
-      "price": 89.99,
-      "category": "peripherals"
-    },
-    {
-      "name": "Ratón Inalámbrico",
-      "price": 45.99,
-      "category": "peripherals"
-    }
-  ]
-}`}
-                  responseExample={`{
-  "created": 2,
-  "items": [
-    {
-      "id": "prod_567",
-      "name": "Teclado Mecánico",
-      "price": 89.99
-    },
-    {
-      "id": "prod_568",
-      "name": "Ratón Inalámbrico",
-      "price": 45.99
-    }
-  ]
-}`}
-                />
-              </div>
-            </div>
+            <Alert variant="default" className="bg-amber-50 border-amber-100 dark:bg-amber-950/50 dark:border-amber-900/50">
+              <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+              <AlertTitle className="text-amber-800 dark:text-amber-300 text-base">Prevención de envíos duplicados</AlertTitle>
+              <AlertDescription className="text-amber-700 dark:text-amber-400">
+                Para prevenir la creación de recursos duplicados debido a reenvíos accidentales:
+                <ul className="list-disc ml-6 mt-2">
+                  <li>Usa identificadores idempotentes del cliente (idempotency keys)</li>
+                  <li>Implementa validaciones de unicidad en los campos apropiados</li>
+                  <li>Usa POST/Redirect/GET para formularios web</li>
+                </ul>
+              </AlertDescription>
+            </Alert>
           </div>
         </section>
         
         {/* Códigos de estado comunes */}
-        <section className="space-y-6 pt-6">
+        <section className="space-y-4 pt-6">
           <h2 className="text-2xl font-semibold tracking-tight">Códigos de estado comunes</h2>
           
           <div className="border rounded-lg overflow-hidden shadow-sm">
             <table className="w-full border-collapse">
               <tbody>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 w-[140px] font-medium">201 Created</td>
-                  <td className="p-4 text-sm">El recurso se creó correctamente. Incluye la URI del nuevo recurso en el encabezado Location.</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 w-[140px] font-medium">201 Created</td>
+                  <td className="p-4 text-sm">La solicitud ha tenido éxito y se ha creado un nuevo recurso.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">202 Accepted</td>
-                  <td className="p-4 text-sm">La solicitud se aceptó pero aún no se ha completado (útil para procesos asincrónicos).</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">202 Accepted</td>
+                  <td className="p-4 text-sm">La solicitud ha sido aceptada para procesamiento, pero el procesamiento no se ha completado.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">400 Bad Request</td>
-                  <td className="p-4 text-sm">La solicitud tiene errores de formato o validación.</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">400 Bad Request</td>
+                  <td className="p-4 text-sm">La solicitud tiene errores de formato o contenido inválido.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">409 Conflict</td>
-                  <td className="p-4 text-sm">La solicitud no pudo completarse debido a un conflicto con el estado actual del recurso.</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">401 Unauthorized</td>
+                  <td className="p-4 text-sm">Autenticación requerida para crear el recurso.</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">403 Forbidden</td>
+                  <td className="p-4 text-sm">El cliente no tiene permiso para crear el recurso.</td>
                 </tr>
                 <tr>
-                  <td className="p-4 bg-slate-50 font-medium">422 Unprocessable</td>
-                  <td className="p-4 text-sm">La solicitud está bien formada pero tiene errores semánticos.</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">409 Conflict</td>
+                  <td className="p-4 text-sm">La solicitud no pudo completarse debido a un conflicto con el estado actual del recurso.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
         
-        {/* Consideraciones de seguridad */}
+        {/* POST vs. PUT */}
         <section className="space-y-6 pt-6">
-          <h2 className="text-2xl font-semibold tracking-tight">Consideraciones de seguridad</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">POST vs. PUT</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
-              <h3 className="font-medium mb-2">Inyección de datos</h3>
-              <p className="text-sm text-slate-700">
-                Valida y desinfecta todas las entradas para prevenir inyecciones. Nunca confíes en los datos
-                enviados por el cliente sin validarlos adecuadamente.
-              </p>
-            </div>
-            
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
-              <h3 className="font-medium mb-2">CSRF</h3>
-              <p className="text-sm text-slate-700">
-                Implementa tokens anti-CSRF para operaciones POST, especialmente en aplicaciones web que
-                manejan autenticación basada en cookies.
-              </p>
-            </div>
-            
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
-              <h3 className="font-medium mb-2">Límites de tamaño</h3>
-              <p className="text-sm text-slate-700">
-                Establece límites para el tamaño del cuerpo de la solicitud para evitar ataques de
-                denegación de servicio por consumo de recursos.
-              </p>
-            </div>
+          <p className="text-slate-700 dark:text-slate-300">
+            Es importante entender la diferencia entre POST y PUT, ya que ambos pueden usarse para crear recursos:
+          </p>
+          
+          <div className="overflow-hidden border rounded-lg shadow-sm">
+            <table className="w-full border-collapse">
+              <thead className="bg-slate-50 dark:bg-slate-900">
+                <tr>
+                  <th className="text-left p-4 font-medium text-slate-700 dark:text-slate-300">Característica</th>
+                  <th className="text-left p-4 font-medium text-slate-700 dark:text-slate-300">POST</th>
+                  <th className="text-left p-4 font-medium text-slate-700 dark:text-slate-300">PUT</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">Idempotencia</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">No idempotente</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Idempotente</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">URI del recurso</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">El servidor decide la URI</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">El cliente especifica la URI</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">Resultado de múltiples solicitudes</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Crea múltiples recursos</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Crea/actualiza un solo recurso</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium text-slate-700 dark:text-slate-300">Uso principal</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Crear recursos cuando el servidor asigna ID</td>
+                  <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Crear/actualizar recursos cuando el ID es conocido</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          
+          <Alert className="bg-slate-50 border-slate-100 dark:bg-slate-900/50 dark:border-slate-800">
+            <Info className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <AlertTitle className="text-slate-800 dark:text-slate-200 text-base">Regla práctica</AlertTitle>
+            <AlertDescription className="text-slate-700 dark:text-slate-300">
+              Usa POST cuando no conoces la URL exacta del recurso que se creará.
+              Usa PUT cuando conoces exactamente la URL donde quieres crear o reemplazar un recurso.
+            </AlertDescription>
+          </Alert>
         </section>
         
         {/* Relacionados */}
@@ -455,17 +443,17 @@ Idempotency-Key: 123e4567-e89b-12d3-a456-426655440000
           <h2 className="text-2xl font-semibold tracking-tight">Relacionados</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link to="/methods/put" className="block p-5 border rounded-lg hover:bg-slate-50 transition-colors">
+            <Link to="/methods/put" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="font-medium mb-2">Método PUT</h3>
-              <p className="text-sm text-slate-600">Reemplazar recursos completamente</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Actualizar o reemplazar recursos</p>
             </Link>
-            <Link to="/methods/patch" className="block p-5 border rounded-lg hover:bg-slate-50 transition-colors">
+            <Link to="/methods/patch" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="font-medium mb-2">Método PATCH</h3>
-              <p className="text-sm text-slate-600">Actualizar parcialmente recursos</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Actualizar parcialmente recursos</p>
             </Link>
-            <Link to="/validation" className="block p-5 border rounded-lg hover:bg-slate-50 transition-colors">
-              <h3 className="font-medium mb-2">Validación</h3>
-              <p className="text-sm text-slate-600">Técnicas para validar datos en APIs</p>
+            <Link to="/status-codes" className="block p-5 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+              <h3 className="font-medium mb-2">Códigos de estado</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Significado de los códigos HTTP</p>
             </Link>
           </div>
         </section>

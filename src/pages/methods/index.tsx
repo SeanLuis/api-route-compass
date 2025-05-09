@@ -13,27 +13,27 @@ const MethodsOverviewPage = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/" className="text-sm text-slate-500 hover:text-slate-700">Inicio</Link>
-            <span className="text-sm text-slate-500">/</span>
+            <Link to="/" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Inicio</Link>
+            <span className="text-sm text-slate-500 dark:text-slate-400">/</span>
             <span className="text-sm font-medium">Métodos HTTP</span>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Métodos HTTP</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Una guía completa sobre el uso adecuado de los métodos HTTP en el diseño de APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <section className="space-y-4">
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             Los métodos HTTP (también conocidos como verbos) definen qué acción se realiza sobre un recurso. 
             Utilizar estos métodos correctamente es clave para crear una API REST bien diseñada y predecible.
           </p>
           
-          <Alert className="bg-blue-50 border-blue-100">
-            <Info className="h-4 w-4 text-blue-600" />
-            <AlertTitle className="text-blue-800">Interfaz uniforme</AlertTitle>
-            <AlertDescription className="text-blue-700">
+          <Alert className="bg-blue-50 border-blue-100 dark:bg-blue-950/50 dark:border-blue-900/50">
+            <Info className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+            <AlertTitle className="text-blue-800 dark:text-blue-300">Interfaz uniforme</AlertTitle>
+            <AlertDescription className="text-blue-700 dark:text-blue-400">
               REST utiliza métodos HTTP estándar para proporcionar una interfaz uniforme, lo que hace que las APIs sean 
               más fáciles de entender y utilizar.
             </AlertDescription>
@@ -55,7 +55,7 @@ const MethodsOverviewPage = () => {
             <TableBody>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/get" className="text-indigo-600 hover:underline">GET</Link>
+                  <Link to="/methods/get" className="text-indigo-600 dark:text-indigo-400 hover:underline">GET</Link>
                 </TableCell>
                 <TableCell>Recuperar recursos</TableCell>
                 <TableCell>✓</TableCell>
@@ -63,7 +63,7 @@ const MethodsOverviewPage = () => {
               </TableRow>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/post" className="text-indigo-600 hover:underline">POST</Link>
+                  <Link to="/methods/post" className="text-indigo-600 dark:text-indigo-400 hover:underline">POST</Link>
                 </TableCell>
                 <TableCell>Crear recursos</TableCell>
                 <TableCell>✗</TableCell>
@@ -71,7 +71,7 @@ const MethodsOverviewPage = () => {
               </TableRow>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/put" className="text-indigo-600 hover:underline">PUT</Link>
+                  <Link to="/methods/put" className="text-indigo-600 dark:text-indigo-400 hover:underline">PUT</Link>
                 </TableCell>
                 <TableCell>Actualizar recursos (reemplazo total)</TableCell>
                 <TableCell>✓</TableCell>
@@ -79,7 +79,7 @@ const MethodsOverviewPage = () => {
               </TableRow>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/patch" className="text-indigo-600 hover:underline">PATCH</Link>
+                  <Link to="/methods/patch" className="text-indigo-600 dark:text-indigo-400 hover:underline">PATCH</Link>
                 </TableCell>
                 <TableCell>Actualizar recursos (parcial)</TableCell>
                 <TableCell>✗</TableCell>
@@ -87,7 +87,7 @@ const MethodsOverviewPage = () => {
               </TableRow>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/delete" className="text-indigo-600 hover:underline">DELETE</Link>
+                  <Link to="/methods/delete" className="text-indigo-600 dark:text-indigo-400 hover:underline">DELETE</Link>
                 </TableCell>
                 <TableCell>Eliminar recursos</TableCell>
                 <TableCell>✓</TableCell>
@@ -95,7 +95,7 @@ const MethodsOverviewPage = () => {
               </TableRow>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/head" className="text-indigo-600 hover:underline">HEAD</Link>
+                  <Link to="/methods/head" className="text-indigo-600 dark:text-indigo-400 hover:underline">HEAD</Link>
                 </TableCell>
                 <TableCell>Obtener metadatos (sin cuerpo)</TableCell>
                 <TableCell>✓</TableCell>
@@ -103,7 +103,7 @@ const MethodsOverviewPage = () => {
               </TableRow>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/options" className="text-indigo-600 hover:underline">OPTIONS</Link>
+                  <Link to="/methods/options" className="text-indigo-600 dark:text-indigo-400 hover:underline">OPTIONS</Link>
                 </TableCell>
                 <TableCell>Determinar opciones de comunicación</TableCell>
                 <TableCell>✓</TableCell>
@@ -111,7 +111,7 @@ const MethodsOverviewPage = () => {
               </TableRow>
               <TableRow>
                 <TableCell className="font-medium">
-                  <Link to="/methods/trace" className="text-indigo-600 hover:underline">TRACE</Link>
+                  <Link to="/methods/trace" className="text-indigo-600 dark:text-indigo-400 hover:underline">TRACE</Link>
                 </TableCell>
                 <TableCell>Diagnóstico y depuración</TableCell>
                 <TableCell>✓</TableCell>
@@ -120,7 +120,7 @@ const MethodsOverviewPage = () => {
             </TableBody>
           </Table>
           
-          <div className="mt-2 text-sm text-slate-500">
+          <div className="mt-2 text-sm text-slate-500 dark:text-slate-400">
             <p><strong>Idempotente:</strong> Realizar la misma operación múltiples veces produce el mismo resultado que hacerlo una vez.</p>
             <p><strong>Seguro:</strong> La operación no modifica recursos en el servidor (solo lectura).</p>
           </div>
@@ -296,26 +296,26 @@ POST /products/123/update`}
           <h2 className="text-xl font-semibold tracking-tight">Buenas prácticas</h2>
           
           <div className="space-y-2">
-            <div className="p-3 border rounded-lg">
+            <div className="p-3 border rounded-lg dark:border-slate-700">
               <h3 className="font-medium mb-1">Utilizar métodos HTTP apropiados</h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Cada método HTTP tiene un propósito específico. Asegúrate de utilizar GET para obtener recursos, 
                 POST para crear recursos, PUT para actualizaciones completas, PATCH para actualizaciones parciales 
                 y DELETE para eliminar recursos.
               </p>
             </div>
             
-            <div className="p-3 border rounded-lg">
+            <div className="p-3 border rounded-lg dark:border-slate-700">
               <h3 className="font-medium mb-1">Mantener URIs enfocadas en recursos, no en acciones</h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Las URIs deben identificar recursos (sustantivos), no acciones (verbos). Las acciones se comunican 
                 mediante los métodos HTTP, no mediante la ruta.
               </p>
             </div>
             
-            <div className="p-3 border rounded-lg">
+            <div className="p-3 border rounded-lg dark:border-slate-700">
               <h3 className="font-medium mb-1">Respetar la idempotencia</h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Los métodos GET, PUT y DELETE deben ser idempotentes. Esto significa que realizar la misma operación 
                 múltiples veces debe tener el mismo efecto que hacerla una vez.
               </p>
@@ -331,10 +331,10 @@ POST /products/123/update`}
               <Link 
                 key={method}
                 to={`/methods/${method}`} 
-                className="p-4 border rounded-lg hover:bg-slate-50 flex items-center justify-center"
+                className="p-4 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors dark:border-slate-700 flex items-center justify-center"
               >
-                <span className="font-medium text-indigo-600 mr-1">{method.toUpperCase()}</span>
-                <ArrowRight className="h-3 w-3 text-indigo-600" />
+                <span className="font-medium text-indigo-600 dark:text-indigo-400 mr-1">{method.toUpperCase()}</span>
+                <ArrowRight className="h-3 w-3 text-indigo-600 dark:text-indigo-400" />
               </Link>
             ))}
           </div>
@@ -361,14 +361,14 @@ const MethodCard = ({
   characteristics: string[];
 }) => {
   const colorClasses = {
-    green: "bg-green-100 text-green-800",
-    blue: "bg-blue-100 text-blue-800",
-    orange: "bg-orange-100 text-orange-800",
-    yellow: "bg-yellow-100 text-yellow-800",
-    red: "bg-red-100 text-red-800",
-    purple: "bg-purple-100 text-purple-800",
-    indigo: "bg-indigo-100 text-indigo-800",
-    teal: "bg-teal-100 text-teal-800"
+    green: "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300",
+    blue: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
+    orange: "bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300",
+    yellow: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300",
+    red: "bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300",
+    purple: "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
+    indigo: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300",
+    teal: "bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300"
   };
   
   return (
@@ -382,7 +382,7 @@ const MethodCard = ({
       </CardHeader>
       <CardContent className="space-y-3">
         <div>
-          <h4 className="text-xs font-medium text-slate-500 mb-1">EJEMPLO</h4>
+          <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">EJEMPLO</h4>
           <CodeBlock
             code={example}
             language="http"
@@ -391,8 +391,8 @@ const MethodCard = ({
         </div>
         
         <div>
-          <h4 className="text-xs font-medium text-slate-500 mb-1">CARACTERÍSTICAS</h4>
-          <ul className="text-xs space-y-1">
+          <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">CARACTERÍSTICAS</h4>
+          <ul className="text-xs space-y-1 dark:text-slate-300">
             {characteristics.map((item, index) => (
               <li key={index} className="flex items-start">
                 <span className="mr-1">•</span> {item}
@@ -403,7 +403,7 @@ const MethodCard = ({
         
         <Link
           to={path}
-          className="mt-2 text-xs font-medium text-indigo-600 hover:text-indigo-700 flex items-center"
+          className="mt-2 text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex items-center"
         >
           Ver documentación detallada <ArrowRight className="ml-1 h-3 w-3" />
         </Link>

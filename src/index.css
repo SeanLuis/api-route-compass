@@ -122,6 +122,18 @@
   @apply bg-red-500/20 text-red-700 dark:bg-red-500/30 dark:text-red-300;
 }
 
+.method-head {
+  @apply bg-purple-500/20 text-purple-700 dark:bg-purple-500/30 dark:text-purple-300;
+}
+
+.method-options {
+  @apply bg-indigo-500/20 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-300;
+}
+
+.method-trace {
+  @apply bg-orange-500/20 text-orange-700 dark:bg-orange-500/30 dark:text-orange-300;
+}
+
 .code-block {
   @apply bg-slate-900 text-slate-50 p-4 rounded-md overflow-x-auto font-mono text-sm whitespace-pre;
 }
@@ -137,103 +149,57 @@
 
 /* Estilos para la página de contenido */
 .content-container h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-top: 2.5rem;
-  margin-bottom: 1.25rem;
-  color: #111827;
+  @apply text-2xl font-semibold mt-10 mb-5 text-foreground;
 }
 
 .content-container h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: #111827;
+  @apply text-xl font-semibold mt-8 mb-4 text-foreground;
 }
 
 .content-container h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  color: #111827;
+  @apply text-lg font-semibold mt-6 mb-3 text-foreground;
 }
 
 .content-container p {
-  margin-bottom: 1.25rem;
-  line-height: 1.7;
-  color: #374151;
+  @apply mb-5 leading-7 text-foreground;
 }
 
 .content-container a {
-  color: #2563eb;
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-.content-container a:hover {
-  color: #1d4ed8;
+  @apply text-primary underline font-medium hover:text-primary/80;
 }
 
 .content-container ul, 
 .content-container ol {
-  margin-top: 1rem;
-  margin-bottom: 1.25rem;
-  padding-left: 1.5rem;
+  @apply mt-4 mb-5 pl-6;
 }
 
 .content-container li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
+  @apply mb-2 leading-6 text-foreground;
 }
 
 .content-container code {
-  background-color: #f1f5f9;
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  color: #334155;
+  @apply bg-muted p-1 rounded text-sm text-foreground;
 }
 
 .content-container pre {
-  background-color: #0f172a;
-  border-radius: 0.375rem;
-  padding: 1rem;
-  margin: 1.25rem 0;
-  overflow-x: auto;
+  @apply bg-slate-900 dark:bg-slate-950 rounded-md p-4 my-5 overflow-x-auto;
 }
 
 .content-container blockquote {
-  border-left: 4px solid #e2e8f0;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 1.25rem;
-  color: #64748b;
-  font-style: italic;
+  @apply border-l-4 border-muted ml-0 mr-0 pl-5 text-muted-foreground italic;
 }
 
 .content-container table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.95rem;
+  @apply w-full border-collapse my-6 text-sm;
 }
 
 .content-container th {
-  background-color: #f8fafc;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  border-bottom: 2px solid #e2e8f0;
-  font-weight: 600;
+  @apply bg-muted text-left p-3 border-b-2 border-border font-semibold text-foreground;
 }
 
 .content-container td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e2e8f0;
+  @apply p-3 border-b border-border text-foreground;
 }
-
-/* Eliminados los estilos para animaciones y efectos especiales que no son necesarios */
 
 @layer utilities {
   .font-inter {

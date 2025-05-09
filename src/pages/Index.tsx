@@ -1,4 +1,3 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -17,16 +16,17 @@ import {
   RefreshCw,
   ArrowRight
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Index = () => {
   return (
     <PageLayout>
       <div className="space-y-16">
         {/* Hero Section */}
-        <section className="py-12 border-b border-slate-200">
+        <section className="py-12 border-b border-border">
           <div className="max-w-4xl">
             <h1 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent">API Route Compass</h1>
-            <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl">
+            <p className="text-xl text-foreground/80 mb-8 leading-relaxed max-w-3xl">
               Guía definitiva para el diseño de APIs REST escalables y mantenibles que siguen las mejores prácticas de la industria.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -38,7 +38,7 @@ const Index = () => {
               </Link>
               <Link 
                 to="/examples" 
-                className="inline-flex items-center px-5 py-2.5 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors font-medium text-slate-700"
+                className="inline-flex items-center px-5 py-2.5 border border-border rounded-lg hover:bg-muted transition-colors font-medium text-foreground"
               >
                 Ver ejemplos
               </Link>
@@ -48,8 +48,8 @@ const Index = () => {
         
         {/* Main Documentation Sections */}
         <section className="pt-4">
-          <h2 className="text-3xl font-semibold tracking-tight mb-3 text-slate-800">Documentación principal</h2>
-          <p className="text-slate-600 mb-8 max-w-3xl">Explora nuestra guía completa para diseñar APIs REST profesionales, organizadas por temas clave.</p>
+          <h2 className="text-3xl font-semibold tracking-tight mb-3 text-foreground">Documentación principal</h2>
+          <p className="text-foreground/80 mb-8 max-w-3xl">Explora nuestra guía completa para diseñar APIs REST profesionales, organizadas por temas clave.</p>
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <SectionCard 
@@ -154,12 +154,12 @@ const Index = () => {
         </section>
         
         {/* Examples Section */}
-        <section className="py-8 bg-gradient-to-br from-slate-50 to-indigo-50 rounded-2xl px-6 my-12">
-          <h2 className="text-2xl font-semibold tracking-tight mb-2 text-slate-800">Ejemplos Rápidos</h2>
-          <p className="text-slate-600 mb-6">Consulta estos ejemplos prácticos para implementar patrones comunes de API REST.</p>
+        <section className="py-8 bg-gradient-to-br from-muted to-muted/50 dark:from-muted/30 dark:to-muted/10 rounded-2xl px-6 my-12">
+          <h2 className="text-2xl font-semibold tracking-tight mb-2 text-foreground">Ejemplos Rápidos</h2>
+          <p className="text-foreground/80 mb-6">Consulta estos ejemplos prácticos para implementar patrones comunes de API REST.</p>
           
           <Tabs defaultValue="basic" className="w-full">
-            <TabsList className="mb-6 bg-white/70 p-1 border border-slate-200">
+            <TabsList className="mb-6 bg-background/70 p-1 border border-border">
               <TabsTrigger value="basic" className="text-sm">Rutas Básicas</TabsTrigger>
               <TabsTrigger value="filters" className="text-sm">Filtros</TabsTrigger>
               <TabsTrigger value="relations" className="text-sm">Relaciones</TabsTrigger>
@@ -372,11 +372,11 @@ const Index = () => {
         <section className="pt-4">
           <div className="grid md:grid-cols-2 gap-10">
             <div>
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-3">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-3">
                 Diseño Profesional
               </div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4">APIs consistentes y profesionales</h2>
-              <p className="text-slate-600 mb-4 leading-relaxed">
+              <h2 className="text-2xl font-bold text-foreground mb-4">APIs consistentes y profesionales</h2>
+              <p className="text-foreground/80 mb-4 leading-relaxed">
                 Sigue las mejores prácticas de la industria para crear APIs que sean intuitivas, 
                 predecibles y fáciles de mantener a largo plazo.
               </p>
@@ -388,28 +388,28 @@ const Index = () => {
                   "Códigos de estado adecuados"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <div className="mr-2 mt-1 rounded-full p-1 bg-indigo-100">
-                      <svg className="h-3 w-3 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="mr-2 mt-1 rounded-full p-1 bg-indigo-100 dark:bg-indigo-950/50">
+                      <svg className="h-3 w-3 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-slate-700">{item}</span>
+                    <span className="text-foreground/90">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-3">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 text-sm font-medium mb-3">
                 Documentación Clara
               </div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4">Ejemplos prácticos y casos de uso reales</h2>
-              <p className="text-slate-600 mb-4 leading-relaxed">
+              <h2 className="text-2xl font-bold text-foreground mb-4">Ejemplos prácticos y casos de uso reales</h2>
+              <p className="text-foreground/80 mb-4 leading-relaxed">
                 Nuestra documentación ofrece ejemplos concretos que puedes implementar inmediatamente 
                 en tus proyectos, con explicaciones detalladas de cada decisión de diseño.
               </p>
               <Link 
                 to="/examples" 
-                className="inline-flex items-center font-medium text-indigo-600 hover:text-indigo-800"
+                className="inline-flex items-center font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
               >
                 Explorar ejemplos <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
@@ -433,7 +433,7 @@ const Index = () => {
           </Link>
           <a 
             rel="noopener noreferrer"
-            href="https://github.com/username/api-route-compass" 
+            href="https://github.com/SeanLuis/api-route-compass" 
             target="_blank"
             className="px-6 py-3 bg-indigo-700 text-white font-medium rounded-lg hover:bg-indigo-800 transition-colors"
           >
@@ -463,15 +463,15 @@ const SectionCard = ({
   links: { title: string; href: string }[];
 }) => {
   return (
-    <Card className="overflow-hidden hover:shadow-md transition-shadow duration-300 border border-slate-200">
-      <CardHeader className="pb-3 bg-slate-50/80">
+    <Card className="overflow-hidden hover:shadow-md transition-shadow duration-300 border border-border">
+      <CardHeader className="pb-3 bg-muted/50">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-md bg-indigo-100">
-            <Icon className="h-4 w-4 text-indigo-600" />
+          <div className="p-1.5 rounded-md bg-indigo-100 dark:bg-indigo-950/50">
+            <Icon className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
           </div>
           <CardTitle className="text-lg font-medium">{title}</CardTitle>
         </div>
-        <CardDescription className="text-slate-600 mt-1">{description}</CardDescription>
+        <CardDescription className="text-muted-foreground mt-1">{description}</CardDescription>
       </CardHeader>
       <CardContent className="pt-4 pb-5">
         <ul className="space-y-2">
@@ -479,9 +479,9 @@ const SectionCard = ({
             <li key={index}>
               <Link 
                 to={link.href}
-                className="flex items-center text-sm text-slate-700 hover:text-indigo-600 hover:underline py-1"
+                className="flex items-center text-sm text-foreground/80 hover:text-primary hover:underline py-1"
               >
-                <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span> 
+                <span className="w-1.5 h-1.5 bg-indigo-400 dark:bg-indigo-500 rounded-full mr-2"></span> 
                 {link.title}
               </Link>
             </li>
@@ -489,7 +489,7 @@ const SectionCard = ({
         </ul>
         <Link
           to={links[0].href}
-          className="mt-4 text-xs font-medium text-indigo-600 hover:text-indigo-700 flex items-center pt-2"
+          className="mt-4 text-xs font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 flex items-center pt-2"
         >
           Ver documentación <ArrowRight className="ml-1 h-3 w-3" />
         </Link>

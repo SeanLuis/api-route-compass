@@ -20,42 +20,42 @@ const OptionsMethodPage = () => {
           <h2 className="text-2xl font-semibold tracking-tight">Características principales</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 Es seguro
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Las peticiones OPTIONS no modifican recursos en el servidor.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 Autodescubrimiento
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Permite a los clientes descubrir qué operaciones están disponibles para un recurso.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 CORS Preflight
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 Utilizado en Cross-Origin Resource Sharing para verificar permisos antes de realizar solicitudes reales.
               </p>
             </div>
             
-            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 transition-colors">
+            <div className="p-5 border rounded-lg bg-slate-50/80 hover:bg-slate-50 dark:bg-slate-950/50 dark:hover:bg-slate-900/50 transition-colors">
               <h3 className="flex items-center text-base font-medium mb-2">
-                <Check className="h-4 w-4 text-green-600 mr-2" />
+                <Check className="h-4 w-4 text-green-600 dark:text-green-500 mr-2" />
                 No modifica el estado
               </h3>
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 No tiene efectos secundarios en el servidor y es idempotente.
               </p>
             </div>
@@ -68,9 +68,9 @@ const OptionsMethodPage = () => {
           
           <div className="space-y-6">
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium mb-2">Descubrir métodos permitidos</h3>
-                <p className="text-sm text-slate-600">Obtiene información sobre los métodos HTTP que acepta un recurso</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Obtiene información sobre los métodos HTTP que acepta un recurso</p>
               </div>
               <div className="p-5">
                 <EndpointExample 
@@ -88,9 +88,9 @@ Access-Control-Max-Age: 86400`}
             </div>
             
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium mb-2">CORS Preflight</h3>
-                <p className="text-sm text-slate-600">Verificación previa para solicitudes de origen cruzado</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Verificación previa para solicitudes de origen cruzado</p>
               </div>
               <div className="p-5">
                 <EndpointExample 
@@ -113,9 +113,9 @@ Vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers`}
             </div>
             
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium mb-2">Información de la API</h3>
-                <p className="text-sm text-slate-600">Obtiene información detallada sobre las capacidades del recurso</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Obtiene información detallada sobre las capacidades del recurso</p>
               </div>
               <div className="p-5">
                 <EndpointExample 
@@ -153,23 +153,23 @@ Content-Type: application/json
         <section className="space-y-6 pt-6">
           <h2 className="text-2xl font-semibold tracking-tight">Mejores prácticas</h2>
           
-          <Alert variant="default" className="bg-blue-50 border-blue-100">
-            <Info className="h-5 w-5 text-blue-600" />
-            <AlertTitle className="text-blue-800 text-base">Configuración de CORS</AlertTitle>
-            <AlertDescription className="text-blue-700">
+          <Alert variant="default" className="bg-blue-50 border-blue-100 dark:bg-blue-950/50 dark:border-blue-900/50">
+            <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <AlertTitle className="text-blue-800 dark:text-blue-300 text-base">Configuración de CORS</AlertTitle>
+            <AlertDescription className="text-blue-700 dark:text-blue-400">
               Una implementación correcta de OPTIONS es fundamental para aplicaciones que utilizan CORS. Devuelve siempre los encabezados apropiados para permitir el acceso entre dominios cuando sea necesario.
             </AlertDescription>
           </Alert>
           
           <div className="mt-6 space-y-6">
             <div className="border rounded-lg overflow-hidden shadow-sm">
-              <div className="p-5 border-b bg-slate-50">
+              <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
                 <h3 className="text-lg font-medium">Cabeceras correctas</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 p-5">
                 <div>
                   <h4 className="font-medium text-sm mb-3 text-green-600">Correcto ✓</h4>
-                  <div className="bg-slate-50 rounded-lg p-4 border">
+                  <div className="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border">
                     <CodeBlock
                       code={`// Respuesta OPTIONS para CORS
 Access-Control-Allow-Origin: https://ejemplo.com
@@ -187,7 +187,7 @@ Content-Type: application/json
                 </div>
                 <div>
                   <h4 className="font-medium text-sm mb-3 text-red-600 mt-4 md:mt-0">Incorrecto ❌</h4>
-                  <div className="bg-slate-50 rounded-lg p-4 border">
+                  <div className="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border">
                     <CodeBlock
                       code={`// CORS demasiado permisivo
 Access-Control-Allow-Origin: *
@@ -206,10 +206,10 @@ Content-Type: text/plain
               </div>
             </div>
             
-            <Alert variant="default" className="bg-amber-50 border-amber-100">
-              <AlertTriangle className="h-5 w-5 text-amber-600" />
-              <AlertTitle className="text-amber-800 text-base">Rendimiento</AlertTitle>
-              <AlertDescription className="text-amber-700">
+            <Alert variant="default" className="bg-amber-50 border-amber-100 dark:bg-amber-950/50 dark:border-amber-900/50">
+              <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+              <AlertTitle className="text-amber-800 dark:text-amber-300 text-base">Rendimiento</AlertTitle>
+              <AlertDescription className="text-amber-700 dark:text-amber-400">
                 La solicitud preflight OPTIONS en CORS añade latencia adicional. Configura el encabezado Access-Control-Max-Age adecuadamente para permitir que los navegadores almacenen en caché los resultados y reduzcan el número de solicitudes OPTIONS.
               </AlertDescription>
             </Alert>
@@ -224,23 +224,23 @@ Content-Type: text/plain
             <table className="w-full border-collapse">
               <tbody>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 w-[140px] font-medium">200 OK</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 w-[140px] font-medium">200 OK</td>
                   <td className="p-4 text-sm">Respuesta que incluye información sobre las opciones de comunicación.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">204 No Content</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">204 No Content</td>
                   <td className="p-4 text-sm">Respuesta común para solicitudes preflight CORS que solo incluye cabeceras.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">403 Forbidden</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">403 Forbidden</td>
                   <td className="p-4 text-sm">El cliente no tiene permisos para acceder a las opciones del recurso.</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 bg-slate-50 font-medium">404 Not Found</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">404 Not Found</td>
                   <td className="p-4 text-sm">El recurso sobre el que se solicitan las opciones no existe.</td>
                 </tr>
                 <tr>
-                  <td className="p-4 bg-slate-50 font-medium">405 Method Not Allowed</td>
+                  <td className="p-4 bg-slate-50 dark:bg-slate-900 font-medium">405 Method Not Allowed</td>
                   <td className="p-4 text-sm">El método OPTIONS no está permitido para este recurso.</td>
                 </tr>
               </tbody>
@@ -252,35 +252,35 @@ Content-Type: text/plain
         <section className="space-y-6 pt-6">
           <h2 className="text-2xl font-semibold tracking-tight">CORS y OPTIONS</h2>
           
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             El método OPTIONS juega un papel crucial en el mecanismo de Cross-Origin Resource Sharing (CORS), 
             que permite a los sitios web realizar solicitudes a dominios diferentes al suyo propio de manera segura.
           </p>
           
           <div className="border rounded-lg overflow-hidden shadow-sm">
-            <div className="p-5 border-b bg-slate-50">
+            <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
               <h3 className="text-lg font-medium">Flujo de CORS con Preflight</h3>
             </div>
             <div className="p-5">
               <ol className="space-y-4">
-                <li className="pl-9 relative text-slate-700">
-                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-sm font-medium">1</span>
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">1</span>
                   <span className="font-medium">Intención de solicitud:</span> El navegador detecta que una solicitud JavaScript necesita acceder a un dominio diferente.
                 </li>
-                <li className="pl-9 relative text-slate-700">
-                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-sm font-medium">2</span>
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">2</span>
                   <span className="font-medium">Preflight OPTIONS:</span> El navegador envía automáticamente una solicitud OPTIONS con encabezados que describen la solicitud real que se desea realizar.
                 </li>
-                <li className="pl-9 relative text-slate-700">
-                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-sm font-medium">3</span>
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">3</span>
                   <span className="font-medium">Evaluación del servidor:</span> El servidor evalúa la solicitud OPTIONS y responde con los encabezados Access-Control-* apropiados.
                 </li>
-                <li className="pl-9 relative text-slate-700">
-                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-sm font-medium">4</span>
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">4</span>
                   <span className="font-medium">Decisión del navegador:</span> Si los encabezados del servidor permiten la solicitud, el navegador procede con la solicitud real. Si no, la bloquea.
                 </li>
-                <li className="pl-9 relative text-slate-700">
-                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-sm font-medium">5</span>
+                <li className="pl-9 relative text-slate-700 dark:text-slate-300">
+                  <span className="absolute left-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium">5</span>
                   <span className="font-medium">Caché de preflight:</span> El navegador puede almacenar en caché la respuesta preflight según el valor de Access-Control-Max-Age.
                 </li>
               </ol>
@@ -293,7 +293,7 @@ Content-Type: text/plain
           <h2 className="text-2xl font-semibold tracking-tight">Ejemplo de implementación</h2>
           
           <div className="border rounded-lg overflow-hidden shadow-sm">
-            <div className="p-5 border-b bg-slate-50">
+            <div className="p-5 border-b bg-slate-50 dark:bg-slate-900">
               <h3 className="text-lg font-medium">Implementación en Express (Node.js)</h3>
             </div>
             <div className="p-5">
@@ -366,10 +366,10 @@ app.listen(3000, () => {
             </div>
           </div>
           
-          <Alert className="bg-slate-50 border-slate-100">
-            <Info className="h-5 w-5 text-slate-600" />
-            <AlertTitle className="text-slate-800 text-base">Nota sobre personalización</AlertTitle>
-            <AlertDescription className="text-slate-700">
+          <Alert className="bg-slate-50 border-slate-100 dark:bg-slate-900/50 dark:border-slate-800">
+            <Info className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <AlertTitle className="text-slate-800 dark:text-slate-200 text-base">Nota sobre personalización</AlertTitle>
+            <AlertDescription className="text-slate-700 dark:text-slate-300">
               Aunque muchos frameworks manejan automáticamente las solicitudes OPTIONS para CORS, implementar 
               manejadores OPTIONS personalizados te permite proporcionar información más detallada sobre 
               las capacidades de tu API y adaptarte a requisitos específicos de seguridad.
