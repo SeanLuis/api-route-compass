@@ -67,6 +67,9 @@ const sections: SidebarSection[] = [
       { title: "PUT", href: "/methods/put" },
       { title: "PATCH", href: "/methods/patch" },
       { title: "DELETE", href: "/methods/delete" },
+      { title: "HEAD", href: "/methods/head" },
+      { title: "OPTIONS", href: "/methods/options" },
+      { title: "TRACE", href: "/methods/trace" },
     ],
   },
   {

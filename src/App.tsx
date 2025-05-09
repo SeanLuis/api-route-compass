@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,6 +15,9 @@ import MethodsPost from "./pages/methods/Post";
 import MethodsPut from "./pages/methods/Put";
 import MethodsPatch from "./pages/methods/Patch";
 import MethodsDelete from "./pages/methods/Delete";
+import MethodsHead from "./pages/methods/Head";
+import MethodsOptions from "./pages/methods/Options";
+import MethodsTrace from "./pages/methods/Trace";
 import MethodsIndex from "./pages/methods/index";
 import Versioning from "./pages/Versioning";
 import Pagination from "./pages/Pagination";
@@ -62,6 +64,9 @@ const App = () => (
           <Route path="/methods/put" element={<MethodsPut />} />
           <Route path="/methods/patch" element={<MethodsPatch />} />
           <Route path="/methods/delete" element={<MethodsDelete />} />
+          <Route path="/methods/head" element={<MethodsHead />} />
+          <Route path="/methods/options" element={<MethodsOptions />} />
+          <Route path="/methods/trace" element={<MethodsTrace />} />
           
           {/* Funcionalidades */}
           <Route path="/versioning" element={<Versioning />} />

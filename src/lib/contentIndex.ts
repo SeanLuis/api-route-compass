@@ -17,7 +17,7 @@ function extractKeywords(content: string): string[] {
     /cache/gi, /header/gi, /token/gi, /autenticaci[óo]n/gi, /autorizaci[óo]n/gi,
     
     // Métodos HTTP
-    /GET/g, /POST/g, /PUT/g, /PATCH/g, /DELETE/g, /OPTIONS/g, /HEAD/g,
+    /GET/g, /POST/g, /PUT/g, /PATCH/g, /DELETE/g, /OPTIONS/g, /HEAD/g, /TRACE/g,
     
     // Códigos de estado HTTP
     /[1-5][0-9]{2}/g, /OK/g, /Created/g, /Accepted/g, /No\s*Content/gi,

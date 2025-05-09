@@ -93,6 +93,30 @@ const MethodsOverviewPage = () => {
                 <TableCell>✓</TableCell>
                 <TableCell>✗</TableCell>
               </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">
+                  <Link to="/methods/head" className="text-indigo-600 hover:underline">HEAD</Link>
+                </TableCell>
+                <TableCell>Obtener metadatos (sin cuerpo)</TableCell>
+                <TableCell>✓</TableCell>
+                <TableCell>✓</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">
+                  <Link to="/methods/options" className="text-indigo-600 hover:underline">OPTIONS</Link>
+                </TableCell>
+                <TableCell>Determinar opciones de comunicación</TableCell>
+                <TableCell>✓</TableCell>
+                <TableCell>✓</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">
+                  <Link to="/methods/trace" className="text-indigo-600 hover:underline">TRACE</Link>
+                </TableCell>
+                <TableCell>Diagnóstico y depuración</TableCell>
+                <TableCell>✓</TableCell>
+                <TableCell>✓</TableCell>
+              </TableRow>
             </TableBody>
           </Table>
           
@@ -200,6 +224,34 @@ const MethodsOverviewPage = () => {
                 "Útil para verificar caché"
               ]}
             />
+            
+            <MethodCard 
+              method="OPTIONS" 
+              color="indigo"
+              description="Describe las opciones de comunicación para el recurso."
+              path="/methods/options"
+              example={`OPTIONS /api/v1/products`}
+              characteristics={[
+                "Es seguro (solo lectura)",
+                "Es idempotente",
+                "Fundamental para CORS (Cross-Origin)",
+                "Informa sobre métodos permitidos"
+              ]}
+            />
+            
+            <MethodCard 
+              method="TRACE" 
+              color="teal"
+              description="Realiza una prueba de bucle de retorno (loopback) para diagnóstico."
+              path="/methods/trace"
+              example={`TRACE /api/v1/diagnostic`}
+              characteristics={[
+                "Es seguro (solo diagnóstico)",
+                "Es idempotente",
+                "Devuelve la solicitud como respuesta",
+                "A menudo deshabilitado por seguridad"
+              ]}
+            />
           </div>
         </section>
         
@@ -275,7 +327,7 @@ POST /products/123/update`}
           <h2 className="text-xl font-semibold tracking-tight">Explorar métodos en detalle</h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {["get", "post", "put", "patch", "delete", "head"].map((method) => (
+            {["get", "post", "put", "patch", "delete", "head", "options", "trace"].map((method) => (
               <Link 
                 key={method}
                 to={`/methods/${method}`} 
@@ -302,7 +354,7 @@ const MethodCard = ({
   characteristics
 }: { 
   method: string; 
-  color: "green" | "blue" | "orange" | "yellow" | "red" | "purple";
+  color: "green" | "blue" | "orange" | "yellow" | "red" | "purple" | "indigo" | "teal";
   description: string;
   path: string;
   example: string;
@@ -314,7 +366,9 @@ const MethodCard = ({
     orange: "bg-orange-100 text-orange-800",
     yellow: "bg-yellow-100 text-yellow-800",
     red: "bg-red-100 text-red-800",
-    purple: "bg-purple-100 text-purple-800"
+    purple: "bg-purple-100 text-purple-800",
+    indigo: "bg-indigo-100 text-indigo-800",
+    teal: "bg-teal-100 text-teal-800"
   };
   
   return (

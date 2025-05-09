@@ -154,6 +154,50 @@ export const indexedSearchData: SearchableContent[] = [
     "Métodos HTTP"
   ),
   
+  // HEAD
+  indexPageContent(
+    "methods-head",
+    "HEAD",
+    "El método HEAD para obtener metadatos sin el cuerpo de la respuesta.",
+    `HEAD es idéntico a GET, pero el servidor NO devuelve el cuerpo en la respuesta. 
+    Se utiliza para obtener metadatos sin transferir todo el contenido.
+    Es útil para verificar si un recurso existe, comprobar si ha sido modificado usando cabeceras de caché,
+    y verificar el tamaño de archivos antes de descargarlos.
+    Las peticiones HEAD son seguras (no modifican recursos), son cacheables, y
+    proporcionan los mismos encabezados de respuesta que una solicitud GET equivalente.`,
+    "/methods/head",
+    "Métodos HTTP"
+  ),
+  
+  // OPTIONS
+  indexPageContent(
+    "methods-options",
+    "OPTIONS",
+    "El método OPTIONS para determinar las opciones de comunicación disponibles.",
+    `OPTIONS se utiliza para describir las opciones de comunicación con el recurso objetivo.
+    Permite a los clientes determinar los requisitos asociados con un recurso sin iniciar una acción sobre él.
+    Es fundamental para el mecanismo CORS (Cross-Origin Resource Sharing), donde se usa para verificar
+    permisos antes de realizar solicitudes reales. Proporciona información sobre métodos permitidos,
+    encabezados aceptados y otras capacidades de comunicación mediante el encabezado 'Allow'.
+    Es seguro, idempotente y no modifica el estado del servidor.`,
+    "/methods/options",
+    "Métodos HTTP"
+  ),
+  
+  // TRACE
+  indexPageContent(
+    "methods-trace",
+    "TRACE",
+    "El método TRACE para diagnóstico y depuración de red.",
+    `TRACE realiza una prueba de bucle de retorno (loopback) de mensaje a lo largo de la ruta al recurso de destino.
+    Devuelve exactamente lo que se envió, permitiendo verificar cómo llega una solicitud al servidor
+    tras pasar por múltiples proxies. Aunque es seguro y no modifica recursos, muchos servidores
+    lo deshabilitan por motivos de seguridad, especialmente debido a vulnerabilidades como Cross-Site Tracing (XST).
+    Su uso está generalmente limitado a herramientas de diagnóstico y entornos controlados.`,
+    "/methods/trace",
+    "Métodos HTTP"
+  ),
+  
   // Versionado
   indexPageContent(
     "versioning",
