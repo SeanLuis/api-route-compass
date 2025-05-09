@@ -1,113 +1,117 @@
 # API Route Compass
 
-Una guía definitiva para el diseño de APIs REST escalables y mantenibles que siguen las mejores prácticas de la industria.
+<p align="center">
+  <img src="/public/opengraph-image.svg" alt="API Route Compass Logo" width="400">
+</p>
 
-![API Route Compass](/public/opengraph-image.svg)
+<p align="center">
+  <strong>La guía definitiva para el diseño de APIs REST profesionales, escalables y mantenibles</strong>
+</p>
 
-## 🧭 Sobre el proyecto
+<p align="center">
+  <a href="#-introducción">Introducción</a> •
+  <a href="#-características">Características</a> •
+  <a href="#-contenido">Contenido</a> •
+  <a href="#-instalación">Instalación</a> •
+  <a href="#-uso">Uso</a> •
+  <a href="#-tecnologías">Tecnologías</a> •
+  <a href="#-contribución">Contribución</a> •
+  <a href="#-licencia">Licencia</a>
+</p>
 
-API Route Compass es una documentación completa que proporciona directrices, ejemplos y mejores prácticas para diseñar APIs RESTful profesionales. Este proyecto aborda todos los aspectos del diseño de APIs, desde la nomenclatura de rutas hasta la seguridad y patrones avanzados.
+## 🧭 Introducción
 
-### 🎯 Objetivos
+API Route Compass es una documentación interactiva completa que proporciona directrices, ejemplos prácticos y mejores prácticas para diseñar APIs RESTful profesionales. 
 
-- Proporcionar una guía completa para desarrolladores que diseñan APIs REST
-- Establecer estándares y convenciones para APIs coherentes y mantenibles
-- Ofrecer ejemplos prácticos para implementaciones comunes
-- Cubrir temas avanzados y alternativas a REST cuando sea necesario
+Este proyecto surge como respuesta a la necesidad de estandarizar el diseño de APIs REST, abordando todos los aspectos desde la nomenclatura de rutas hasta patrones avanzados de seguridad y escalabilidad, siguiendo las recomendaciones de la industria.
 
-## 📚 Contenido del proyecto
+## ✨ Características
 
-El proyecto está estructurado por temas clave:
+- **Guía exhaustiva**: Cobertura completa desde conceptos básicos hasta patrones avanzados
+- **Ejemplos prácticos**: Código funcional para cada concepto presentado
+- **Diseño responsive**: Experiencia optimizada para dispositivos móviles y escritorio
+- **Navegación intuitiva**: Estructura organizada por temas y subtemas
+- **Referencias cruzadas**: Enlaces contextuales entre conceptos relacionados
+- **Demos interactivas**: Visualización de cómo funcionan las APIs en tiempo real
+- **Fundamentación teórica**: Explicaciones detalladas de los principios arquitectónicos REST
 
-- **Introducción**: Fundamentos REST y estructura de la guía
-- **Rutas y Recursos**: Nomenclatura y estructura de endpoints
-- **Métodos HTTP**: Uso correcto de verbos y acciones
+## 📚 Contenido
+
+API Route Compass aborda de manera estructurada los siguientes temas clave:
+
+### Fundamentos
+- **Principios REST**: Interfaz uniforme, Cliente-Servidor, Sin estado, Cacheable, Sistema en capas
+- **Estructura de la Guía**: Organización progresiva del contenido
+
+### Diseño de APIs
+- **Rutas y Recursos**: Nomenclatura, estructura jerárquica y patrones de diseño
+- **Métodos HTTP**: Implementación correcta de GET, POST, PUT, PATCH y DELETE
 - **Funcionalidades**: Versionado, paginación, filtrado y ordenamiento
 - **Relaciones**: Manejo de recursos anidados y expansión de campos
-- **Respuestas**: Códigos de estado, formatos y manejo de errores
-- **Seguridad**: Autenticación, autorización y mejores prácticas
-- **Documentación**: OpenAPI/Swagger y ejemplos prácticos
-- **API Avanzada**: Limitaciones REST, alternativas y patrones escalables
 
-## 🚀 Cómo ejecutar este proyecto
+### Implementación y Calidad
+- **Respuestas**: Códigos de estado, formatos estandarizados y manejo de errores
+- **Seguridad**: Autenticación, autorización y protección contra vulnerabilidades comunes
+- **Documentación**: Implementación con OpenAPI/Swagger y ejemplos prácticos
+
+### Consideraciones Avanzadas
+- **API Avanzada**: Limitaciones de REST, alternativas (GraphQL, gRPC) y patrones escalables
+
+## 🚀 Instalación
 
 ### Requisitos previos
 
 - Node.js (v14 o superior)
 - npm o pnpm
 
-### Instalación
+### Configuración del proyecto
 
-```sh
+```bash
 # Clonar el repositorio
-git clone https://github.com/tuusuario/api-route-compass.git
+git clone https://github.com/SeanLuis/api-route-compass.git
 cd api-route-compass
 
 # Instalar dependencias
 npm install
-# o usando pnpm
+# o alternativamente
 pnpm install
 
 # Iniciar servidor de desarrollo
 npm run dev
-# o usando pnpm
+# o
 pnpm dev
 ```
 
-La aplicación estará disponible en: `http://localhost:5173`
+La aplicación estará disponible en: `http://localhost:8080`
 
-## 🔧 Tecnologías utilizadas
+## 🖥️ Uso
 
-- **Framework**: React con TypeScript
-- **Interfaz de usuario**: shadcn-ui y Tailwind CSS 
-- **Empaquetador**: Vite
-- **Enrutamiento**: React Router
-- **Sintaxis de código**: CodeBlock para ejemplos de código
+API Route Compass está diseñado para ser utilizado como:
 
-## 📂 Estructura del proyecto
+1. **Referencia de consulta**: Busca temas específicos mediante el buscador integrado
+2. **Guía de aprendizaje**: Sigue la estructura secuencial para un aprendizaje progresivo
+3. **Herramienta de diseño**: Consulta ejemplos prácticos que puedes adaptar a tus proyectos
 
-```
-api-route-compass/
-├── public/                  # Recursos estáticos
-├── src/
-│   ├── components/          # Componentes reutilizables
-│   │   ├── ui/              # Componentes de interfaz de usuario (shadcn)
-│   │   ├── CodeBlock.tsx    # Componente para mostrar ejemplos de código
-│   │   └── ...
-│   ├── lib/                 # Utilidades y funciones auxiliares
-│   ├── pages/               # Páginas de la aplicación
-│   └── ...
-├── index.html               # Archivo HTML principal
-└── ...
-```
+## 🤝 Contribución
 
-## 📑 Características principales
-
-- **Documentación completa**: Cobertura exhaustiva de temas relacionados con API REST
-- **Ejemplos prácticos**: Código de ejemplo para cada concepto
-- **Diseño responsive**: Compatible con dispositivos móviles y de escritorio
-- **Navegación intuitiva**: Estructura organizada por temas y subtemas
-- **Referencias cruzadas**: Enlaces internos entre conceptos relacionados
-- **Ejemplos interactivos**: Demostraciones visuales de cómo funcionan las APIs
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas contribuir:
+¡Las contribuciones son bienvenidas! Si deseas mejorar API Route Compass:
 
 1. Haz fork del repositorio
-2. Crea una rama para tu característica (`git checkout -b feature/nueva-caracteristica`)
-3. Haz commit de tus cambios (`git commit -m 'Añadir nueva característica'`)
-4. Haz push a la rama (`git push origin feature/nueva-caracteristica`)
+2. Crea una rama para tu feature (`git checkout -b feature/amazing-feature`)
+3. Realiza tus cambios y haz commit (`git commit -m 'Add some amazing feature'`)
+4. Sube los cambios a tu fork (`git push origin feature/amazing-feature`)
 5. Abre un Pull Request
+
+Por favor, asegúrate de actualizar los tests según corresponda y adherirte a las guías de estilo del proyecto.
 
 ## 📝 Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
-
-## 📞 Contacto
-
-Para preguntas o sugerencias, no dudes en abrir un issue en el repositorio o contactar con el equipo de desarrollo.
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
 
-Desarrollado con ❤️ para la comunidad de desarrolladores de APIs.
+<p align="center">
+  Desarrollado con ❤️ para la comunidad de desarrolladores de APIs
+  <br>
+  <a href="https://github.com/SeanLuis/api-route-compass">GitHub</a> •
+</p>

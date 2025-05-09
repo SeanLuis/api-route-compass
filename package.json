@@ -1,8 +1,29 @@
 {
-  "name": "vite_react_shadcn_ts",
-  "private": true,
-  "version": "0.0.0",
+  "name": "api-route-compass",
+  "description": "Guía definitiva para el diseño de APIs REST escalables y mantenibles que siguen las mejores prácticas de la industria",
+  "version": "1.0.0",
   "type": "module",
+  "author": "Sean Luis",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SeanLuis/api-route-compass.git"
+  },
+  "homepage": "https://github.com/SeanLuis/api-route-compass#readme",
+  "bugs": {
+    "url": "https://github.com/SeanLuis/api-route-compass/issues"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "design",
+    "best-practices",
+    "documentation",
+    "guide",
+    "compass",
+    "restful",
+    "endpoints"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -80,6 +101,23 @@
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "vitest": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
