@@ -12,18 +12,18 @@ const RouteStructure = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/naming" className="text-sm text-slate-500 hover:text-slate-700">Rutas y Recursos</Link>
+            <Link to="/naming" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Rutas y Recursos</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Estructura de Rutas</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Organización jerárquica y patrones de diseño para rutas de API.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
-            <p className="text-slate-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
+            <p className="text-slate-800 dark:text-slate-300">
               Diseñar una estructura de rutas coherente y predecible es fundamental para crear APIs REST 
               intuitivas y fáciles de usar. Una buena estructura de rutas refleja la organización lógica 
               de los recursos y facilita su descubrimiento y navegación.
@@ -35,14 +35,14 @@ const RouteStructure = () => {
             Principios de Diseño para Rutas
           </h2>
           
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Layers className="h-5 w-5 text-indigo-600" />
-                  <h3 className="text-lg font-semibold">Jerarquía Lógica</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Jerarquía Lógica</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Las rutas deben organizarse siguiendo una jerarquía lógica que refleje las relaciones 
                   entre los recursos. Esta estructura permite a los desarrolladores entender intuitivamente 
                   cómo navegar por la API.
@@ -66,14 +66,14 @@ const RouteStructure = () => {
             </CardContent>
           </Card>
           
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Network className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">Consistencia en Profundidad</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Consistencia en Profundidad</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Mantener una profundidad de ruta consistente ayuda a los usuarios a predecir cómo acceder 
                   a recursos similares en diferentes partes de la API.
                 </p>
@@ -83,7 +83,7 @@ const RouteStructure = () => {
                 <div>
                   <div className="flex items-center">
                     <XCircle className="h-4 w-4 text-red-500 mr-2" />
-                    <h4 className="font-medium text-red-600">Inconsistente</h4>
+                    <h4 className="font-medium text-red-600 dark:text-red-400">Inconsistente</h4>
                   </div>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
                     <CodeBlock
@@ -98,7 +98,7 @@ const RouteStructure = () => {
                 <div>
                   <div className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <h4 className="font-medium text-green-600">Consistente</h4>
+                    <h4 className="font-medium text-green-600 dark:text-green-400">Consistente</h4>
                   </div>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
                     <CodeBlock
@@ -121,18 +121,18 @@ const RouteStructure = () => {
             </h3>
 
             <div className="grid grid-cols-1 gap-6">
-              <Card className="overflow-hidden">
+              <Card className="overflow-hidden dark:border-slate-700">
                 <CardContent className="p-0">
-                  <div className="border-b bg-slate-50 p-4 flex items-center">
-                    <div className="h-6 w-6 rounded-full bg-indigo-100 text-indigo-800 text-sm flex items-center justify-center mr-2">1</div>
-                    <h4 className="font-medium">Recursos Principales (Entidades)</h4>
+                  <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 flex items-center">
+                    <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 text-sm flex items-center justify-center mr-2">1</div>
+                    <h4 className="font-medium dark:text-white">Recursos Principales (Entidades)</h4>
                   </div>
                   <div className="p-6">
-                    <p className="mb-4">
+                    <p className="mb-4 dark:text-slate-300">
                       Los recursos principales representan las entidades centrales de tu sistema y generalmente 
                       se nombran como sustantivos en plural.
                     </p>
-                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                       <EndpointExample
                         method="GET"
                         path="/api/v1/products"
@@ -154,17 +154,17 @@ const RouteStructure = () => {
                 </CardContent>
               </Card>
 
-              <Card className="overflow-hidden">
+              <Card className="overflow-hidden dark:border-slate-700">
                 <CardContent className="p-0">
-                  <div className="border-b bg-slate-50 p-4 flex items-center">
-                    <div className="h-6 w-6 rounded-full bg-indigo-100 text-indigo-800 text-sm flex items-center justify-center mr-2">2</div>
-                    <h4 className="font-medium">Sub-recursos</h4>
+                  <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 flex items-center">
+                    <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 text-sm flex items-center justify-center mr-2">2</div>
+                    <h4 className="font-medium dark:text-white">Sub-recursos</h4>
                   </div>
                   <div className="p-6">
-                    <p className="mb-4">
+                    <p className="mb-4 dark:text-slate-300">
                       Los sub-recursos representan entidades que existen dentro del contexto de un recurso principal.
                     </p>
-                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                       <EndpointExample
                         method="GET"
                         path="/api/v1/products/{product_id}/reviews"
@@ -200,17 +200,17 @@ const RouteStructure = () => {
                 </CardContent>
               </Card>
 
-              <Card className="overflow-hidden">
+              <Card className="overflow-hidden dark:border-slate-700">
                 <CardContent className="p-0">
-                  <div className="border-b bg-slate-50 p-4 flex items-center">
-                    <div className="h-6 w-6 rounded-full bg-indigo-100 text-indigo-800 text-sm flex items-center justify-center mr-2">3</div>
-                    <h4 className="font-medium">Acciones Específicas</h4>
+                  <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 flex items-center">
+                    <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 text-sm flex items-center justify-center mr-2">3</div>
+                    <h4 className="font-medium dark:text-white">Acciones Específicas</h4>
                   </div>
                   <div className="p-6">
-                    <p className="mb-4">
+                    <p className="mb-4 dark:text-slate-300">
                       Para operaciones que no se ajustan al modelo CRUD estándar, usa el patrón de acciones.
                     </p>
-                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                       <EndpointExample
                         method="POST"
                         path="/api/v1/orders/{order_id}/actions/cancel"
@@ -234,14 +234,14 @@ const RouteStructure = () => {
             </div>
           </div>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden mt-10">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden mt-10">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <GitMerge className="h-5 w-5 text-indigo-500" />
-                  <h3 className="text-lg font-semibold">Niveles de Profundidad</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Niveles de Profundidad</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Como regla general, intenta mantener la profundidad de tus rutas a un máximo de 3-4 niveles 
                   para mantener la API navegable y evitar URIs excesivamente largos.
                 </p>
@@ -251,7 +251,7 @@ const RouteStructure = () => {
                 <div>
                   <div className="flex items-center">
                     <XCircle className="h-4 w-4 text-red-500 mr-2" />
-                    <h4 className="font-medium text-red-600">Demasiado Profundo</h4>
+                    <h4 className="font-medium text-red-600 dark:text-red-400">Demasiado Profundo</h4>
                   </div>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
                     <CodeBlock
@@ -264,7 +264,7 @@ const RouteStructure = () => {
                 <div>
                   <div className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <h4 className="font-medium text-green-600">Mejor Alternativa</h4>
+                    <h4 className="font-medium text-green-600 dark:text-green-400">Mejor Alternativa</h4>
                   </div>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
                     <CodeBlock
@@ -280,14 +280,14 @@ const RouteStructure = () => {
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden mt-10">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden mt-10">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <GitBranch className="h-5 w-5 text-indigo-500" />
-                  <h3 className="text-lg font-semibold">Versiones en la Ruta</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Versiones en la Ruta</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Incluir el número de versión en la ruta es una práctica común para gestionar la evolución 
                   de la API. Típicamente se coloca al inicio del path.
                 </p>
@@ -310,18 +310,18 @@ https://v2.api.example.com/products`}
             </CardContent>
           </Card>
 
-          <div className="mt-10 bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-lg border border-purple-100">
-            <h2 className="text-xl font-semibold tracking-tight mb-4">Consideraciones para APIs Públicas vs Privadas</h2>
-            <p className="mb-4">
+          <div className="mt-10 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 p-6 rounded-lg border border-purple-100 dark:border-purple-800">
+            <h2 className="text-xl font-semibold tracking-tight mb-4 dark:text-white">Consideraciones para APIs Públicas vs Privadas</h2>
+            <p className="mb-4 dark:text-slate-300">
               Las APIs públicas suelen beneficiarse de estructuras más simples y estables, mientras que 
               las APIs privadas pueden permitirse estructuras más específicas del dominio.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
+              <Card className="dark:border-slate-700">
                 <CardContent className="p-4">
-                  <h4 className="font-medium text-indigo-800 mb-2">APIs públicas</h4>
-                  <ul className="space-y-1 text-sm">
+                  <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-2">APIs públicas</h4>
+                  <ul className="space-y-1 text-sm dark:text-slate-300">
                     <li className="flex items-start">
                       <CornerDownRight className="h-4 w-4 text-indigo-500 mr-2 mt-0.5" />
                       <span>Prioriza la estabilidad y navegabilidad</span>
@@ -338,10 +338,10 @@ https://v2.api.example.com/products`}
                 </CardContent>
               </Card>
               
-              <Card>
+              <Card className="dark:border-slate-700">
                 <CardContent className="p-4">
-                  <h4 className="font-medium text-indigo-800 mb-2">APIs privadas</h4>
-                  <ul className="space-y-1 text-sm">
+                  <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-2">APIs privadas</h4>
+                  <ul className="space-y-1 text-sm dark:text-slate-300">
                     <li className="flex items-start">
                       <CornerDownRight className="h-4 w-4 text-indigo-500 mr-2 mt-0.5" />
                       <span>Puede ajustarse a necesidades específicas</span>
@@ -360,8 +360,8 @@ https://v2.api.example.com/products`}
             </div>
           </div>
 
-          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
-            <p className="italic text-indigo-900 font-medium">
+          <blockquote className="border-l-4 border-indigo-300 dark:border-indigo-700 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/50 dark:to-indigo-900/50 rounded-r-lg">
+            <p className="italic text-indigo-900 dark:text-indigo-300 font-medium">
               "Una API bien estructurada es como un buen mapa: ayuda a los usuarios a encontrar fácilmente lo que 
               buscan y a descubrir nuevos caminos sin perderse."
             </p>

@@ -13,18 +13,18 @@ const ResourceHierarchy = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/route-structure" className="text-sm text-slate-500 hover:text-slate-700">Rutas y Recursos</Link>
+            <Link to="/route-structure" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Rutas y Recursos</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Jerarquía de Recursos</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Cómo estructurar recursos y sus relaciones en APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
-            <p className="text-slate-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
+            <p className="text-slate-800 dark:text-slate-300">
               Una API REST bien diseñada modela sus recursos de manera que refleje las relaciones naturales entre 
               ellos. La jerarquía de recursos organiza estas relaciones de forma intuitiva, facilitando la navegación 
               y el descubrimiento de tu API.
@@ -36,58 +36,58 @@ const ResourceHierarchy = () => {
             Principios de Jerarquía de Recursos
           </h2>
 
-          <Card className="overflow-hidden">
+          <Card className="overflow-hidden dark:border-slate-700">
             <CardContent className="p-0">
-              <div className="border-b bg-slate-50 p-4">
-                <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2">
+              <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
+                <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 dark:text-white">
                   <Database className="h-4 w-4 text-indigo-600" />
                   Modelado de Entidades
                 </h3>
               </div>
               <div className="p-6">
-                <p className="mb-4">
+                <p className="mb-4 dark:text-slate-300">
                   Los recursos en una API REST generalmente representan entidades del dominio de negocio. Al diseñar 
                   la jerarquía, identifica primero las entidades principales y sus relaciones:
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                  <Card className="bg-blue-50 border border-blue-100">
+                  <Card className="bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                          <Database className="h-4 w-4 text-blue-600" />
+                        <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                          <Database className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                         </div>
-                        <h4 className="font-medium text-blue-700">Recursos principales</h4>
+                        <h4 className="font-medium text-blue-700 dark:text-blue-300">Recursos principales</h4>
                       </div>
-                      <p className="text-sm text-blue-800">
+                      <p className="text-sm text-blue-800 dark:text-blue-300">
                         Entidades independientes como usuarios, productos, pedidos
                       </p>
                     </CardContent>
                   </Card>
                   
-                  <Card className="bg-indigo-50 border border-indigo-100">
+                  <Card className="bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
-                          <GitBranch className="h-4 w-4 text-indigo-600" />
+                        <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                          <GitBranch className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                         </div>
-                        <h4 className="font-medium text-indigo-700">Subrecursos</h4>
+                        <h4 className="font-medium text-indigo-700 dark:text-indigo-300">Subrecursos</h4>
                       </div>
-                      <p className="text-sm text-indigo-800">
+                      <p className="text-sm text-indigo-800 dark:text-indigo-300">
                         Entidades que existen dentro del contexto de un recurso principal
                       </p>
                     </CardContent>
                   </Card>
                   
-                  <Card className="bg-purple-50 border border-purple-100">
+                  <Card className="bg-purple-50 dark:bg-purple-950/50 border border-purple-100 dark:border-purple-900">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
-                          <Link2 className="h-4 w-4 text-purple-600" />
+                        <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                          <Link2 className="h-4 w-4 text-purple-600 dark:text-purple-400" />
                         </div>
-                        <h4 className="font-medium text-purple-700">Recursos de relación</h4>
+                        <h4 className="font-medium text-purple-700 dark:text-purple-300">Recursos de relación</h4>
                       </div>
-                      <p className="text-sm text-purple-800">
+                      <p className="text-sm text-purple-800 dark:text-purple-300">
                         Representan conexiones entre entidades principales
                       </p>
                     </CardContent>
@@ -97,14 +97,14 @@ const ResourceHierarchy = () => {
             </CardContent>
           </Card>
           
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Network className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">Niveles de Anidamiento</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Niveles de Anidamiento</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Las rutas de la API deberían reflejar la relación de padre-hijo entre recursos. Sin embargo, es 
                   importante limitar la profundidad de anidamiento para evitar URIs excesivamente complejos.
                 </p>
@@ -138,19 +138,19 @@ const ResourceHierarchy = () => {
           </h2>
 
           <div className="grid grid-cols-1 gap-6 mt-6">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4 flex items-center">
-                  <div className="h-6 w-6 rounded-full bg-indigo-100 text-indigo-800 text-sm flex items-center justify-center mr-2">1</div>
-                  <h3 className="text-lg font-semibold">Recursos Anidados</h3>
+                <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 flex items-center">
+                  <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 text-sm flex items-center justify-center mr-2">1</div>
+                  <h3 className="text-lg font-semibold dark:text-white">Recursos Anidados</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-4">
+                  <p className="mb-4 dark:text-slate-300">
                     Este patrón representa relaciones jerárquicas directas entre recursos, donde un recurso 
                     pertenece a otro o existe dentro del contexto de otro.
                   </p>
                   
-                  <div className="space-y-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                  <div className="space-y-4 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                     <EndpointExample
                       method="GET"
                       path="/api/v1/users/{user_id}/addresses"
@@ -204,18 +204,18 @@ const ResourceHierarchy = () => {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4 flex items-center">
-                  <div className="h-6 w-6 rounded-full bg-indigo-100 text-indigo-800 text-sm flex items-center justify-center mr-2">2</div>
-                  <h3 className="text-lg font-semibold">Recursos de Relación</h3>
+                <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 flex items-center">
+                  <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 text-sm flex items-center justify-center mr-2">2</div>
+                  <h3 className="text-lg font-semibold dark:text-white">Recursos de Relación</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-4">
+                  <p className="mb-4 dark:text-slate-300">
                     Este patrón modela las relaciones muchos-a-muchos entre recursos.
                   </p>
                   
-                  <div className="space-y-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                  <div className="space-y-4 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                     <EndpointExample
                       method="GET"
                       path="/api/v1/users/{user_id}/favorites"
@@ -258,19 +258,19 @@ const ResourceHierarchy = () => {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4 flex items-center">
-                  <div className="h-6 w-6 rounded-full bg-indigo-100 text-indigo-800 text-sm flex items-center justify-center mr-2">3</div>
-                  <h3 className="text-lg font-semibold">Recursos Independientes con Referencias</h3>
+                <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 flex items-center">
+                  <div className="h-6 w-6 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 text-sm flex items-center justify-center mr-2">3</div>
+                  <h3 className="text-lg font-semibold dark:text-white">Recursos Independientes con Referencias</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-4">
+                  <p className="mb-4 dark:text-slate-300">
                     Este patrón es útil cuando los recursos pueden existir independientemente pero 
                     necesitan estar relacionados entre sí.
                   </p>
                   
-                  <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                  <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                     <EndpointExample
                       method="GET"
                       path="/api/v1/products/{product_id}/related"
@@ -304,41 +304,41 @@ const ResourceHierarchy = () => {
             Estrategias de Diseño
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight">1. Enfoque "Primero los Recursos"</h3>
-          <p>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">1. Enfoque "Primero los Recursos"</h3>
+          <p className="dark:text-slate-300">
             Comienza identificando los recursos principales y modelo sus relaciones antes de definir endpoints:
           </p>
 
-          <ol className="list-decimal pl-6 space-y-2">
+          <ol className="list-decimal pl-6 space-y-2 dark:text-slate-300">
             <li>Identifica entidades principales del dominio (usuarios, productos, pedidos)</li>
             <li>Establece las relaciones entre estas entidades</li>
             <li>Determina qué recursos son independientes y cuáles son anidados</li>
             <li>Diseña rutas que reflejen estas relaciones</li>
           </ol>
 
-          <h3 className="text-lg font-semibold tracking-tight">2. Balanceando Profundidad y Navegabilidad</h3>
-          <p>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">2. Balanceando Profundidad y Navegabilidad</h3>
+          <p className="dark:text-slate-300">
             Es importante encontrar un equilibrio entre la representación fiel de relaciones 
             y la complejidad de las rutas:
           </p>
 
-          <ul className="list-disc pl-6 space-y-2">
+          <ul className="list-disc pl-6 space-y-2 dark:text-slate-300">
             <li><strong>Limitar a 2-3 niveles de anidamiento</strong> para mantener las URL manejables</li>
             <li><strong>Considerar rutas alternativas</strong> para recursos profundamente anidados</li>
             <li><strong>Usar query parameters</strong> para filtrar en vez de crear niveles adicionales</li>
           </ul>
 
           <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-md my-6">
-            <h4 className="font-medium mb-2">Regla práctica: La regla "2-3-N"</h4>
-            <p className="text-sm">
+            <h4 className="font-medium mb-2 dark:text-blue-300">Regla práctica: La regla "2-3-N"</h4>
+            <p className="text-sm dark:text-blue-300">
               <strong>2 niveles:</strong> Ideal para la mayoría de los casos<br />
               <strong>3 niveles:</strong> Aceptable cuando sea necesario<br />
               <strong>N niveles:</strong> Considerar enfoques alternativos (filtros, endpoints dedicados)
             </p>
           </div>
 
-          <h3 className="text-lg font-semibold tracking-tight">3. Minimizar el Acoplamiento</h3>
-          <p>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">3. Minimizar el Acoplamiento</h3>
+          <p className="dark:text-slate-300">
             Evita crear jerarquías que acoplen demasiado los recursos entre sí:
           </p>
       
@@ -352,10 +352,10 @@ const ResourceHierarchy = () => {
             language="http"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight">Casos de Estudio</h2>
+          <h2 className="text-xl font-semibold tracking-tight dark:text-white">Casos de Estudio</h2>
 
-          <h3 className="text-lg font-semibold tracking-tight">Sistema de E-commerce</h3>
-          <p>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">Sistema de E-commerce</h3>
+          <p className="dark:text-slate-300">
             Un ejemplo de jerarquía de recursos para un sistema de comercio electrónico:
           </p>
 
@@ -383,8 +383,8 @@ const ResourceHierarchy = () => {
             language="http"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight">Sistema de Gestión de Proyectos</h3>
-          <p>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">Sistema de Gestión de Proyectos</h3>
+          <p className="dark:text-slate-300">
             Jerarquía de recursos para un sistema de gestión de proyectos:
           </p>
 
@@ -414,10 +414,10 @@ const ResourceHierarchy = () => {
             language="http"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight">Consideraciones Avanzadas</h2>
+          <h2 className="text-xl font-semibold tracking-tight dark:text-white">Consideraciones Avanzadas</h2>
 
-          <h3 className="text-lg font-semibold tracking-tight">Navegación Hypermedia (HATEOAS)</h3>
-          <p>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">Navegación Hypermedia (HATEOAS)</h3>
+          <p className="dark:text-slate-300">
             Una API verdaderamente RESTful proporciona enlaces para navegar entre recursos relacionados:
           </p>
 
@@ -436,12 +436,12 @@ const ResourceHierarchy = () => {
             language="json"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight">Representaciones Parciales vs Expansión</h3>
-          <p>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">Representaciones Parciales vs Expansión</h3>
+          <p className="dark:text-slate-300">
             Para recursos con relaciones complejas, considera ofrecer:
           </p>
 
-          <ul className="list-disc pl-6 space-y-2">
+          <ul className="list-disc pl-6 space-y-2 dark:text-slate-300">
             <li><strong>Representaciones parciales:</strong> Solo incluir IDs o referencias a recursos relacionados</li>
             <li><strong>Expansión:</strong> Permitir incluir recursos relacionados completos bajo demanda</li>
           </ul>
@@ -474,7 +474,7 @@ GET /api/v1/orders/order_123?expand=customer,items.product
             language="http"
           />
 
-          <blockquote className="border-l-4 border-slate-200 pl-4 italic text-slate-600 my-4">
+          <blockquote className="border-l-4 border-slate-200 dark:border-slate-700 pl-4 italic text-slate-600 dark:text-slate-400 my-4">
             "Una jerarquía de recursos bien diseñada proporciona un equilibrio entre la expresividad de las relaciones y
             la simplicidad de las rutas. La mejor API es la que resulta intuitiva para los desarrolladores que la consumen."
           </blockquote>

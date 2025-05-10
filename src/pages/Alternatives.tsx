@@ -12,17 +12,17 @@ const Alternatives = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/scalable-patterns" className="text-sm text-slate-500 hover:text-slate-700">API Avanzada</Link>
+            <Link to="/scalable-patterns" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">API Avanzada</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Alternativas a REST</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Enfoques alternativos a REST para APIs web.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             Aunque REST ha sido el paradigma dominante para APIs web durante muchos años,
             existen varios enfoques alternativos que pueden ser más adecuados dependiendo
             de los requisitos específicos del proyecto, el tipo de aplicación y los patrones
@@ -33,7 +33,7 @@ const Alternatives = () => {
             <Code className="h-5 w-5 text-indigo-500" />
             GraphQL
           </h2>
-          <p>
+          <p className="dark:text-slate-300">
             GraphQL es un lenguaje de consulta y manipulación para APIs, desarrollado por Facebook,
             que proporciona una alternativa flexible a REST. En lugar de múltiples endpoints,
             GraphQL utiliza un único endpoint donde el cliente especifica exactamente qué datos necesita.
@@ -95,7 +95,7 @@ query {
             <Shield className="h-5 w-5 text-blue-500" />
             Cuándo Usar GraphQL
           </h3>
-          <ul className="ml-6 space-y-1 list-disc text-slate-700">
+          <ul className="ml-6 space-y-1 list-disc text-slate-700 dark:text-slate-300">
             <li>APIs que sirven a múltiples clientes con necesidades diferentes</li>
             <li>Interfaces que necesitan datos anidados complejos en una sola solicitud</li>
             <li>Aplicaciones que requieren flexibilidad para evolucionar la UI sin modificar la API</li>
@@ -106,7 +106,7 @@ query {
             <Server className="h-5 w-5 text-indigo-500" />
             gRPC
           </h2>
-          <p>
+          <p className="dark:text-slate-300">
             gRPC es un framework RPC (Remote Procedure Call) moderno, de alto rendimiento, desarrollado
             por Google. Utiliza Protocol Buffers para serialización y HTTP/2 para transporte.
           </p>
@@ -115,7 +115,7 @@ query {
             <Database className="h-5 w-5 text-blue-500" />
             Características Principales
           </h3>
-          <ul>
+          <ul className="dark:text-slate-300">
             <li><strong>Alto rendimiento:</strong> Más rápido que REST/JSON gracias a serialización binaria y HTTP/2</li>
             <li><strong>Contract-first:</strong> Define servicios y mensajes mediante Protocol Buffers</li>
             <li><strong>Streaming:</strong> Soporta streaming bidireccional</li>
@@ -183,7 +183,7 @@ message StockLevel {
           />
 
           <h3>Cuándo Usar gRPC</h3>
-          <ul>
+          <ul className="dark:text-slate-300">
             <li>Microservicios que necesitan comunicación de alto rendimiento entre ellos</li>
             <li>Sistemas que requieren streaming en tiempo real</li>
             <li>Aplicaciones con restricciones significativas de latencia o ancho de banda</li>
@@ -191,13 +191,13 @@ message StockLevel {
           </ul>
 
           <h2>WebSockets</h2>
-          <p>
+          <p className="dark:text-slate-300">
             WebSockets proporciona un canal de comunicación bidireccional, full-duplex sobre una única conexión TCP.
             Es ideal para aplicaciones que requieren actualizaciones en tiempo real.
           </p>
 
           <h3>Características Principales</h3>
-          <ul>
+          <ul className="dark:text-slate-300">
             <li><strong>Comunicación bidireccional:</strong> El servidor puede enviar datos sin solicitud del cliente</li>
             <li><strong>Conexión persistente:</strong> Una única conexión permanece abierta para intercambio de mensajes</li>
             <li><strong>Menor latencia:</strong> No requiere establecer nuevas conexiones para cada mensaje</li>
@@ -262,7 +262,7 @@ wss.on('connection', function(ws) {
           />
 
           <h3>Cuándo Usar WebSockets</h3>
-          <ul>
+          <ul className="dark:text-slate-300">
             <li>Aplicaciones con actualización de datos en tiempo real</li>
             <li>Chats y sistemas de mensajería</li>
             <li>Juegos multijugador</li>
@@ -271,13 +271,13 @@ wss.on('connection', function(ws) {
           </ul>
 
           <h2>Server-Sent Events (SSE)</h2>
-          <p>
+          <p className="dark:text-slate-300">
             SSE permite que un servidor envíe actualizaciones a un cliente a través de HTTP.
             A diferencia de WebSockets, SSE es unidireccional (del servidor al cliente).
           </p>
 
           <h3>Características Principales</h3>
-          <ul>
+          <ul className="dark:text-slate-300">
             <li><strong>Comunicación unidireccional:</strong> Del servidor al cliente</li>
             <li><strong>Basado en HTTP:</strong> Mejor compatibilidad con infraestructuras existentes</li>
             <li><strong>Reconexión automática:</strong> Los clientes se reconectan automáticamente si se pierde la conexión</li>
@@ -338,7 +338,7 @@ app.get('/api/events', (req, res) => {
           />
 
           <h3>Cuándo Usar SSE</h3>
-          <ul>
+          <ul className="dark:text-slate-300">
             <li>Escenarios donde solo necesitas comunicación unidireccional del servidor al cliente</li>
             <li>Actualizaciones de feed de noticias, notificaciones, alertas</li>
             <li>Cuando necesitas compatibilidad con proxies y firewalls tradicionales</li>
@@ -346,13 +346,13 @@ app.get('/api/events', (req, res) => {
           </ul>
 
           <h2>JSON-RPC y SOAP</h2>
-          <p>
+          <p className="dark:text-slate-300">
             Estos protocolos más tradicionales siguen siendo relevantes en ciertos contextos empresariales
             y sistemas heredados.
           </p>
 
           <h3>JSON-RPC</h3>
-          <p>
+          <p className="dark:text-slate-300">
             Un protocolo RPC liviano basado en JSON para llamadas de procedimiento remoto.
           </p>
 
@@ -384,7 +384,7 @@ app.get('/api/events', (req, res) => {
           />
 
           <h3>SOAP</h3>
-          <p>
+          <p className="dark:text-slate-300">
             Un protocolo basado en XML para intercambio de mensajes estructurados en servicios web.
           </p>
 
@@ -421,62 +421,62 @@ app.get('/api/events', (req, res) => {
           <table className="w-full border-collapse my-6">
             <thead>
               <tr className="bg-slate-100 dark:bg-slate-800">
-                <th className="border p-2 text-left">Característica</th>
-                <th className="border p-2 text-left">REST</th>
-                <th className="border p-2 text-left">GraphQL</th>
-                <th className="border p-2 text-left">gRPC</th>
-                <th className="border p-2 text-left">WebSockets</th>
+                <th className="border border-slate-300 dark:border-slate-700 p-2 text-left">Característica</th>
+                <th className="border border-slate-300 dark:border-slate-700 p-2 text-left">REST</th>
+                <th className="border border-slate-300 dark:border-slate-700 p-2 text-left">GraphQL</th>
+                <th className="border border-slate-300 dark:border-slate-700 p-2 text-left">gRPC</th>
+                <th className="border border-slate-300 dark:border-slate-700 p-2 text-left">WebSockets</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="border p-2">Modelo de comunicación</td>
-                <td className="border p-2">Solicitud/Respuesta</td>
-                <td className="border p-2">Solicitud/Respuesta</td>
-                <td className="border p-2">RPC, Streaming</td>
-                <td className="border p-2">Bidireccional</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Modelo de comunicación</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Solicitud/Respuesta</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Solicitud/Respuesta</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">RPC, Streaming</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Bidireccional</td>
               </tr>
               <tr>
-                <td className="border p-2">Formato de datos</td>
-                <td className="border p-2">Cualquiera (típicamente JSON)</td>
-                <td className="border p-2">JSON</td>
-                <td className="border p-2">Protocol Buffers (binario)</td>
-                <td className="border p-2">Cualquiera</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Formato de datos</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Cualquiera (típicamente JSON)</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">JSON</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Protocol Buffers (binario)</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Cualquiera</td>
               </tr>
               <tr>
-                <td className="border p-2">Tipado</td>
-                <td className="border p-2">No tipado</td>
-                <td className="border p-2">Fuertemente tipado</td>
-                <td className="border p-2">Fuertemente tipado</td>
-                <td className="border p-2">No tipado</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Tipado</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">No tipado</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Fuertemente tipado</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Fuertemente tipado</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">No tipado</td>
               </tr>
               <tr>
-                <td className="border p-2">Evolución de API</td>
-                <td className="border p-2">Por versiones</td>
-                <td className="border p-2">Iterativa, sin romper</td>
-                <td className="border p-2">Por versiones de proto</td>
-                <td className="border p-2">Flexible</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Evolución de API</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Por versiones</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Iterativa, sin romper</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Por versiones de proto</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Flexible</td>
               </tr>
               <tr>
-                <td className="border p-2">Rendimiento</td>
-                <td className="border p-2">Bueno</td>
-                <td className="border p-2">Bueno</td>
-                <td className="border p-2">Excelente</td>
-                <td className="border p-2">Muy bueno</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Rendimiento</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Bueno</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Bueno</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Excelente</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Muy bueno</td>
               </tr>
               <tr>
-                <td className="border p-2">Facilidad de uso</td>
-                <td className="border p-2">Alta</td>
-                <td className="border p-2">Media</td>
-                <td className="border p-2">Media</td>
-                <td className="border p-2">Media</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Facilidad de uso</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Alta</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Media</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Media</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Media</td>
               </tr>
               <tr>
-                <td className="border p-2">Casos de uso ideales</td>
-                <td className="border p-2">APIs públicas, sistemas web</td>
-                <td className="border p-2">Apps móviles, UIs complejas</td>
-                <td className="border p-2">Microservicios, bajo latencia</td>
-                <td className="border p-2">Apps en tiempo real</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Casos de uso ideales</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">APIs públicas, sistemas web</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Apps móviles, UIs complejas</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Microservicios, bajo latencia</td>
+                <td className="border border-slate-300 dark:border-slate-700 p-2 dark:text-slate-300">Apps en tiempo real</td>
               </tr>
             </tbody>
           </table>
@@ -485,19 +485,19 @@ app.get('/api/events', (req, res) => {
             <GitBranch className="h-5 w-5 text-indigo-500" />
             Enfoques Híbridos
           </h2>
-          <p>
+          <p className="dark:text-slate-300">
             En la práctica, muchas aplicaciones modernas utilizan enfoques híbridos, combinando diferentes
             tecnologías según los requisitos específicos de cada componente:
           </p>
 
-          <ul className="ml-6 space-y-1 list-disc text-slate-700">
+          <ul className="ml-6 space-y-1 list-disc text-slate-700 dark:text-slate-300">
             <li><strong>REST + WebSockets:</strong> REST para operaciones CRUD y WebSockets para actualizaciones en tiempo real</li>
             <li><strong>GraphQL + gRPC:</strong> GraphQL para clientes externos y gRPC para comunicación interna entre microservicios</li>
             <li><strong>REST + SSE:</strong> REST para operaciones estándar y SSE para notificaciones o streaming de eventos</li>
           </ul>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8 mt-4">
-            <p className="text-indigo-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800 mb-8 mt-4">
+            <p className="text-indigo-800 dark:text-indigo-300">
               "La elección del enfoque adecuado para tu API no debe ser dogmática, sino pragmática. 
               Entiende las fortalezas y debilidades de cada tecnología y selecciona la que mejor se 
               alinee con tus requisitos específicos, o combina varias para aprovechar lo mejor de cada una."

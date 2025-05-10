@@ -12,17 +12,17 @@ const NestedResources = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/field-expansion" className="text-sm text-slate-500 hover:text-slate-700">Relaciones</Link>
+            <Link to="/field-expansion" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Relaciones</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Recursos Anidados</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Técnicas para representar y trabajar con recursos anidados en APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             Los recursos anidados representan relaciones jerárquicas entre entidades en una API REST.
             Permiten expresar naturalmente relaciones de pertenencia, composición o asociación, facilitando
             la navegación y manipulación de datos relacionados.
@@ -38,17 +38,17 @@ const NestedResources = () => {
             ¿Qué Son los Recursos Anidados?
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Los recursos anidados son una forma de modelar relaciones jerárquicas en APIs REST, donde un recurso
             está contenido dentro de otro o depende directamente de otro recurso. Esta estructura refleja relaciones
             naturales entre entidades del dominio.
           </p>
 
-          <p>
+          <p className="dark:text-slate-300">
             Ejemplos comunes de recursos anidados incluyen:
           </p>
 
-          <ul className="ml-6 space-y-1 list-disc text-slate-700">
+          <ul className="ml-6 space-y-1 list-disc text-slate-700 dark:text-slate-300">
             <li>Comentarios en un artículo</li>
             <li>Mensajes en una conversación</li>
             <li>Fotos en un álbum</li>
@@ -61,11 +61,11 @@ const NestedResources = () => {
             Cuándo Utilizar Recursos Anidados
           </h3>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
-            <p className="text-slate-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
+            <p className="text-slate-800 dark:text-slate-300">
               Los recursos anidados son especialmente apropiados cuando:
             </p>
-            <ul className="mt-3 space-y-1 ml-6 list-disc text-slate-700">
+            <ul className="mt-3 space-y-1 ml-6 list-disc text-slate-700 dark:text-slate-300">
               <li><strong>Existe una relación fuerte de pertenencia:</strong> Un recurso no puede existir sin su recurso padre</li>
               <li><strong>El acceso siempre o frecuentemente se realiza en contexto del padre:</strong> Raramente se accede al recurso de forma independiente</li>
               <li><strong>La seguridad o permisos se heredan del recurso padre:</strong> Los permisos para acceder al recurso hijo dependen del padre</li>
@@ -78,20 +78,20 @@ const NestedResources = () => {
             Patrones de Implementación
           </h2>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Link2 className="h-5 w-5 text-blue-600" />
                   <h3 className="text-lg font-semibold">1. Recursos Anidados en URLs</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   El enfoque más común es reflejar la jerarquía directamente en las URLs.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/posts/123/comments"
@@ -122,7 +122,7 @@ const NestedResources = () => {
                   />
                 </div>
 
-                <p>
+                <p className="dark:text-slate-300">
                   Las operaciones CRUD sobre recursos anidados siguen un patrón consistente:
                 </p>
 
@@ -149,14 +149,14 @@ DELETE /posts/{post_id}/comments/{comment_id}`}
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Network className="h-5 w-5 text-blue-600" />
                   <h3 className="text-lg font-semibold">2. Múltiples Niveles de Anidación</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Las APIs pueden soportar múltiples niveles de anidación para representar jerarquías más complejas.
                 </p>
               </div>
@@ -173,7 +173,7 @@ GET /posts/{post_id}/comments/{comment_id}/replies/{reply_id}/reactions`}
                   />
                 </div>
                 
-                <p className="mt-4 text-slate-700">
+                <p className="mt-4 text-slate-700 dark:text-slate-300">
                   Sin embargo, es recomendable limitar la profundidad de anidación a 2-3 niveles como máximo para mantener
                   las URLs manejables y evitar problemas de rendimiento.
                 </p>
@@ -181,14 +181,14 @@ GET /posts/{post_id}/comments/{comment_id}/replies/{reply_id}/reactions`}
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Boxes className="h-5 w-5 text-blue-600" />
                   <h3 className="text-lg font-semibold">3. Recursos Accesibles por Múltiples Rutas</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   En algunos casos, puede ser útil permitir acceder al mismo recurso por diferentes rutas jerárquicas.
                 </p>
               </div>
@@ -205,7 +205,7 @@ GET /comments/{comment_id}`}
                   />
                 </div>
                 
-                <p className="mt-4 text-slate-700">
+                <p className="mt-4 text-slate-700 dark:text-slate-300">
                   Este enfoque proporciona flexibilidad, pero requiere coherencia en las respuestas y permisos.
                 </p>
               </div>
@@ -218,10 +218,10 @@ GET /comments/{comment_id}`}
           </h2>
 
           <div className="space-y-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">Consistencia en las Representaciones</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Los recursos deben tener la misma representación independientemente de cómo se acceda a ellos:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -249,10 +249,10 @@ GET /comments/{comment_id}`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">Enlaces HATEOAS para Navegación</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Siguiendo los principios REST, es recomendable incluir enlaces que faciliten la navegación:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -276,19 +276,19 @@ GET /comments/{comment_id}`}
           </div>
 
           <div className="space-y-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">Limitación de Profundidad</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Evita crear jerarquías excesivamente profundas:
                 </p>
-                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                   <li><strong>Recomendable:</strong> Máximo 2-3 niveles de anidación</li>
                   <li><strong>No recomendable:</strong> <code>/api/v1/organizations/123/departments/456/teams/789/projects/101/tasks/202/comments/303</code></li>
                 </ul>
                 <div className="mt-3">
-                  <p className="text-sm text-slate-600">Para estructuras muy profundas, considera:</p>
-                  <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm mt-2">
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Para estructuras muy profundas, considera:</p>
+                  <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm mt-2">
                     <li>Proporcionar endpoints alternativos más directos</li>
                     <li>Usar parámetros de consulta para filtrar</li>
                     <li>Implementar expansión de campos selectiva</li>
@@ -297,18 +297,18 @@ GET /comments/{comment_id}`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">Permisos y Seguridad</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Los permisos deben verificarse tanto para el recurso hijo como para el padre:
                 </p>
-                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                   <li>Verificar que el usuario tiene acceso al recurso padre</li>
                   <li>Verificar que el usuario tiene acceso al recurso hijo</li>
                   <li>Confirmar que el recurso hijo realmente pertenece al padre especificado</li>
                 </ul>
-                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                <div className="mt-3 bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
                   <CodeBlock
                     code={`// Implementación de seguridad (pseudocódigo)
 app.get('/posts/:postId/comments/:commentId', (req, res) => {
@@ -347,20 +347,20 @@ app.get('/posts/:postId/comments/:commentId', (req, res) => {
             Casos de Uso y Patrones
           </h2>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Boxes className="h-5 w-5 text-blue-600" />
                   <h3 className="text-lg font-semibold">Colecciones de Subrecursos</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Para manejar subrecursos como colecciones dentro de un recurso padre.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/users/123/orders"
@@ -395,10 +395,10 @@ app.get('/posts/:postId/comments/:commentId', (req, res) => {
           </Card>
 
           <div className="space-y-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">Acciones en Recursos Anidados</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Para operaciones específicas que no encajan en el modelo CRUD tradicional:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -417,10 +417,10 @@ POST /posts/{post_id}/comments/{comment_id}/actions/approve`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">Filtrado de Recursos Anidados</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Combina recursos anidados con filtrado para consultas más específicas:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -446,26 +446,26 @@ GET /posts/{post_id}/comments?search=interesante`}
           </h2>
 
           <div className="space-y-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">1. Relaciones vs. Anidación</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   No todas las relaciones deben modelarse como recursos anidados:
                 </p>
-                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                   <li><strong>Usar recursos anidados para:</strong> Relaciones de pertenencia fuerte, acceso contextual</li>
                   <li><strong>Usar alternativas para:</strong> Relaciones muchos a muchos, asociaciones débiles, grafos complejos</li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-2">2. Desnormalización vs. Navegación</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Equilibrio entre incluir datos anidados y proporcionar enlaces para navegación:
                 </p>
-                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                <div className="mt-3 bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
                   <CodeBlock
                     code={`// Enfoque 1: Referencias - Más normalizado
 {
@@ -508,13 +508,13 @@ GET /posts/{post_id}/comments?search=interesante`}
           </h2>
 
           <div className="space-y-6 mt-4">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4">
+                <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
                   <h3 className="font-medium">GitHub API</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-3">
+                  <p className="mb-3 dark:text-slate-300">
                     GitHub utiliza recursos anidados para expresar jerarquías naturales:
                   </p>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -534,13 +534,13 @@ GET /repos/{owner}/{repo}/contents/{path}`}
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4">
+                <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
                   <h3 className="font-medium">Stripe API</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-3">
+                  <p className="mb-3 dark:text-slate-300">
                     Stripe combina recursos anidados con acceso directo:
                   </p>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -561,8 +561,8 @@ GET /v1/subscriptions/{subscription_id}/items`}
             </Card>
           </div>
 
-          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
-            <p className="italic text-indigo-900 font-medium">
+          <blockquote className="border-l-4 border-indigo-300 dark:border-indigo-700 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/50 dark:to-indigo-900/50 rounded-r-lg">
+            <p className="italic text-indigo-900 dark:text-indigo-300 font-medium">
               "Los recursos anidados son una herramienta poderosa para expresar relaciones naturales entre
               entidades en una API REST. Cuando se implementan correctamente, hacen que tu API sea más
               intuitiva y navegable, facilitando a los desarrolladores el descubrimiento y uso de
