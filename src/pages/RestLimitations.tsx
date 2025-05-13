@@ -12,17 +12,17 @@ const RestLimitations = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/alternatives" className="text-sm text-slate-500 hover:text-slate-700">API Avanzada</Link>
+            <Link to="/alternatives" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">API Avanzada</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Limitaciones REST</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Restricciones y desafíos del modelo REST para APIs complejas.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-        <p>
+        <p className="dark:text-slate-300">
           REST ha sido el estilo arquitectónico dominante para el diseño de APIs web durante años,
           y con buena razón: es simple, flexible y se basa en los estándares HTTP que ya son
           ampliamente utilizados. Sin embargo, a medida que las aplicaciones se vuelven más complejas
@@ -30,7 +30,7 @@ const RestLimitations = () => {
           cada vez más evidentes.
         </p>
 
-        <p>
+        <p className="dark:text-slate-300">
           Esta sección explora las principales limitaciones del modelo REST y los escenarios
           donde otros enfoques pueden ser más adecuados.
         </p>
@@ -40,22 +40,22 @@ const RestLimitations = () => {
             Fetching de datos ineficiente
           </h2>
 
-        <p>
+        <p className="dark:text-slate-300">
           Una de las limitaciones más significativas de REST es la ineficiencia en la obtención de
           datos, principalmente debido a dos problemas: el over-fetching y el under-fetching.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <Card>
+          <Card className="dark:border-slate-700">
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Over-fetching</h3>
-              <p className="mb-4">
+              <p className="mb-4 dark:text-slate-300">
                 Ocurre cuando una API REST devuelve más datos de los necesarios para un caso
                 de uso específico. Los clientes reciben información excesiva que no utilizarán,
                 desperdiciando ancho de banda y recursos de procesamiento.
               </p>
-              <div className="bg-slate-100 p-3 rounded-md">
-                <p className="text-sm text-slate-700">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
+                <p className="text-sm text-slate-700 dark:text-slate-300">
                   <strong>Ejemplo:</strong> Al solicitar datos básicos de un usuario para un
                   encabezado de perfil, el endpoint <code>/users/123</code> devuelve todos los
                   detalles del usuario, incluida su dirección, preferencias y datos históricos,
@@ -65,16 +65,16 @@ const RestLimitations = () => {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="dark:border-slate-700">
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Under-fetching</h3>
-              <p className="mb-4">
+              <p className="mb-4 dark:text-slate-300">
                 Se produce cuando un endpoint no proporciona datos suficientes para un caso de
                 uso, obligando al cliente a realizar múltiples solicitudes a distintos endpoints
                 para obtener toda la información necesaria.
               </p>
-              <div className="bg-slate-100 p-3 rounded-md">
-                <p className="text-sm text-slate-700">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
+                <p className="text-sm text-slate-700 dark:text-slate-300">
                   <strong>Ejemplo:</strong> Para mostrar una página de producto con detalles del
                   producto, reseñas, productos relacionados y disponibilidad, el cliente debe
                   llamar a <code>/products/123</code>, <code>/products/123/reviews</code>,
@@ -94,7 +94,7 @@ const RestLimitations = () => {
         <div className="space-y-4 mb-8">
           <div>
             <h4 className="font-semibold">1. Selección de campos (Field Selection)</h4>
-            <p className="mb-2">
+            <p className="mb-2 dark:text-slate-300">
               Muchas APIs REST permiten especificar qué campos se desean incluir en la respuesta,
               reduciendo el over-fetching:
             </p>
@@ -103,7 +103,7 @@ const RestLimitations = () => {
               path="/api/users/123?fields=id,name,profile_image"
               description="Solicitar solo campos específicos"
             />
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
               Sin embargo, esto sigue requiriendo que el cliente conozca de antemano qué campos
               necesita, y no resuelve completamente el problema para estructuras de datos anidadas.
             </p>
@@ -111,7 +111,7 @@ const RestLimitations = () => {
 
           <div>
             <h4 className="font-semibold">2. Expansión de relaciones (Embedding)</h4>
-            <p className="mb-2">
+            <p className="mb-2 dark:text-slate-300">
               Para mitigar el under-fetching, algunas APIs permiten incluir recursos relacionados:
             </p>
             <RouteExample
@@ -119,7 +119,7 @@ const RestLimitations = () => {
               path="/api/products/123?expand=reviews,category,inventory"
               description="Incluir recursos relacionados en una sola respuesta"
             />
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
               Esta técnica funciona bien para relaciones simples y predefinidas, pero puede volverse
               complicada para relaciones profundamente anidadas o cuando los clientes tienen
               necesidades variadas.
@@ -127,9 +127,9 @@ const RestLimitations = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-500 p-4 mb-8">
-          <h4 className="text-amber-800 font-medium">Compromiso inevitable</h4>
-          <p className="text-amber-700">
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 border-l-4 border-amber-500 dark:border-amber-600 p-4 mb-8">
+          <h4 className="text-amber-800 dark:text-amber-300 font-medium">Compromiso inevitable</h4>
+          <p className="text-amber-700 dark:text-amber-400">
             A pesar de estas soluciones, las APIs REST siempre implican un compromiso:
             demasiados endpoints específicos (fragmentación de API) o endpoints demasiado
             genéricos (ineficiencia). Este problema fundamental surge de la naturaleza
@@ -142,7 +142,7 @@ const RestLimitations = () => {
             Operaciones por lotes
           </h2>
 
-        <p className="mb-4">
+        <p className="mb-4 dark:text-slate-300">
           REST está diseñado idealmente para operaciones sobre recursos individuales. Cuando se
           necesitan operaciones por lotes o transaccionales que afectan a múltiples recursos,
           el modelo REST muestra sus limitaciones.
@@ -150,7 +150,7 @@ const RestLimitations = () => {
 
         <div className="mb-6">
             <h3 className="text-lg font-semibold tracking-tight mb-2">El problema de las modificaciones en masa</h3>
-          <p>
+          <p className="dark:text-slate-300">
             Consideremos un escenario donde necesitamos actualizar el estado de 50 tareas
             en una aplicación de gestión de proyectos:
           </p>
@@ -166,12 +166,12 @@ PATCH /api/tasks/50 { "status": "completed" }
             language="http"
           />
 
-          <p className="mt-4">
+          <p className="mt-4 dark:text-slate-300">
             Las soluciones comunes para este problema en REST incluyen:
           </p>
 
           <div className="space-y-2 mt-4">
-            <div className="bg-slate-100 p-3 rounded-md">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
               <h4 className="font-semibold">Endpoint específico para operaciones por lotes</h4>
               <CodeBlock
                 code={`POST /api/tasks/batch-update
@@ -181,13 +181,13 @@ PATCH /api/tasks/50 { "status": "completed" }
 }`}
                 language="json"
               />
-              <p className="text-sm mt-2 text-slate-600">
+              <p className="text-sm mt-2 text-slate-600 dark:text-slate-400">
                 Esta solución funciona pero no es "RESTful" en sentido estricto, ya que
                 el endpoint no representa un recurso específico.
               </p>
             </div>
 
-            <div className="bg-slate-100 p-3 rounded-md">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
               <h4 className="font-semibold">Colección de operaciones en una sola petición</h4>
               <CodeBlock
                 code={`POST /api/batch-operations
@@ -200,7 +200,7 @@ PATCH /api/tasks/50 { "status": "completed" }
 }`}
                 language="json"
               />
-              <p className="text-sm mt-2 text-slate-600">
+              <p className="text-sm mt-2 text-slate-600 dark:text-slate-400">
                 Este enfoque se aleja aún más de los principios REST puros y comienza
                 a asemejarse a un protocolo RPC o una implementación personalizada.
               </p>
@@ -213,7 +213,7 @@ PATCH /api/tasks/50 { "status": "completed" }
             Operaciones que no se ajustan al paradigma CRUD
           </h2>
 
-        <p className="mb-4">
+        <p className="mb-4 dark:text-slate-300">
           REST se adapta perfectamente a las operaciones CRUD (Crear, Leer, Actualizar, Eliminar),
           pero muchas aplicaciones reales necesitan operaciones más complejas que no encajan
           naturalmente en este modelo.
@@ -222,42 +222,42 @@ PATCH /api/tasks/50 { "status": "completed" }
           <div className="space-y-6 mb-8">
           <div>
               <h3 className="text-lg font-semibold tracking-tight mb-3">Acciones y procesos</h3>
-              <p className="mb-4">
+              <p className="mb-4 dark:text-slate-300">
               Las operaciones como "aprobar", "rechazar", "procesar", "calcular" o "convertir"
               no tienen una correspondencia clara con los verbos HTTP estándar y los recursos.
             </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                <Card className="overflow-hidden">
-                  <div className="border-b pb-2 pt-1 px-6 bg-slate-50">
-                    <h4 className="font-medium text-slate-700">Aproximación REST forzada</h4>
+                <Card className="overflow-hidden dark:border-slate-700">
+                  <div className="border-b pb-2 pt-1 px-6 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
+                    <h4 className="font-medium text-slate-700 dark:text-slate-300">Aproximación REST forzada</h4>
                   </div>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-3">
-                      <div className="px-3 py-1 bg-amber-100 text-amber-800 rounded-md text-sm font-semibold">PUT</div>
-                      <span className="text-slate-600">/api/orders/123</span>
+                      <div className="px-3 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 rounded-md text-sm font-semibold">PUT</div>
+                      <span className="text-slate-600 dark:text-slate-400">/api/orders/123</span>
                     </div>
-                    <p className="text-sm text-slate-500 mb-3">Actualizar orden completa para aprobarla</p>
-              <div className="bg-slate-100 p-3 rounded-md">
-                      <code className="block text-xs text-slate-700">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">Actualizar orden completa para aprobarla</p>
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
+                      <code className="block text-xs text-slate-700 dark:text-slate-300">
                   {`{ "status": "approved", ... otros campos obligatorios ... }`}
                 </code>
               </div>
                   </CardContent>
                 </Card>
 
-                <Card className="overflow-hidden">
-                  <div className="border-b pb-2 pt-1 px-6 bg-slate-50">
-                    <h4 className="font-medium text-slate-700">Interpretación pragmática</h4>
+                <Card className="overflow-hidden dark:border-slate-700">
+                  <div className="border-b pb-2 pt-1 px-6 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
+                    <h4 className="font-medium text-slate-700 dark:text-slate-300">Interpretación pragmática</h4>
                   </div>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-3">
-                      <div className="px-3 py-1 bg-green-100 text-green-800 rounded-md text-sm font-semibold">POST</div>
-                      <span className="text-slate-600">/api/orders/123/approve</span>
+                      <div className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 rounded-md text-sm font-semibold">POST</div>
+                      <span className="text-slate-600 dark:text-slate-400">/api/orders/123/approve</span>
                     </div>
-                    <p className="text-sm text-slate-500 mb-3">Acción específica (menos RESTful pero más clara)</p>
-              <div className="bg-slate-100 p-3 rounded-md">
-                      <code className="block text-xs text-slate-700">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">Acción específica (menos RESTful pero más clara)</p>
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
+                      <code className="block text-xs text-slate-700 dark:text-slate-300">
                   {`{ "approvedBy": "user_456", "notes": "Todo correcto" }`}
                 </code>
               </div>
@@ -266,17 +266,17 @@ PATCH /api/tasks/50 { "status": "completed" }
             </div>
           </div>
 
-            <div className="bg-blue-50 border border-blue-100 rounded-lg p-6 mt-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-2">Flujos de trabajo complejos</h3>
-              <p className="text-blue-800">
+            <div className="bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/50 rounded-lg p-6 mt-6">
+              <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-300 mb-2">Flujos de trabajo complejos</h3>
+              <p className="text-blue-800 dark:text-blue-300">
               Los procesos de negocio con múltiples pasos, como "finalizar una compra",
               "procesar una solicitud de préstamo" o "completar un registro en varias etapas"
               son difíciles de modelar de forma elegante en REST.
             </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <div className="bg-white p-4 rounded-md shadow-sm">
-                  <h4 className="font-medium text-blue-800 mb-2">Finalizar compra</h4>
-                  <div className="text-xs text-slate-600 space-y-1">
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-md shadow-sm">
+                  <h4 className="font-medium text-blue-800 dark:text-blue-300 mb-2">Finalizar compra</h4>
+                  <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
                     <p>1. Validar carrito</p>
                     <p>2. Procesar pago</p>
                     <p>3. Verificar stock</p>
@@ -284,9 +284,9 @@ PATCH /api/tasks/50 { "status": "completed" }
                     <p>5. Confirmar al cliente</p>
                   </div>
                 </div>
-                <div className="bg-white p-4 rounded-md shadow-sm">
-                  <h4 className="font-medium text-blue-800 mb-2">Solicitud de préstamo</h4>
-                  <div className="text-xs text-slate-600 space-y-1">
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-md shadow-sm">
+                  <h4 className="font-medium text-blue-800 dark:text-blue-300 mb-2">Solicitud de préstamo</h4>
+                  <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
                     <p>1. Enviar solicitud</p>
                     <p>2. Verificar documentación</p>
                     <p>3. Analizar riesgo</p>
@@ -294,9 +294,9 @@ PATCH /api/tasks/50 { "status": "completed" }
                     <p>5. Desembolsar fondos</p>
                   </div>
                 </div>
-                <div className="bg-white p-4 rounded-md shadow-sm">
-                  <h4 className="font-medium text-blue-800 mb-2">Registro en etapas</h4>
-                  <div className="text-xs text-slate-600 space-y-1">
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-md shadow-sm">
+                  <h4 className="font-medium text-blue-800 dark:text-blue-300 mb-2">Registro en etapas</h4>
+                  <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
                     <p>1. Datos básicos</p>
                     <p>2. Verificar email</p>
                     <p>3. Completar perfil</p>
@@ -313,7 +313,7 @@ PATCH /api/tasks/50 { "status": "completed" }
             Manejo del estado
           </h2>
 
-        <p className="mb-6">
+        <p className="mb-6 dark:text-slate-300">
           REST es fundamentalmente sin estado (stateless), lo que significa que cada solicitud
           debe contener toda la información necesaria para ser procesada independientemente.
           Esto presenta desafíos para operaciones que requieren mantener un estado a través
@@ -323,16 +323,16 @@ PATCH /api/tasks/50 { "status": "completed" }
         <div className="space-y-4 mb-8">
           <div>
             <h4 className="font-semibold">Operaciones de larga duración</h4>
-            <p className="mb-2">
+            <p className="mb-2 dark:text-slate-300">
                 REST está diseñado para interacciones rápidas de solicitud-respuesta. Las operaciones
                 que tardan minutos o incluso horas en completarse (como procesamiento de video, importaciones
                 masivas o cálculos complejos) no encajan bien en este modelo.
             </p>
-            <div className="bg-slate-100 p-3 rounded-md mb-4">
-                <p className="text-sm text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md mb-4">
+                <p className="text-sm text-slate-700 dark:text-slate-300">
                   <strong>Patrones comunes para procesos largos en APIs REST:</strong>
                 </p>
-                <ol className="list-decimal list-inside text-xs ml-4 mt-2 text-slate-600 space-y-1">
+                <ol className="list-decimal list-inside text-xs ml-4 mt-2 text-slate-600 dark:text-slate-400 space-y-1">
                   <li>
                     <strong>Polling:</strong> El cliente inicia la operación y recibe un ID de trabajo,
                     luego consulta periódicamente el estado hasta que se completa
@@ -351,7 +351,7 @@ PATCH /api/tasks/50 { "status": "completed" }
 
           <div>
             <h4 className="font-semibold">Flujos de conversación</h4>
-            <p>
+            <p className="dark:text-slate-300">
               Aplicaciones como asistentes virtuales, procesos de configuración guiados o
               formularios de múltiples pasos requieren mantener un contexto a través de varias
               interacciones, algo que REST no aborda directamente.
@@ -364,7 +364,7 @@ PATCH /api/tasks/50 { "status": "completed" }
             Notificaciones en tiempo real
           </h2>
 
-        <p className="mb-6">
+        <p className="mb-6 dark:text-slate-300">
           REST es fundamentalmente un modelo de comunicación basado en solicitud-respuesta,
           donde el cliente siempre inicia la interacción. Esto crea desafíos para escenarios
           que requieren notificaciones en tiempo real o actualizaciones iniciadas por el servidor.
@@ -374,16 +374,16 @@ PATCH /api/tasks/50 { "status": "completed" }
           <h3 className="font-semibold mb-2">Técnicas para tiempo real con REST</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Long Polling</h4>
-                <p className="mb-2 text-sm">
+                <p className="mb-2 text-sm dark:text-slate-300">
                   El cliente hace una solicitud HTTP y el servidor mantiene la conexión abierta
                   hasta que haya nuevos datos disponibles o se alcance un tiempo límite.
                 </p>
-                <div className="bg-slate-50 p-2 rounded-md text-xs">
-                  <p className="font-medium">Limitaciones:</p>
-                  <ul className="list-disc list-inside space-y-1 mt-1">
+                <div className="bg-slate-50 dark:bg-slate-800 p-2 rounded-md text-xs">
+                  <p className="font-medium dark:text-slate-300">Limitaciones:</p>
+                  <ul className="list-disc list-inside space-y-1 mt-1 dark:text-slate-400">
                     <li>Conexiones innecesariamente mantenidas</li>
                     <li>Overhead de establecimiento de conexiones</li>
                     <li>Problemas con balanceadores de carga</li>
@@ -393,16 +393,16 @@ PATCH /api/tasks/50 { "status": "completed" }
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Short Polling</h4>
-                <p className="mb-2 text-sm">
+                <p className="mb-2 text-sm dark:text-slate-300">
                   El cliente realiza solicitudes HTTP de forma periódica (cada pocos segundos)
                   para verificar si hay nuevos datos.
                 </p>
-                <div className="bg-slate-50 p-2 rounded-md text-xs">
-                  <p className="font-medium">Limitaciones:</p>
-                  <ul className="list-disc list-inside space-y-1 mt-1">
+                <div className="bg-slate-50 dark:bg-slate-800 p-2 rounded-md text-xs">
+                  <p className="font-medium dark:text-slate-300">Limitaciones:</p>
+                  <ul className="list-disc list-inside space-y-1 mt-1 dark:text-slate-400">
                     <li>Alta carga en el servidor</li>
                     <li>Desperdicio de ancho de banda</li>
                     <li>Latencia en las actualizaciones</li>
@@ -413,7 +413,7 @@ PATCH /api/tasks/50 { "status": "completed" }
             </Card>
           </div>
 
-          <p className="mt-4 text-slate-700">
+          <p className="mt-4 text-slate-700 dark:text-slate-300">
             Estas soluciones son "parches" sobre REST que intentan forzar un comportamiento que
             va en contra de su naturaleza fundamental. Para comunicación bidireccional en tiempo
             real, tecnologías como WebSockets, Server-Sent Events o la reciente tecnología HTTP/2
@@ -426,7 +426,7 @@ PATCH /api/tasks/50 { "status": "completed" }
             Documentación y contratos débiles
           </h2>
 
-        <p className="mb-4">
+        <p className="mb-4 dark:text-slate-300">
           REST no tiene un mecanismo intrínseco para definir contratos estrictos entre
           cliente y servidor. Aunque existen estándares como OpenAPI (Swagger), éstos son
           complementarios y no parte integral del modelo REST.
@@ -435,7 +435,7 @@ PATCH /api/tasks/50 { "status": "completed" }
         <div className="space-y-4 mb-8">
           <div>
             <h4 className="font-semibold">Problemas de integración</h4>
-            <ul className="list-disc list-inside space-y-2 pl-4">
+            <ul className="list-disc list-inside space-y-2 pl-4 dark:text-slate-300">
               <li>
                 Los clientes dependen de documentación externa que puede quedar desactualizada
               </li>
@@ -453,7 +453,7 @@ PATCH /api/tasks/50 { "status": "completed" }
 
           <div>
             <h4 className="font-semibold">Sobrecarga cognitiva para desarrolladores</h4>
-            <p>
+            <p className="dark:text-slate-300">
               En proyectos grandes, los desarrolladores deben memorizar o consultar constantemente
               la estructura de múltiples endpoints, parámetros, códigos de error y formatos de
               respuesta sin ayuda del sistema de tipos o autocompletado del IDE.
@@ -466,7 +466,7 @@ PATCH /api/tasks/50 { "status": "completed" }
             Rendimiento y latencia de red
           </h2>
 
-        <p className="mb-4">
+        <p className="mb-4 dark:text-slate-300">
           Las APIs REST generalmente sufren de problemas de rendimiento debido a varios factores
           inherentes a su diseño:
         </p>
@@ -474,22 +474,22 @@ PATCH /api/tasks/50 { "status": "completed" }
         <div className="space-y-4 mb-8">
           <div>
             <h4 className="font-semibold">Múltiples viajes de red (N+1 Problem)</h4>
-            <p className="mb-2">
+            <p className="mb-2 dark:text-slate-300">
               Para obtener datos complejos y relacionados, los clientes REST suelen necesitar realizar
               múltiples solicitudes HTTP secuenciales, lo que incrementa la latencia.
             </p>
-            <div className="bg-slate-100 p-3 rounded-md">
-              <p className="text-sm text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
+              <p className="text-sm text-slate-700 dark:text-slate-300">
                 <strong>Ejemplo:</strong> Para mostrar una feed de redes sociales con 10 publicaciones,
                 cada una con su autor, comentarios y likes, un cliente REST podría necesitar:
               </p>
-              <ul className="list-disc list-inside text-xs ml-4 mt-2 text-slate-600 space-y-1">
+              <ul className="list-disc list-inside text-xs ml-4 mt-2 text-slate-600 dark:text-slate-400 space-y-1">
                 <li>1 solicitud para obtener el feed inicial</li>
                 <li>10 solicitudes para obtener detalles del autor de cada publicación</li>
                 <li>10 solicitudes para obtener comentarios de cada publicación</li>
                 <li>10 solicitudes para obtener likes de cada publicación</li>
               </ul>
-              <p className="text-xs font-medium text-slate-700 mt-2">
+              <p className="text-xs font-medium text-slate-700 dark:text-slate-300 mt-2">
                 Total: 31 solicitudes HTTP, cada una con su latencia y overhead.
               </p>
             </div>
@@ -497,7 +497,7 @@ PATCH /api/tasks/50 { "status": "completed" }
 
           <div>
             <h4 className="font-semibold">Overhead de HTTP</h4>
-            <p>
+            <p className="dark:text-slate-300">
               Cada solicitud HTTP incluye encabezados, cookies, procesamiento de autenticación
               y establecimiento de conexión, lo que añade overhead significativo, especialmente
               para operaciones pequeñas o frecuentes.
@@ -506,7 +506,7 @@ PATCH /api/tasks/50 { "status": "completed" }
 
           <div>
             <h4 className="font-semibold">Verbosidad de la serialización</h4>
-            <p>
+            <p className="dark:text-slate-300">
               Las APIs REST tradicionales suelen usar JSON, que es legible para humanos pero no
               es el formato más eficiente en términos de tamaño de transferencia. Los campos redundantes,
               nombres largos y estructura anidada aumentan el tamaño de las respuestas.
@@ -520,12 +520,12 @@ PATCH /api/tasks/50 { "status": "completed" }
           </h2>
 
         <div className="space-y-4 mb-8">
-          <p>
+          <p className="dark:text-slate-300">
             A pesar de estas limitaciones, REST sigue siendo una excelente opción para muchas
             APIs. Considera alternativas cuando:
           </p>
 
-          <ul className="list-disc pl-6 space-y-2">
+          <ul className="list-disc pl-6 space-y-2 dark:text-slate-300">
             <li>
               <strong>Tu API tiene interfaces extremadamente variadas</strong> con diferentes
               necesidades de datos para cada cliente (considerar GraphQL)
@@ -549,9 +549,9 @@ PATCH /api/tasks/50 { "status": "completed" }
           </ul>
         </div>
 
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-md p-4 mb-8">
-          <h3 className="text-blue-900 font-medium">Conclusión</h3>
-          <p className="text-blue-800">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 border border-blue-200 dark:border-blue-800 rounded-md p-4 mb-8">
+          <h3 className="text-blue-900 dark:text-blue-300 font-medium">Conclusión</h3>
+          <p className="text-blue-800 dark:text-blue-300">
             REST ha sido y seguirá siendo un pilar fundamental en el diseño de APIs, pero
             como cualquier tecnología, tiene sus limitaciones. Un buen arquitecto
             comprende estas limitaciones y sabe cuándo ser pragmático, ya sea adaptando

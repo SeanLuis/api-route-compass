@@ -13,17 +13,17 @@ const Examples = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/openapi" className="text-sm text-slate-500 hover:text-slate-700">Documentación</Link>
+            <Link to="/openapi" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Documentación</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Ejemplos Prácticos</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Casos de estudio y ejemplos de implementaciones de APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             Esta sección presenta ejemplos prácticos de implementaciones de APIs REST para diferentes
             escenarios y casos de uso. Cada ejemplo incluye explicaciones detalladas, código de muestra
             y consideraciones de diseño.
@@ -34,7 +34,7 @@ const Examples = () => {
             API de comercio electrónico
           </h2>
 
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             Este ejemplo muestra una API REST para una plataforma de comercio electrónico, con endpoints
             para gestionar productos, pedidos, usuarios y carritos de compra.
           </p>
@@ -58,7 +58,7 @@ const Examples = () => {
             Endpoints para productos
           </h3>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4">
             <EndpointExample
               method="GET"
               path="/api/v1/products"
@@ -100,7 +100,7 @@ const Examples = () => {
             />
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4">
             <EndpointExample
               method="POST"
               path="/api/v1/products"
@@ -257,21 +257,21 @@ Content-Type: application/json
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Expansión de relaciones</h4>
-                <p className="mb-2 text-slate-700">Permitir incluir recursos relacionados en la respuesta:</p>
-                <code className="block bg-slate-100 p-2 rounded">
+                <p className="mb-2 text-slate-700 dark:text-slate-300">Permitir incluir recursos relacionados en la respuesta:</p>
+                <code className="block bg-slate-100 dark:bg-slate-800 p-2 rounded">
                   GET /api/v1/products/prod_123?expand=category,reviews
                 </code>
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Filtrado avanzado</h4>
-                <p className="mb-2 text-slate-700">Filtrar productos por múltiples criterios:</p>
-                <code className="block bg-slate-100 p-2 rounded">
+                <p className="mb-2 text-slate-700 dark:text-slate-300">Filtrar productos por múltiples criterios:</p>
+                <code className="block bg-slate-100 dark:bg-slate-800 p-2 rounded">
                   GET /api/v1/products?category=cat_5&min_price=100&max_price=500&in_stock=true
                 </code>
               </CardContent>
@@ -283,7 +283,7 @@ Content-Type: application/json
             API de sistema de blog
           </h2>
 
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             Este ejemplo muestra una API REST para un sistema de blog con artículos, 
             comentarios y usuarios.
           </p>
@@ -293,7 +293,7 @@ Content-Type: application/json
             Estructura de recursos
           </h3>
 
-          <div className="space-y-1 mb-6 ml-6 text-slate-700">
+          <div className="space-y-1 mb-6 ml-6 text-slate-700 dark:text-slate-300">
             <p><code>/posts</code> - Artículos del blog</p>
             <p><code>/comments</code> - Comentarios en artículos</p>
             <p><code>/users</code> - Autores y usuarios</p>
@@ -428,19 +428,19 @@ Content-Type: application/json
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <Card>
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Obtener artículos por categoría</h4>
-                <code className="block bg-gray-100 p-2 rounded">
+                <code className="block bg-gray-100 dark:bg-gray-800 p-2 rounded">
                   GET /api/posts?category=technology&page=2&limit=15
                 </code>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Buscar artículos por etiqueta</h4>
-                <code className="block bg-gray-100 p-2 rounded">
+                <code className="block bg-gray-100 dark:bg-gray-800 p-2 rounded">
                   GET /api/posts?tag=javascript&tag=tutorial
                 </code>
               </CardContent>
@@ -452,7 +452,7 @@ Content-Type: application/json
             API de gestión de tareas
           </h2>
 
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             Un ejemplo de API REST para una aplicación de gestión de tareas tipo Todo list,
             con soporte para usuarios, proyectos y tareas.
           </p>
@@ -462,7 +462,7 @@ Content-Type: application/json
             Estructura de recursos
           </h3>
 
-          <div className="space-y-1 mb-6 ml-6 text-slate-700">
+          <div className="space-y-1 mb-6 ml-6 text-slate-700 dark:text-slate-300">
             <p><code>/users</code> - Usuarios del sistema</p>
             <p><code>/projects</code> - Proyectos o listas de tareas</p>
             <p><code>/tasks</code> - Tareas individuales</p>
@@ -474,7 +474,7 @@ Content-Type: application/json
             Operaciones con tareas
           </h3>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4">
             <EndpointExample
               method="GET"
               path="/api/v1/tasks"
@@ -518,7 +518,7 @@ Content-Type: application/json
             />
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4">
             <EndpointExample
               method="PATCH"
               path="/api/v1/tasks/task_123"
@@ -614,44 +614,12 @@ Content-Type: application/json
             language="http"
           />
 
-          <CodeBlock
-            code={`// Actualizar el estado y reasignar una tarea
-PATCH /api/tasks/task_123 HTTP/1.1
-Host: api.example.com
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-
-{
-  "status": "completed",
-  "assignee_id": "user_790"
-}
-
-// Respuesta
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "task_123",
-  "title": "Implementar autenticación de usuario",
-  "description": "Agregar login con JWT",
-  "status": "completed",
-  "priority": "high", 
-  "due_date": "2023-06-30T00:00:00Z",
-  "project_id": "project_456",
-  "assignee_id": "user_790",
-  "labels": ["backend", "security"],
-  "created_at": "2023-06-01T10:00:00Z",
-  "updated_at": "2023-06-15T14:30:00Z"
-}`}
-            language="http"
-          />
-
           <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
             <Calendar className="h-5 w-5 text-indigo-500" />
             API de sistema de reservas
           </h2>
 
-          <p className="text-slate-700">
+          <p className="text-slate-700 dark:text-slate-300">
             Una API REST para un sistema de reservas que permite a los usuarios reservar 
             recursos como salas de reuniones, equipos o servicios.
           </p>
@@ -791,10 +759,10 @@ Content-Type: application/json
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Consistencia</h4>
-                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                <ul className="list-disc pl-4 space-y-1 text-slate-700 dark:text-slate-300">
                   <li>Usar convenciones de nomenclatura consistentes</li>
                   <li>Estructurar respuestas de manera uniforme</li>
                   <li>Aplicar los mismos patrones de paginación y filtrado</li>
@@ -803,10 +771,10 @@ Content-Type: application/json
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Rendimiento</h4>
-                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                <ul className="list-disc pl-4 space-y-1 text-slate-700 dark:text-slate-300">
                   <li>Implementar caché para recursos frecuentes</li>
                   <li>Optimizar consultas de base de datos</li>
                   <li>Permitir selección de campos (fields=id,name)</li>
@@ -816,10 +784,10 @@ Content-Type: application/json
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardContent className="pt-6">
                 <h4 className="font-semibold mb-2">Escalabilidad</h4>
-                <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                <ul className="list-disc pl-4 space-y-1 text-slate-700 dark:text-slate-300">
                   <li>Diseñar APIs sin estado (stateless)</li>
                   <li>Implementar rate limiting</li>
                   <li>Versionar APIs para cambios importantes</li>
@@ -838,7 +806,7 @@ Content-Type: application/json
           <div className="space-y-4 mb-8">
             <div>
               <h4 className="font-semibold">Herramientas para desarrollo de APIs</h4>
-              <ul className="list-disc pl-6 space-y-1 text-slate-700">
+              <ul className="list-disc pl-6 space-y-1 text-slate-700 dark:text-slate-300">
                 <li>Postman - Pruebas y documentación de API</li>
                 <li>Insomnia - Cliente REST alternativo</li>
                 <li>Swagger/OpenAPI - Especificación y documentación</li>
@@ -850,7 +818,7 @@ Content-Type: application/json
 
             <div>
               <h4 className="font-semibold">Frameworks para implementación de APIs REST</h4>
-              <ul className="list-disc pl-6 space-y-1 text-slate-700">
+              <ul className="list-disc pl-6 space-y-1 text-slate-700 dark:text-slate-300">
                 <li>Express.js (Node.js)</li>
                 <li>FastAPI (Python)</li>
                 <li>Spring Boot (Java)</li>
@@ -862,9 +830,9 @@ Content-Type: application/json
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-200 rounded-lg p-6 mb-8">
-            <h3 className="text-lg font-semibold mb-2">Conclusión</h3>
-            <p className="text-slate-700">
+          <div className="bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-900/50 dark:to-gray-900/50 border border-slate-200 dark:border-slate-700 rounded-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold mb-2 dark:text-white">Conclusión</h3>
+            <p className="text-slate-700 dark:text-slate-300">
               Los ejemplos anteriores muestran diferentes formas de implementar APIs REST para escenarios comunes.
               Al diseñar su propia API, considere las necesidades específicas de su aplicación, pero mantenga
               presentes los principios fundamentales REST y las mejores prácticas para asegurar que su API sea
@@ -872,9 +840,9 @@ Content-Type: application/json
             </p>
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8">
-            <h4 className="text-indigo-900 font-medium">💡 Consejo</h4>
-            <p className="text-indigo-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800 mb-8">
+            <h4 className="text-indigo-900 dark:text-indigo-300 font-medium">💡 Consejo</h4>
+            <p className="text-indigo-800 dark:text-indigo-300">
               Invierta tiempo en el diseño inicial de su API. Un buen diseño desde el principio ahorrará
               tiempo y recursos en el futuro, evitando cambios incompatibles que podrían romper integraciones
               existentes. Considere crear un prototipo o mock de su API y probarlo con casos de uso reales antes

@@ -12,37 +12,37 @@ const ErrorHandling = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/response-formats" className="text-sm text-slate-500 hover:text-slate-700">Respuestas</Link>
+            <Link to="/response-formats" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Respuestas</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Manejo de Errores</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Patrones para gestionar y comunicar errores de forma efectiva en APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             Un manejo de errores eficaz proporciona información clara y útil cuando algo sale mal.
             Las mejores APIs utilizan códigos de estado HTTP consistentes y mensajes de error estructurados
             que ayudan a los desarrolladores a entender y solucionar problemas rápidamente.
           </p>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Code className="h-5 w-5 text-indigo-500" />
             Estructura de errores
           </h2>
 
-          <p>
+          <p className="dark:text-slate-300">
             Una respuesta de error estándar debe incluir:
           </p>
 
-          <ul className="list-disc pl-6 space-y-2">
+          <ul className="list-disc pl-6 space-y-2 dark:text-slate-300">
             <li>Un código de estado HTTP apropiado</li>
             <li>Un objeto con un formato consistente en el cuerpo de la respuesta</li>
           </ul>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="p-6">
                 <EndpointExample
@@ -70,16 +70,16 @@ const ErrorHandling = () => {
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8 dark:text-white">
             <Info className="h-5 w-5 text-indigo-500" />
             Códigos de estado HTTP comunes
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">400 Bad Request</CardTitle>
-                <CardDescription>Sintaxis incorrecta o parámetros inválidos</CardDescription>
+                <CardTitle className="text-base dark:text-white">400 Bad Request</CardTitle>
+                <CardDescription className="dark:text-slate-400">Sintaxis incorrecta o parámetros inválidos</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -94,10 +94,10 @@ const ErrorHandling = () => {
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">401 Unauthorized</CardTitle>
-                <CardDescription>Se requiere autenticación</CardDescription>
+                <CardTitle className="text-base dark:text-white">401 Unauthorized</CardTitle>
+                <CardDescription className="dark:text-slate-400">Se requiere autenticación</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -112,10 +112,10 @@ const ErrorHandling = () => {
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">403 Forbidden</CardTitle>
-                <CardDescription>Sin permisos para el recurso</CardDescription>
+                <CardTitle className="text-base dark:text-white">403 Forbidden</CardTitle>
+                <CardDescription className="dark:text-slate-400">Sin permisos para el recurso</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -130,10 +130,10 @@ const ErrorHandling = () => {
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">404 Not Found</CardTitle>
-                <CardDescription>El recurso no existe</CardDescription>
+                <CardTitle className="text-base dark:text-white">404 Not Found</CardTitle>
+                <CardDescription className="dark:text-slate-400">El recurso no existe</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -150,10 +150,10 @@ const ErrorHandling = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">422 Unprocessable Entity</CardTitle>
-                <CardDescription>Error de validación de datos</CardDescription>
+                <CardTitle className="text-base dark:text-white">422 Unprocessable Entity</CardTitle>
+                <CardDescription className="dark:text-slate-400">Error de validación de datos</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -169,10 +169,10 @@ const ErrorHandling = () => {
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">429 Too Many Requests</CardTitle>
-                <CardDescription>Límite de solicitudes excedido</CardDescription>
+                <CardTitle className="text-base dark:text-white">429 Too Many Requests</CardTitle>
+                <CardDescription className="dark:text-slate-400">Límite de solicitudes excedido</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -188,20 +188,20 @@ const ErrorHandling = () => {
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8 dark:text-white">
             <Terminal className="h-5 w-5 text-indigo-500" />
             Patrones comunes de error
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight mt-6">
+          <h3 className="text-lg font-semibold tracking-tight mt-6 dark:text-white">
             Errores de validación
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Para problemas de validación de entrada, proporcione detalles específicos sobre cada campo:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="p-6">
                 <EndpointExample
@@ -230,15 +230,15 @@ const ErrorHandling = () => {
             </CardContent>
           </Card>
 
-          <h3 className="text-lg font-semibold tracking-tight mt-6">
+          <h3 className="text-lg font-semibold tracking-tight mt-6 dark:text-white">
             Errores de negocio
           </h3>
           
-          <p>
+          <p className="dark:text-slate-300">
             Para errores relacionados con la lógica de la aplicación:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="p-6">
                 <EndpointExample
@@ -260,15 +260,15 @@ const ErrorHandling = () => {
             </CardContent>
           </Card>
 
-          <h3 className="text-lg font-semibold tracking-tight mt-6">
+          <h3 className="text-lg font-semibold tracking-tight mt-6 dark:text-white">
             Errores con referencia de seguimiento
           </h3>
           
-          <p>
+          <p className="dark:text-slate-300">
             Para errores internos, incluya un identificador que facilite la depuración:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="p-6">
                 <EndpointExample
@@ -288,15 +288,15 @@ const ErrorHandling = () => {
             </CardContent>
           </Card>
 
-          <h3 className="text-lg font-semibold tracking-tight mt-6">
+          <h3 className="text-lg font-semibold tracking-tight mt-6 dark:text-white">
             Múltiples errores en una respuesta
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             En algunos casos, es útil devolver múltiples errores en una sola respuesta:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -327,58 +327,58 @@ const ErrorHandling = () => {
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Mejores Prácticas
           </h2>
 
           <div className="space-y-4 mt-6">
-            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
-              <h3 className="font-medium">Mensajes de Error Claros y Accionables</h3>
+            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
+              <h3 className="font-medium dark:text-white">Mensajes de Error Claros y Accionables</h3>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                  <span><strong>Específicos:</strong> Indicar exactamente qué falló</span>
+                  <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="dark:text-slate-300"><strong>Específicos:</strong> Indicar exactamente qué falló</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                  <span><strong>Accionables:</strong> Sugerir qué hacer para resolver el problema</span>
+                  <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="dark:text-slate-300"><strong>Accionables:</strong> Sugerir qué hacer para resolver el problema</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                  <span><strong>Concisos:</strong> Breves pero informativos</span>
+                  <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="dark:text-slate-300"><strong>Concisos:</strong> Breves pero informativos</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
-              <h3 className="font-medium">Códigos de Error Coherentes</h3>
+            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
+              <h3 className="font-medium dark:text-white">Códigos de Error Coherentes</h3>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                  <span>Usar formatos predecibles (ej. snake_case para todos los códigos)</span>
+                  <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="dark:text-slate-300">Usar formatos predecibles (ej. snake_case para todos los códigos)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                  <span>Agrupar códigos por categoría (ej. auth_*, validation_*)</span>
+                  <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="dark:text-slate-300">Agrupar códigos por categoría (ej. auth_*, validation_*)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                  <span>Incluir identificadores únicos para errores del servidor</span>
+                  <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="dark:text-slate-300">Incluir identificadores únicos para errores del servidor</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8 dark:text-white">
             <Terminal className="h-5 w-5 text-indigo-500" />
             Implementación Técnica
           </h2>
 
-          <Card className="border border-slate-200 shadow-sm mt-6">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm mt-6">
             <CardHeader className="pb-2">
-              <CardTitle className="text-base">Middleware Centralizado para Errores</CardTitle>
-              <CardDescription>Implementación en Express.js</CardDescription>
+              <CardTitle className="text-base dark:text-white">Middleware Centralizado para Errores</CardTitle>
+              <CardDescription className="dark:text-slate-400">Implementación en Express.js</CardDescription>
             </CardHeader>
             <CardContent>
               <CodeBlock
@@ -440,16 +440,16 @@ app.use((err, req, res, next) => {
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 mt-8 dark:text-white">
             <Info className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <Card className="border border-slate-200 shadow-sm">
-              <CardHeader className="pb-2 border-b">
-                <CardTitle className="text-base">Stripe API</CardTitle>
-                <CardDescription>Errores detallados con tipos y códigos</CardDescription>
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
+              <CardHeader className="pb-2 border-b dark:border-slate-700">
+                <CardTitle className="text-base dark:text-white">Stripe API</CardTitle>
+                <CardDescription className="dark:text-slate-400">Errores detallados con tipos y códigos</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -468,10 +468,10 @@ app.use((err, req, res, next) => {
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
-              <CardHeader className="pb-2 border-b">
-                <CardTitle className="text-base">GitHub API</CardTitle>
-                <CardDescription>Formato simple con documentación</CardDescription>
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
+              <CardHeader className="pb-2 border-b dark:border-slate-700">
+                <CardTitle className="text-base dark:text-white">GitHub API</CardTitle>
+                <CardDescription className="dark:text-slate-400">Formato simple con documentación</CardDescription>
               </CardHeader>
               <CardContent>
                 <CodeBlock
@@ -492,8 +492,8 @@ app.use((err, req, res, next) => {
             </Card>
           </div>
 
-          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
-            <p className="italic text-indigo-900 font-medium">
+          <blockquote className="border-l-4 border-indigo-300 dark:border-indigo-700 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/50 dark:to-indigo-900/50 rounded-r-lg">
+            <p className="italic text-indigo-900 dark:text-indigo-300 font-medium">
               "Un buen sistema de manejo de errores es como un buen sistema de navegación: 
               no solo te dice que estás perdido, sino que te ayuda a encontrar el camino correcto.
               Las APIs con errores claros y accionables crean una experiencia de desarrollador

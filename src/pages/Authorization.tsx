@@ -4,50 +4,71 @@ import { Card, CardContent } from "@/components/ui/card";
 import { EndpointExample } from "@/components/EndpointExample";
 import { Link } from "react-router-dom";
 import { Shield, Users, FileKey, Database, Code, Briefcase, CheckCircle, Layout } from "lucide-react";
+import { SecurityBestPractices } from "@/components/SecurityBestPractices";
 
 const Authorization = () => {
+  // Authorization best practices
+  const authzBestPractices = [
+    { text: "Principio de privilegio mínimo - Otorgar solo los permisos estrictamente necesarios para realizar una tarea", isRecommended: true },
+    { text: "Denegar por defecto - El acceso debe estar prohibido a menos que se conceda explícitamente", isRecommended: true },
+    { text: "Separación de responsabilidades - Dividir tareas críticas entre diferentes roles", isRecommended: true },
+    { text: "Autorización uniforme - Aplicar las mismas comprobaciones en todos los canales de acceso", isRecommended: true },
+    { text: "Centralizar la lógica de autorización - Evitar duplicación y posibles inconsistencias", isRecommended: true },
+    { text: "Auditar decisiones de autorización - Registrar accesos y cambios a permisos", isRecommended: true },
+    { text: "Errores genéricos - No revelar más información de la necesaria en respuestas de error", isRecommended: true },
+    { text: "Reevaluar permisos regularmente - Revisar y ajustar permisos según cambien los roles", isRecommended: true }
+  ];
+
+  // Model selection recommendations
+  const modelRecommendations = [
+    { text: "Comience con RBAC para la mayoría de las aplicaciones - es simple, bien entendido y cubre muchos casos de uso", isRecommended: true },
+    { text: "Agregue ACL cuando necesite control de acceso a nivel de instancia (ej. \"este usuario puede editar este documento específico\")", isRecommended: true },
+    { text: "Considere ABAC cuando RBAC se vuelva demasiado complejo con muchos roles o cuando necesite incorporar contexto en las decisiones", isRecommended: true },
+    { text: "Implemente PBAC para entornos distribuidos o cuando necesite políticas centralizadas para múltiples servicios", isRecommended: true }
+  ];
+
   return (
     <PageLayout>
       <div className="space-y-10">
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/security-practices" className="text-sm text-slate-500 hover:text-slate-700">Seguridad</Link>
+            <Link to="/security-practices" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Seguridad</Link>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Autorización en APIs REST</h1>
-          <p className="text-lg text-slate-700">
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4 dark:text-white">Autorización en APIs REST</h1>
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Estrategias para gestionar permisos y control de acceso en APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             La autorización determina qué acciones puede realizar un usuario autenticado sobre determinados recursos.
             Mientras que la autenticación verifica <strong>quién es el usuario</strong>, la autorización controla
             <strong> qué puede hacer</strong> ese usuario con los recursos de la API.
           </p>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Shield className="h-5 w-5 text-indigo-500" />
             Modelos de autorización
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Users className="h-5 w-5 text-blue-500" />
             1. Control de Acceso Basado en Roles (RBAC)
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             RBAC asigna permisos a roles y luego asigna roles a usuarios. Es uno de los modelos más utilizados
             por su equilibrio entre simplicidad y flexibilidad.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Componentes principales</h4>
-                <ul className="list-disc pl-4 space-y-2">
+                <h4 className="font-semibold mb-2 dark:text-white">Componentes principales</h4>
+                <ul className="list-disc pl-4 space-y-2 dark:text-slate-300">
                   <li><strong>Usuarios:</strong> Entidades que acceden al sistema (personas, servicios)</li>
                   <li><strong>Roles:</strong> Conjunto de responsabilidades o funciones (admin, editor, usuario)</li>
                   <li><strong>Permisos:</strong> Acciones específicas sobre recursos (leer, crear, editar, eliminar)</li>
@@ -56,10 +77,10 @@ const Authorization = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Ventajas de RBAC</h4>
-                <ul className="list-disc pl-4 space-y-2">
+                <h4 className="font-semibold mb-2 dark:text-white">Ventajas de RBAC</h4>
+                <ul className="list-disc pl-4 space-y-2 dark:text-slate-300">
                   <li>Administración simplificada de permisos</li>
                   <li>Fácil de entender y comunicar</li>
                   <li>Escalable para organizaciones medianas</li>
@@ -126,21 +147,21 @@ app.get('/api/articles', requireRole('editor'), (req, res) => {
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <FileKey className="h-5 w-5 text-green-500" />
             2. Control de Acceso Basado en Atributos (ABAC)
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             ABAC evalúa múltiples atributos (del usuario, recurso, acción y contexto) para tomar decisiones 
             de autorización. Es más flexible que RBAC pero también más complejo.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Atributos considerados</h4>
-                <ul className="list-disc pl-4 space-y-2">
+                <h4 className="font-semibold mb-2 dark:text-white">Atributos considerados</h4>
+                <ul className="list-disc pl-4 space-y-2 dark:text-slate-300">
                   <li><strong>Usuario:</strong> rol, departamento, nivel de acceso, ubicación</li>
                   <li><strong>Recurso:</strong> tipo, clasificación, propietario, fecha de creación</li>
                   <li><strong>Acción:</strong> leer, escribir, eliminar, aprobar</li>
@@ -149,10 +170,10 @@ app.get('/api/articles', requireRole('editor'), (req, res) => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Ventajas de ABAC</h4>
-                <ul className="list-disc pl-4 space-y-2">
+                <h4 className="font-semibold mb-2 dark:text-white">Ventajas de ABAC</h4>
+                <ul className="list-disc pl-4 space-y-2 dark:text-slate-300">
                   <li>Control de acceso altamente granular</li>
                   <li>Políticas basadas en condiciones complejas</li>
                   <li>Adaptabilidad a requisitos de negocio cambiantes</li>
@@ -182,18 +203,18 @@ permitirAcceso SI y SOLO SI:
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <FileKey className="h-5 w-5 text-yellow-500" />
             3. Control de Acceso Basado en Listas (ACL)
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             ACL asocia directamente permisos a objetos para usuarios o grupos específicos. Es útil para
             escenarios donde se necesita control granular a nivel de instancia de recurso.
           </p>
 
           <div className="mt-6 mb-8">
-            <p>Ejemplo de una estructura ACL para un documento en una base de datos:</p>
+            <p className="dark:text-slate-300">Ejemplo de una estructura ACL para un documento en una base de datos:</p>
             <CodeBlock
               code={`{
   "_id": "doc_123",
@@ -225,12 +246,12 @@ permitirAcceso SI y SOLO SI:
 }`}
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Database className="h-5 w-5 text-red-500" />
             4. Control de Acceso Basado en Políticas (PBAC)
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             PBAC utiliza políticas centralizadas escritas en lenguajes específicos para expresar reglas de
             autorización. Es especialmente útil para entornos de múltiples servicios o multitenancy.
           </p>
@@ -261,17 +282,17 @@ permitirAcceso SI y SOLO SI:
             language="javascript"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Layout className="h-5 w-5 text-purple-500" />
             Implementación de autorización
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Users className="h-5 w-5 text-blue-500" />
             1. Autorización a nivel de endpoint
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             La forma más común de implementar autorización en APIs REST es verificando permisos antes 
             de procesar solicitudes en endpoints específicos.
           </p>
@@ -329,21 +350,21 @@ function hasPermission(user, resource, action) {
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <FileKey className="h-5 w-5 text-green-500" />
             2. Autorización a nivel de campo
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Para APIs con requisitos de seguridad más estrictos, puede ser necesario controlar
             el acceso a nivel de campos individuales dentro de recursos.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Enfoques comunes</h4>
-                <ul className="list-disc pl-4 space-y-2">
+                <h4 className="font-semibold mb-2 dark:text-white">Enfoques comunes</h4>
+                <ul className="list-disc pl-4 space-y-2 dark:text-slate-300">
                   <li><strong>Filtrado de respuesta:</strong> Eliminar campos restringidos de las respuestas</li>
                   <li><strong>Proyección dinámica:</strong> Seleccionar solo campos permitidos en la consulta</li>
                   <li><strong>Validación de entrada:</strong> Rechazar actualizaciones a campos restringidos</li>
@@ -351,10 +372,10 @@ function hasPermission(user, resource, action) {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Casos de uso comunes</h4>
-                <ul className="list-disc pl-4 space-y-2">
+                <h4 className="font-semibold mb-2 dark:text-white">Casos de uso comunes</h4>
+                <ul className="list-disc pl-4 space-y-2 dark:text-slate-300">
                   <li>Ocultar información sensible (salarios, datos personales)</li>
                   <li>Restringir campos administrativos a usuarios con privilegios</li>
                   <li>Permitir actualizaciones parciales según el rol</li>
@@ -427,12 +448,12 @@ function getUserProfile(req, res) {
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Database className="h-5 w-5 text-yellow-500" />
             3. Autorización basada en datos (filtrado de registros)
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Este enfoque controla qué registros o instancias de recursos pueden ser accedidos por un usuario,
             independientemente del endpoint. Es esencial para sistemas multitenancy o con datos compartidos.
           </p>
@@ -463,7 +484,7 @@ function getUserProfile(req, res) {
 }`}
           />
 
-          <p className="mt-6">
+          <p className="mt-6 dark:text-slate-300">
             Implementación de filtrado basado en políticas en una consulta de base de datos:
           </p>
 
@@ -509,23 +530,23 @@ async function getDocumentsList(req, res) {
             language="javascript"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Layout className="h-5 w-5 text-purple-500" />
             Patrones avanzados
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Users className="h-5 w-5 text-blue-500" />
             1. Delegación de autorización
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Permite que un usuario conceda acceso a otro usuario o servicio para actuar en su nombre,
             generalmente con permisos limitados y durante un período específico.
           </p>
 
           <div className="mt-6 mb-8">
-            <p>
+            <p className="dark:text-slate-300">
               OAuth 2.0 implementa este patrón con flujos como el código de autorización, donde una 
               aplicación cliente puede acceder a recursos en nombre del usuario, pero solo con los 
               permisos (scopes) específicamente autorizados.
@@ -545,12 +566,12 @@ async function getDocumentsList(req, res) {
             />
           </div>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <FileKey className="h-5 w-5 text-green-500" />
             2. Permisos jerárquicos
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Sistema donde los permisos se organizan en una estructura jerárquica, donde los permisos de nivel
             superior incluyen implícitamente los permisos de nivel inferior.
           </p>
@@ -595,12 +616,12 @@ function hasPermission(user, resource, action) {
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <FileKey className="h-5 w-5 text-yellow-500" />
             3. Autorización con capacidades (capability-based)
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Este enfoque representa permisos como tokens o "capacidades" específicos que otorgan acceso 
             a recursos particulares. El poseedor de la capacidad puede realizar las acciones asociadas sin
             necesidad de verificación adicional de identidad.
@@ -659,58 +680,26 @@ app.get('/api/v1/files/:fileId/download', async (req, res) => {
             language="javascript"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Mejores prácticas
           </h2>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8 mt-4">
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Principio de privilegio mínimo</strong> - Otorgar solo los permisos estrictamente necesarios para realizar una tarea</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Denegar por defecto</strong> - El acceso debe estar prohibido a menos que se conceda explícitamente</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Separación de responsabilidades</strong> - Dividir tareas críticas entre diferentes roles</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Autorización uniforme</strong> - Aplicar las mismas comprobaciones en todos los canales de acceso</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Centralizar la lógica de autorización</strong> - Evitar duplicación y posibles inconsistencias</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Auditar decisiones de autorización</strong> - Registrar accesos y cambios a permisos</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Errores genéricos</strong> - No revelar más información de la necesaria en respuestas de error</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 font-bold mr-2">✓</span>
-                <span><strong>Reevaluar permisos regularmente</strong> - Revisar y ajustar permisos según cambien los roles</span>
-              </li>
-            </ul>
-          </div>
+          <SecurityBestPractices 
+            items={authzBestPractices}
+            className="mb-8 mt-4"
+          />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Database className="h-5 w-5 text-blue-500" />
             Auditoría y registro
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Un sistema de auditoría robusto es crucial para complementar la autorización, ya que permite:
           </p>
 
-          <ul className="list-disc pl-6 space-y-2 mb-6">
+          <ul className="list-disc pl-6 space-y-2 mb-6 dark:text-slate-300">
             <li>Detectar usos indebidos o actividad sospechosa</li>
             <li>Cumplir con requisitos regulatorios</li>
             <li>Proporcionar un registro de las decisiones de autorización</li>
@@ -747,20 +736,20 @@ function auditAuthorizationEvent(user, resource, action, decision, context) {
             language="javascript"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Code className="h-5 w-5 text-pink-500" />
             Herramientas y bibliotecas
           </h2>
 
-          <p>
+          <p className="dark:text-slate-300">
             Existen diversas herramientas y bibliotecas para implementar autorización en APIs REST:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-8">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">RBAC</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">RBAC</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>CASL (JavaScript)</li>
                   <li>AccessControl (Node.js)</li>
                   <li>Spring Security (Java)</li>
@@ -770,10 +759,10 @@ function auditAuthorizationEvent(user, resource, action, decision, context) {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">ABAC/Políticas</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">ABAC/Políticas</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Open Policy Agent (OPA)</li>
                   <li>Casbin</li>
                   <li>AWS IAM</li>
@@ -783,10 +772,10 @@ function auditAuthorizationEvent(user, resource, action, decision, context) {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Frameworks completos</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Frameworks completos</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>KeyCloak</li>
                   <li>IdentityServer</li>
                   <li>Auth0</li>
@@ -797,57 +786,53 @@ function auditAuthorizationEvent(user, resource, action, decision, context) {
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <FileKey className="h-5 w-5 text-yellow-500" />
             Comparación de modelos
           </h2>
 
-          <table className="min-w-full divide-y divide-gray-200 mb-8">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 mb-8">
             <thead>
               <tr>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Modelo</th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Complejidad</th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Flexibilidad</th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Casos de uso</th>
+                <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Modelo</th>
+                <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Complejidad</th>
+                <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Flexibilidad</th>
+                <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Casos de uso</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">RBAC</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Baja</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Media</td>
-                <td className="px-6 py-4 text-sm text-gray-500">La mayoría de aplicaciones empresariales, SaaS B2B</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">RBAC</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Baja</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Media</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">La mayoría de aplicaciones empresariales, SaaS B2B</td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">ACL</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Media</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Alta para recursos específicos</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Sistemas de archivos, control de acceso granular a nivel de instancia</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">ACL</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Media</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Alta para recursos específicos</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Sistemas de archivos, control de acceso granular a nivel de instancia</td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">ABAC</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Alta</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Muy alta</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Sistemas con reglas complejas, regulados o con requisitos contextuales</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">ABAC</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Alta</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Muy alta</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Sistemas con reglas complejas, regulados o con requisitos contextuales</td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">PBAC</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Alta</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Alta</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Servicios en la nube, sistemas distribuidos, microservicios</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">PBAC</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Alta</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Alta</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Servicios en la nube, sistemas distribuidos, microservicios</td>
               </tr>
             </tbody>
           </table>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8">
-            <h3 className="text-indigo-900 font-medium mb-2">Recomendación para elegir un modelo</h3>
-            <ul className="list-disc pl-6 space-y-2 text-indigo-800">
-              <li><strong>Comience con RBAC</strong> para la mayoría de las aplicaciones - es simple, bien entendido y cubre muchos casos de uso</li>
-              <li><strong>Agregue ACL</strong> cuando necesite control de acceso a nivel de instancia (ej. "este usuario puede editar este documento específico")</li>
-              <li><strong>Considere ABAC</strong> cuando RBAC se vuelva demasiado complejo con muchos roles o cuando necesite incorporar contexto en las decisiones</li>
-              <li><strong>Implemente PBAC</strong> para entornos distribuidos o cuando necesite políticas centralizadas para múltiples servicios</li>
-            </ul>
-          </div>
+          <SecurityBestPractices 
+            title="Recomendación para elegir un modelo"
+            items={modelRecommendations}
+            className="mb-8"
+          />
         </div>
       </div>
     </PageLayout>

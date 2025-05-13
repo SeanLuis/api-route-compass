@@ -28,12 +28,12 @@ const NestedResources = () => {
             la navegación y manipulación de datos relacionados.
           </p>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Layers className="h-5 w-5 text-indigo-500" />
             Fundamentos de Recursos Anidados
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Info className="h-5 w-5 text-blue-500" />
             ¿Qué Son los Recursos Anidados?
           </h3>
@@ -56,7 +56,7 @@ const NestedResources = () => {
             <li>Elementos en un pedido</li>
           </ul>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <CheckCircle className="h-5 w-5 text-blue-500" />
             Cuándo Utilizar Recursos Anidados
           </h3>
@@ -73,7 +73,7 @@ const NestedResources = () => {
             </ul>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <ListTreeIcon className="h-5 w-5 text-indigo-500" />
             Patrones de Implementación
           </h2>
@@ -83,7 +83,7 @@ const NestedResources = () => {
               <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Link2 className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">1. Recursos Anidados en URLs</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">1. Recursos Anidados en URLs</h3>
                 </div>
                 <p className="text-slate-700 dark:text-slate-300">
                   El enfoque más común es reflejar la jerarquía directamente en las URLs.
@@ -154,7 +154,7 @@ DELETE /posts/{post_id}/comments/{comment_id}`}
               <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Network className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">2. Múltiples Niveles de Anidación</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">2. Múltiples Niveles de Anidación</h3>
                 </div>
                 <p className="text-slate-700 dark:text-slate-300">
                   Las APIs pueden soportar múltiples niveles de anidación para representar jerarquías más complejas.
@@ -186,7 +186,7 @@ GET /posts/{post_id}/comments/{comment_id}/replies/{reply_id}/reactions`}
               <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Boxes className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">3. Recursos Accesibles por Múltiples Rutas</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">3. Recursos Accesibles por Múltiples Rutas</h3>
                 </div>
                 <p className="text-slate-700 dark:text-slate-300">
                   En algunos casos, puede ser útil permitir acceder al mismo recurso por diferentes rutas jerárquicas.
@@ -212,7 +212,7 @@ GET /comments/{comment_id}`}
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Mejores Prácticas
           </h2>
@@ -220,7 +220,7 @@ GET /comments/{comment_id}`}
           <div className="space-y-6 mt-4">
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Consistencia en las Representaciones</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">Consistencia en las Representaciones</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Los recursos deben tener la misma representación independientemente de cómo se acceda a ellos:
                 </p>
@@ -251,7 +251,7 @@ GET /comments/{comment_id}`}
 
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Enlaces HATEOAS para Navegación</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">Enlaces HATEOAS para Navegación</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Siguiendo los principios REST, es recomendable incluir enlaces que faciliten la navegación:
                 </p>
@@ -278,7 +278,7 @@ GET /comments/{comment_id}`}
           <div className="space-y-6 mt-4">
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Limitación de Profundidad</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">Limitación de Profundidad</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Evita crear jerarquías excesivamente profundas:
                 </p>
@@ -299,7 +299,7 @@ GET /comments/{comment_id}`}
 
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Permisos y Seguridad</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">Permisos y Seguridad</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Los permisos deben verificarse tanto para el recurso hijo como para el padre:
                 </p>
@@ -342,7 +342,7 @@ app.get('/posts/:postId/comments/:commentId', (req, res) => {
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Database className="h-5 w-5 text-indigo-500" />
             Casos de Uso y Patrones
           </h2>
@@ -352,7 +352,7 @@ app.get('/posts/:postId/comments/:commentId', (req, res) => {
               <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Boxes className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">Colecciones de Subrecursos</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Colecciones de Subrecursos</h3>
                 </div>
                 <p className="text-slate-700 dark:text-slate-300">
                   Para manejar subrecursos como colecciones dentro de un recurso padre.
@@ -397,7 +397,7 @@ app.get('/posts/:postId/comments/:commentId', (req, res) => {
           <div className="space-y-6 mt-4">
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Acciones en Recursos Anidados</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">Acciones en Recursos Anidados</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Para operaciones específicas que no encajan en el modelo CRUD tradicional:
                 </p>
@@ -419,7 +419,7 @@ POST /posts/{post_id}/comments/{comment_id}/actions/approve`}
 
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Filtrado de Recursos Anidados</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">Filtrado de Recursos Anidados</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Combina recursos anidados con filtrado para consultas más específicas:
                 </p>
@@ -440,7 +440,7 @@ GET /posts/{post_id}/comments?search=interesante`}
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Code className="h-5 w-5 text-indigo-500" />
             Consideraciones de Diseño
           </h2>
@@ -448,7 +448,7 @@ GET /posts/{post_id}/comments?search=interesante`}
           <div className="space-y-6 mt-4">
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">1. Relaciones vs. Anidación</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">1. Relaciones vs. Anidación</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   No todas las relaciones deben modelarse como recursos anidados:
                 </p>
@@ -461,7 +461,7 @@ GET /posts/{post_id}/comments?search=interesante`}
 
             <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">2. Desnormalización vs. Navegación</h3>
+                <h3 className="font-semibold mb-2 dark:text-white">2. Desnormalización vs. Navegación</h3>
                 <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Equilibrio entre incluir datos anidados y proporcionar enlaces para navegación:
                 </p>
@@ -502,7 +502,7 @@ GET /posts/{post_id}/comments?search=interesante`}
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Database className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h2>
@@ -511,7 +511,7 @@ GET /posts/{post_id}/comments?search=interesante`}
             <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
                 <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
-                  <h3 className="font-medium">GitHub API</h3>
+                  <h3 className="font-medium dark:text-white">GitHub API</h3>
                 </div>
                 <div className="p-6">
                   <p className="mb-3 dark:text-slate-300">
@@ -537,7 +537,7 @@ GET /repos/{owner}/{repo}/contents/{path}`}
             <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
                 <div className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
-                  <h3 className="font-medium">Stripe API</h3>
+                  <h3 className="font-medium dark:text-white">Stripe API</h3>
                 </div>
                 <div className="p-6">
                   <p className="mb-3 dark:text-slate-300">

@@ -4,99 +4,140 @@ import { CodeBlock } from "@/components/CodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Shield, Lock, AlertTriangle, CheckCircle, Code, Server, Eye, Database, Globe, ListFilter, FileWarning, FileCode, BookOpen } from "lucide-react";
+import { SecurityBestPractices } from "@/components/SecurityBestPractices";
 
 const SecurityPractices = () => {
+  // Authentication best practices items
+  const authBestPractices = [
+    { text: "Usar tokens JWT para la mayoría de las APIs REST modernas, con tiempos de expiración cortos", isRecommended: true },
+    { text: "Implementar OAuth 2.0 para APIs que necesiten integración con servicios de terceros", isRecommended: true },
+    { text: "Utilizar HTTPS para todas las comunicaciones, incluidas llamadas de desarrollo y prueba", isRecommended: true },
+    { text: "Establecer políticas de expiración y rotación para tokens y claves API", isRecommended: true },
+    { text: "Almacenar credenciales utilizando algoritmos de hash específicos para contraseñas", isRecommended: true },
+    { text: "Implementar 2FA para proteger el acceso a recursos sensibles", isRecommended: true },
+    { text: "Evitar autenticación básica en entornos de producción sin protecciones adicionales", isRecommended: false },
+    { text: "No almacenar tokens en localStorage (vulnerable a XSS) - preferir cookies HttpOnly", isRecommended: false }
+  ];
+
+  // Error handling best practices items
+  const errorHandlingPractices = [
+    { text: "Usa los códigos adecuados: Elige el código más específico que describa la situación", isRecommended: true },
+    { text: "Mantén la consistencia: Usa los mismos formatos para todos los errores", isRecommended: true },
+    { text: "Proporciona detalles útiles: Los mensajes de error deben guiar hacia la solución", isRecommended: true },
+    { text: "Incluye identificadores únicos: Facilita la correlación entre logs y errores reportados", isRecommended: true },
+    { text: "Evita filtrar información sensible: No incluyas datos internos o sensibles en los mensajes de error", isRecommended: true }
+  ];
+
   return (
     <PageLayout>
       <div className="space-y-10">
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/authentication" className="text-sm text-slate-500 hover:text-slate-700">Seguridad</Link>
+            <Link to="/authentication" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Seguridad</Link>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Mejores Prácticas de Seguridad</h1>
-          <p className="text-lg text-slate-700">
+          <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4 dark:text-white">Mejores Prácticas de Seguridad</h1>
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Recomendaciones para asegurar APIs REST contra vulnerabilidades comunes.
           </p>
+          <div className="mt-4">
+            <Link to="/best-practices-example" className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium flex items-center gap-1">
+              <CheckCircle className="h-4 w-4" /> Ver nuevo estilo de buenas prácticas
+            </Link>
+          </div>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             La seguridad de las APIs REST es fundamental para proteger los datos y recursos de su aplicación.
             Esta guía presenta las mejores prácticas para proteger sus APIs contra amenazas comunes y
             vulnerabilidades de seguridad.
           </p>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <AlertTriangle className="h-5 w-5 text-indigo-500" />
             Vulnerabilidades comunes en APIs REST
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-8">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Autenticación débil</h4>
-                <p>Mecanismos de autenticación insuficientes o mal implementados que permiten acceso no autorizado.</p>
+                <h4 className="font-semibold mb-2 dark:text-white">Autenticación débil</h4>
+                <p className="dark:text-slate-300">Mecanismos de autenticación insuficientes o mal implementados que permiten acceso no autorizado.</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Autorización insuficiente</h4>
-                <p>Controles inadecuados que permiten a usuarios acceder a recursos o realizar acciones no permitidas.</p>
+                <h4 className="font-semibold mb-2 dark:text-white">Autorización insuficiente</h4>
+                <p className="dark:text-slate-300">Controles inadecuados que permiten a usuarios acceder a recursos o realizar acciones no permitidas.</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Exposición de datos sensibles</h4>
-                <p>Transmisión o almacenamiento inseguro de información confidencial sin cifrado adecuado.</p>
+                <h4 className="font-semibold mb-2 dark:text-white">Exposición de datos sensibles</h4>
+                <p className="dark:text-slate-300">Transmisión o almacenamiento inseguro de información confidencial sin cifrado adecuado.</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Inyección</h4>
-                <p>Inserción de código malicioso (SQL, NoSQL, comandos) a través de entradas no validadas.</p>
+                <h4 className="font-semibold mb-2 dark:text-white">Inyección</h4>
+                <p className="dark:text-slate-300">Inserción de código malicioso (SQL, NoSQL, comandos) a través de entradas no validadas.</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">CORS mal configurado</h4>
-                <p>Políticas demasiado permisivas que facilitan ataques de tipo cross-site.</p>
+                <h4 className="font-semibold mb-2 dark:text-white">CORS mal configurado</h4>
+                <p className="dark:text-slate-300">Políticas demasiado permisivas que facilitan ataques de tipo cross-site.</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Rate limiting ausente</h4>
-                <p>Falta de mecanismos para prevenir abusos como ataques de fuerza bruta o DDoS.</p>
+                <h4 className="font-semibold mb-2 dark:text-white">Rate limiting ausente</h4>
+                <p className="dark:text-slate-300">Falta de mecanismos para prevenir abusos como ataques de fuerza bruta o DDoS.</p>
               </CardContent>
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Lock className="h-5 w-5 text-indigo-500" />
             Medidas de seguridad esenciales
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          {/* Security Best Practices for Authentication and Authorization */}
+          <SecurityBestPractices 
+            title="Prácticas recomendadas de autenticación y autorización" 
+            items={authBestPractices}
+            className="mb-8"
+          />
+
+          {/* Error Handling Best Practices */}
+          <SecurityBestPractices 
+            title="Prácticas recomendadas para manejo de errores" 
+            items={errorHandlingPractices}
+            className="mb-8"
+          />
+
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Globe className="h-5 w-5 text-blue-500" />
             1. Utilizar siempre HTTPS
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             HTTPS (HTTP sobre TLS) es fundamental para proteger la confidencialidad e integridad de los datos
             en tránsito. Nunca despliegue una API de producción sin HTTPS.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-6">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Configuración recomendada</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Configuración recomendada</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>TLS 1.2 o superior</li>
                   <li>Certificados válidos (no autofirmados)</li>
                   <li>Cipher suites fuertes</li>
@@ -106,14 +147,14 @@ const SecurityPractices = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Cabeceras adicionales</h4>
-                <ul className="list-disc pl-4 space-y-1">
-                  <li><code>Strict-Transport-Security</code> (HSTS)</li>
-                  <li><code>Content-Security-Policy</code></li>
-                  <li><code>X-Content-Type-Options: nosniff</code></li>
-                  <li><code>Referrer-Policy</code></li>
+                <h4 className="font-semibold mb-2 dark:text-white">Cabeceras adicionales</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
+                  <li><code className="dark:bg-slate-800 dark:text-slate-300">Strict-Transport-Security</code> (HSTS)</li>
+                  <li><code className="dark:bg-slate-800 dark:text-slate-300">Content-Security-Policy</code></li>
+                  <li><code className="dark:bg-slate-800 dark:text-slate-300">X-Content-Type-Options: nosniff</code></li>
+                  <li><code className="dark:bg-slate-800 dark:text-slate-300">Referrer-Policy</code></li>
                   <li>Certificados renovados automáticamente</li>
                 </ul>
               </CardContent>
@@ -146,48 +187,48 @@ server {
             language="nginx"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Code className="h-5 w-5 text-blue-500" />
             2. Implementar cabeceras HTTP de seguridad
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Las cabeceras HTTP de seguridad proporcionan una capa adicional de protección contra diversos ataques.
           </p>
 
-          <table className="min-w-full divide-y divide-gray-200 mb-8">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 mb-8">
             <thead>
               <tr>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cabecera</th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Propósito</th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ejemplo</th>
+                <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cabecera</th>
+                <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Propósito</th>
+                <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Ejemplo</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Strict-Transport-Security</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Fuerza conexiones HTTPS</td>
-                <td className="px-6 py-4 text-sm text-gray-500"><code>max-age=31536000; includeSubDomains</code></td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Strict-Transport-Security</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Fuerza conexiones HTTPS</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><code className="dark:bg-slate-800 dark:text-slate-300">max-age=31536000; includeSubDomains</code></td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Content-Security-Policy</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Mitiga XSS y otras inyecciones</td>
-                <td className="px-6 py-4 text-sm text-gray-500"><code>default-src 'self'</code></td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Content-Security-Policy</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Mitiga XSS y otras inyecciones</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><code className="dark:bg-slate-800 dark:text-slate-300">default-src 'self'</code></td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">X-Content-Type-Options</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Previene MIME sniffing</td>
-                <td className="px-6 py-4 text-sm text-gray-500"><code>nosniff</code></td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">X-Content-Type-Options</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Previene MIME sniffing</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><code className="dark:bg-slate-800 dark:text-slate-300">nosniff</code></td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">X-Frame-Options</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Previene clickjacking</td>
-                <td className="px-6 py-4 text-sm text-gray-500"><code>DENY</code></td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">X-Frame-Options</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Previene clickjacking</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><code className="dark:bg-slate-800 dark:text-slate-300">DENY</code></td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Cache-Control</td>
-                <td className="px-6 py-4 text-sm text-gray-500">Controla caching del navegador</td>
-                <td className="px-6 py-4 text-sm text-gray-500"><code>no-store, max-age=0</code></td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Cache-Control</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Controla caching del navegador</td>
+                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><code className="dark:bg-slate-800 dark:text-slate-300">no-store, max-age=0</code></td>
               </tr>
             </tbody>
           </table>
@@ -222,20 +263,20 @@ app.use(
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Code className="h-5 w-5 text-blue-500" />
             3. Validación y sanitización de entradas
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Todas las entradas de usuario deben ser validadas y sanitizadas para prevenir inyecciones y otros ataques.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-6">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Tipos de validación</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Tipos de validación</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Validación de tipo (string, number, boolean)</li>
                   <li>Validación de formato (email, URL, fecha)</li>
                   <li>Validación de longitud/tamaño</li>
@@ -246,10 +287,10 @@ app.use(
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Buenas prácticas</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Buenas prácticas</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Validar en el cliente y en el servidor</li>
                   <li>Usar esquemas de validación declarativos</li>
                   <li>Validar antes de usar los datos</li>
@@ -312,20 +353,20 @@ app.post('/api/users', validateUser, createUser);`}
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Database className="h-5 w-5 text-blue-500" />
             4. Seguridad para bases de datos
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Proteger la capa de persistencia es crucial para la seguridad general de la API.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-6">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Prevención de inyecciones</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Prevención de inyecciones</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Usar consultas parametrizadas</li>
                   <li>Nunca construir SQL con concatenación</li>
                   <li>Usar ORM con protección integrada</li>
@@ -336,10 +377,10 @@ app.post('/api/users', validateUser, createUser);`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Seguridad de datos</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Seguridad de datos</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Cifrar datos sensibles en reposo</li>
                   <li>Usar TLS para conexiones a BD</li>
                   <li>Implementar enmascaramiento de datos</li>
@@ -378,21 +419,21 @@ const filter = { username: username };`}
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <ListFilter className="h-5 w-5 text-blue-500" />
             5. Limitación de tasa (Rate Limiting)
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Implementar límites de tasa ayuda a prevenir ataques de fuerza bruta, scraping y degradación
             del rendimiento por uso excesivo.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-6">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Tipos de limitación</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Tipos de limitación</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li><strong>Por IP:</strong> Limita solicitudes por dirección IP</li>
                   <li><strong>Por usuario:</strong> Limita solicitudes por usuario autenticado</li>
                   <li><strong>Por API key:</strong> Limita por clave API</li>
@@ -402,10 +443,10 @@ const filter = { username: username };`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Estrategias de implementación</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Estrategias de implementación</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li><strong>Token bucket:</strong> Flexible, permite ráfagas</li>
                   <li><strong>Leaky bucket:</strong> Tasa constante</li>
                   <li><strong>Fixed window:</strong> Simple pero susceptible a picos</li>
@@ -453,86 +494,49 @@ app.use("/api/auth/forgot-password", authLimiter);`}
             language="javascript"
           />
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <Globe className="h-5 w-5 text-blue-500" />
             6. Configuración segura de CORS
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Cross-Origin Resource Sharing (CORS) debe configurarse correctamente para permitir
             solicitudes legítimas mientras se bloquean orígenes no autorizados.
           </p>
 
-          <CodeBlock
-            code={`// Configuración de CORS en Express
-const cors = require('cors');
-
-// Configuración básica - Permite solicitudes solo desde orígenes específicos
-const corsOptions = {
-  origin: ['https://app.example.com', 'https://admin.example.com'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Content-Range', 'X-Content-Range'],
-  credentials: true,           // Permite cookies en solicitudes cross-origin
-  maxAge: 86400,               // Cache por 24 horas
-  optionsSuccessStatus: 200    // Para compatibilidad con navegadores antiguos
-};
-
-app.use(cors(corsOptions));
-
-// Configuración avanzada - Función para decidir dinámicamente
-const dynamicCorsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = ['https://app.example.com', 'https://admin.example.com'];
-    
-    // Permitir solicitudes sin origen (mobile apps, curl, etc)
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Bloqueado por política CORS'));
-    }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-};
-
-app.use(cors(dynamicCorsOptions));`}
-            language="javascript"
-          />
-
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8 mt-4">
-            <h4 className="text-indigo-900 font-medium mb-2">💡 Consejo sobre APIs REST puras</h4>
-            <p className="text-indigo-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800 mb-8 mt-4">
+            <h4 className="text-indigo-900 dark:text-indigo-300 font-medium mb-2">💡 Consejo sobre APIs REST puras</h4>
+            <p className="text-indigo-800 dark:text-indigo-300">
               Si su API REST utiliza tokens JWT u OAuth 2.0 y no mantiene estado de sesión con cookies, 
               generalmente no es vulnerable a CSRF. Sin embargo, si utiliza cookies para autenticación, 
               debe implementar protección CSRF.
             </p>
           </div>
 
-          <div className="bg-amber-50 border border-amber-200 rounded-md p-4 mb-6 mt-4">
-            <h4 className="text-amber-800 font-medium">⚠️ Advertencia sobre CORS</h4>
-            <p className="text-amber-800">
+          <div className="bg-amber-50 border border-amber-200 dark:bg-amber-950/50 dark:border-amber-800/50 rounded-md p-4 mb-6 mt-4">
+            <h4 className="text-amber-800 dark:text-amber-400 font-medium">⚠️ Advertencia sobre CORS</h4>
+            <p className="text-amber-800 dark:text-amber-400">
               CORS es una protección del navegador, no de su API. Para APIs públicas, también debe
               implementar autenticación y autorización adecuadas, ya que las solicitudes que no provengan
               del navegador pueden eludir las restricciones CORS.
             </p>
           </div>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <FileCode className="h-5 w-5 text-blue-500" />
             7. Manejo seguro de secretos
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Los secretos (claves API, contraseñas, tokens, etc.) nunca deben estar expuestos en el código 
             fuente o incluidos directamente en la aplicación.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-6">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">¿Qué proteger?</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">¿Qué proteger?</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Llaves de API y secretos</li>
                   <li>Tokens de acceso</li>
                   <li>Credenciales de base de datos</li>
@@ -543,10 +547,10 @@ app.use(cors(dynamicCorsOptions));`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Soluciones seguras</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Soluciones seguras</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Variables de entorno</li>
                   <li>Servicios de gestión de secretos (AWS Secrets Manager, HashiCorp Vault)</li>
                   <li>Inyección en tiempo de ejecución</li>
@@ -591,21 +595,21 @@ async function getSecret(secretName) {
             language="javascript"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <FileWarning className="h-5 w-5 text-indigo-500" />
             Protección contra vulnerabilidades comunes
           </h2>
 
-          <h3>1. Cross-Site Scripting (XSS)</h3>
+          <h3 className="dark:text-white">1. Cross-Site Scripting (XSS)</h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             XSS ocurre cuando un atacante puede inyectar código malicioso que se ejecuta en el navegador del usuario.
             Aunque es principalmente una preocupación del frontend, las APIs REST deben implementar medidas para prevenirlo.
           </p>
 
           <div className="mb-6">
-            <h4 className="font-semibold mb-2">Medidas de protección:</h4>
-            <ul className="list-disc pl-6 space-y-1">
+            <h4 className="font-semibold mb-2 dark:text-white">Medidas de protección:</h4>
+            <ul className="list-disc pl-6 space-y-1 dark:text-slate-300">
               <li>Sanitizar datos antes de almacenarlos</li>
               <li>Escapar/codificar datos al servirlos</li>
               <li>Implementar Content-Security-Policy</li>
@@ -630,16 +634,16 @@ const sanitizedContent = DOMPurify.sanitize(userContent);`}
             language="javascript"
           />
 
-          <h3>2. Cross-Site Request Forgery (CSRF)</h3>
+          <h3 className="dark:text-white">2. Cross-Site Request Forgery (CSRF)</h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             CSRF ocurre cuando un sitio malicioso engaña al navegador de un usuario autenticado para realizar
             acciones no autorizadas en una API o aplicación donde el usuario tiene una sesión activa.
           </p>
 
           <div className="mb-6">
-            <h4 className="font-semibold mb-2">Medidas de protección:</h4>
-            <ul className="list-disc pl-6 space-y-1">
+            <h4 className="font-semibold mb-2 dark:text-white">Medidas de protección:</h4>
+            <ul className="list-disc pl-6 space-y-1 dark:text-slate-300">
               <li>Usar autenticación basada en tokens en vez de cookies</li>
               <li>Implementar tokens CSRF para las solicitudes que usan cookies</li>
               <li>Verificar el encabezado Origin/Referer</li>
@@ -679,25 +683,25 @@ app.post('/api/update-profile', csrfProtection, (req, res) => {
             language="javascript"
           />
 
-          <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6 mt-4">
-            <h4 className="text-blue-900 font-medium">💡 Consejo sobre APIs REST puras</h4>
-            <p className="text-blue-800">
+          <div className="bg-blue-50 border border-blue-200 dark:bg-blue-950/50 dark:border-blue-800/50 rounded-md p-4 mb-6 mt-4">
+            <h4 className="text-blue-900 dark:text-blue-300 font-medium">💡 Consejo sobre APIs REST puras</h4>
+            <p className="text-blue-800 dark:text-blue-300">
               Si su API REST utiliza tokens JWT u OAuth 2.0 y no mantiene estado de sesión con cookies, 
               generalmente no es vulnerable a CSRF. Sin embargo, si utiliza cookies para autenticación, 
               debe implementar protección CSRF.
             </p>
           </div>
 
-          <h3>3. Server-Side Request Forgery (SSRF)</h3>
+          <h3 className="dark:text-white">3. Server-Side Request Forgery (SSRF)</h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             SSRF ocurre cuando una aplicación realiza solicitudes HTTP a una ubicación arbitraria
             proporcionada por un atacante, permitiendo potencialmente el acceso a servicios internos.
           </p>
 
           <div className="mb-6">
-            <h4 className="font-semibold mb-2">Medidas de protección:</h4>
-            <ul className="list-disc pl-6 space-y-1">
+            <h4 className="font-semibold mb-2 dark:text-white">Medidas de protección:</h4>
+            <ul className="list-disc pl-6 space-y-1 dark:text-slate-300">
               <li>Validar y sanitizar todas las URLs proporcionadas por el usuario</li>
               <li>Usar listas blancas de dominios/IPs permitidos</li>
               <li>Bloquear tráfico a direcciones IP privadas y localhost</li>
@@ -756,22 +760,22 @@ async function fetchExternalUrl(urlString) {
             language="javascript"
           />
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Eye className="h-5 w-5 text-indigo-500" />
             Monitoreo y respuesta a incidentes
           </h2>
 
-          <h3>1. Logging y auditoría</h3>
+          <h3 className="dark:text-white">1. Logging y auditoría</h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Un registro completo de eventos es crucial para detectar, investigar y responder a incidentes de seguridad.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-6">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Qué registrar</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Qué registrar</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Intentos de autenticación (éxitos/fallos)</li>
                   <li>Acciones administrativas y sensibles</li>
                   <li>Cambios de permisos</li>
@@ -783,10 +787,10 @@ async function fetchExternalUrl(urlString) {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Buenas prácticas</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Buenas prácticas</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Usar formato estructurado (JSON)</li>
                   <li>Incluir marcas de tiempo precisas (UTC)</li>
                   <li>Agregar identificadores de correlación</li>
@@ -799,80 +803,15 @@ async function fetchExternalUrl(urlString) {
             </Card>
           </div>
 
-          <CodeBlock
-            code={`// Ejemplo de registro estructurado con Winston
-const winston = require('winston');
-const { v4: uuidv4 } = require('uuid');
+          <h3 className="dark:text-white">2. Detección de intrusiones</h3>
 
-// Crear logger
-const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
-  transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'logs/combined.log' })
-  ]
-});
-
-// Middleware para agregar request ID
-app.use((req, res, next) => {
-  req.requestId = req.headers['x-request-id'] || uuidv4();
-  res.setHeader('x-request-id', req.requestId);
-  next();
-});
-
-// Ejemplo de registro de eventos de seguridad
-app.post('/api/login', (req, res) => {
-  const { username } = req.body;
-  
-  try {
-    // Lógica de autenticación
-    const success = authenticateUser(req.body);
-    
-    // Registrar evento
-    logger.info('Authentication attempt', {
-      event: 'authentication_attempt',
-      outcome: success ? 'success' : 'failure',
-      username,
-      ip: req.ip,
-      user_agent: req.headers['user-agent'],
-      request_id: req.requestId
-    });
-    
-    // Responder
-    if (success) {
-      res.json({ token: generateToken(username) });
-    } else {
-      res.status(401).json({ error: 'Invalid credentials' });
-    }
-  } catch (error) {
-    logger.error('Authentication error', {
-      event: 'authentication_error',
-      error: error.message,
-      username,
-      ip: req.ip,
-      request_id: req.requestId
-    });
-    
-    res.status(500).json({ error: 'Server error' });
-  }
-});`}
-            language="javascript"
-          />
-
-          <h3>2. Detección de intrusiones</h3>
-
-          <p>
+          <p className="dark:text-slate-300">
             Implementar sistemas para detectar actividades sospechosas o maliciosas en tiempo real.
           </p>
 
           <div className="mb-6">
-            <h4 className="font-semibold mb-2">Señales a monitorear:</h4>
-            <ul className="list-disc pl-6 space-y-1">
+            <h4 className="font-semibold mb-2 dark:text-white">Señales a monitorear:</h4>
+            <ul className="list-disc pl-6 space-y-1 dark:text-slate-300">
               <li>Patrones de acceso inusuales</li>
               <li>Picos de solicitudes fallidas</li>
               <li>Accesos desde ubicaciones geográficas inusuales</li>
@@ -883,73 +822,16 @@ app.post('/api/login', (req, res) => {
             </ul>
           </div>
 
-          <CodeBlock
-            code={`// Ejemplo simplificado de detección de comportamiento sospechoso
-const loginAttempts = new Map();  // IP -> {count, lastAttempt}
-const suspiciousIPs = new Set();
-
-// Middleware para detección de inicios de sesión sospechosos
-function detectSuspiciousLogins(req, res, next) {
-  const ip = req.ip;
-  const now = Date.now();
-  
-  // Ignorar IPs ya marcadas como sospechosas
-  if (suspiciousIPs.has(ip)) {
-    return res.status(403).json({ error: 'IP bloqueada por actividad sospechosa' });
-  }
-  
-  // Registrar intento
-  if (!loginAttempts.has(ip)) {
-    loginAttempts.set(ip, { count: 1, lastAttempt: now });
-  } else {
-    const record = loginAttempts.get(ip);
-    const timeDiff = now - record.lastAttempt;
-    
-    // Actualizar registro
-    record.count++;
-    record.lastAttempt = now;
-    
-    // Detectar actividad sospechosa
-    
-    // Más de 5 intentos en menos de 60 segundos
-    if (record.count > 5 && timeDiff < 60000) {
-      suspiciousIPs.add(ip);
-      logger.warn('Posible ataque de fuerza bruta detectado', {
-        ip, attempts: record.count, timeframe: \`\${Math.floor(timeDiff / 1000)}s\`
-      });
-      return res.status(403).json({ error: 'Demasiados intentos de inicio de sesión. IP bloqueada temporalmente' });
-    }
-    
-    // Intentos demasiado rápidos (menos de 2 segundos entre intentos)
-    if (timeDiff < 2000) {
-      record.automationScore = (record.automationScore || 0) + 1;
-      if (record.automationScore > 3) {
-        suspiciousIPs.add(ip);
-        logger.warn('Posible automatización de intentos de login', { ip });
-        return res.status(403).json({ error: 'Actividad sospechosa detectada. IP bloqueada temporalmente' });
-      }
-    }
-  }
-  
-  next();
-}
-
-// Aplicar a rutas sensibles
-app.post('/api/login', detectSuspiciousLogins, loginController);
-app.post('/api/password-reset', detectSuspiciousLogins, passwordResetController);`}
-            language="javascript"
-          />
-
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <BookOpen className="h-5 w-5 text-indigo-500" />
             Herramientas y recursos
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Pruebas de seguridad</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Pruebas de seguridad</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>OWASP ZAP</li>
                   <li>Burp Suite</li>
                   <li>Metasploit</li>
@@ -960,10 +842,10 @@ app.post('/api/password-reset', detectSuspiciousLogins, passwordResetController)
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Estándares de seguridad</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Estándares de seguridad</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>OWASP API Security Top 10</li>
                   <li>OWASP Security Testing Guide</li>
                   <li>NIST Cybersecurity Framework</li>
@@ -973,10 +855,10 @@ app.post('/api/password-reset', detectSuspiciousLogins, passwordResetController)
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h4 className="font-semibold mb-2">Bibliotecas de seguridad</h4>
-                <ul className="list-disc pl-4 space-y-1">
+                <h4 className="font-semibold mb-2 dark:text-white">Bibliotecas de seguridad</h4>
+                <ul className="list-disc pl-4 space-y-1 dark:text-slate-300">
                   <li>Helmet.js (Express)</li>
                   <li>jwt-oauth2 (autenticación)</li>
                   <li>DOMPurify (sanitización)</li>

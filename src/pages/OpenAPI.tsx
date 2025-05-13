@@ -398,9 +398,9 @@ components:
             </Card>
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100 mb-8">
-            <h4 className="text-indigo-900 font-medium">💡 Consejo</h4>
-            <p className="text-indigo-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800 mb-8">
+            <h4 className="text-indigo-900 dark:text-indigo-300 font-medium">💡 Consejo</h4>
+            <p className="text-indigo-800 dark:text-indigo-300">
               Mantén tu especificación OpenAPI sincronizada con tu código. Considera usar herramientas de
               generación automática a partir de comentarios o anotaciones en el código fuente. Esto
               ayuda a evitar discrepancias entre la documentación y la implementación real.
@@ -513,13 +513,13 @@ paths:
             Swagger UI
           </h3>
 
-          <p>
+          <p className="dark:text-slate-300">
             Swagger UI es una de las herramientas más populares para visualizar y probar APIs documentadas
             con OpenAPI. Proporciona una interfaz interactiva que permite explorar los endpoints, enviar
             solicitudes de prueba y ver las respuestas.
           </p>
 
-          <div className="border border-gray-200 rounded-lg mb-8">
+          <div className="border border-gray-200 dark:border-gray-700 rounded-lg mb-8">
             <img 
               src="https://static1.smartbear.co/swagger/media/images/tools/opensource/swagger_ui.png"
               alt="Ejemplo de Swagger UI"
@@ -527,15 +527,15 @@ paths:
             />
           </div>
 
-          <h2>Generación de documentación a partir del código</h2>
+          <h2 className="text-xl font-semibold tracking-tight dark:text-white">Generación de documentación a partir del código</h2>
 
-          <p>
+          <p className="dark:text-slate-300">
             Una práctica recomendada es generar la documentación OpenAPI directamente desde el código
             fuente, utilizando anotaciones o comentarios especiales. Esto garantiza que la documentación
             siempre está sincronizada con la implementación actual.
           </p>
           
-          <h3>Ejemplo en Node.js/Express con express-jsdoc-swagger</h3>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">Ejemplo en Node.js/Express con express-jsdoc-swagger</h3>
 
           <CodeBlock
             code={`// server.js
@@ -613,7 +613,7 @@ app.listen(3000, () => console.log('Server running on port 3000'));`}
             language="javascript"
           />
 
-          <h3>Ejemplo en Spring Boot (Java)</h3>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">Ejemplo en Spring Boot (Java)</h3>
 
           <CodeBlock
             code={`// ProductController.java
@@ -688,7 +688,7 @@ public class Product {
             language="java"
           />
 
-          <h3>Ejemplo en FastAPI (Python)</h3>
+          <h3 className="text-lg font-semibold tracking-tight dark:text-white">Ejemplo en FastAPI (Python)</h3>
 
           <CodeBlock
             code={`# main.py
@@ -796,15 +796,15 @@ async def get_product(
           </h2>
 
           <ul className="ml-6 space-y-1 list-disc mb-8 text-slate-700 dark:text-slate-300">
-            <li><a rel="noopener noreferrer" href="https://swagger.io/specification/" target="_blank" className="text-indigo-600 hover:underline">Especificación OpenAPI oficial</a></li>
-            <li><a rel="noopener noreferrer" href="https://swagger.io/tools/swagger-ui/" target="_blank" className="text-indigo-600 hover:underline">Swagger UI</a></li>
-            <li><a rel="noopener noreferrer" href="https://github.com/swagger-api/swagger-editor" target="_blank" className="text-indigo-600 hover:underline">Swagger Editor</a></li>
-            <li><a rel="noopener noreferrer" href="https://redocly.com/redoc/" target="_blank" className="text-indigo-600 hover:underline">ReDoc - Documentación alternativa</a></li>
-            <li><a rel="noopener noreferrer" href="https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml" target="_blank" className="text-indigo-600 hover:underline">Ejemplo PetStore API (OpenAPI 3.0)</a></li>
+            <li><a rel="noopener noreferrer" href="https://swagger.io/specification/" target="_blank" className="text-indigo-600 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300">Especificación OpenAPI oficial</a></li>
+            <li><a rel="noopener noreferrer" href="https://swagger.io/tools/swagger-ui/" target="_blank" className="text-indigo-600 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300">Swagger UI</a></li>
+            <li><a rel="noopener noreferrer" href="https://github.com/swagger-api/swagger-editor" target="_blank" className="text-indigo-600 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300">Swagger Editor</a></li>
+            <li><a rel="noopener noreferrer" href="https://redocly.com/redoc/" target="_blank" className="text-indigo-600 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300">ReDoc - Documentación alternativa</a></li>
+            <li><a rel="noopener noreferrer" href="https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml" target="_blank" className="text-indigo-600 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300">Ejemplo PetStore API (OpenAPI 3.0)</a></li>
           </ul>
 
-          <div className="bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-200 rounded-lg p-6 mb-8">
-            <h3 className="text-lg font-semibold mb-2">Conclusión</h3>
+          <div className="bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-900/50 dark:to-gray-900/50 border border-slate-200 dark:border-slate-700 rounded-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold mb-2 dark:text-white">Conclusión</h3>
             <p className="text-slate-700 dark:text-slate-300">
               OpenAPI se ha convertido en el estándar de facto para documentar APIs REST. Proporciona un formato
               estructurado que no solo mejora la comunicación entre equipos, sino que también habilita la generación

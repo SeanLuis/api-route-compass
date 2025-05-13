@@ -12,74 +12,74 @@ const ResponseFormats = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/status-codes" className="text-sm text-slate-500 hover:text-slate-700">Respuestas</Link>
+            <Link to="/status-codes" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Respuestas</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Formatos de Respuesta</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Estándares y mejores prácticas para estructurar respuestas en APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             Un formato de respuesta bien diseñado es fundamental para una API REST efectiva.
             Las respuestas consistentes, predecibles y expresivas mejoran la experiencia del
             desarrollador y reducen los errores de integración. En esta guía exploraremos los
             estándares, mejores prácticas y patrones para estructurar respuestas en APIs REST.
           </p>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Info className="h-5 w-5 text-indigo-500" />
             Principios Básicos
           </h2>
 
-          <p>
+          <p className="dark:text-slate-300">
             Antes de entrar en formatos específicos, es importante entender los principios
             fundamentales que deben guiar el diseño de las respuestas:
           </p>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Consistencia:</strong> Mantener una estructura uniforme en todas las respuestas</span>
+                <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                <span className="dark:text-slate-300"><strong>Consistencia:</strong> Mantener una estructura uniforme en todas las respuestas</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Predicción:</strong> Los clientes deben poder anticipar la estructura de la respuesta</span>
+                <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                <span className="dark:text-slate-300"><strong>Predicción:</strong> Los clientes deben poder anticipar la estructura de la respuesta</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Expresividad:</strong> Las respuestas deben ser autoexplicativas</span>
+                <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                <span className="dark:text-slate-300"><strong>Expresividad:</strong> Las respuestas deben ser autoexplicativas</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Minimalismo:</strong> Evitar información innecesaria que aumente el tamaño de la respuesta</span>
+                <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                <span className="dark:text-slate-300"><strong>Minimalismo:</strong> Evitar información innecesaria que aumente el tamaño de la respuesta</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                <span><strong>Flexibilidad:</strong> Permitir extensiones futuras sin romper la compatibilidad</span>
+                <CheckCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                <span className="dark:text-slate-300"><strong>Flexibilidad:</strong> Permitir extensiones futuras sin romper la compatibilidad</span>
               </li>
             </ul>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <FileJson className="h-5 w-5 text-indigo-500" />
             Formato JSON
           </h2>
 
-          <p>
+          <p className="dark:text-slate-300">
             JSON (JavaScript Object Notation) se ha convertido en el formato estándar de facto para APIs REST
             modernas debido a su simplicidad, ligereza y amplio soporte en prácticamente todos los lenguajes
             de programación.
           </p>
 
-          <h3 className="text-lg font-semibold tracking-tight mt-6">
+          <h3 className="text-lg font-semibold tracking-tight mt-6 dark:text-white">
             Ventajas de JSON
           </h3>
 
-          <ul className="list-disc pl-6 space-y-2">
+          <ul className="list-disc pl-6 space-y-2 dark:text-slate-300">
             <li>Sintaxis simple y legible para humanos</li>
             <li>Más compacto que XML (menos sobrecarga de marcado)</li>
             <li>Parsing nativo en JavaScript/TypeScript</li>
@@ -87,7 +87,7 @@ const ResponseFormats = () => {
             <li>Facilita la transferencia de estructuras de datos complejas</li>
           </ul>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="p-6">
                 <EndpointExample
@@ -161,7 +161,7 @@ const ResponseFormats = () => {
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Database className="h-5 w-5 text-indigo-500" />
             Estructuras de Respuesta Estándares
           </h2>
@@ -174,7 +174,7 @@ const ResponseFormats = () => {
             Al devolver un único recurso, la respuesta típicamente contiene el objeto directamente como raíz:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -200,7 +200,7 @@ const ResponseFormats = () => {
 
           <h4 className="font-semibold mt-4">1. Array Simple</h4>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`[
@@ -238,7 +238,7 @@ const ResponseFormats = () => {
 
           <h4 className="font-semibold mt-4">2. Objeto con Array en Propiedad Data/Items</h4>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -291,7 +291,7 @@ const ResponseFormats = () => {
 
           <h4 className="font-semibold mt-4">Respuesta para Creación (POST)</h4>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="p-6">
                 <EndpointExample
@@ -329,7 +329,7 @@ const ResponseFormats = () => {
 
           <h4 className="font-semibold mt-4">Respuesta para Actualización (PUT/PATCH)</h4>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="p-6">
                 <EndpointExample
@@ -364,7 +364,7 @@ const ResponseFormats = () => {
             Existen diferentes enfoques para respuestas tras eliminación:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`// Opción 1: 204 No Content (sin cuerpo de respuesta)
@@ -393,7 +393,7 @@ Content-Type: application/json
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Code className="h-5 w-5 text-indigo-500" />
             Formatos Estándar y Especificaciones
           </h2>
@@ -407,7 +407,7 @@ Content-Type: application/json
             y modificar recursos, y cómo los servidores deben responder.
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -483,7 +483,7 @@ Content-Type: application/json
             OData es un protocolo para crear y consumir APIs RESTful, comúnmente usado en ecosistemas Microsoft.
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -521,7 +521,7 @@ Content-Type: application/json
             HAL es un formato simple que proporciona una manera consistente de hipervínculos entre recursos.
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -563,7 +563,7 @@ Content-Type: application/json
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Mejores Prácticas
           </h2>
@@ -590,7 +590,7 @@ Content-Type: application/json
             Hay dos enfoques para tratar con campos sin valor:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`// Enfoque 1: Incluir campos con null
@@ -624,7 +624,7 @@ Content-Type: application/json
             Utiliza ISO 8601 para representar fechas y horas:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -645,7 +645,7 @@ Content-Type: application/json
             Incluye metadatos útiles en respuestas de colecciones:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -682,7 +682,7 @@ Content-Type: application/json
             Siguiendo los principios de HATEOAS, incluye enlaces relacionados:
           </p>
 
-          <Card className="border border-slate-200 shadow-sm">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
             <CardContent className="p-6">
               <CodeBlock
                 code={`{
@@ -701,16 +701,16 @@ Content-Type: application/json
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Terminal className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2 border-b">
-                <CardTitle className="text-base">GitHub API</CardTitle>
-                <CardDescription>Estructura simple y directa</CardDescription>
+                <CardTitle className="text-base dark:text-white">GitHub API</CardTitle>
+                <CardDescription className="dark:text-slate-400">Estructura simple y directa</CardDescription>
               </CardHeader>
               <CardContent className="p-6">
                 <CodeBlock
@@ -733,10 +733,10 @@ Content-Type: application/json
               </CardContent>
             </Card>
 
-            <Card className="border border-slate-200 shadow-sm">
+            <Card className="border border-slate-200 dark:border-slate-700 shadow-sm">
               <CardHeader className="pb-2 border-b">
-                <CardTitle className="text-base">Stripe API</CardTitle>
-                <CardDescription>Incluye identificador de objeto</CardDescription>
+                <CardTitle className="text-base dark:text-white">Stripe API</CardTitle>
+                <CardDescription className="dark:text-slate-400">Incluye identificador de objeto</CardDescription>
               </CardHeader>
               <CardContent className="p-6">
                 <CodeBlock
@@ -757,8 +757,8 @@ Content-Type: application/json
             </Card>
           </div>
 
-          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
-            <p className="italic text-indigo-900 font-medium">
+          <blockquote className="border-l-4 border-indigo-300 dark:border-indigo-700 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/50 dark:to-indigo-900/50 rounded-r-lg">
+            <p className="italic text-indigo-900 dark:text-indigo-300 font-medium">
               "Un buen formato de respuesta es como un contrato bien redactado: claro, predecible y sin ambigüedades.
               La consistencia y la expresividad son más importantes que seguir una especificación particular.
               Independientemente del formato que elijas, mantén la coherencia y documenta bien tus decisiones."

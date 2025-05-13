@@ -31,6 +31,7 @@ import ErrorHandling from "./pages/ErrorHandling";
 import Authentication from "./pages/Authentication";
 import Authorization from "./pages/Authorization";
 import SecurityPractices from "./pages/SecurityPractices";
+import BestPracticesExample from "./pages/BestPracticesExample";
 import OpenAPI from "./pages/OpenAPI";
 import Examples from "./pages/Examples";
 import RestLimitations from "./pages/RestLimitations";
@@ -87,6 +88,7 @@ const App = () => (
           <Route path="/authentication" element={<Authentication />} />
           <Route path="/authorization" element={<Authorization />} />
           <Route path="/security-practices" element={<SecurityPractices />} />
+          <Route path="/best-practices-example" element={<BestPracticesExample />} />
           
           {/* Documentación */}
           <Route path="/openapi" element={<OpenAPI />} />

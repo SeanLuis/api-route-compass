@@ -12,17 +12,17 @@ const Filtering = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/sorting" className="text-sm text-slate-500 hover:text-slate-700">Funcionalidades</Link>
+            <Link to="/sorting" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Funcionalidades</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Filtrado</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Patrones para implementar filtrado flexible en APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             El filtrado permite a los clientes de una API REST solicitar exactamente
             los datos que necesitan, reduciendo el volumen de información transferida
             y mejorando la eficiencia. Una implementación adecuada de filtrado puede
@@ -34,11 +34,11 @@ const Filtering = () => {
             Por Qué Implementar Filtrado
           </h2>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
-            <p className="text-slate-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
+            <p className="text-slate-800 dark:text-slate-300">
               Un buen sistema de filtrado proporciona numerosos beneficios:
             </p>
-            <ul className="mt-3 space-y-1 ml-6 list-disc text-slate-700">
+            <ul className="mt-3 space-y-1 ml-6 list-disc text-slate-700 dark:text-slate-300">
               <li>
                 <strong>Eficiencia:</strong> Los clientes reciben solo los datos
                 relevantes
@@ -67,21 +67,21 @@ const Filtering = () => {
             Enfoques de Filtrado
           </h2>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Filter className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">1. Filtrado Simple por Campos</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">1. Filtrado Simple por Campos</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   El enfoque más básico y común es permitir filtrar por campos específicos
                   usando parámetros de consulta.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/products?category=electronics&in_stock=true"
@@ -113,7 +113,7 @@ const Filtering = () => {
                   />
                 </div>
                 
-                <p className="mt-4 mb-2">Para campos con múltiples valores, puedes usar varios enfoques:</p>
+                <p className="mt-4 mb-2 dark:text-slate-300">Para campos con múltiples valores, puedes usar varios enfoques:</p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
                   <CodeBlock
                     code={`# Múltiples parámetros con el mismo nombre
@@ -131,21 +131,21 @@ GET /api/v1/products?categories[]=electronics&categories[]=accessories`}
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Code className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">2. Filtrado con Operadores de Comparación</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">2. Filtrado con Operadores de Comparación</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Para valores numéricos, fechas y otros tipos ordenables, es útil
                   proporcionar operadores de comparación.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 mb-4">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/products?price_min=50&price_max=200&created_after=2023-01-01"
@@ -174,7 +174,7 @@ GET /api/v1/products?categories[]=electronics&categories[]=accessories`}
                   />
                 </div>
                 
-                <p className="mt-4 mb-2">Diferentes convenciones para operadores de comparación:</p>
+                <p className="mt-4 mb-2 dark:text-slate-300">Diferentes convenciones para operadores de comparación:</p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
                   <CodeBlock
                     code={`# Prefijos/sufijos descriptivos
@@ -195,20 +195,20 @@ GET /api/v1/users?created_at=gt:2023-01-01,lt:2023-06-30`}
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Search className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">3. Filtrado por Texto y Búsqueda</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">3. Filtrado por Texto y Búsqueda</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Para filtrado por texto libre o búsqueda en campos textuales.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/products?search=auriculares bluetooth&brand=sony"
@@ -247,14 +247,14 @@ GET /api/v1/users?created_at=gt:2023-01-01,lt:2023-06-30`}
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Database className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">4. Filtrado con Metadatos y Relaciones</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">4. Filtrado con Metadatos y Relaciones</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Para filtrar por campos anidados o relaciones.
                 </p>
               </div>
@@ -278,27 +278,27 @@ GET /api/v1/orders?customer_country=spain&product_category=electronics`}
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Implementación y Mejores Prácticas
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Validación de Parámetros</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Validación de Parámetros</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Es crucial validar todos los parámetros de filtrado para evitar
                   problemas de seguridad:
                 </p>
-                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                   <li>Valida tipos de datos (números, fechas, enumeraciones)</li>
                   <li>Define rangos aceptables para valores numéricos</li>
                   <li>Limita la longitud de los campos de texto</li>
                   <li>Previene inyección SQL en campos de búsqueda</li>
                 </ul>
                 
-                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                <div className="mt-3 bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
                   <CodeBlock
                     code={`// Ejemplo en Express.js
 app.get('/api/v1/products', (req, res) => {
@@ -321,20 +321,20 @@ app.get('/api/v1/products', (req, res) => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Rendimiento y Optimización</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Rendimiento y Optimización</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Optimiza el rendimiento del filtrado:
                 </p>
-                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                   <li>Crea índices para los campos de filtrado comunes</li>
                   <li>Limita la complejidad de las consultas permitidas</li>
                   <li>Implementa caché para consultas frecuentes</li>
                   <li>Considera paginación obligatoria para resultados grandes</li>
                 </ul>
                 
-                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                <div className="mt-3 bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
                   <CodeBlock
                     code={`-- Índices para campos comunes
 CREATE INDEX idx_products_category ON products(category);
@@ -350,16 +350,16 @@ CREATE INDEX idx_products_category_price ON products(category, price);`}
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Map className="h-5 w-5 text-indigo-500" />
             Patrones Avanzados
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Filtrado Geoespacial</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Filtrado Geoespacial</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Para datos con componentes geográficos:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -375,10 +375,10 @@ GET /api/v1/properties?bounds=40.7,-74.0,40.8,-73.9`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Filtrado Temporal</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Filtrado Temporal</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Patrones específicos para datos temporales:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -399,25 +399,25 @@ GET /api/v1/logs?from=2023-06-01T00:00:00Z&to=2023-06-02T23:59:59Z`}
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Server className="h-5 w-5 text-indigo-500" />
             Casos de Uso Específicos
           </h2>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden mt-4">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden mt-4">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Database className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">Catálogos de Productos</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Catálogos de Productos</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Filtrado complejo para un catálogo de tienda online.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/products?category=clothing&gender=women&size=m&color=black&price_max=50&sort=price_asc"
@@ -457,19 +457,19 @@ GET /api/v1/logs?from=2023-06-01T00:00:00Z&to=2023-06-02T23:59:59Z`}
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h2>
 
           <div className="grid grid-cols-1 gap-6 mt-4">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4">
-                  <h3 className="font-medium">GitHub API</h3>
+                <div className="border-b bg-slate-50 dark:bg-slate-800 p-4">
+                  <h3 className="font-medium dark:text-white">GitHub API</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-3">
+                  <p className="mb-3 dark:text-slate-300">
                     GitHub proporciona filtros específicos para sus recursos:
                   </p>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -486,13 +486,13 @@ GET /repos/octocat/hello-world/pulls?state=open&base=main&sort=created&direction
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4">
-                  <h3 className="font-medium">Stripe API</h3>
+                <div className="border-b bg-slate-50 dark:bg-slate-800 p-4">
+                  <h3 className="font-medium dark:text-white">Stripe API</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-3">
+                  <p className="mb-3 dark:text-slate-300">
                     Stripe utiliza un sistema de filtrado uniforme:
                   </p>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -507,8 +507,8 @@ GET /v1/charges?customer=cus_123&created[gte]=1625097600&created[lte]=1627689600
             </Card>
           </div>
 
-          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
-            <p className="italic text-indigo-900 font-medium">
+          <blockquote className="border-l-4 border-indigo-300 dark:border-indigo-700 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/50 dark:to-indigo-900/50 rounded-r-lg">
+            <p className="italic text-indigo-900 dark:text-indigo-300 font-medium">
               "Un sistema de filtrado bien diseñado encuentra el equilibrio entre
               flexibilidad y simplicidad. Debe ser lo suficientemente potente para
               satisfacer las necesidades de los clientes más exigentes, pero lo

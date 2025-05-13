@@ -29,7 +29,7 @@ const Pagination = () => {
             proporcionando una mejor experiencia al usuario.
           </p>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <BookOpen className="h-5 w-5 text-indigo-500" />
             Por Qué Implementar Paginación
           </h2>
@@ -62,7 +62,7 @@ const Pagination = () => {
             </ul>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <LayoutGrid className="h-5 w-5 text-indigo-500" />
             Estrategias de Paginación
           </h2>
@@ -72,7 +72,7 @@ const Pagination = () => {
               <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <ArrowUpDown className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">1. Paginación Basada en Offset</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">1. Paginación Basada en Offset</h3>
                 </div>
                 <p className="text-slate-700 dark:text-slate-300">
                   Este método utiliza dos parámetros principales: <code>page</code> (o{" "}
@@ -134,7 +134,7 @@ db.products.find()
                   <div>
                     <div className="flex items-center mb-2">
                       <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      <h4 className="font-medium text-green-600">Ventajas</h4>
+                      <h4 className="font-medium text-green-600 dark:text-green-400">Ventajas</h4>
                     </div>
                     <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                       <li>Simple de implementar y entender</li>
@@ -147,7 +147,7 @@ db.products.find()
                   <div>
                     <div className="flex items-center mb-2">
                       <XCircle className="h-4 w-4 text-red-500 mr-2" />
-                      <h4 className="font-medium text-red-600">Desventajas</h4>
+                      <h4 className="font-medium text-red-600 dark:text-red-400">Desventajas</h4>
                     </div>
                     <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                       <li>Rendimiento deficiente en conjuntos de datos muy grandes</li>
@@ -166,7 +166,7 @@ db.products.find()
               <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Database className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">2. Paginación Basada en Cursor</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">2. Paginación Basada en Cursor</h3>
                 </div>
                 <p className="text-slate-700 dark:text-slate-300">
                   Esta técnica utiliza un "cursor" o "marcador" para apuntar a una
@@ -232,7 +232,7 @@ LIMIT 20;`}
                   <div>
                     <div className="flex items-center mb-2">
                       <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      <h4 className="font-medium text-green-600">Ventajas</h4>
+                      <h4 className="font-medium text-green-600 dark:text-green-400">Ventajas</h4>
                     </div>
                     <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                       <li>Rendimiento constante incluso con conjuntos de datos enormes</li>
@@ -245,7 +245,7 @@ LIMIT 20;`}
                   <div>
                     <div className="flex items-center mb-2">
                       <XCircle className="h-4 w-4 text-red-500 mr-2" />
-                      <h4 className="font-medium text-red-600">Desventajas</h4>
+                      <h4 className="font-medium text-red-600 dark:text-red-400">Desventajas</h4>
                     </div>
                     <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                       <li>Mayor complejidad de implementación</li>
@@ -264,7 +264,7 @@ LIMIT 20;`}
               <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Server className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">3. Paginación con Keyset</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">3. Paginación con Keyset</h3>
                 </div>
                 <p className="text-slate-700 dark:text-slate-300">
                   Un refinamiento de la paginación basada en cursor, donde el cursor es
@@ -329,7 +329,7 @@ LIMIT 20;`}
                   <div>
                     <div className="flex items-center mb-2">
                       <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      <h4 className="font-medium text-green-600">Ventajas</h4>
+                      <h4 className="font-medium text-green-600 dark:text-green-400">Ventajas</h4>
                     </div>
                     <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                       <li>Rendimiento excelente incluso con tablas enormes</li>
@@ -342,7 +342,7 @@ LIMIT 20;`}
                   <div>
                     <div className="flex items-center mb-2">
                       <XCircle className="h-4 w-4 text-red-500 mr-2" />
-                      <h4 className="font-medium text-red-600">Desventajas</h4>
+                      <h4 className="font-medium text-red-600 dark:text-red-400">Desventajas</h4>
                     </div>
                     <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                       <li>Complejidad adicional en la implementación</li>
@@ -356,12 +356,12 @@ LIMIT 20;`}
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Code className="h-5 w-5 text-indigo-500" />
             Implementación de la Paginación
           </h2>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <CheckCircle className="h-5 w-5 text-green-500" />
             Mejores Prácticas
           </h3>
@@ -466,7 +466,7 @@ Link: <https://api.example.com/products?page=1&per_page=20>; rel="first",
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6">
+          <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2 mt-6 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h3>

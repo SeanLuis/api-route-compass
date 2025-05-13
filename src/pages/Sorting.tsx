@@ -12,17 +12,17 @@ const Sorting = () => {
         {/* Page header */}
         <div className="border-b pb-8">
           <div className="flex items-center gap-2">
-            <Link to="/filtering" className="text-sm text-slate-500 hover:text-slate-700">Funcionalidades</Link>
+            <Link to="/filtering" className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300">Funcionalidades</Link>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mt-3 mb-4">Ordenamiento</h1>
-          <p className="text-lg text-slate-700">
+          <p className="text-lg text-slate-700 dark:text-slate-300">
             Estrategias para implementar ordenamiento en APIs REST.
           </p>
         </div>
 
         {/* Main content */}
         <div className="space-y-8">
-          <p>
+          <p className="dark:text-slate-300">
             El ordenamiento permite a los clientes especificar el orden en que desean
             recibir los recursos de una colección. Esta funcionalidad mejora la
             experiencia del desarrollador y proporciona flexibilidad para diferentes
@@ -34,11 +34,11 @@ const Sorting = () => {
             Por Qué Implementar Ordenamiento
           </h2>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border border-indigo-100">
-            <p className="text-slate-800">
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/50 p-6 rounded-lg border border-indigo-100 dark:border-indigo-800">
+            <p className="text-slate-800 dark:text-slate-300">
               Un sistema de ordenamiento bien implementado ofrece varios beneficios:
             </p>
-            <ul className="mt-3 space-y-1 ml-6 list-disc text-slate-700">
+            <ul className="mt-3 space-y-1 ml-6 list-disc text-slate-700 dark:text-slate-300">
               <li>
                 <strong>Flexibilidad:</strong> Los clientes pueden adaptar las respuestas
                 a sus necesidades específicas
@@ -67,20 +67,20 @@ const Sorting = () => {
             Patrones de Implementación
           </h2>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Database className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">1. Ordenamiento Simple por Campo</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">1. Ordenamiento Simple por Campo</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   El enfoque más básico y común es permitir ordenar por un solo campo.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/products?sort=price"
@@ -111,14 +111,14 @@ const Sorting = () => {
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Code className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">2. Ordenamiento con Dirección</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">2. Ordenamiento con Dirección</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Permite especificar la dirección del ordenamiento (ascendente/descendente).
                 </p>
               </div>
@@ -143,20 +143,20 @@ GET /api/v1/products?sort=+price  # Ascendente (o sin signo)`}
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Server className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">3. Ordenamiento por Múltiples Campos</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">3. Ordenamiento por Múltiples Campos</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Permite ordenar por varios campos con diferentes prioridades.
                 </p>
               </div>
               
               <div className="p-6">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                   <EndpointExample
                     method="GET"
                     path="/api/v1/products?sort=category_asc,price_desc"
@@ -196,7 +196,7 @@ GET /api/v1/products?sort=+price  # Ascendente (o sin signo)`}
                 </div>
                 
                 <div className="mt-4">
-                  <p className="mb-3">Otras sintaxis comunes para ordenamiento múltiple:</p>
+                  <p className="mb-3 dark:text-slate-300">Otras sintaxis comunes para ordenamiento múltiple:</p>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
                     <CodeBlock
                       code={`# Separados por comas
@@ -218,24 +218,24 @@ GET /api/v1/products?sort=["category","-price"]`}
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <CheckCircle className="h-5 w-5 text-indigo-500" />
             Mejores Prácticas
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Orden por Defecto</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Orden por Defecto</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Siempre define un orden por defecto claro para cada recurso:
                 </p>
-                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                   <li>Especifica el orden por defecto en la documentación</li>
                   <li>Elige un orden por defecto que tenga sentido para el recurso</li>
                   <li>Considera definir órdenes por defecto diferentes para distintos endpoints</li>
                 </ul>
-                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                <div className="mt-3 bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
                   <CodeBlock
                     code={`// Ejemplo en Express.js
 app.get('/api/v1/products', (req, res) => {
@@ -249,18 +249,18 @@ app.get('/api/v1/products', (req, res) => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Campos Ordenables Permitidos</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Campos Ordenables Permitidos</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Define y valida explícitamente qué campos pueden usarse para ordenar:
                 </p>
-                <ul className="space-y-1 ml-6 list-disc text-slate-600 text-sm">
+                <ul className="space-y-1 ml-6 list-disc text-slate-600 dark:text-slate-400 text-sm">
                   <li>Lista los campos ordenables en la documentación</li>
                   <li>Valida los campos de ordenamiento para evitar inyecciones SQL</li>
                   <li>Considera el rendimiento al elegir qué campos son ordenables</li>
                 </ul>
-                <div className="mt-3 bg-slate-100 p-3 rounded-md">
+                <div className="mt-3 bg-slate-100 dark:bg-slate-800 p-3 rounded-md">
                   <CodeBlock
                     code={`// Validación de campos ordenables
 const allowedSortFields = ['name', 'price', 'created_at'];
@@ -280,14 +280,14 @@ if (!allowedSortFields.includes(field)) {
             </Card>
           </div>
 
-          <Card className="border border-slate-200 shadow-sm overflow-hidden mt-6">
+          <Card className="border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden mt-6">
             <CardContent className="p-0">
-              <div className="border-b p-6">
+              <div className="border-b border-slate-200 dark:border-slate-700 p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Database className="h-5 w-5 text-blue-600" />
-                  <h3 className="text-lg font-semibold">Optimización de Rendimiento</h3>
+                  <h3 className="text-lg font-semibold dark:text-white">Optimización de Rendimiento</h3>
                 </div>
-                <p className="text-slate-700">
+                <p className="text-slate-700 dark:text-slate-300">
                   Asegura un rendimiento óptimo para el ordenamiento creando los índices adecuados en tu base de datos.
                 </p>
               </div>
@@ -309,16 +309,16 @@ CREATE INDEX idx_products_category_price ON products(category ASC, price DESC);`
             </CardContent>
           </Card>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <ArrowUpDown className="h-5 w-5 text-indigo-500" />
             Casos de Uso Específicos
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Ordenamiento para E-commerce</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Ordenamiento para E-commerce</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Ordenamiento típico para un catálogo de productos:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -336,10 +336,10 @@ GET /api/v1/products?sort=rating_desc      # Mejor valorados primero`}
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="dark:border-slate-700">
               <CardContent className="pt-6">
-                <h3 className="font-semibold mb-2">Ordenamiento para Contenido Social</h3>
-                <p className="mb-3 text-sm text-slate-600">
+                <h3 className="font-semibold mb-2 dark:text-white">Ordenamiento para Contenido Social</h3>
+                <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">
                   Ordenamiento típico para posts, comentarios, etc.:
                 </p>
                 <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -357,19 +357,19 @@ GET /api/v1/feed?sort=relevance      # Algoritmo de relevancia`}
             </Card>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
+          <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2 dark:text-white">
             <Server className="h-5 w-5 text-indigo-500" />
             Ejemplos de APIs Populares
           </h2>
 
           <div className="grid grid-cols-1 gap-6 mt-4">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4">
-                  <h3 className="font-medium">GitHub API</h3>
+                <div className="border-b bg-slate-50 dark:bg-slate-800 p-4">
+                  <h3 className="font-medium dark:text-white">GitHub API</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-3">
+                  <p className="mb-3 dark:text-slate-300">
                     GitHub utiliza parámetros <code>sort</code> y <code>direction</code>:
                   </p>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -386,13 +386,13 @@ GET /users/octocat/repos?sort=pushed&direction=desc`}
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden dark:border-slate-700">
               <CardContent className="p-0">
-                <div className="border-b bg-slate-50 p-4">
-                  <h3 className="font-medium">Google API</h3>
+                <div className="border-b bg-slate-50 dark:bg-slate-800 p-4">
+                  <h3 className="font-medium dark:text-white">Google API</h3>
                 </div>
                 <div className="p-6">
-                  <p className="mb-3">
+                  <p className="mb-3 dark:text-slate-300">
                     Google utiliza el parámetro <code>orderBy</code>:
                   </p>
                   <div className="bg-slate-900 rounded-md overflow-hidden">
@@ -410,8 +410,8 @@ GET https://www.googleapis.com/drive/v3/files?orderBy=folder,name desc`}
             </Card>
           </div>
 
-          <blockquote className="border-l-4 border-indigo-300 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-r-lg">
-            <p className="italic text-indigo-900 font-medium">
+          <blockquote className="border-l-4 border-indigo-300 dark:border-indigo-700 pl-6 py-2 pr-4 mt-8 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-950/50 dark:to-indigo-900/50 rounded-r-lg">
+            <p className="italic text-indigo-900 dark:text-indigo-300 font-medium">
               "Un buen sistema de ordenamiento equilibra la simplicidad de uso con la
               flexibilidad para escenarios complejos. Aunque parece una funcionalidad
               sencilla, el ordenamiento bien implementado puede mejorar drásticamente la
